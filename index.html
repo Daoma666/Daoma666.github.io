@@ -7,16 +7,16 @@
   
   
   
-  <title>Hexo</title>
+  <title>岛马的主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="岛马的主页">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="岛马的主页">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="岛马的主页">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="岛马的主页" type="application/atom+xml">
   
   
     <link rel="icon" href="/img/favicon.png">
@@ -63,7 +63,7 @@
             
         </a>
         <hgroup>
-          <h1 class="header-author"><a href="/">John Doe</a></h1>
+          <h1 class="header-author"><a href="/">岛马</a></h1>
         </hgroup>
         
         
@@ -170,7 +170,7 @@
                         
                             <li><a  href="/categories/digital">菜单2</a></li>
                         
-                            <li><a  href="/categories/algorithm">算法学习</a></li>
+                            <li><a  href="/categories/algorithm">菜单3</a></li>
                         
                             <li><a  href="/about/">关于我</a></li>
                         
@@ -179,7 +179,7 @@
                     <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fl github"  target="_blank" href="/xxxxx" title="github">github</a>
+                                <a class="fl github"  target="_blank" href="/Daoma666" title="github">github</a>
                             
                                 <a class="fl weibo"  target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
                             
@@ -225,7 +225,7 @@
       <nav id="mobile-nav">
       <div class="overlay">
           <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">John Doe</a></h1>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">岛马</a></h1>
       </div>
     <div class="intrude-less">
         <header id="header" class="inner">
@@ -235,7 +235,7 @@
                 
             </a>
             <hgroup>
-              <h1 class="header-author"><a href="/" title="回到主页">John Doe</a></h1>
+              <h1 class="header-author"><a href="/" title="回到主页">岛马</a></h1>
             </hgroup>
             
             <nav class="header-menu">
@@ -247,7 +247,7 @@
                 
                     <li><a href="/categories/digital">菜单2</a></li>
                 
-                    <li><a href="/categories/algorithm">算法学习</a></li>
+                    <li><a href="/categories/algorithm">菜单3</a></li>
                 
                     <li><a href="/about/">关于我</a></li>
                 
@@ -257,7 +257,7 @@
             <nav class="header-nav">
                 <div class="social">
                     
-                        <a class="github" target="_blank" href="/xxxxx" title="github">github</a>
+                        <a class="github" target="_blank" href="/Daoma666" title="github">github</a>
                     
                         <a class="weibo" target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
                     
@@ -269,6 +269,124 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-JS中-和-的奇怪用法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/03/25/JS中-和-的奇怪用法/" class="article-date">
+      <time datetime="2018-03-25T08:15:19.000Z" itemprop="datePublished">2018-03-25</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/03/25/JS中-和-的奇怪用法/">JS中&amp;&amp;和||的奇怪用法</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="JS中-amp-amp-和-的奇怪用法"><a href="#JS中-amp-amp-和-的奇怪用法" class="headerlink" title="JS中&amp;&amp;和||的奇怪用法"></a>JS中&amp;&amp;和||的奇怪用法</h2><p>　　最近正在学 JS，找了点练习来做，然后看到如下的代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (var i = 0; i &lt; oBtn.length; i++)</span><br><span class="line">&#123;</span><br><span class="line">	oBtn[i].index = i;</span><br><span class="line">	oBtn[i].onclick = <span class="keyword">function</span> ()</span><br><span class="line">	&#123;</span><br><span class="line">	this.index == oBtn.length - 1 &amp;&amp; (oDiv.style.cssText = <span class="string">""</span>);</span><br><span class="line">	changeStyle(oDiv, oAtt[this.index], oVal[this.index]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>　　然后我上网搜了一下明白了 var c=a||b;或var c=a&amp;&b;这种情况时<br><strong>a &amp;&amp; b :如果执行 a 后返回 true，则执行 b 并返回 b 的值；如果执行 a 后返回 false，则整个表达式返回 a 的值，b 不执行</strong><br><strong>a || b :如果执行 a 后返回 true，则整个表达式返回 a 的值，b 不执行；如果执行 a 后返回 false，则执行 b 并返回 b 的值</strong></p>
+<p>　　所以这句就好理解了this.index == oBtn.length - 1 &amp;&amp; (oDiv.style.cssText = “”);<br>　　这可以算是一种炫技代码⊙﹏⊙，相当于：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(this.index == oBtn.length - 1)&#123;</span><br><span class="line">	oDiv.style.cssText = <span class="string">""</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-A-Front-end-newbie" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/03/25/A-Front-end-newbie/" class="article-date">
+      <time datetime="2018-03-25T07:26:03.000Z" itemprop="datePublished">2018-03-25</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/03/25/A-Front-end-newbie/">A Front-end newbie</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="新手上路啦"><a href="#新手上路啦" class="headerlink" title="新手上路啦"></a>新手上路啦</h2><p>　　忙活了三天搭起了个人的博客，虽然只是开了一个框架，但看到属于自己的页面那一刻，心情是很激动的.作为一只准备投身前端领域的小菜鸟，这一个月越发的感受到了前端的魅力，也见识了前端的深邃，自己目前的水平也就是刚对JS和CSS入了门，上论坛看大家讨论的一堆名词连听都没听说过，所以革命还需努力啦！<br>　　鉴于目前已大三下学期，马上就要找实习了，故在文章最后分享一下最近看到一句话：“你第一个月的工资=你之前看过的所有技术性书籍价值的总和”，我感觉这是非常有道理的，小时候读书少，现在有动力读相关技术的书了，也算是一个好兆头。<br>　　最后分享一下搭建博客的过程中用到的教程：<br>　　1. GitHub搭建博客 <a href="https://blog.csdn.net/u012075670/article/details/54581015" title="如何用github搭建自己的个人网站" target="_blank" rel="noopener">具体教程</a><br>　　2. Hexo完善博客       <a href="https://www.cnblogs.com/visugar/p/6821777.html" title="hexo从零开始到搭建完整" target="_blank" rel="noopener">具体教程</a><br>　　3. 使用markdown来写博客(ps:要是想要段首缩进可以切换到输入法全角模式打两个空格) <a href="https://www.w3cschool.cn/markdownyfsm/cbx1e7.html" title="Markdown 语法说明" target="_blank" rel="noopener">语法参考</a><br>　　那今天就先到这里啦，我们下篇博客再会！</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
   
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -302,10 +420,10 @@
         <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
 <h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Debug"><a href="#Debug" class="headerlink" title="Debug"></a>Debug</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s --debug</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/zh-cn/docs/commands.html" target="_blank" rel="noopener">Server</a></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
@@ -343,7 +461,7 @@
     <div class="outer">
         <div id="footer-info">
             <div class="footer-left">
-                &copy; 2018 John Doe
+                &copy; 2018 岛马
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank">Hexo &nbsp;&nbsp;</a><a href="https://github.com/maochunguang" target="_blank">Blog</a> by tommy
