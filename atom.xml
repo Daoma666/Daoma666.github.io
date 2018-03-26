@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-03-25T08:40:22.232Z</updated>
+  <updated>2018-03-26T11:22:35.279Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,53 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>JS for-in语句的使用</title>
+    <link href="http://yoursite.com/2018/03/26/JS-for-in%E8%AF%AD%E5%8F%A5%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>http://yoursite.com/2018/03/26/JS-for-in语句的使用/</id>
+    <published>2018-03-26T11:08:31.000Z</published>
+    <updated>2018-03-26T11:22:35.279Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="JS-for-in语句的使用"><a href="#JS-for-in语句的使用" class="headerlink" title="JS for-in语句的使用"></a>JS for-in语句的使用</h2><p>　　<em>  js中for循环一般用于遍历数组　　</em>  for-in一般用于循环遍历对象的属性<br>　　虽然数组在js中也是对象，技术上说，我们可以使用for-in循环数组，如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var oSkin=document.getElementById(<span class="string">"skin"</span>).getElementsByTagName(<span class="string">"LI"</span>);</span><br><span class="line"><span class="keyword">for</span>(var p <span class="keyword">in</span> oSkin)&#123;</span><br><span class="line">alert(p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>　　此时输出(假设oSkin包含了3个LI)为0,1,2,length,item,namedItem，原因为：for-in如果遍历的是数组，那么i是代表这个数组的索引值，如果遍历的是个对象，那么i代表的是这个数组的属性值。因为oSkin是个HTTPCollection对象，所以它是一个对象数组里面装了3个LI对象，于是就会既有索引值，又有它自己的属性。<br>　　所以要想遍历该数组的三个LI，需要：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(var p <span class="keyword">in</span> oSkin)&#123;</span><br><span class="line">oSkin[p].doSomeThing();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>　　题外话：今天在经过了主题制作者大佬的点拨下，准备趁着在学校的最后一个学期用<em>Socket.io+JS</em>写一个<em>聊天室系统</em>，这样也算有个项目可以去实习了哈哈(想的挺美，可惜现在写不出来)，所以还是要务实基础啊，加油！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;JS-for-in语句的使用&quot;&gt;&lt;a href=&quot;#JS-for-in语句的使用&quot; class=&quot;headerlink&quot; title=&quot;JS for-in语句的使用&quot;&gt;&lt;/a&gt;JS for-in语句的使用&lt;/h2&gt;&lt;p&gt;　　&lt;em&gt;  js中for循环一般用于遍历
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>CSS 使用overflow:hidden清除浮动</title>
+    <link href="http://yoursite.com/2018/03/26/CSS-%E4%BD%BF%E7%94%A8overflow-hidden%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/"/>
+    <id>http://yoursite.com/2018/03/26/CSS-使用overflow-hidden清除浮动/</id>
+    <published>2018-03-26T10:59:09.000Z</published>
+    <updated>2018-03-26T11:19:22.489Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="CSS-使用overflow-hidden清除浮动"><a href="#CSS-使用overflow-hidden清除浮动" class="headerlink" title="CSS 使用overflow:hidden清除浮动"></a>CSS 使用overflow:hidden清除浮动</h2><p>　　今天做了一道网页换肤的练习，但发现了其中的两个小问题，详情如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"outer"</span>&gt;</span><br><span class="line">&lt;ul id=<span class="string">"skin"</span>&gt;</span><br><span class="line">&lt;li id=<span class="string">"red"</span> title=<span class="string">"红色"</span>&gt;&lt;/li&gt;</span><br><span class="line">&lt;li id=<span class="string">"green"</span> title=<span class="string">"绿色"</span>&gt;&lt;/li&gt;</span><br><span class="line">&lt;li id=<span class="string">"blue"</span> title=<span class="string">"蓝色"</span>&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line">&lt;ul id=<span class="string">"nav"</span>&gt;</span><br><span class="line">&lt;!--</span><br><span class="line">               javascript: 是一个伪协议javascript:是表示在触发&lt;a&gt;默认动作时，执行一段JavaScript代码，</span><br><span class="line">               而 javascript:;表示什么都不执行，这样点击&lt;a&gt;时就没有任何反应。</span><br><span class="line">               --&gt;</span><br><span class="line">&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;新闻&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;娱乐&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;体育&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;电影&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;音乐&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;旅游&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p><p>　　在div里有两个ul，对它们的li分别都设置了float: left后发现：<br>　　1.  这两个ul中的li都脱离了文档流，跑到一行上去了<br>　　2.  为ul设置过黑色背景，但都消失了<br>　　于是我使用了br来换行，但发现原作者并没有这样做，这不由得让我产生了疑问。在反复查看源码后，我发现是overflow: hidden;在起作用，遂到网上一查发现，它并不只有<strong>隐藏溢出</strong>的功能，还有<strong>清除浮动</strong>和<strong>解除坍塌</strong>的功能。原理如下：<br>　　浮动的元素(两个ul中的li)脱离文档元素， 不占据空间，所以跑到了一行上。 不浮动的元素(ul,div)会直接无视掉这个元素。因为我们没有设置父ul的高度，父ul无视了自己的两个孩子，其高度变为0，所以父ul没有显现。 解决方法就是：<br>　　1.  如果只想换行，给ul添加overflow:hidden属性即可，清除浮动，恢复它原先占据的ul的位置<br>　　2.  为父ul添加overflow:hidden属性用以清除浮动，使得父ul显现</p><p>　　若想更细致的查看该属性的用法：<a href="https://blog.csdn.net/hukaihe/article/details/51298665" title="深入理解：overflow:hidden——溢出,坍塌,清除浮动" target="_blank" rel="noopener">详细链接</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;CSS-使用overflow-hidden清除浮动&quot;&gt;&lt;a href=&quot;#CSS-使用overflow-hidden清除浮动&quot; class=&quot;headerlink&quot; title=&quot;CSS 使用overflow:hidden清除浮动&quot;&gt;&lt;/a&gt;CSS 使用overf
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>JS中&amp;&amp;和||的奇怪用法</title>
     <link href="http://yoursite.com/2018/03/25/JS%E4%B8%AD-%E5%92%8C-%E7%9A%84%E5%A5%87%E6%80%AA%E7%94%A8%E6%B3%95/"/>
     <id>http://yoursite.com/2018/03/25/JS中-和-的奇怪用法/</id>
     <published>2018-03-25T08:15:19.000Z</published>
-    <updated>2018-03-25T08:40:22.232Z</updated>
+    <updated>2018-03-26T10:58:08.845Z</updated>
     
     <content type="html"><![CDATA[<h2 id="JS中-amp-amp-和-的奇怪用法"><a href="#JS中-amp-amp-和-的奇怪用法" class="headerlink" title="JS中&amp;&amp;和||的奇怪用法"></a>JS中&amp;&amp;和||的奇怪用法</h2><p>　　最近正在学 JS，找了点练习来做，然后看到如下的代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (var i = 0; i &lt; oBtn.length; i++)</span><br><span class="line">&#123;</span><br><span class="line">oBtn[i].index = i;</span><br><span class="line">oBtn[i].onclick = <span class="keyword">function</span> ()</span><br><span class="line">&#123;</span><br><span class="line">this.index == oBtn.length - 1 &amp;&amp; (oDiv.style.cssText = <span class="string">""</span>);</span><br><span class="line">changeStyle(oDiv, oAtt[this.index], oVal[this.index]);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>　　然后我上网搜了一下明白了 var c=a||b;或var c=a&amp;&b;这种情况时<br><strong>a &amp;&amp; b :如果执行 a 后返回 true，则执行 b 并返回 b 的值；如果执行 a 后返回 false，则整个表达式返回 a 的值，b 不执行</strong><br><strong>a || b :如果执行 a 后返回 true，则整个表达式返回 a 的值，b 不执行；如果执行 a 后返回 false，则执行 b 并返回 b 的值</strong></p><p>　　所以这句就好理解了this.index == oBtn.length - 1 &amp;&amp; (oDiv.style.cssText = “”);<br>　　这可以算是一种炫技代码⊙﹏⊙，相当于：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(this.index == oBtn.length - 1)&#123;</span><br><span class="line">oDiv.style.cssText = <span class="string">""</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
     
@@ -42,9 +84,9 @@
     <link href="http://yoursite.com/2018/03/25/A-Front-end-newbie/"/>
     <id>http://yoursite.com/2018/03/25/A-Front-end-newbie/</id>
     <published>2018-03-25T07:26:03.000Z</published>
-    <updated>2018-03-25T08:38:01.463Z</updated>
+    <updated>2018-03-26T11:18:38.112Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="新手上路啦"><a href="#新手上路啦" class="headerlink" title="新手上路啦"></a>新手上路啦</h2><p>　　忙活了三天搭起了个人的博客，虽然只是开了一个框架，但看到属于自己的页面那一刻，心情是很激动的.作为一只准备投身前端领域的小菜鸟，这一个月越发的感受到了前端的魅力，也见识了前端的深邃，自己目前的水平也就是刚对JS和CSS入了门，上论坛看大家讨论的一堆名词连听都没听说过，所以革命还需努力啦！<br>　　鉴于目前已大三下学期，马上就要找实习了，故在文章最后分享一下最近看到一句话：“你第一个月的工资=你之前看过的所有技术性书籍价值的总和”，我感觉这是非常有道理的，小时候读书少，现在有动力读相关技术的书了，也算是一个好兆头。<br>　　最后分享一下搭建博客的过程中用到的教程：<br>　　1. GitHub搭建博客 <a href="https://blog.csdn.net/u012075670/article/details/54581015" title="如何用github搭建自己的个人网站" target="_blank" rel="noopener">具体教程</a><br>　　2. Hexo完善博客       <a href="https://www.cnblogs.com/visugar/p/6821777.html" title="hexo从零开始到搭建完整" target="_blank" rel="noopener">具体教程</a><br>　　3. 使用markdown来写博客(ps:要是想要段首缩进可以切换到输入法全角模式打两个空格) <a href="https://www.w3cschool.cn/markdownyfsm/cbx1e7.html" title="Markdown 语法说明" target="_blank" rel="noopener">语法参考</a><br>　　那今天就先到这里啦，我们下篇博客再会！</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="新手上路啦"><a href="#新手上路啦" class="headerlink" title="新手上路啦"></a>新手上路啦</h2><p>　　忙活了三天搭起了个人的博客，虽然只是开了一个框架，但看到属于自己的页面那一刻，心情是很激动的.作为一只准备投身前端领域的小菜鸟，这一个月越发的感受到了前端的魅力，也见识了前端的深邃，自己目前的水平也就是刚对JS和CSS入了门，上论坛看大家讨论的一堆名词连听都没听说过，所以革命还需努力啦！<br>　　鉴于目前已大三下学期，马上就要找实习了，故在文章最后分享一下最近看到一句话：“你第一个月的工资=你之前看过的所有技术性书籍价值的总和”，我感觉这是非常有道理的，小时候读书少，现在有动力读相关技术的书了，也算是一个好兆头。<br>　　最后分享一下搭建博客的过程中用到的教程：<br>　　1.  GitHub搭建博客 <a href="https://blog.csdn.net/u012075670/article/details/54581015" title="如何用github搭建自己的个人网站" target="_blank" rel="noopener">具体教程</a><br>　　2.  Hexo完善博客       <a href="https://www.cnblogs.com/visugar/p/6821777.html" title="hexo从零开始到搭建完整" target="_blank" rel="noopener">具体教程</a><br>　　3.  使用markdown来写博客(ps:要是想要段首缩进可以切换到输入法全角模式打两个空格) <a href="https://www.w3cschool.cn/markdownyfsm/cbx1e7.html" title="Markdown 语法说明" target="_blank" rel="noopener">语法参考</a><br>　　那今天就先到这里啦，我们下篇博客再会！</p>]]></content>
     
     <summary type="html">
     
@@ -63,9 +105,9 @@
     <link href="http://yoursite.com/2018/03/24/hello-world/"/>
     <id>http://yoursite.com/2018/03/24/hello-world/</id>
     <published>2018-03-24T12:45:44.081Z</published>
-    <updated>2018-03-25T08:43:58.746Z</updated>
+    <updated>2018-03-26T11:24:04.631Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Debug"><a href="#Debug" class="headerlink" title="Debug"></a>Debug</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s --debug</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/zh-cn/docs/commands.html" target="_blank" rel="noopener">Server</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate or $ hexo g</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Debug"><a href="#Debug" class="headerlink" title="Debug"></a>Debug</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s --debug</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/zh-cn/docs/commands.html" target="_blank" rel="noopener">Server</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy or $ hexo d</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
     
     <summary type="html">
     

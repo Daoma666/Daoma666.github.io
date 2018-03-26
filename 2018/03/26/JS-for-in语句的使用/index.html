@@ -7,14 +7,18 @@
   
   
   
-  <title>Archives: 2018/3 | 岛马的主页</title>
+  <title>JS for-in语句的使用 | 岛马的主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="岛马的主页">
-<meta property="og:url" content="http://yoursite.com/archives/2018/03/index.html">
+  <meta name="description" content="JS for-in语句的使用　　  js中for循环一般用于遍历数组 　　  for-in一般用于循环遍历对象的属性　　虽然数组在js中也是对象，技术上说，我们可以使用for-in循环数组，如下：1234var oSkin=document.getElementById(&quot;skin&quot;).getElementsByTagName(&quot;LI&quot;);for(var p in oSkin)&amp;#123;	ale">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS for-in语句的使用">
+<meta property="og:url" content="http://yoursite.com/2018/03/26/JS-for-in语句的使用/index.html">
 <meta property="og:site_name" content="岛马的主页">
+<meta property="og:description" content="JS for-in语句的使用　　  js中for循环一般用于遍历数组 　　  for-in一般用于循环遍历对象的属性　　虽然数组在js中也是对象，技术上说，我们可以使用for-in循环数组，如下：1234var oSkin=document.getElementById(&quot;skin&quot;).getElementsByTagName(&quot;LI&quot;);for(var p in oSkin)&amp;#123;	ale">
+<meta property="og:updated_time" content="2018-03-26T11:22:35.279Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="岛马的主页">
+<meta name="twitter:title" content="JS for-in语句的使用">
+<meta name="twitter:description" content="JS for-in语句的使用　　  js中for循环一般用于遍历数组 　　  for-in一般用于循环遍历对象的属性　　虽然数组在js中也是对象，技术上说，我们可以使用for-in循环数组，如下：1234var oSkin=document.getElementById(&quot;skin&quot;).getElementsByTagName(&quot;LI&quot;);for(var p in oSkin)&amp;#123;	ale">
   
     <link rel="alternative" href="/atom.xml" title="岛马的主页" type="application/atom+xml">
   
@@ -39,8 +43,8 @@
           fancybox: true,
           animate: true,
           isHome: false,
-          isPost: false,
-          isArchive: true,
+          isPost: true,
+          isArchive: false,
           isTag: false,
           isCategory: false,
           open_in_new: false
@@ -265,168 +269,193 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-JS-for-in语句的使用" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a  href="/2018/03/26/JS-for-in语句的使用/" class="article-date">
+      <time datetime="2018-03-26T11:08:31.000Z" itemprop="datePublished">2018-03-26</time>
+</a>
+
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JS for-in语句的使用
+    </h1>
+  
+
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a  href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a  href="/2018/03/26/JS-for-in语句的使用/" class="archive-article-date">
-      <time datetime="2018-03-26T11:08:31.000Z" itemprop="datePublished">03-26</time>
-</a>
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a  class="archive-article-title" href="/2018/03/26/JS-for-in语句的使用/">JS for-in语句的使用</a>
-    </h1>
-  
-
-
-        <div class="article-info info-on-archive">
+    <div class="article-entry" itemprop="articleBody">
+      
           
+        <h2 id="JS-for-in语句的使用"><a href="#JS-for-in语句的使用" class="headerlink" title="JS for-in语句的使用"></a>JS for-in语句的使用</h2><p>　　<em>  js中for循环一般用于遍历数组
+　　</em>  for-in一般用于循环遍历对象的属性<br>　　虽然数组在js中也是对象，技术上说，我们可以使用for-in循环数组，如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var oSkin=document.getElementById(<span class="string">"skin"</span>).getElementsByTagName(<span class="string">"LI"</span>);</span><br><span class="line"><span class="keyword">for</span>(var p <span class="keyword">in</span> oSkin)&#123;</span><br><span class="line">	alert(p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>　　此时输出(假设oSkin包含了3个LI)为0,1,2,length,item,namedItem，原因为：for-in如果遍历的是数组，那么i是代表这个数组的索引值，如果遍历的是个对象，那么i代表的是这个数组的属性值。因为oSkin是个HTTPCollection对象，所以它是一个对象数组里面装了3个LI对象，于是就会既有索引值，又有它自己的属性。<br>　　所以要想遍历该数组的三个LI，需要：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(var p <span class="keyword">in</span> oSkin)&#123;</span><br><span class="line">	oSkin[p].doSomeThing();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>　　题外话：今天在经过了主题制作者大佬的点拨下，准备趁着在学校的最后一个学期用<em>Socket.io+JS</em>写一个<em>聊天室系统</em>，这样也算有个项目可以去实习了哈哈(想的挺美，可惜现在写不出来)，所以还是要务实基础啊，加油！</p>
 
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    
   </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="/2018/03/26/JS-for-in语句的使用/">JS for-in语句的使用</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问 岛马 的个人博客">岛马</a></p>
+        <p><span>发布时间:</span>2018年03月26日 - 19时08分</p>
+        <p><span>最后更新:</span>2018年03月26日 - 19时22分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/03/26/JS-for-in语句的使用/" title="JS for-in语句的使用">http://yoursite.com/2018/03/26/JS-for-in语句的使用/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/03/26/JS-for-in语句的使用/　　作者: 岛马" title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a  href="/2018/03/26/CSS-使用overflow-hidden清除浮动/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CSS 使用overflow:hidden清除浮动</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a  href="/2018/03/26/CSS-使用overflow-hidden清除浮动/" class="archive-article-date">
-      <time datetime="2018-03-26T10:59:09.000Z" itemprop="datePublished">03-26</time>
-</a>
 
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a  class="archive-article-title" href="/2018/03/26/CSS-使用overflow-hidden清除浮动/">CSS 使用overflow:hidden清除浮动</a>
-    </h1>
-  
-
-
-        <div class="article-info info-on-archive">
-          
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a  href="/2018/03/25/JS中-和-的奇怪用法/" class="archive-article-date">
-      <time datetime="2018-03-25T08:15:19.000Z" itemprop="datePublished">03-25</time>
-</a>
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a  class="archive-article-title" href="/2018/03/25/JS中-和-的奇怪用法/">JS中&amp;&amp;和||的奇怪用法</a>
-    </h1>
-  
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JS-for-in语句的使用"><span class="toc-number">1.</span> <span class="toc-text">JS for-in语句的使用</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
 
 
-        <div class="article-info info-on-archive">
-          
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a  href="/2018/03/25/A-Front-end-newbie/" class="archive-article-date">
-      <time datetime="2018-03-25T07:26:03.000Z" itemprop="datePublished">03-25</time>
-</a>
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a  class="archive-article-title" href="/2018/03/25/A-Front-end-newbie/">A Front-end newbie</a>
-    </h1>
-  
 
 
-        <div class="article-info info-on-archive">
-          
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a  href="/2018/03/24/hello-world/" class="archive-article-date">
-      <time datetime="2018-03-24T12:45:44.081Z" itemprop="datePublished">03-24</time>
-</a>
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a  class="archive-article-title" href="/2018/03/24/hello-world/">Hello World</a>
-    </h1>
-  
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 
 
-        <div class="article-info info-on-archive">
-          
 
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
     
+        <section class="changyan" id="comments">
+  <!--<div id="uyan_frame"></div>-->
+  <div id="SOHUCS"></div>
+  <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
+  <script type="text/javascript">
+    window.changyan.api.config({
+      appid: 'xxxx',
+      conf: 'xxxxxxxxx'
+    });
+  </script>
+</section>
+    
 
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a  href="/2018/03/26/CSS-使用overflow-hidden清除浮动/" title="下一篇: CSS 使用overflow:hidden清除浮动">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/03/26/JS-for-in语句的使用/">JS for-in语句的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/26/CSS-使用overflow-hidden清除浮动/">CSS 使用overflow:hidden清除浮动</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/25/JS中-和-的奇怪用法/">JS中&&和||的奇怪用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/25/A-Front-end-newbie/">A Front-end newbie</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/24/hello-world/">Hello World</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
 
 </div>
       <footer id="footer">
@@ -516,17 +545,6 @@ ga('send', 'pageview');
         };
     })
 </script>
-
-    <button class="hide-labels">TAG 开关</button>
-    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js">
-    </script>
-    <script>
-        $(document).ready(function() {
-            $("button").click(function() {
-                $(".article-info").toggle(200);
-            });
-        });
-    </script>
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>

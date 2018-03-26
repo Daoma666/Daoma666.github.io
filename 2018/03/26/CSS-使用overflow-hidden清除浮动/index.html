@@ -7,14 +7,18 @@
   
   
   
-  <title>Archives: 2018/3 | 岛马的主页</title>
+  <title>CSS 使用overflow:hidden清除浮动 | 岛马的主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="岛马的主页">
-<meta property="og:url" content="http://yoursite.com/archives/2018/03/index.html">
+  <meta name="description" content="CSS 使用overflow:hidden清除浮动　　今天做了一道网页换肤的练习，但发现了其中的两个小问题，详情如下：12345678910111213141516171819&amp;lt;div id=&quot;outer&quot;&amp;gt;	&amp;lt;ul id=&quot;skin&quot;&amp;gt;		&amp;lt;li id=&quot;red&quot; title=&quot;红色&quot;&amp;gt;&amp;lt;/li&amp;gt;		&amp;lt;li id=&quot;green&quot; title=">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS 使用overflow:hidden清除浮动">
+<meta property="og:url" content="http://yoursite.com/2018/03/26/CSS-使用overflow-hidden清除浮动/index.html">
 <meta property="og:site_name" content="岛马的主页">
+<meta property="og:description" content="CSS 使用overflow:hidden清除浮动　　今天做了一道网页换肤的练习，但发现了其中的两个小问题，详情如下：12345678910111213141516171819&amp;lt;div id=&quot;outer&quot;&amp;gt;	&amp;lt;ul id=&quot;skin&quot;&amp;gt;		&amp;lt;li id=&quot;red&quot; title=&quot;红色&quot;&amp;gt;&amp;lt;/li&amp;gt;		&amp;lt;li id=&quot;green&quot; title=">
+<meta property="og:updated_time" content="2018-03-26T11:19:22.489Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="岛马的主页">
+<meta name="twitter:title" content="CSS 使用overflow:hidden清除浮动">
+<meta name="twitter:description" content="CSS 使用overflow:hidden清除浮动　　今天做了一道网页换肤的练习，但发现了其中的两个小问题，详情如下：12345678910111213141516171819&amp;lt;div id=&quot;outer&quot;&amp;gt;	&amp;lt;ul id=&quot;skin&quot;&amp;gt;		&amp;lt;li id=&quot;red&quot; title=&quot;红色&quot;&amp;gt;&amp;lt;/li&amp;gt;		&amp;lt;li id=&quot;green&quot; title=">
   
     <link rel="alternative" href="/atom.xml" title="岛马的主页" type="application/atom+xml">
   
@@ -39,8 +43,8 @@
           fancybox: true,
           animate: true,
           isHome: false,
-          isPost: false,
-          isArchive: true,
+          isPost: true,
+          isArchive: false,
           isTag: false,
           isCategory: false,
           open_in_new: false
@@ -265,168 +269,203 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-CSS-使用overflow-hidden清除浮动" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a  href="/2018/03/26/CSS-使用overflow-hidden清除浮动/" class="article-date">
+      <time datetime="2018-03-26T10:59:09.000Z" itemprop="datePublished">2018-03-26</time>
+</a>
+
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSS 使用overflow:hidden清除浮动
+    </h1>
+  
+
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a  href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a  href="/2018/03/26/JS-for-in语句的使用/" class="archive-article-date">
-      <time datetime="2018-03-26T11:08:31.000Z" itemprop="datePublished">03-26</time>
-</a>
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a  class="archive-article-title" href="/2018/03/26/JS-for-in语句的使用/">JS for-in语句的使用</a>
-    </h1>
-  
-
-
-        <div class="article-info info-on-archive">
+    <div class="article-entry" itemprop="articleBody">
+      
           
+        <h2 id="CSS-使用overflow-hidden清除浮动"><a href="#CSS-使用overflow-hidden清除浮动" class="headerlink" title="CSS 使用overflow:hidden清除浮动"></a>CSS 使用overflow:hidden清除浮动</h2><p>　　今天做了一道网页换肤的练习，但发现了其中的两个小问题，详情如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"outer"</span>&gt;</span><br><span class="line">	&lt;ul id=<span class="string">"skin"</span>&gt;</span><br><span class="line">		&lt;li id=<span class="string">"red"</span> title=<span class="string">"红色"</span>&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li id=<span class="string">"green"</span> title=<span class="string">"绿色"</span>&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li id=<span class="string">"blue"</span> title=<span class="string">"蓝色"</span>&gt;&lt;/li&gt;</span><br><span class="line">	&lt;/ul&gt;</span><br><span class="line">	&lt;ul id=<span class="string">"nav"</span>&gt;</span><br><span class="line">			&lt;!--</span><br><span class="line">               	javascript: 是一个伪协议javascript:是表示在触发&lt;a&gt;默认动作时，执行一段JavaScript代码，</span><br><span class="line">               	而 javascript:;表示什么都不执行，这样点击&lt;a&gt;时就没有任何反应。</span><br><span class="line">               --&gt;</span><br><span class="line">			&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;新闻&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">			&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;娱乐&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">			&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;体育&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">			&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;电影&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">			&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;音乐&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">			&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;旅游&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;/ul&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>　　在div里有两个ul，对它们的li分别都设置了float: left后发现：<br>　　1.  这两个ul中的li都脱离了文档流，跑到一行上去了<br>　　2.  为ul设置过黑色背景，但都消失了<br>　　于是我使用了br来换行，但发现原作者并没有这样做，这不由得让我产生了疑问。在反复查看源码后，我发现是overflow: hidden;在起作用，遂到网上一查发现，它并不只有<strong>隐藏溢出</strong>的功能，还有<strong>清除浮动</strong>和<strong>解除坍塌</strong>的功能。原理如下：<br>　　浮动的元素(两个ul中的li)脱离文档元素， 不占据空间，所以跑到了一行上。 不浮动的元素(ul,div)会直接无视掉这个元素。因为我们没有设置父ul的高度，父ul无视了自己的两个孩子，其高度变为0，所以父ul没有显现。 解决方法就是：<br>　　1.  如果只想换行，给ul添加overflow:hidden属性即可，清除浮动，恢复它原先占据的ul的位置<br>　　2.  为父ul添加overflow:hidden属性用以清除浮动，使得父ul显现</p>
+<p>　　若想更细致的查看该属性的用法：<a href="https://blog.csdn.net/hukaihe/article/details/51298665" title="深入理解：overflow:hidden——溢出,坍塌,清除浮动" target="_blank" rel="noopener">详细链接</a></p>
 
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    
   </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="/2018/03/26/CSS-使用overflow-hidden清除浮动/">CSS 使用overflow:hidden清除浮动</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问 岛马 的个人博客">岛马</a></p>
+        <p><span>发布时间:</span>2018年03月26日 - 18时59分</p>
+        <p><span>最后更新:</span>2018年03月26日 - 19时19分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/03/26/CSS-使用overflow-hidden清除浮动/" title="CSS 使用overflow:hidden清除浮动">http://yoursite.com/2018/03/26/CSS-使用overflow-hidden清除浮动/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/03/26/CSS-使用overflow-hidden清除浮动/　　作者: 岛马" title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a  href="/2018/03/26/JS-for-in语句的使用/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          JS for-in语句的使用
+        
+      </div>
+    </a>
+  
+  
+    <a  href="/2018/03/25/JS中-和-的奇怪用法/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JS中&amp;&amp;和||的奇怪用法</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a  href="/2018/03/26/CSS-使用overflow-hidden清除浮动/" class="archive-article-date">
-      <time datetime="2018-03-26T10:59:09.000Z" itemprop="datePublished">03-26</time>
-</a>
 
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a  class="archive-article-title" href="/2018/03/26/CSS-使用overflow-hidden清除浮动/">CSS 使用overflow:hidden清除浮动</a>
-    </h1>
-  
-
-
-        <div class="article-info info-on-archive">
-          
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a  href="/2018/03/25/JS中-和-的奇怪用法/" class="archive-article-date">
-      <time datetime="2018-03-25T08:15:19.000Z" itemprop="datePublished">03-25</time>
-</a>
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a  class="archive-article-title" href="/2018/03/25/JS中-和-的奇怪用法/">JS中&amp;&amp;和||的奇怪用法</a>
-    </h1>
-  
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS-使用overflow-hidden清除浮动"><span class="toc-number">1.</span> <span class="toc-text">CSS 使用overflow:hidden清除浮动</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
 
 
-        <div class="article-info info-on-archive">
-          
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a  href="/2018/03/25/A-Front-end-newbie/" class="archive-article-date">
-      <time datetime="2018-03-25T07:26:03.000Z" itemprop="datePublished">03-25</time>
-</a>
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a  class="archive-article-title" href="/2018/03/25/A-Front-end-newbie/">A Front-end newbie</a>
-    </h1>
-  
 
 
-        <div class="article-info info-on-archive">
-          
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a  href="/2018/03/24/hello-world/" class="archive-article-date">
-      <time datetime="2018-03-24T12:45:44.081Z" itemprop="datePublished">03-24</time>
-</a>
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a  class="archive-article-title" href="/2018/03/24/hello-world/">Hello World</a>
-    </h1>
-  
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 
 
-        <div class="article-info info-on-archive">
-          
 
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
     
+        <section class="changyan" id="comments">
+  <!--<div id="uyan_frame"></div>-->
+  <div id="SOHUCS"></div>
+  <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
+  <script type="text/javascript">
+    window.changyan.api.config({
+      appid: 'xxxx',
+      conf: 'xxxxxxxxx'
+    });
+  </script>
+</section>
+    
 
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a  href="/2018/03/26/JS-for-in语句的使用/" title="上一篇: JS for-in语句的使用">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a  href="/2018/03/25/JS中-和-的奇怪用法/" title="下一篇: JS中&amp;&amp;和||的奇怪用法">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/03/26/JS-for-in语句的使用/">JS for-in语句的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/26/CSS-使用overflow-hidden清除浮动/">CSS 使用overflow:hidden清除浮动</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/25/JS中-和-的奇怪用法/">JS中&&和||的奇怪用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/25/A-Front-end-newbie/">A Front-end newbie</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/24/hello-world/">Hello World</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
 
 </div>
       <footer id="footer">
@@ -516,17 +555,6 @@ ga('send', 'pageview');
         };
     })
 </script>
-
-    <button class="hide-labels">TAG 开关</button>
-    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js">
-    </script>
-    <script>
-        $(document).ready(function() {
-            $("button").click(function() {
-                $(".article-info").toggle(200);
-            });
-        });
-    </script>
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
