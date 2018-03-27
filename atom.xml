@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-03-26T11:22:35.279Z</updated>
+  <updated>2018-03-27T12:25:27.679Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一些零星的JS，CSS知识</title>
+    <link href="http://yoursite.com/2018/03/27/%E4%B8%80%E4%BA%9B%E9%9B%B6%E6%98%9F%E7%9A%84JS%EF%BC%8CCSS%E7%9F%A5%E8%AF%86/"/>
+    <id>http://yoursite.com/2018/03/27/一些零星的JS，CSS知识/</id>
+    <published>2018-03-27T11:43:45.000Z</published>
+    <updated>2018-03-27T12:25:27.679Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="CSS-使用border画三角形"><a href="#CSS-使用border画三角形" class="headerlink" title="CSS 使用border画三角形"></a>CSS 使用border画三角形</h2><p>　　盒模型中上下左右边框交界处呈现平滑的斜线. 利用这个特点, 通过设置不同的上下左右边框宽度或者颜色可以得到小三角, 小梯形等。<a href="http://caibaojian.com/css-border-triangle.html" title="CSS三角形的实现原理及运用" target="_blank" rel="noopener">具体链接</a></p><h2 id="CSS-实现居中的方法"><a href="#CSS-实现居中的方法" class="headerlink" title="CSS 实现居中的方法"></a>CSS 实现居中的方法</h2><h3 id="使用width和margin实现水平居中"><a href="#使用width和margin实现水平居中" class="headerlink" title="使用width和margin实现水平居中"></a>使用width和margin实现水平居中</h3><p>　　width指定完宽度，就可以直接margin:0 auto;实现左右居中了</p><h3 id="使用text-align实现水平居中"><a href="#使用text-align实现水平居中" class="headerlink" title="使用text-align实现水平居中"></a>使用text-align实现水平居中</h3><p>　　使内联元素居中，所以要在想居中的内联元素的父元素中使用</p><h2 id="display-block-display-inline-block"><a href="#display-block-display-inline-block" class="headerlink" title="display:block; display:inline-block;"></a>display:block; display:inline-block;</h2><p>　　行内元素默认宽度为内容的宽度，块元素默认宽度为撑满外层盒子的宽度(因为块元素霸道)。<br>　　display:inline-block把一个元素变成块级元素，但他的大小只是他本身内容的大小并不撑满外围盒子，如下图所示：<br>　　<img src="https://github.com/Daoma666/JS-CSS_train1/blob/master/img/display.jpg" alt="图片放在GitHub仓库里了也显示不出来...">所以在一道练习中出现下面的情况：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;手写&lt;/a&gt;&lt;/li&gt;</span><br></pre></td></tr></table></figure></p><p>　　若不把a变成块元素，则a上的背景不会撑满整个li</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;CSS-使用border画三角形&quot;&gt;&lt;a href=&quot;#CSS-使用border画三角形&quot; class=&quot;headerlink&quot; title=&quot;CSS 使用border画三角形&quot;&gt;&lt;/a&gt;CSS 使用border画三角形&lt;/h2&gt;&lt;p&gt;　　盒模型中上下左右边框交界
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>JS for-in语句的使用</title>
