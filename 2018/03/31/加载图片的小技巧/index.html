@@ -7,18 +7,18 @@
   
   
   
-  <title>JS中&amp;&amp;和||的奇怪用法 | 岛马的主页</title>
+  <title>加载图片的小技巧 | 岛马的主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="JS中&amp;amp;&amp;amp;和||的奇怪用法　　最近正在学 JS，找了点练习来做，然后看到如下的代码：123456789for (var i = 0; i &amp;lt; oBtn.length; i++)&amp;#123;	oBtn[i].index = i;	oBtn[i].onclick = function ()	&amp;#123;	this.index == oBtn.length - 1 &amp;amp;&amp;am">
+  <meta name="description" content="image的onload事件和complete属性　　在做一个”鼠标移过，修改图片路径”作业的时候，想要附加一个功能：即图片不能显示的话，就给把该图片设置为一个替代的loading图片。HTML:1234&amp;lt;li class=&quot;first&quot;&amp;gt;	&amp;lt;img src=&quot;img/big_1.jpg&quot;&amp;gt;	&amp;lt;div id=&quot;loading&quot; style=&quot;display: none">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS中&amp;&amp;和||的奇怪用法">
-<meta property="og:url" content="http://yoursite.com/2018/03/25/JS中-和-的奇怪用法/index.html">
+<meta property="og:title" content="加载图片的小技巧">
+<meta property="og:url" content="http://yoursite.com/2018/03/31/加载图片的小技巧/index.html">
 <meta property="og:site_name" content="岛马的主页">
-<meta property="og:description" content="JS中&amp;amp;&amp;amp;和||的奇怪用法　　最近正在学 JS，找了点练习来做，然后看到如下的代码：123456789for (var i = 0; i &amp;lt; oBtn.length; i++)&amp;#123;	oBtn[i].index = i;	oBtn[i].onclick = function ()	&amp;#123;	this.index == oBtn.length - 1 &amp;amp;&amp;am">
-<meta property="og:updated_time" content="2018-03-26T10:58:08.845Z">
+<meta property="og:description" content="image的onload事件和complete属性　　在做一个”鼠标移过，修改图片路径”作业的时候，想要附加一个功能：即图片不能显示的话，就给把该图片设置为一个替代的loading图片。HTML:1234&amp;lt;li class=&quot;first&quot;&amp;gt;	&amp;lt;img src=&quot;img/big_1.jpg&quot;&amp;gt;	&amp;lt;div id=&quot;loading&quot; style=&quot;display: none">
+<meta property="og:updated_time" content="2018-03-31T12:17:02.892Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JS中&amp;&amp;和||的奇怪用法">
-<meta name="twitter:description" content="JS中&amp;amp;&amp;amp;和||的奇怪用法　　最近正在学 JS，找了点练习来做，然后看到如下的代码：123456789for (var i = 0; i &amp;lt; oBtn.length; i++)&amp;#123;	oBtn[i].index = i;	oBtn[i].onclick = function ()	&amp;#123;	this.index == oBtn.length - 1 &amp;amp;&amp;am">
+<meta name="twitter:title" content="加载图片的小技巧">
+<meta name="twitter:description" content="image的onload事件和complete属性　　在做一个”鼠标移过，修改图片路径”作业的时候，想要附加一个功能：即图片不能显示的话，就给把该图片设置为一个替代的loading图片。HTML:1234&amp;lt;li class=&quot;first&quot;&amp;gt;	&amp;lt;img src=&quot;img/big_1.jpg&quot;&amp;gt;	&amp;lt;div id=&quot;loading&quot; style=&quot;display: none">
   
     <link rel="alternative" href="/atom.xml" title="岛马的主页" type="application/atom+xml">
   
@@ -269,11 +269,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-JS中-和-的奇怪用法" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-加载图片的小技巧" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2018/03/25/JS中-和-的奇怪用法/" class="article-date">
-      <time datetime="2018-03-25T08:15:19.000Z" itemprop="datePublished">2018-03-25</time>
+      <a  href="/2018/03/31/加载图片的小技巧/" class="article-date">
+      <time datetime="2018-03-31T12:07:52.000Z" itemprop="datePublished">2018-03-31</time>
 </a>
 
     </div>
@@ -287,7 +287,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      JS中&amp;&amp;和||的奇怪用法
+      加载图片的小技巧
     </h1>
   
 
@@ -305,9 +305,11 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="JS中-amp-amp-和-的奇怪用法"><a href="#JS中-amp-amp-和-的奇怪用法" class="headerlink" title="JS中&amp;&amp;和||的奇怪用法"></a>JS中&amp;&amp;和||的奇怪用法</h2><p>　　最近正在学 JS，找了点练习来做，然后看到如下的代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (var i = 0; i &lt; oBtn.length; i++)</span><br><span class="line">&#123;</span><br><span class="line">	oBtn[i].index = i;</span><br><span class="line">	oBtn[i].onclick = <span class="keyword">function</span> ()</span><br><span class="line">	&#123;</span><br><span class="line">	this.index == oBtn.length - 1 &amp;&amp; (oDiv.style.cssText = <span class="string">""</span>);</span><br><span class="line">	changeStyle(oDiv, oAtt[this.index], oVal[this.index]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>　　然后我上网搜了一下明白了 var c=a||b;或var c=a&amp;&b;这种情况时<br><strong>a &amp;&amp; b :如果执行 a 后返回 true，则执行 b 并返回 b 的值；如果执行 a 后返回 false，则整个表达式返回 a 的值，b 不执行</strong><br><strong>a || b :如果执行 a 后返回 true，则整个表达式返回 a 的值，b 不执行；如果执行 a 后返回 false，则执行 b 并返回 b 的值</strong></p>
-<p>　　所以这句就好理解了this.index == oBtn.length - 1 &amp;&amp; (oDiv.style.cssText = “”);<br>　　这可以算是一种炫技代码⊙﹏⊙，相当于：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(this.index == oBtn.length - 1)&#123;</span><br><span class="line">	oDiv.style.cssText = <span class="string">""</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <h2 id="image的onload事件和complete属性"><a href="#image的onload事件和complete属性" class="headerlink" title="image的onload事件和complete属性"></a>image的onload事件和complete属性</h2><p>　　在做一个”鼠标移过，修改图片路径”作业的时候，想要附加一个功能：即图片不能显示的话，就给把该图片设置为一个替代的loading图片。<br>HTML:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;li class=<span class="string">"first"</span>&gt;</span><br><span class="line">	&lt;img src=<span class="string">"img/big_1.jpg"</span>&gt;</span><br><span class="line">	&lt;div id=<span class="string">"loading"</span> style=<span class="string">"display: none;"</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;/li&gt;</span><br></pre></td></tr></table></figure></p>
+<p>JS:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(var i=1;i&lt;oImg.length;i++)&#123;</span><br><span class="line">	oImg[i].onmousemove=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		var img=new Image();</span><br><span class="line">		img.src=oImg[0].src=this.src.replace(/small/,<span class="string">"big"</span>);</span><br><span class="line">		loading.style.display=<span class="string">"block"</span>;</span><br><span class="line">		img.complete?loading.style.display=<span class="string">"none"</span>:oImg[0].onload=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">			loading.style.display=<span class="string">"none"</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>　　在这里我们可以<strong>用complete来判断图片是否加载完毕</strong>，如果加载完毕，则把loading图片所在的那层隐藏掉。<br>　　如果未加载完毕或遇到错误，则执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">oImg[0].onload=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	loading.style.display=<span class="string">"none"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>　　这里<strong>onload事件表示等图片加载完成后要进行的操作</strong>，所以接着上面的逻辑，则可以当图片加载完毕后再把loading图片所在层隐藏，若是图片出现错误，则会一直显示loading图片。</p>
+<p>　　大家可以注意到，代码里使用了<em>new image()</em>方法做图片预加载,用没有挂载到dom树上的img对象请求图片。请求成功后图片会被缓存，这时再给真实img元素的src赋值就可以直接使用缓存的图片了,优点是可以加快页面渲染速度。但只可惜我现在才疏学浅，并没看懂在该例中有啥用。。。</p>
 
       
     </div>
@@ -316,13 +318,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2018/03/25/JS中-和-的奇怪用法/">JS中&amp;&amp;和||的奇怪用法</a></p>
+        <p><span>本文标题:</span><a  href="/2018/03/31/加载图片的小技巧/">加载图片的小技巧</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 岛马 的个人博客">岛马</a></p>
-        <p><span>发布时间:</span>2018年03月25日 - 16时15分</p>
-        <p><span>最后更新:</span>2018年03月26日 - 18时58分</p>
+        <p><span>发布时间:</span>2018年03月31日 - 20时07分</p>
+        <p><span>最后更新:</span>2018年03月31日 - 20时17分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/03/25/JS中-和-的奇怪用法/" title="JS中&amp;&amp;和||的奇怪用法">http://yoursite.com/2018/03/25/JS中-和-的奇怪用法/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/03/25/JS中-和-的奇怪用法/　　作者: 岛马" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/03/31/加载图片的小技巧/" title="加载图片的小技巧">http://yoursite.com/2018/03/31/加载图片的小技巧/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/03/31/加载图片的小技巧/　　作者: 岛马" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -333,18 +335,9 @@
 
 <nav id="article-nav">
   
-    <a  href="/2018/03/26/CSS-使用overflow-hidden清除浮动/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          CSS 使用overflow:hidden清除浮动
-        
-      </div>
-    </a>
   
-  
-    <a  href="/2018/03/25/A-Front-end-newbie/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">A Front-end newbie</div>
+    <a  href="/2018/03/29/HTML入门摸门把级整理/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">HTML入门摸门把级整理</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -356,7 +349,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JS中-amp-amp-和-的奇怪用法"><span class="toc-number">1.</span> <span class="toc-text">JS中&amp;&amp;和||的奇怪用法</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#image的onload事件和complete属性"><span class="toc-number">1.</span> <span class="toc-text">image的onload事件和complete属性</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -427,13 +420,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2018/03/26/CSS-使用overflow-hidden清除浮动/" title="上一篇: CSS 使用overflow:hidden清除浮动">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2018/03/25/A-Front-end-newbie/" title="下一篇: A Front-end newbie">
+            <a  href="/2018/03/29/HTML入门摸门把级整理/" title="下一篇: HTML入门摸门把级整理">
                 <i class="fa fa-angle-right"></i>
             </a>
         
