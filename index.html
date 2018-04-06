@@ -270,6 +270,73 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-JS中style-currentStyle和getComputedStyle的区别以及获取css操作方法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/04/06/JS中style-currentStyle和getComputedStyle的区别以及获取css操作方法/" class="article-date">
+      <time datetime="2018-04-06T08:55:16.000Z" itemprop="datePublished">2018-04-06</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/04/06/JS中style-currentStyle和getComputedStyle的区别以及获取css操作方法/">JS中style,currentStyle和getComputedStyle的区别以及获取css操作方法</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="JS中style-currentStyle和getComputedStyle的区别以及获取css操作方法"><a href="#JS中style-currentStyle和getComputedStyle的区别以及获取css操作方法" class="headerlink" title="JS中style,currentStyle和getComputedStyle的区别以及获取css操作方法"></a>JS中style,currentStyle和getComputedStyle的区别以及获取css操作方法</h2><p>　　首先需要了解CSS的三种使用方法：<br>　　1.行内样式<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">	&lt;title&gt;css行内样式&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div style=<span class="string">"width:100px;height:100px;background:red;"</span>&gt;&lt;/div&gt;</span><br><span class="line">	</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>　　2.内嵌样式<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">	&lt;title&gt;css内嵌样式&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;style <span class="built_in">type</span>=<span class="string">"text/css"</span>&gt;</span><br><span class="line"><span class="comment">#div&#123;width:100px;height:100px;background:red;&#125;</span></span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;div id=<span class="string">"div"</span>&gt;&lt;/div&gt;</span><br><span class="line">	</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>　　3.外部样式<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">	&lt;title&gt;css内嵌样式&lt;/title&gt;</span><br><span class="line">	&lt;link rel=<span class="string">"stylesheet"</span> <span class="built_in">type</span>=<span class="string">"text/css"</span> href=<span class="string">"XX.css"</span>&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div id=<span class="string">"div"</span>&gt;&lt;/div&gt;</span><br><span class="line">	</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>　　最近做了个小练习，点击h2想让ul元素在隐藏和显示中切换，但发现第一次点击总是无效，必须点到第二下以后才有想要的效果<br>HTML:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;h2&gt;播放列表...&lt;/h2&gt;</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">	&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;玩家之徒 - 蔡依林&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;原谅我就是这样的女生 - 戴佩妮&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;猜不透 - 丁当&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;自导自演 - 周杰伦&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;浪漫窝 - 弦子&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;流年 - 王菲&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure></p>
+<p>JS:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var oUl=document.getElementsByTagName(<span class="string">"UL"</span>)[0];</span><br><span class="line">var oH2=document.getElementsByTagName(<span class="string">"H2"</span>)[0];</span><br><span class="line">oH2.onclick=<span class="keyword">function</span>(event)&#123;</span><br><span class="line">	oUl.style.display=oUl.style.display==<span class="string">"block"</span>?<span class="string">"none"</span>:<span class="string">"block"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>　　原因为我以为ul默认为display:block; JS中的oUl.style.display能获取到block这个样式，但其实不然，<strong>js的style属性只能获取行内样式</strong>,所以一开始oUl.style.display=undefined，自然就不会第一下点击就隐藏了。<br>　　解决方法是:在行内直接写入样式<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul style=<span class="string">"display: block;"</span>&gt;</span><br><span class="line">...</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure></p>
+<p>　　这样就能获取到了，所以在这里做一个总结：</p>
+<h3 id="①style-各大浏览器都兼容-能设置样式和获取样式-但是获取不了外部样式-如果写了行内没有的样式-返回的是空值"><a href="#①style-各大浏览器都兼容-能设置样式和获取样式-但是获取不了外部样式-如果写了行内没有的样式-返回的是空值" class="headerlink" title="①style:各大浏览器都兼容,能设置样式和获取样式,但是获取不了外部样式,如果写了行内没有的样式,返回的是空值"></a>①style:各大浏览器都兼容,能设置样式和获取样式,但是获取不了外部样式,如果写了行内没有的样式,返回的是空值</h3><p>　　写法:ele.style.attr(获取),ele.style.attr=”值”(设置);<br>　　注意只是获取不了外部样式，但可以设置外部样式。</p>
+<h3 id="currentStyle属性和getComputedStyle属性不能设置属性-只能获取"><a href="#currentStyle属性和getComputedStyle属性不能设置属性-只能获取" class="headerlink" title="currentStyle属性和getComputedStyle属性不能设置属性,只能获取"></a>currentStyle属性和getComputedStyle属性不能设置属性,只能获取</h3><h3 id="②currentStyle-该属性只兼容IE-不兼容火狐和谷歌"><a href="#②currentStyle-该属性只兼容IE-不兼容火狐和谷歌" class="headerlink" title="②currentStyle:该属性只兼容IE,不兼容火狐和谷歌"></a>②currentStyle:该属性只兼容IE,不兼容火狐和谷歌</h3><p>　　写法:ele.currentStyle[“attr”]或者ele.currentStyle.attr;</p>
+<h3 id="③getComputedStyle-该属性是兼容火狐谷歌-不兼容IE9-0一下版本"><a href="#③getComputedStyle-该属性是兼容火狐谷歌-不兼容IE9-0一下版本" class="headerlink" title="③getComputedStyle:该属性是兼容火狐谷歌,不兼容IE9.0一下版本"></a>③getComputedStyle:该属性是兼容火狐谷歌,不兼容IE9.0一下版本</h3><p>　　写法:window.getComputedStyle(ele,null)[attr]获取是window.getComputedStyle(ele,null).attr</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-网页导航栏小技巧" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -567,11 +634,8 @@
 <h3 id="使用text-align实现水平居中"><a href="#使用text-align实现水平居中" class="headerlink" title="使用text-align实现水平居中"></a>使用text-align实现水平居中</h3><p>　　使内联元素居中，所以要在想居中的内联元素的父元素中使用</p>
 <h3 id="使用top-left和margin实现水平竖直的居中"><a href="#使用top-left和margin实现水平竖直的居中" class="headerlink" title="使用top,left和margin实现水平竖直的居中"></a>使用top,left和margin实现水平竖直的居中</h3><p>　　方法就是top: 50%;left: 50%;然后margin: -所在盒子宽度/2 0 0 -所在盒子高度/2;(可用于弹窗弹出到页面正中间)</p>
 <h3 id="使用line-height实现文本垂直居中"><a href="#使用line-height实现文本垂直居中" class="headerlink" title="使用line-height实现文本垂直居中"></a>使用line-height实现文本垂直居中</h3><p>　　方法为：把line-height设置为父容器的高度就可以实现文本垂直居中。具体原理请见：<a href="https://www.imooc.com/article/7767" title="CSS行高（line-height）及文本垂直居中原理" target="_blank" rel="noopener">行高原理</a></p>
-<h2 id="JS获取style-display的问题"><a href="#JS获取style-display的问题" class="headerlink" title="JS获取style.display的问题"></a>JS获取style.display的问题</h2><p>　　点击h2想让ul元素在隐藏和显示中切换，但发现第一次点击总是无效，必须点到第二下以后才有想要的效果<br>HTML:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;h2&gt;播放列表...&lt;/h2&gt;</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">	&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;玩家之徒 - 蔡依林&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;原谅我就是这样的女生 - 戴佩妮&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;猜不透 - 丁当&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;自导自演 - 周杰伦&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;浪漫窝 - 弦子&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;流年 - 王菲&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure></p>
-<p>JS:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var oUl=document.getElementsByTagName(<span class="string">"UL"</span>)[0];</span><br><span class="line">var oH2=document.getElementsByTagName(<span class="string">"H2"</span>)[0];</span><br><span class="line">oH2.onclick=<span class="keyword">function</span>(event)&#123;</span><br><span class="line">	oUl.style.display=oUl.style.display==<span class="string">"block"</span>?<span class="string">"none"</span>:<span class="string">"block"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>　　原因为我以为ul默认为display:block; JS中的oUl.style.display能获取到block这个样式，但其实不然，<strong>js获取不到嵌入式样式（head的style里）的display属性</strong>,所以一开始oUl.style.display=undefined，自然就不会第一下点击就隐藏了。<br>　　解决方法是:在行内直接写入样式<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul style=<span class="string">"display: block;"</span>&gt;</span><br><span class="line">...</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure></p>
-<p>　　这样就能获取到了。</p>
-
+<h2 id="js中-大括号-中括号使用详解"><a href="#js中-大括号-中括号使用详解" class="headerlink" title="js中{}大括号,[]中括号使用详解"></a>js中{}大括号,[]中括号使用详解</h2><h3 id="大括号，表示定义一个对象，大部分情况下要有成对的属性和值，或是函数。"><a href="#大括号，表示定义一个对象，大部分情况下要有成对的属性和值，或是函数。" class="headerlink" title="{ }大括号，表示定义一个对象，大部分情况下要有成对的属性和值，或是函数。"></a>{ }大括号，表示定义一个对象，大部分情况下要有成对的属性和值，或是函数。</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var mayun=&#123;</span><br><span class="line">	name: <span class="string">"cocl"</span>,</span><br><span class="line">	age: <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		alert(<span class="string">"21"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">mayun.age();</span><br></pre></td></tr></table></figure>
+<h3 id="中括号，表示一个数组，也可以理解为一个数组对象。"><a href="#中括号，表示一个数组，也可以理解为一个数组对象。" class="headerlink" title="[ ]中括号，表示一个数组，也可以理解为一个数组对象。"></a>[ ]中括号，表示一个数组，也可以理解为一个数组对象。</h3>
       
     </div>
     
@@ -838,72 +902,10 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   
-    <div class="article-meta">
-      <a  href="/2018/03/24/hello-world/" class="article-date">
-      <time datetime="2018-03-24T12:45:44.081Z" itemprop="datePublished">2018-03-24</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/03/24/hello-world/">Hello World</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate or $ hexo g</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Debug"><a href="#Debug" class="headerlink" title="Debug"></a>Debug</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s --debug</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/zh-cn/docs/commands.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy or $ hexo d</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 </div>
