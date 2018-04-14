@@ -7,18 +7,18 @@
   
   
   
-  <title>offsetLeft和style.left | 岛马的主页</title>
+  <title>变量提升 | 岛马的主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="offsetLeft和style.leftoffsetLeft　　1.如果父辈元素中有定位的元素，那么就返回距离当前元素最近的定位元素边缘的距离。　　2.如果父辈元素中没有定位元素，那么就返回相对于body左边缘距离。 两者的区别　　1. style.left 返回的是字符串，如28px，offsetLeft返回的是数值28，如果需要对取得的值进行计算，还用offsetLeft比较方便。　　2.">
+  <meta name="description" content="变量提升　　最近发现了一个小问题：1234567var x=&quot;global value&quot;;function getValue()&amp;#123;	alert(x);//undefined	var x=&quot;local value&quot;;	alert(x);//local value&amp;#125;getValue(); 　　我们可以发现第一个alert(x)结果为undefined，这就跟JS的变量提升有关系了。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="offsetLeft和style.left">
-<meta property="og:url" content="http://yoursite.com/2018/04/11/offsetLeft和style-left/index.html">
+<meta property="og:title" content="变量提升">
+<meta property="og:url" content="http://yoursite.com/2018/04/14/变量提升/index.html">
 <meta property="og:site_name" content="岛马的主页">
-<meta property="og:description" content="offsetLeft和style.leftoffsetLeft　　1.如果父辈元素中有定位的元素，那么就返回距离当前元素最近的定位元素边缘的距离。　　2.如果父辈元素中没有定位元素，那么就返回相对于body左边缘距离。 两者的区别　　1. style.left 返回的是字符串，如28px，offsetLeft返回的是数值28，如果需要对取得的值进行计算，还用offsetLeft比较方便。　　2.">
-<meta property="og:updated_time" content="2018-04-11T11:41:47.216Z">
+<meta property="og:description" content="变量提升　　最近发现了一个小问题：1234567var x=&quot;global value&quot;;function getValue()&amp;#123;	alert(x);//undefined	var x=&quot;local value&quot;;	alert(x);//local value&amp;#125;getValue(); 　　我们可以发现第一个alert(x)结果为undefined，这就跟JS的变量提升有关系了。">
+<meta property="og:updated_time" content="2018-04-14T03:44:20.968Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="offsetLeft和style.left">
-<meta name="twitter:description" content="offsetLeft和style.leftoffsetLeft　　1.如果父辈元素中有定位的元素，那么就返回距离当前元素最近的定位元素边缘的距离。　　2.如果父辈元素中没有定位元素，那么就返回相对于body左边缘距离。 两者的区别　　1. style.left 返回的是字符串，如28px，offsetLeft返回的是数值28，如果需要对取得的值进行计算，还用offsetLeft比较方便。　　2.">
+<meta name="twitter:title" content="变量提升">
+<meta name="twitter:description" content="变量提升　　最近发现了一个小问题：1234567var x=&quot;global value&quot;;function getValue()&amp;#123;	alert(x);//undefined	var x=&quot;local value&quot;;	alert(x);//local value&amp;#125;getValue(); 　　我们可以发现第一个alert(x)结果为undefined，这就跟JS的变量提升有关系了。">
   
     <link rel="alternative" href="/atom.xml" title="岛马的主页" type="application/atom+xml">
   
@@ -269,11 +269,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-offsetLeft和style-left" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-变量提升" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2018/04/11/offsetLeft和style-left/" class="article-date">
-      <time datetime="2018-04-11T11:34:36.000Z" itemprop="datePublished">2018-04-11</time>
+      <a  href="/2018/04/14/变量提升/" class="article-date">
+      <time datetime="2018-04-14T03:43:59.000Z" itemprop="datePublished">2018-04-14</time>
 </a>
 
     </div>
@@ -287,7 +287,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      offsetLeft和style.left
+      变量提升
     </h1>
   
 
@@ -305,8 +305,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="offsetLeft和style-left"><a href="#offsetLeft和style-left" class="headerlink" title="offsetLeft和style.left"></a>offsetLeft和style.left</h2><h3 id="offsetLeft"><a href="#offsetLeft" class="headerlink" title="offsetLeft"></a>offsetLeft</h3><p>　　1.如果父辈元素中有定位的元素，那么就返回距离当前元素最近的定位元素边缘的距离。<br>　　2.如果父辈元素中没有定位元素，那么就返回相对于body左边缘距离。</p>
-<h3 id="两者的区别"><a href="#两者的区别" class="headerlink" title="两者的区别"></a>两者的区别</h3><p>　　1. style.left 返回的是字符串，如28px，offsetLeft返回的是数值28，如果需要对取得的值进行计算，还用offsetLeft比较方便。<br>　　2. style.left是读写的，offsetLeft是只读的，所以要改变元素的位置，只能修改style.left。<br>　　3. style.left的值需要事先定义，否则取到的值为空。而且必须要定义在html里，offsetLeft的值随时可以取到。</p>
+        <h2 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h2><p>　　最近发现了一个小问题：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var x=<span class="string">"global value"</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">getValue</span></span>()&#123;</span><br><span class="line">	alert(x);//undefined</span><br><span class="line">	var x=<span class="string">"local value"</span>;</span><br><span class="line">	alert(x);//<span class="built_in">local</span> value</span><br><span class="line">&#125;</span><br><span class="line">getValue();</span><br></pre></td></tr></table></figure></p>
+<p>　　我们可以发现第一个alert(x)结果为undefined，这就跟JS的<strong>变量提升</strong>有关系了。<br>　　var关键字声明变量，无论声明在何处，都会被视为声明在函数的<em>最顶部</em>(不在函数内即在全局作用域的最顶部)，这就是函数的<strong>变量提升</strong>。所以上面的代码实际上是：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var x=<span class="string">"global value"</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">getValue</span></span>()&#123;</span><br><span class="line">	var x; //普通的变量初始化就是undefined，所以就好理解了</span><br><span class="line">	alert(x);</span><br><span class="line">	var x=<span class="string">"local value"</span>;</span><br><span class="line">	alert(x);</span><br><span class="line">&#125;</span><br><span class="line">getValue();</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -315,13 +315,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2018/04/11/offsetLeft和style-left/">offsetLeft和style.left</a></p>
+        <p><span>本文标题:</span><a  href="/2018/04/14/变量提升/">变量提升</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 岛马 的个人博客">岛马</a></p>
-        <p><span>发布时间:</span>2018年04月11日 - 19时34分</p>
-        <p><span>最后更新:</span>2018年04月11日 - 19时41分</p>
+        <p><span>发布时间:</span>2018年04月14日 - 11时43分</p>
+        <p><span>最后更新:</span>2018年04月14日 - 11时44分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/04/11/offsetLeft和style-left/" title="offsetLeft和style.left">http://yoursite.com/2018/04/11/offsetLeft和style-left/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/04/11/offsetLeft和style-left/　　作者: 岛马" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/04/14/变量提升/" title="变量提升">http://yoursite.com/2018/04/14/变量提升/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/04/14/变量提升/　　作者: 岛马" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -332,18 +332,18 @@
 
 <nav id="article-nav">
   
-    <a  href="/2018/04/11/text-indent-9999px-作用/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a  href="/2018/04/14/阻止事件的一些操作/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          text-indent: -9999px;作用
+          阻止事件的一些操作
         
       </div>
     </a>
   
   
-    <a  href="/2018/04/10/JS清空数组的方法/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JS清空数组的方法</div>
+    <a  href="/2018/04/11/text-indent-9999px-作用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">text-indent: -9999px;作用</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -355,7 +355,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#offsetLeft和style-left"><span class="toc-number">1.</span> <span class="toc-text">offsetLeft和style.left</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#offsetLeft"><span class="toc-number">1.1.</span> <span class="toc-text">offsetLeft</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#两者的区别"><span class="toc-number">1.2.</span> <span class="toc-text">两者的区别</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#变量提升"><span class="toc-number">1.</span> <span class="toc-text">变量提升</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -426,13 +426,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2018/04/11/text-indent-9999px-作用/" title="上一篇: text-indent: -9999px;作用">
+            <a  href="/2018/04/14/阻止事件的一些操作/" title="上一篇: 阻止事件的一些操作">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2018/04/10/JS清空数组的方法/" title="下一篇: JS清空数组的方法">
+            <a  href="/2018/04/11/text-indent-9999px-作用/" title="下一篇: text-indent: -9999px;作用">
                 <i class="fa fa-angle-right"></i>
             </a>
         
