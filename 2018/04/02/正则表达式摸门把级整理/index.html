@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/04/02/正则表达式摸门把级整理/index.html">
 <meta property="og:site_name" content="岛马的主页">
 <meta property="og:description" content="①常用的元字符 (一些有特异功能的用来方便匹配的字符)　　代码　　说明　　.    　　匹配除换行符以外的任意字符　　\w　　匹配字母或数字或下划线或汉字　　\s　　匹配任意的空白符　　\d　　匹配数字　　\b　　匹配单词的开始或结束　　^    　　匹配字符串的开始　　$    　　匹配字符串的结束 　　^\d{5,12}$　　因为使用了^和$，所以检测的整个字符串都要用来和\d{5,12}来匹">
-<meta property="og:updated_time" content="2018-04-02T12:51:21.856Z">
+<meta property="og:updated_time" content="2018-04-15T01:55:57.674Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则表达式摸门把级整理">
 <meta name="twitter:description" content="①常用的元字符 (一些有特异功能的用来方便匹配的字符)　　代码　　说明　　.    　　匹配除换行符以外的任意字符　　\w　　匹配字母或数字或下划线或汉字　　\s　　匹配任意的空白符　　\d　　匹配数字　　\b　　匹配单词的开始或结束　　^    　　匹配字符串的开始　　$    　　匹配字符串的结束 　　^\d{5,12}$　　因为使用了^和$，所以检测的整个字符串都要用来和\d{5,12}来匹">
@@ -310,8 +310,11 @@
 <h3 id="②常用的限定符-表示它前面的字符重复的次数"><a href="#②常用的限定符-表示它前面的字符重复的次数" class="headerlink" title="②常用的限定符 (表示它前面的字符重复的次数)"></a>②常用的限定符 (表示它前面的字符重复的次数)</h3><p>　　代码　　说明<br>　　*    　　重复零次或更多次<br>　　+    　　重复一次或更多次<br>　　?    　　重复零次或一次<br>　　{n}　　重复n次<br>　　{n,}　　重复n次或更多次<br>　　{n,m}    　重复n到m次</p>
 <p>　　(?0\d{2}[) -]?\d{8}　　首先是一个转义字符(,它能出现0次或1次(?),然后是一个0，后面跟着2个数字(\d{2})，然后是)或-或空格中的一个，它出现0次或1次(?)，最后是8个数字(\d{8})。</p>
 <h3 id="③字符范围"><a href="#③字符范围" class="headerlink" title="③字符范围"></a>③字符范围</h3><p>　　代码　　说明<br>　　[]　　　　匹配方括号中任意字符<br>　　[0-9]　　代表的含意与\d就是完全一致的：匹配任意一位数字</p>
-<h2 id="④分组"><a href="#④分组" class="headerlink" title="④分组"></a>④分组</h2><p>　　代码　　说明<br>　　()　　重复单个字符,直接在字符后面加上限定符就行了；但如果想要重复多个字符又该怎么办？你可以用小括号来指定子表达式(也叫做分组)，然后你就可以指定这个子表达式的重复次数了</p>
+<h3 id="④分枝条件"><a href="#④分枝条件" class="headerlink" title="④分枝条件"></a>④分枝条件</h3><p>　　代码　　说明<br>　　|　　　　匹配分枝条件时，将会从左到右地测试每个条件，如果满足了某个分枝的话，就不会去再管其它的条件了。<br>　　<br>　　\d{5}-\d{4}|\d{5}　　这个表达式用于匹配美国的邮政编码。美国邮编的规则是5位数字，或者用连字号间隔的9位数字。之所以要给出这个例子是因为它能说明一个问题：<strong>使用分枝条件时，要注意各个条件的顺序</strong>。如果你把它改成\d{5}|\d{5}-\d{4}的话，那么就只会匹配5位的邮编(以及9位邮编的前5位)。</p>
+<h3 id="⑤分组"><a href="#⑤分组" class="headerlink" title="⑤分组"></a>⑤分组</h3><p>　　代码　　说明<br>　　()　　重复单个字符,直接在字符后面加上限定符就行了；但如果想要重复多个字符又该怎么办？你可以用小括号来指定子表达式(也叫做分组)，然后你就可以指定这个子表达式的重复次数了</p>
 <p>　　(\d{1,3}.){3}\d{1,3}　　是一个简单的IP地址匹配表达式。  \d{1,3}匹配1到3位的数字，(\d{1,3}.){3}匹配三位数字加上一个英文句号(这个整体也就是这个分组)重复3次，最后再加上一个一到三位的数字(\d{1,3})。</p>
+<h3 id="⑥反义"><a href="#⑥反义" class="headerlink" title="⑥反义"></a>⑥反义</h3><p>　　代码/语法    说明<br>　　\W　　　　匹配任意不是字母，数字，下划线，汉字的字符<br>　　\S　　　　匹配任意不是空白符的字符<br>　　\D　　　　匹配任意非数字的字符<br>　　\B　　　　匹配不是单词开头或结束的位置<br>　　[^x]　　　　匹配除了x以外的任意字符<br>　　[^aeiou]　　　　匹配除了aeiou这几个字母以外的任意字符</p>
+<p>　　&lt;a[^&gt;]+&gt;　　匹配用尖括号括起来的以a开头的字符串。</p>
 <p>　　具体请参考：<a href="http://www.jb51.net/tools/zhengze.html" title="快速入门正则表达式" target="_blank" rel="noopener">快速入门正则表达式</a></p>
 
       
@@ -324,7 +327,7 @@
         <p><span>本文标题:</span><a  href="/2018/04/02/正则表达式摸门把级整理/">正则表达式摸门把级整理</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 岛马 的个人博客">岛马</a></p>
         <p><span>发布时间:</span>2018年04月02日 - 20时45分</p>
-        <p><span>最后更新:</span>2018年04月02日 - 20时51分</p>
+        <p><span>最后更新:</span>2018年04月15日 - 09时55分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/04/02/正则表达式摸门把级整理/" title="正则表达式摸门把级整理">http://yoursite.com/2018/04/02/正则表达式摸门把级整理/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/04/02/正则表达式摸门把级整理/　　作者: 岛马" title=""></span>
@@ -361,7 +364,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#①常用的元字符-一些有特异功能的用来方便匹配的字符"><span class="toc-number">1.</span> <span class="toc-text">①常用的元字符 (一些有特异功能的用来方便匹配的字符)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#②常用的限定符-表示它前面的字符重复的次数"><span class="toc-number">2.</span> <span class="toc-text">②常用的限定符 (表示它前面的字符重复的次数)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#③字符范围"><span class="toc-number">3.</span> <span class="toc-text">③字符范围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#④分组"><span class="toc-number"></span> <span class="toc-text">④分组</span></a>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#①常用的元字符-一些有特异功能的用来方便匹配的字符"><span class="toc-number">1.</span> <span class="toc-text">①常用的元字符 (一些有特异功能的用来方便匹配的字符)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#②常用的限定符-表示它前面的字符重复的次数"><span class="toc-number">2.</span> <span class="toc-text">②常用的限定符 (表示它前面的字符重复的次数)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#③字符范围"><span class="toc-number">3.</span> <span class="toc-text">③字符范围</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#④分枝条件"><span class="toc-number">4.</span> <span class="toc-text">④分枝条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#⑤分组"><span class="toc-number">5.</span> <span class="toc-text">⑤分组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#⑥反义"><span class="toc-number">6.</span> <span class="toc-text">⑥反义</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -443,7 +446,7 @@
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/04/14/阻止事件的一些操作/">阻止事件的一些操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/14/变量提升/">变量提升</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/11/text-indent-9999px-作用/">text-indent: -9999px;作用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/11/offsetLeft和style-left/">offsetLeft和style.left</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/10/JS清空数组的方法/">JS清空数组的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/07/内联元素和块元素/">内联元素和块元素</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/07/定位与浮动/">定位与浮动</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/06/JS中style-currentStyle和getComputedStyle的区别以及获取css操作方法/">JS中style,currentStyle和getComputedStyle的区别以及获取css操作方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/03/网页导航栏小技巧/">网页导航栏小技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/02/正则表达式摸门把级整理/">正则表达式摸门把级整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/31/加载图片的小技巧/">加载图片的小技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/27/一些零星的JS，CSS知识/">一些零星的JS，CSS知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/26/JS-for-in语句的使用/">JS for-in语句的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/26/CSS-使用overflow-hidden清除浮动/">CSS 使用overflow:hidden清除浮动</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/25/JS中-和-的奇怪用法/">JS中&&和||的奇怪用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/25/A-Front-end-newbie/">A Front-end newbie</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/24/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/04/15/秒懂汉诺塔原理函数递归/">秒懂汉诺塔原理函数递归</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/15/JS中的取整/">JS中的取整</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/14/阻止事件的一些操作/">阻止事件的一些操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/14/变量提升/">变量提升</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/11/text-indent-9999px-作用/">text-indent: -9999px;作用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/11/offsetLeft和style-left/">offsetLeft和style.left</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/10/JS清空数组的方法/">JS清空数组的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/07/内联元素和块元素/">内联元素和块元素</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/07/定位与浮动/">定位与浮动</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/06/JS中style-currentStyle和getComputedStyle的区别以及获取css操作方法/">JS中style,currentStyle和getComputedStyle的区别以及获取css操作方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/03/网页导航栏小技巧/">网页导航栏小技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/02/正则表达式摸门把级整理/">正则表达式摸门把级整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/31/加载图片的小技巧/">加载图片的小技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/27/一些零星的JS，CSS知识/">一些零星的JS，CSS知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/26/JS-for-in语句的使用/">JS for-in语句的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/26/CSS-使用overflow-hidden清除浮动/">CSS 使用overflow:hidden清除浮动</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/25/JS中-和-的奇怪用法/">JS中&&和||的奇怪用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/25/A-Front-end-newbie/">A Front-end newbie</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/24/hello-world/">Hello World</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");

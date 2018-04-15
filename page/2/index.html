@@ -270,6 +270,134 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-网页导航栏小技巧" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/04/03/网页导航栏小技巧/" class="article-date">
+      <time datetime="2018-04-03T14:24:25.000Z" itemprop="datePublished">2018-04-03</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/04/03/网页导航栏小技巧/">网页导航栏小技巧</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="使用li-a构建网页导航栏"><a href="#使用li-a构建网页导航栏" class="headerlink" title="使用li+a构建网页导航栏"></a>使用li+a构建网页导航栏</h2><p>　　首先说一下建导航栏时使用li+a而不是直接使用li的原因：一般导航都是具有超链接功能，a标签具有这个功能，而lis标签只是罗列信息列表，不具备链接功能。<br>　　方法：一般我们在li中指定width，float;然后在a中使用display:block;再指定width和height，让它自动填充li即可。<br>　　具体小例子见代码：<br>HTML：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"nav"</span>&gt;</span><br><span class="line">	&lt;ul&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;站长之家&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;行业资讯&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;站长在线&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;网站运营&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;设计在线&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;网络编程&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;联盟资讯&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;服务器&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;/ul&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>CSS：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#nav&#123;</span></span><br><span class="line">	width: 730px;</span><br><span class="line">	margin: 20px auto;</span><br><span class="line">	border:1px solid blue;</span><br><span class="line">	background: blue;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#nav ul&#123;</span></span><br><span class="line">	list-style-type: none;</span><br><span class="line">	overflow: hidden;</span><br><span class="line">	margin-left: 10px;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#nav ul li&#123;</span></span><br><span class="line">	width: 80px;</span><br><span class="line">	<span class="built_in">float</span>: left;</span><br><span class="line">	margin-right: 10px;			</span><br><span class="line">	background: cornflowerblue;</span><br><span class="line">	cursor: pointer;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#nav ul li a&#123;</span></span><br><span class="line">	display: block;</span><br><span class="line">	width: 80px;</span><br><span class="line">	height: 30px;</span><br><span class="line">	line-height: 30px;</span><br><span class="line">	padding: 5px 0;</span><br><span class="line">	text-align: center;</span><br><span class="line">	text-decoration: none;</span><br><span class="line">	color: <span class="comment">#fff;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#nav ul li a:hover&#123;</span></span><br><span class="line">	font-weight: 700;</span><br><span class="line">	background: <span class="comment">#aaa;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>　　麻雀虽小五脏俱全啊，涵盖了很多最近学到的知识点，算是在此纪念一下吧。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-正则表达式摸门把级整理" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/04/02/正则表达式摸门把级整理/" class="article-date">
+      <time datetime="2018-04-02T12:45:27.000Z" itemprop="datePublished">2018-04-02</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/04/02/正则表达式摸门把级整理/">正则表达式摸门把级整理</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="①常用的元字符-一些有特异功能的用来方便匹配的字符"><a href="#①常用的元字符-一些有特异功能的用来方便匹配的字符" class="headerlink" title="①常用的元字符 (一些有特异功能的用来方便匹配的字符)"></a>①常用的元字符 (一些有特异功能的用来方便匹配的字符)</h3><p>　　代码　　说明<br>　　.    　　匹配除换行符以外的任意字符<br>　　\w　　匹配字母或数字或下划线或汉字<br>　　\s　　匹配任意的空白符<br>　　\d　　匹配数字<br>　　\b　　匹配单词的开始或结束<br>　　^    　　匹配字符串的开始<br>　　$    　　匹配字符串的结束</p>
+<p>　　^\d{5,12}$　　因为使用了^和$，所以检测的整个字符串都要用来和\d{5,12}来匹配，也就是说整个字符串必须是5到12个数字。</p>
+<h3 id="②常用的限定符-表示它前面的字符重复的次数"><a href="#②常用的限定符-表示它前面的字符重复的次数" class="headerlink" title="②常用的限定符 (表示它前面的字符重复的次数)"></a>②常用的限定符 (表示它前面的字符重复的次数)</h3><p>　　代码　　说明<br>　　*    　　重复零次或更多次<br>　　+    　　重复一次或更多次<br>　　?    　　重复零次或一次<br>　　{n}　　重复n次<br>　　{n,}　　重复n次或更多次<br>　　{n,m}    　重复n到m次</p>
+<p>　　(?0\d{2}[) -]?\d{8}　　首先是一个转义字符(,它能出现0次或1次(?),然后是一个0，后面跟着2个数字(\d{2})，然后是)或-或空格中的一个，它出现0次或1次(?)，最后是8个数字(\d{8})。</p>
+<h3 id="③字符范围"><a href="#③字符范围" class="headerlink" title="③字符范围"></a>③字符范围</h3><p>　　代码　　说明<br>　　[]　　　　匹配方括号中任意字符<br>　　[0-9]　　代表的含意与\d就是完全一致的：匹配任意一位数字</p>
+<h3 id="④分枝条件"><a href="#④分枝条件" class="headerlink" title="④分枝条件"></a>④分枝条件</h3><p>　　代码　　说明<br>　　|　　　　匹配分枝条件时，将会从左到右地测试每个条件，如果满足了某个分枝的话，就不会去再管其它的条件了。<br>　　<br>　　\d{5}-\d{4}|\d{5}　　这个表达式用于匹配美国的邮政编码。美国邮编的规则是5位数字，或者用连字号间隔的9位数字。之所以要给出这个例子是因为它能说明一个问题：<strong>使用分枝条件时，要注意各个条件的顺序</strong>。如果你把它改成\d{5}|\d{5}-\d{4}的话，那么就只会匹配5位的邮编(以及9位邮编的前5位)。</p>
+<h3 id="⑤分组"><a href="#⑤分组" class="headerlink" title="⑤分组"></a>⑤分组</h3><p>　　代码　　说明<br>　　()　　重复单个字符,直接在字符后面加上限定符就行了；但如果想要重复多个字符又该怎么办？你可以用小括号来指定子表达式(也叫做分组)，然后你就可以指定这个子表达式的重复次数了</p>
+<p>　　(\d{1,3}.){3}\d{1,3}　　是一个简单的IP地址匹配表达式。  \d{1,3}匹配1到3位的数字，(\d{1,3}.){3}匹配三位数字加上一个英文句号(这个整体也就是这个分组)重复3次，最后再加上一个一到三位的数字(\d{1,3})。</p>
+<h3 id="⑥反义"><a href="#⑥反义" class="headerlink" title="⑥反义"></a>⑥反义</h3><p>　　代码/语法    说明<br>　　\W　　　　匹配任意不是字母，数字，下划线，汉字的字符<br>　　\S　　　　匹配任意不是空白符的字符<br>　　\D　　　　匹配任意非数字的字符<br>　　\B　　　　匹配不是单词开头或结束的位置<br>　　[^x]　　　　匹配除了x以外的任意字符<br>　　[^aeiou]　　　　匹配除了aeiou这几个字母以外的任意字符</p>
+<p>　　&lt;a[^&gt;]+&gt;　　匹配用尖括号括起来的以a开头的字符串。</p>
+<p>　　具体请参考：<a href="http://www.jb51.net/tools/zhengze.html" title="快速入门正则表达式" target="_blank" rel="noopener">快速入门正则表达式</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-加载图片的小技巧" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -303,7 +431,7 @@
 <p>JS:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(var i=1;i&lt;oImg.length;i++)&#123;</span><br><span class="line">	oImg[i].onmousemove=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		var img=new Image();</span><br><span class="line">		img.src=oImg[0].src=this.src.replace(/small/,<span class="string">"big"</span>);</span><br><span class="line">		loading.style.display=<span class="string">"block"</span>;</span><br><span class="line">		img.complete?loading.style.display=<span class="string">"none"</span>:oImg[0].onload=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">			loading.style.display=<span class="string">"none"</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>　　在这里我们可以<strong>用complete来判断图片是否加载完毕</strong>，如果加载完毕，则把loading图片所在的那层隐藏掉。<br>　　如果未加载完毕或遇到错误，则执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">oImg[0].onload=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	loading.style.display=<span class="string">"none"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>　　这里<strong>onload事件表示等图片加载完成后要进行的操作</strong>，所以接着上面的逻辑，则可以当图片加载完毕后再把loading图片所在层隐藏，若是图片出现错误，则会一直显示loading图片。</p>
-<p>　　大家可以注意到，代码里使用了<em>new image()</em>方法做图片预加载,用没有挂载到dom树上的img对象请求图片。请求成功后图片会被缓存，这时再给真实img元素的src赋值就可以直接使用缓存的图片了,优点是可以加快页面渲染速度。但只可惜我现在才疏学浅，并没看懂在该例中有啥用。。。</p>
+<p>　　大家可以注意到，代码里使用了<strong>new Image()</strong>方法做图片预加载,用没有挂载到dom树上的img对象请求图片。请求成功后图片会被缓存，这时再给真实img元素的src赋值就可以直接使用缓存的图片了,优点是可以加快页面渲染速度。但只可惜我现在才疏学浅，并没看懂在该例中有啥用。。。<br>　　<a href="https://blog.csdn.net/dcb_ripple/article/details/52175842,&quot;js 中的Image对象&quot;" target="_blank" rel="noopener">详细用法请见</a><br>　　<a href="http://www.jb51.net/article/43507.htm,&quot;js中Image对象以及对其预加载处理示例&quot;" target="_blank" rel="noopener">预加载的简便理解</a></p>
 
       
     </div>
