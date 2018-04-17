@@ -7,18 +7,18 @@
   
   
   
-  <title>offsetLeft和style.left | 岛马的主页</title>
+  <title>闭包与模仿块作用域 | 岛马的主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="offsetLeft和style.leftoffsetLeft　　1.如果父辈元素中有定位的元素，那么就返回距离当前元素最近的定位元素边缘的距离。　　2.如果父辈元素中没有定位元素，那么就返回相对于body左边缘距离。 两者的区别　　1. style.left 返回的是字符串，如28px，offsetLeft返回的是数值28，如果需要对取得的值进行计算，还用offsetLeft比较方便。　　2.">
+  <meta name="description" content="闭包与模仿块作用域　　最近看《JavaScript语言精粹》真是一页的含量顶其它书的十页啊，受益匪浅，在这里整理一下闭包的一些东东吧。 　　首先我也忘了之前有没有整理过关于原型的一些用法，先给出一段代码： 1234Function.prototype.method=function(name,func)&amp;#123;	this.prototype[name]=func;	return this;&amp;#">
 <meta property="og:type" content="article">
-<meta property="og:title" content="offsetLeft和style.left">
-<meta property="og:url" content="http://yoursite.com/2018/04/11/offsetLeft和style-left/index.html">
+<meta property="og:title" content="闭包与模仿块作用域">
+<meta property="og:url" content="http://yoursite.com/2018/04/18/闭包与模仿块作用域/index.html">
 <meta property="og:site_name" content="岛马的主页">
-<meta property="og:description" content="offsetLeft和style.leftoffsetLeft　　1.如果父辈元素中有定位的元素，那么就返回距离当前元素最近的定位元素边缘的距离。　　2.如果父辈元素中没有定位元素，那么就返回相对于body左边缘距离。 两者的区别　　1. style.left 返回的是字符串，如28px，offsetLeft返回的是数值28，如果需要对取得的值进行计算，还用offsetLeft比较方便。　　2.">
-<meta property="og:updated_time" content="2018-04-11T11:41:47.216Z">
+<meta property="og:description" content="闭包与模仿块作用域　　最近看《JavaScript语言精粹》真是一页的含量顶其它书的十页啊，受益匪浅，在这里整理一下闭包的一些东东吧。 　　首先我也忘了之前有没有整理过关于原型的一些用法，先给出一段代码： 1234Function.prototype.method=function(name,func)&amp;#123;	this.prototype[name]=func;	return this;&amp;#">
+<meta property="og:updated_time" content="2018-04-17T23:39:14.038Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="offsetLeft和style.left">
-<meta name="twitter:description" content="offsetLeft和style.leftoffsetLeft　　1.如果父辈元素中有定位的元素，那么就返回距离当前元素最近的定位元素边缘的距离。　　2.如果父辈元素中没有定位元素，那么就返回相对于body左边缘距离。 两者的区别　　1. style.left 返回的是字符串，如28px，offsetLeft返回的是数值28，如果需要对取得的值进行计算，还用offsetLeft比较方便。　　2.">
+<meta name="twitter:title" content="闭包与模仿块作用域">
+<meta name="twitter:description" content="闭包与模仿块作用域　　最近看《JavaScript语言精粹》真是一页的含量顶其它书的十页啊，受益匪浅，在这里整理一下闭包的一些东东吧。 　　首先我也忘了之前有没有整理过关于原型的一些用法，先给出一段代码： 1234Function.prototype.method=function(name,func)&amp;#123;	this.prototype[name]=func;	return this;&amp;#">
   
     <link rel="alternative" href="/atom.xml" title="岛马的主页" type="application/atom+xml">
   
@@ -269,11 +269,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-offsetLeft和style-left" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-闭包与模仿块作用域" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2018/04/11/offsetLeft和style-left/" class="article-date">
-      <time datetime="2018-04-11T11:34:36.000Z" itemprop="datePublished">2018-04-11</time>
+      <a  href="/2018/04/18/闭包与模仿块作用域/" class="article-date">
+      <time datetime="2018-04-17T23:20:18.000Z" itemprop="datePublished">2018-04-18</time>
 </a>
 
     </div>
@@ -287,7 +287,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      offsetLeft和style.left
+      闭包与模仿块作用域
     </h1>
   
 
@@ -305,8 +305,26 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="offsetLeft和style-left"><a href="#offsetLeft和style-left" class="headerlink" title="offsetLeft和style.left"></a>offsetLeft和style.left</h2><h3 id="offsetLeft"><a href="#offsetLeft" class="headerlink" title="offsetLeft"></a>offsetLeft</h3><p>　　1.如果父辈元素中有定位的元素，那么就返回距离当前元素最近的定位元素边缘的距离。<br>　　2.如果父辈元素中没有定位元素，那么就返回相对于body左边缘距离。</p>
-<h3 id="两者的区别"><a href="#两者的区别" class="headerlink" title="两者的区别"></a>两者的区别</h3><p>　　1. style.left 返回的是字符串，如28px，offsetLeft返回的是数值28，如果需要对取得的值进行计算，还用offsetLeft比较方便。<br>　　2. style.left是读写的，offsetLeft是只读的，所以要改变元素的位置，只能修改style.left。<br>　　3. style.left的值需要事先定义，否则取到的值为空。而且必须要定义在html里，offsetLeft的值随时可以取到。</p>
+        <h2 id="闭包与模仿块作用域"><a href="#闭包与模仿块作用域" class="headerlink" title="闭包与模仿块作用域"></a>闭包与模仿块作用域</h2><p>　　最近看《JavaScript语言精粹》真是一页的含量顶其它书的十页啊，受益匪浅，在这里整理一下闭包的一些东东吧。</p>
+<p>　　首先我也忘了之前有没有整理过关于原型的一些用法，先给出一段代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.method=<span class="keyword">function</span>(name,func)&#123;</span><br><span class="line">	this.prototype[name]=func;</span><br><span class="line">	<span class="built_in">return</span> this;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>　　具体要是忘了的话，去看原型那节，作用是给Function对象的原型添加了一个method方法，用于往该原型里新增方法，这样继承自Function对象的子对象们都会动态更新它们的方法。</p>
+<p>　　然后就是我们主要整理的东西了：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">String.method(<span class="string">"deentityify"</span>,<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	var entity=&#123;</span><br><span class="line">		quot: <span class="string">'"'</span>,</span><br><span class="line">		lt: <span class="string">'&lt;'</span>,</span><br><span class="line">		gt: <span class="string">'&gt;'</span></span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		<span class="built_in">return</span> this.replace(/&amp;([^&amp;;]+);$/g,<span class="keyword">function</span>(a,b)&#123;</span><br><span class="line">			var r=entity[b];</span><br><span class="line">			<span class="built_in">return</span> typeof r === <span class="string">"string"</span> ? r : a;</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;());</span><br><span class="line">document.writeln(<span class="string">"&amp;lt;body&amp;gt;&amp;quot;HAHAHA&amp;quot;&amp;lt;body&amp;gt;"</span>.deentityify());//&lt;body&gt;<span class="string">"HAHAHA"</span>&lt;body&gt;</span><br></pre></td></tr></table></figure></p>
+<p>　　这段代码的主要功能是：给String对象添加一个deentityify方法。它的任务是寻找字符串中的HTML字符实体并把它们替换为对应的字符。<br>　　这里有四个需要注意的点：</p>
+<h4 id="1-模仿块作用域"><a href="#1-模仿块作用域" class="headerlink" title="1.模仿块作用域"></a>1.模仿块作用域</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	var s=<span class="string">"test"</span>;</span><br><span class="line">&#125;())</span><br></pre></td></tr></table></figure>
+<p>　<br>　　因为JS有函数作用域，所以函数中的参数和变量在函数外部是不可见的，在一个函数内部任何位置定义的变量，在该函数内部任何地方都可见。</p>
+<p>　　因为JS将function关键字当作一个函数声明的开始，而函数声明后面不能跟圆括号。然而，函数表达式的后面可以跟圆括号。所以最外层的把整个函数包起来的圆括号表示：将函数声明转换成函数表达式。</p>
+<p>　　这段代码实际上定义并立即<strong>调用</strong>了一个匿名函数，其中最后的<em>()</em>圆括号是<strong>调用运算符</strong>。</p>
+<p>　　在匿名函数中定义的任何变量，都会在执行结束时被销毁，这样就可以减少闭包占用的内存问题。</p>
+<h4 id="2-闭包"><a href="#2-闭包" class="headerlink" title="2.闭包"></a>2.闭包</h4><p>　　一个<strong>函数</strong>可以访问它被创建时所处的上下文环境，这称为<strong>闭包</strong>。例子中第一个return的函数就是一个闭包：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	<span class="built_in">return</span> this.replace(/&amp;([^&amp;;]+);$/g,<span class="keyword">function</span>(a,b)&#123;</span><br><span class="line">		var r=entity[b];</span><br><span class="line">		<span class="built_in">return</span> typeof r === <span class="string">"string"</span> ? r : a;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>　　上面的函数可以访问到deentityify方法上下文环境定义的entity对象，所以这个函数就可以被称作<strong>闭包</strong>。</p>
+<h4 id="3-模块模式"><a href="#3-模块模式" class="headerlink" title="3.模块模式"></a>3.模块模式</h4><p>　　模块是一个提供接口却隐藏状态与实现的函数或对象。它利用函数作用域与闭包来创建被绑定对象与私有成员的关联，模块模式的一般形式是：一个定义了私有变量和函数的函数；利用闭包创建可以访问私有变量和函数的特权函数；最后返回这个特权函数，或者把它们保存到一个可访问到的地方。</p>
+<h4 id="4-String-prototype-replace-进阶用法"><a href="#4-String-prototype-replace-进阶用法" class="headerlink" title="4.String.prototype.replace()进阶用法"></a>4.String.prototype.replace()进阶用法</h4><p>　　我这也是第一次知道它的第二个参数可以是一个函数，且非常有用，具体见：<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace" title="replace详细用法" target="_blank" rel="noopener">MDN文档</a></p>
+<h5 id="指定一个函数作为参数"><a href="#指定一个函数作为参数" class="headerlink" title="指定一个函数作为参数"></a>指定一个函数作为参数</h5><p>　　你可以指定一个函数作为第二个参数。在这种情况下，当匹配执行后， 该函数就会执行。 函数的<strong>返回值</strong>作为替换字符串。 (注意:上面提到的特殊替换参数在这里不能被使用。) 另外要注意的是， 如果第一个参数是正则表达式， 并且其为全局匹配模式， 那么这个方法将被<strong>多次调用</strong>， 每次匹配都会被调用。</p>
+<p>　　下面是该函数的参数：</p>
+<p>　　变量名    　　代表的值<br>　　match    　　匹配的子串。（对应于上述的$&amp;。）<br>　　p1,p2, …　假如replace()方法的第一个参数是一个RegExp 对象，则代表第n个括号匹配的字符串。（对应于上述的$1，$2等。）<br>　　offset　　匹配到的子字符串在原字符串中的偏移量。（比如，如果原字符串是“abcd”，匹配到的子字符串是“bc”，那么这个参数将是1）<br>　　string　　被匹配的原字符串。</p>
+<p>　　代码中的正则表达式/&amp;([^&amp;;]+);$/g代表：从整个字符串中，从全局匹配出所有的以&amp;开头，中间有1个或多个非&amp;;的任意字符，然后以;结尾的字符串。</p>
 
       
     </div>
@@ -315,13 +333,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2018/04/11/offsetLeft和style-left/">offsetLeft和style.left</a></p>
+        <p><span>本文标题:</span><a  href="/2018/04/18/闭包与模仿块作用域/">闭包与模仿块作用域</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 岛马 的个人博客">岛马</a></p>
-        <p><span>发布时间:</span>2018年04月11日 - 19时34分</p>
-        <p><span>最后更新:</span>2018年04月11日 - 19时41分</p>
+        <p><span>发布时间:</span>2018年04月18日 - 07时20分</p>
+        <p><span>最后更新:</span>2018年04月18日 - 07时39分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/04/11/offsetLeft和style-left/" title="offsetLeft和style.left">http://yoursite.com/2018/04/11/offsetLeft和style-left/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/04/11/offsetLeft和style-left/　　作者: 岛马" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/04/18/闭包与模仿块作用域/" title="闭包与模仿块作用域">http://yoursite.com/2018/04/18/闭包与模仿块作用域/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/04/18/闭包与模仿块作用域/　　作者: 岛马" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -332,18 +350,18 @@
 
 <nav id="article-nav">
   
-    <a  href="/2018/04/11/text-indent-9999px-作用/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a  href="/2018/04/18/JS中的apply-使用详解/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          text-indent: -9999px;作用
+          JS中的apply()使用详解
         
       </div>
     </a>
   
   
-    <a  href="/2018/04/10/JS清空数组的方法/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JS清空数组的方法</div>
+    <a  href="/2018/04/18/函数柯里化/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">函数柯里化</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -355,7 +373,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#offsetLeft和style-left"><span class="toc-number">1.</span> <span class="toc-text">offsetLeft和style.left</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#offsetLeft"><span class="toc-number">1.1.</span> <span class="toc-text">offsetLeft</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#两者的区别"><span class="toc-number">1.2.</span> <span class="toc-text">两者的区别</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#闭包与模仿块作用域"><span class="toc-number">1.</span> <span class="toc-text">闭包与模仿块作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-模仿块作用域"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.模仿块作用域</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-闭包"><span class="toc-number">1.0.2.</span> <span class="toc-text">2.闭包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-模块模式"><span class="toc-number">1.0.3.</span> <span class="toc-text">3.模块模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-String-prototype-replace-进阶用法"><span class="toc-number">1.0.4.</span> <span class="toc-text">4.String.prototype.replace()进阶用法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#指定一个函数作为参数"><span class="toc-number">1.0.4.1.</span> <span class="toc-text">指定一个函数作为参数</span></a></li></ol></li></ol></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -426,13 +444,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2018/04/11/text-indent-9999px-作用/" title="上一篇: text-indent: -9999px;作用">
+            <a  href="/2018/04/18/JS中的apply-使用详解/" title="上一篇: JS中的apply()使用详解">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2018/04/10/JS清空数组的方法/" title="下一篇: JS清空数组的方法">
+            <a  href="/2018/04/18/函数柯里化/" title="下一篇: 函数柯里化">
                 <i class="fa fa-angle-right"></i>
             </a>
         
