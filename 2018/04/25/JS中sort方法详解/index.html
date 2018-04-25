@@ -7,18 +7,18 @@
   
   
   
-  <title>CSS 使用overflow:hidden清除浮动 | 岛马的主页</title>
+  <title>JS中sort方法详解 | 岛马的主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="CSS 使用overflow:hidden清除浮动　　今天做了一道网页换肤的练习，但发现了其中的两个小问题，详情如下：12345678910111213141516171819&amp;lt;div id=&quot;outer&quot;&amp;gt;	&amp;lt;ul id=&quot;skin&quot;&amp;gt;		&amp;lt;li id=&quot;red&quot; title=&quot;红色&quot;&amp;gt;&amp;lt;/li&amp;gt;		&amp;lt;li id=&quot;green&quot; title=">
+  <meta name="description" content="JS中sort方法详解　　sort() 方法用于对数组的元素进行排序,并返回排序后的数组。默认排序顺序是根据字符串Unicode码点(注意这里不是按ASCII编码排序，这里按Unicode编码排序要和平常两个字符串的&amp;lt;,&amp;gt;,&amp;lt;=,&amp;gt;=,一位位字符按ASCII编码排序区分开。) 语法：arrayObject.sort(func)；参数func可选，规定排序顺序，必须是函数。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS 使用overflow:hidden清除浮动">
-<meta property="og:url" content="http://yoursite.com/2018/03/26/CSS-使用overflow-hidden清除浮动/index.html">
+<meta property="og:title" content="JS中sort方法详解">
+<meta property="og:url" content="http://yoursite.com/2018/04/25/JS中sort方法详解/index.html">
 <meta property="og:site_name" content="岛马的主页">
-<meta property="og:description" content="CSS 使用overflow:hidden清除浮动　　今天做了一道网页换肤的练习，但发现了其中的两个小问题，详情如下：12345678910111213141516171819&amp;lt;div id=&quot;outer&quot;&amp;gt;	&amp;lt;ul id=&quot;skin&quot;&amp;gt;		&amp;lt;li id=&quot;red&quot; title=&quot;红色&quot;&amp;gt;&amp;lt;/li&amp;gt;		&amp;lt;li id=&quot;green&quot; title=">
-<meta property="og:updated_time" content="2018-03-26T11:19:22.489Z">
+<meta property="og:description" content="JS中sort方法详解　　sort() 方法用于对数组的元素进行排序,并返回排序后的数组。默认排序顺序是根据字符串Unicode码点(注意这里不是按ASCII编码排序，这里按Unicode编码排序要和平常两个字符串的&amp;lt;,&amp;gt;,&amp;lt;=,&amp;gt;=,一位位字符按ASCII编码排序区分开。) 语法：arrayObject.sort(func)；参数func可选，规定排序顺序，必须是函数。">
+<meta property="og:updated_time" content="2018-04-25T02:42:41.429Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS 使用overflow:hidden清除浮动">
-<meta name="twitter:description" content="CSS 使用overflow:hidden清除浮动　　今天做了一道网页换肤的练习，但发现了其中的两个小问题，详情如下：12345678910111213141516171819&amp;lt;div id=&quot;outer&quot;&amp;gt;	&amp;lt;ul id=&quot;skin&quot;&amp;gt;		&amp;lt;li id=&quot;red&quot; title=&quot;红色&quot;&amp;gt;&amp;lt;/li&amp;gt;		&amp;lt;li id=&quot;green&quot; title=">
+<meta name="twitter:title" content="JS中sort方法详解">
+<meta name="twitter:description" content="JS中sort方法详解　　sort() 方法用于对数组的元素进行排序,并返回排序后的数组。默认排序顺序是根据字符串Unicode码点(注意这里不是按ASCII编码排序，这里按Unicode编码排序要和平常两个字符串的&amp;lt;,&amp;gt;,&amp;lt;=,&amp;gt;=,一位位字符按ASCII编码排序区分开。) 语法：arrayObject.sort(func)；参数func可选，规定排序顺序，必须是函数。">
   
     <link rel="alternative" href="/atom.xml" title="岛马的主页" type="application/atom+xml">
   
@@ -269,11 +269,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-CSS-使用overflow-hidden清除浮动" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-JS中sort方法详解" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2018/03/26/CSS-使用overflow-hidden清除浮动/" class="article-date">
-      <time datetime="2018-03-26T10:59:09.000Z" itemprop="datePublished">2018-03-26</time>
+      <a  href="/2018/04/25/JS中sort方法详解/" class="article-date">
+      <time datetime="2018-04-25T02:42:04.000Z" itemprop="datePublished">2018-04-25</time>
 </a>
 
     </div>
@@ -287,7 +287,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      CSS 使用overflow:hidden清除浮动
+      JS中sort方法详解
     </h1>
   
 
@@ -305,9 +305,21 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="CSS-使用overflow-hidden清除浮动"><a href="#CSS-使用overflow-hidden清除浮动" class="headerlink" title="CSS 使用overflow:hidden清除浮动"></a>CSS 使用overflow:hidden清除浮动</h2><p>　　今天做了一道网页换肤的练习，但发现了其中的两个小问题，详情如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"outer"</span>&gt;</span><br><span class="line">	&lt;ul id=<span class="string">"skin"</span>&gt;</span><br><span class="line">		&lt;li id=<span class="string">"red"</span> title=<span class="string">"红色"</span>&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li id=<span class="string">"green"</span> title=<span class="string">"绿色"</span>&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li id=<span class="string">"blue"</span> title=<span class="string">"蓝色"</span>&gt;&lt;/li&gt;</span><br><span class="line">	&lt;/ul&gt;</span><br><span class="line">	&lt;ul id=<span class="string">"nav"</span>&gt;</span><br><span class="line">			&lt;!--</span><br><span class="line">               	javascript: 是一个伪协议javascript:是表示在触发&lt;a&gt;默认动作时，执行一段JavaScript代码，</span><br><span class="line">               	而 javascript:;表示什么都不执行，这样点击&lt;a&gt;时就没有任何反应。</span><br><span class="line">               --&gt;</span><br><span class="line">			&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;新闻&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">			&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;娱乐&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">			&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;体育&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">			&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;电影&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">			&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;音乐&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">			&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;旅游&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;/ul&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
-<p>　　在div里有两个ul，对它们的li分别都设置了float: left后发现：<br>　　1.  这两个ul中的li都脱离了文档流，跑到一行上去了<br>　　2.  为ul设置过黑色背景，但都消失了<br>　　于是我使用了br来换行，但发现原作者并没有这样做，这不由得让我产生了疑问。在反复查看源码后，我发现是overflow: hidden;在起作用，遂到网上一查发现，它并不只有<strong>隐藏溢出</strong>的功能，还有<strong>清除浮动</strong>和<strong>解除坍塌</strong>的功能。原理如下：<br>　　浮动的元素(两个ul中的li)脱离文档元素， 不占据空间，所以跑到了一行上。 不浮动的元素(ul,div)会直接无视掉这个元素。因为我们没有设置父ul的高度，父ul无视了自己的两个孩子，其高度变为0，所以父ul没有显现。 解决方法就是：<br>　　1.  如果只想换行，给ul添加overflow:hidden属性即可，清除浮动，恢复它原先占据的ul的位置<br>　　2.  为父ul添加overflow:hidden属性用以清除浮动，使得父ul显现</p>
-<p>　　若想更细致的查看该属性的用法：<a href="https://blog.csdn.net/hukaihe/article/details/51298665" title="深入理解：overflow:hidden——溢出,坍塌,清除浮动" target="_blank" rel="noopener">详细链接</a></p>
+        <h2 id="JS中sort方法详解"><a href="#JS中sort方法详解" class="headerlink" title="JS中sort方法详解"></a>JS中sort方法详解</h2><p>　　sort() 方法用于对数组的元素进行排序,并返回排序后的数组。默认排序顺序是根据字符串Unicode码点(<strong>注意这里不是按ASCII编码排序</strong>，这里按Unicode编码排序要和平常两个字符串的&lt;,&gt;,&lt;=,&gt;=,一位位字符按ASCII编码排序区分开。)</p>
+<h4 id="语法：arrayObject-sort-func-；参数func可选，规定排序顺序，必须是函数。"><a href="#语法：arrayObject-sort-func-；参数func可选，规定排序顺序，必须是函数。" class="headerlink" title="语法：arrayObject.sort(func)；参数func可选，规定排序顺序，必须是函数。"></a>语法：arrayObject.sort(func)；参数func可选，规定排序顺序，必须是函数。</h4><p>　　注：如果调用该方法时没有使用参数，将按字母顺序对数组中的元素进行排序，说得更精确点，是按照Unicode字符编码的顺序进行排序。要实现这一点，首先应把数组的元素都转换成字符串（如有必要），以便进行比较。<br>eg:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var scores = [1, 10, 21, 2]; </span><br><span class="line">scores.sort(); </span><br><span class="line">// [1, 10, 2, 21]</span><br><span class="line">// 注意10在2之前,</span><br><span class="line">// 因为在 Unicode码点 指针顺序中<span class="string">"10"</span>在<span class="string">"2"</span>之前</span><br></pre></td></tr></table></figure>
+<p>　　如果想按照其他标准进行排序，就需要提供<strong>比较函数</strong>，该函数要比较两个值，然后返回一个用于说明这两个值的相对顺序的数字。比较函数应该具有<strong>两个参数 a 和 b</strong>，其返回值如下：</p>
+<h4 id="如果返回一个负数，则第一个参数应该排列在前面，即在排序后的数组中-a-应该出现在-b-之前。"><a href="#如果返回一个负数，则第一个参数应该排列在前面，即在排序后的数组中-a-应该出现在-b-之前。" class="headerlink" title="如果返回一个负数，则第一个参数应该排列在前面，即在排序后的数组中 a 应该出现在 b 之前。"></a>如果返回一个负数，则第一个参数应该排列在前面，即在排序后的数组中 a 应该出现在 b 之前。</h4><h4 id="如果-返回-0，表示a-等于-b，则a-和-b-的相对位置不变。（注意这里和排序算法的稳定性有关）"><a href="#如果-返回-0，表示a-等于-b，则a-和-b-的相对位置不变。（注意这里和排序算法的稳定性有关）" class="headerlink" title="如果 返回 0，表示a 等于 b，则a 和 b 的相对位置不变。（注意这里和排序算法的稳定性有关）"></a>如果 返回 0，表示a 等于 b，则a 和 b 的相对位置不变。（注意这里和排序算法的稳定性有关）</h4><h4 id="如果返回一个正数，则第二个参数应该排列在前面。"><a href="#如果返回一个正数，则第二个参数应该排列在前面。" class="headerlink" title="如果返回一个正数，则第二个参数应该排列在前面。"></a>如果返回一个正数，则第二个参数应该排列在前面。</h4><p>　　所以，比较函数格式如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> compare(a, b) &#123;</span><br><span class="line">	<span class="keyword">if</span> (a &lt; b ) &#123;        // 按某种排序标准进行比较, a 小于 b</span><br><span class="line">		<span class="built_in">return</span> -1;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (a &gt; b ) &#123;</span><br><span class="line">    	<span class="built_in">return</span> 1;</span><br><span class="line">	&#125;</span><br><span class="line">	// a must be equal to b</span><br><span class="line">	<span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>　　要比较数字而非字符串，比较函数可以简单的以 a 减 b，如下的函数将会将数组升序排列:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> compareNumbers(a, b) &#123;</span><br><span class="line">	<span class="built_in">return</span> a - b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>　　你可能还有疑问，就是为什么比较函数要放两个参数？我们可以拿V8引擎(Chrome浏览器的JS引擎)来理解。</p>
+<p>　　V8引擎使用C++开发，如果学过一点点数据结构课的话，肯定接触过排序这一块儿，什么快速排序、插入排序、冒泡排序的，然后<strong>大部分排序算法，步骤分解之后，最细节的操作都是两个数的相互比较</strong>，Chrome浏览器用的V8引擎就使用了快速排序。下面就贴一段当年学数据结构的时候快排的代码，V8的源码肯定不是这么简单，肯定是一种复杂的经过了各种优化（比如改善了稳定性，内存等）但基本的快排就是这样：左边右边一块儿往中间排，排出一个个有序的子段，然后再一个个子段中递归的排。</p>
+<h4 id="排序稳定性是指排序后数组中的相等值的相对位置没有改变，而不稳定性排序则会改变相等值的相对位置。"><a href="#排序稳定性是指排序后数组中的相等值的相对位置没有改变，而不稳定性排序则会改变相等值的相对位置。" class="headerlink" title="排序稳定性是指排序后数组中的相等值的相对位置没有改变，而不稳定性排序则会改变相等值的相对位置。"></a>排序稳定性是指排序后数组中的相等值的相对位置没有改变，而不稳定性排序则会改变相等值的相对位置。</h4><p>C++快速排序算法(这里是从小到大的正序算法):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">void quick_sort(int left,int right)&#123;</span><br><span class="line">       <span class="keyword">if</span>(left&gt;right)&#123;</span><br><span class="line">           <span class="built_in">return</span>; </span><br><span class="line">       &#125; </span><br><span class="line">       int pivot=data[left],low=left,high=right;</span><br><span class="line">       <span class="keyword">while</span>(low&lt;high)&#123;</span><br><span class="line">           <span class="keyword">while</span>(low&lt;high &amp;&amp; data[high]&gt;=pivot)&#123;</span><br><span class="line">               high--;</span><br><span class="line">           &#125;</span><br><span class="line">           data[low]=data[high];</span><br><span class="line">           <span class="keyword">while</span>(low&lt;high &amp;&amp; data[low]&lt;=pivot)&#123;</span><br><span class="line">               low++;</span><br><span class="line">           &#125;</span><br><span class="line">           data[high]=data[low];</span><br><span class="line">       &#125;</span><br><span class="line">       data[low]=pivot;</span><br><span class="line">       quick_sort(left,low-1);</span><br><span class="line">       quick_sort(low+1,right);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<p>　　所以这样就清楚了，我们只要设置好了比较函数func(a,b)规定了每两个数排序的正逆序，就可以对整个数组进行快速排序，但要注意的是，<strong>因为快速排序是不稳定排序，所以sort方法也是不稳定的</strong>。</p>
+<p>　　我们还可以令<strong>对象数组</strong>排序，这里是加强版排序，首先按last排序，然后按照first排序。</p>
+<p>JS:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">var s=[</span><br><span class="line">	&#123;first:<span class="string">"Tom"</span>,last:<span class="string">"cruse"</span>&#125;,</span><br><span class="line">	&#123;first:<span class="string">"Jack"</span>,last:<span class="string">"awddwa"</span>&#125;,</span><br><span class="line">	&#123;first:<span class="string">"Aommy"</span>,last:<span class="string">"rththr"</span>&#125;,</span><br><span class="line">	&#123;first:<span class="string">"Fuck"</span>,last:<span class="string">"ererg"</span>&#125;,</span><br><span class="line">	&#123;first:<span class="string">"Shit"</span>,last:<span class="string">"nbnb"</span>&#125;,</span><br><span class="line">	&#123;first:<span class="string">"Jessy"</span>,last:<span class="string">"awddwa"</span>&#125;</span><br><span class="line">];</span><br><span class="line">var by=<span class="keyword">function</span>(name,minor)&#123;</span><br><span class="line">	<span class="built_in">return</span> <span class="keyword">function</span>(o,p)&#123;</span><br><span class="line">		var a,b;</span><br><span class="line">		<span class="keyword">if</span>(typeof o===<span class="string">'object'</span> &amp;&amp; typeof p===<span class="string">'object'</span> &amp;&amp; o &amp;&amp; p)&#123;</span><br><span class="line">			a=o[name];</span><br><span class="line">			b=p[name];</span><br><span class="line">			<span class="keyword">if</span>(a===b)&#123;</span><br><span class="line">				//这里的minor(o,p)实际上是by(<span class="string">'first'</span>)(o,p)</span><br><span class="line">				<span class="built_in">return</span> typeof minor ===  <span class="string">'function'</span> ? minor(o,p) : 0;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(typeof a=== typeof b)&#123;</span><br><span class="line">				<span class="built_in">return</span> a&lt;b?-1:1;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">return</span> typeof a &lt; typeof b ? -1 : 1;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			throw&#123;</span><br><span class="line">				name: <span class="string">'Error'</span>,</span><br><span class="line">				message: <span class="string">'Expected an object when sorting by '</span>+name</span><br><span class="line">			&#125;;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;;</span><br><span class="line">//因为by函数使用了闭包，这里的带两个参数的比较函数实际上是by(name)函数,即func(o,p)=by(name)(o,p)</span><br><span class="line">//一个函数当参数的时候只写函数名即可,所以写成sort(by(<span class="string">'last'</span>))就行</span><br><span class="line">s.sort(by(<span class="string">"last"</span>,by(<span class="string">"first"</span>)));</span><br><span class="line"><span class="keyword">for</span>(var i <span class="keyword">in</span> s)&#123;</span><br><span class="line">	console.log(s[i].first+<span class="string">" "</span>+s[i].last);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>　　更多关于sort()的内容，请见<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/sort" title="Array.prototype.sort()" target="_blank" rel="noopener">MDN文档</a></p>
 
       
     </div>
@@ -316,13 +328,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2018/03/26/CSS-使用overflow-hidden清除浮动/">CSS 使用overflow:hidden清除浮动</a></p>
+        <p><span>本文标题:</span><a  href="/2018/04/25/JS中sort方法详解/">JS中sort方法详解</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 岛马 的个人博客">岛马</a></p>
-        <p><span>发布时间:</span>2018年03月26日 - 18时59分</p>
-        <p><span>最后更新:</span>2018年03月26日 - 19时19分</p>
+        <p><span>发布时间:</span>2018年04月25日 - 10时42分</p>
+        <p><span>最后更新:</span>2018年04月25日 - 10时42分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/03/26/CSS-使用overflow-hidden清除浮动/" title="CSS 使用overflow:hidden清除浮动">http://yoursite.com/2018/03/26/CSS-使用overflow-hidden清除浮动/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/03/26/CSS-使用overflow-hidden清除浮动/　　作者: 岛马" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/04/25/JS中sort方法详解/" title="JS中sort方法详解">http://yoursite.com/2018/04/25/JS中sort方法详解/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/04/25/JS中sort方法详解/　　作者: 岛马" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -333,18 +345,9 @@
 
 <nav id="article-nav">
   
-    <a  href="/2018/03/26/JS-for-in语句的使用/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          JS for-in语句的使用
-        
-      </div>
-    </a>
   
-  
-    <a  href="/2018/03/25/JS中-和-的奇怪用法/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JS中&amp;&amp;和||的奇怪用法</div>
+    <a  href="/2018/04/24/label标签和任意高度元素展开收起的骚操作/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">label标签和任意高度元素展开收起的骚操作</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -356,7 +359,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS-使用overflow-hidden清除浮动"><span class="toc-number">1.</span> <span class="toc-text">CSS 使用overflow:hidden清除浮动</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JS中sort方法详解"><span class="toc-number">1.</span> <span class="toc-text">JS中sort方法详解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#语法：arrayObject-sort-func-；参数func可选，规定排序顺序，必须是函数。"><span class="toc-number">1.0.1.</span> <span class="toc-text">语法：arrayObject.sort(func)；参数func可选，规定排序顺序，必须是函数。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#如果返回一个负数，则第一个参数应该排列在前面，即在排序后的数组中-a-应该出现在-b-之前。"><span class="toc-number">1.0.2.</span> <span class="toc-text">如果返回一个负数，则第一个参数应该排列在前面，即在排序后的数组中 a 应该出现在 b 之前。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#如果-返回-0，表示a-等于-b，则a-和-b-的相对位置不变。（注意这里和排序算法的稳定性有关）"><span class="toc-number">1.0.3.</span> <span class="toc-text">如果 返回 0，表示a 等于 b，则a 和 b 的相对位置不变。（注意这里和排序算法的稳定性有关）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#如果返回一个正数，则第二个参数应该排列在前面。"><span class="toc-number">1.0.4.</span> <span class="toc-text">如果返回一个正数，则第二个参数应该排列在前面。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#排序稳定性是指排序后数组中的相等值的相对位置没有改变，而不稳定性排序则会改变相等值的相对位置。"><span class="toc-number">1.0.5.</span> <span class="toc-text">排序稳定性是指排序后数组中的相等值的相对位置没有改变，而不稳定性排序则会改变相等值的相对位置。</span></a></li></ol></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -427,13 +430,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2018/03/26/JS-for-in语句的使用/" title="上一篇: JS for-in语句的使用">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2018/03/25/JS中-和-的奇怪用法/" title="下一篇: JS中&amp;&amp;和||的奇怪用法">
+            <a  href="/2018/04/24/label标签和任意高度元素展开收起的骚操作/" title="下一篇: label标签和任意高度元素展开收起的骚操作">
                 <i class="fa fa-angle-right"></i>
             </a>
         
