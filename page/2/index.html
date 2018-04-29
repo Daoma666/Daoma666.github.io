@@ -270,6 +270,72 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-变量提升" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/04/14/变量提升/" class="article-date">
+      <time datetime="2018-04-14T03:43:59.000Z" itemprop="datePublished">2018-04-14</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/04/14/变量提升/">变量提升</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h2><p>　　最近发现了一个小问题：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var x=<span class="string">"global value"</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">getValue</span></span>()&#123;</span><br><span class="line">	alert(x);//undefined</span><br><span class="line">	var x=<span class="string">"local value"</span>;</span><br><span class="line">	alert(x);//<span class="built_in">local</span> value</span><br><span class="line">&#125;</span><br><span class="line">getValue();</span><br></pre></td></tr></table></figure></p>
+<p>　　我们可以发现第一个alert(x)结果为undefined，这就跟JS的<strong>变量提升</strong>有关系了。<br>　　var关键字声明变量，无论声明在何处，都会被视为声明在函数的<em>最顶部</em>(不在函数内即在全局作用域的最顶部)，这就是函数的<strong>变量提升</strong>。所以上面的代码实际上是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var x=<span class="string">"global value"</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">getValue</span></span>()&#123;</span><br><span class="line">	var x; //普通的变量初始化就是undefined，所以就好理解了</span><br><span class="line">	alert(x);</span><br><span class="line">	var x=<span class="string">"local value"</span>;</span><br><span class="line">	alert(x);</span><br><span class="line">&#125;</span><br><span class="line">getValue();</span><br></pre></td></tr></table></figure>
+<p>　　<br>　　下面我们就来整理一下变量提升：</p>
+<h4 id="1-我是变量声明，我会被提升在作用域顶端！"><a href="#1-我是变量声明，我会被提升在作用域顶端！" class="headerlink" title="1.我是变量声明，我会被提升在作用域顶端！"></a>1.我是变量声明，我会被提升在作用域顶端！</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a;</span><br></pre></td></tr></table></figure>
+<h4 id="2-我是变量定义，我的声明部分会被提升，赋值部分不会被提升！"><a href="#2-我是变量定义，我的声明部分会被提升，赋值部分不会被提升！" class="headerlink" title="2.我是变量定义，我的声明部分会被提升，赋值部分不会被提升！"></a>2.我是变量定义，我的声明部分会被提升，赋值部分不会被提升！</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var b=<span class="string">"test"</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="3-我是函数定义，或者叫我函数表达式。其实我就是变量定义，只不过恰好被赋值的类型是函数，所以也只提升变量名，不提升函数值！"><a href="#3-我是函数定义，或者叫我函数表达式。其实我就是变量定义，只不过恰好被赋值的类型是函数，所以也只提升变量名，不提升函数值！" class="headerlink" title="3.我是函数定义，或者叫我函数表达式。其实我就是变量定义，只不过恰好被赋值的类型是函数，所以也只提升变量名，不提升函数值！"></a>3.我是函数定义，或者叫我函数表达式。其实我就是变量定义，只不过恰好被赋值的类型是函数，所以也只提升变量名，不提升函数值！</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var c=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	console.log(<span class="string">"test"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-我是函数声明，所以我全部被提升了，包括函数名和函数体。另外，我的优先级比变量声明要高，名字和我相同的变量声明会被忽略！"><a href="#4-我是函数声明，所以我全部被提升了，包括函数名和函数体。另外，我的优先级比变量声明要高，名字和我相同的变量声明会被忽略！" class="headerlink" title="4.我是函数声明，所以我全部被提升了，包括函数名和函数体。另外，我的优先级比变量声明要高，名字和我相同的变量声明会被忽略！"></a>4.我是函数声明，所以我全部被提升了，包括函数名和函数体。另外，我的优先级比变量声明要高，名字和我相同的变量声明会被忽略！</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">d</span></span>()&#123;</span><br><span class="line">	console.log(<span class="string">"test"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>　　最后再补充一点，因为JS虽然有函数作用域，但没有块作用域，即函数中的参数和变量在函数外部是不可见的，而在一个函数内部任何位置定义的变量，在该函数内部任何地方都可见。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-text-indent-9999px-作用" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -553,7 +619,8 @@
 <h3 id="扩充详解-position-absolute"><a href="#扩充详解-position-absolute" class="headerlink" title="扩充详解　position:absolute"></a>扩充详解　position:absolute</h3><p>　　这个顾名思义是绝对布局，在元素中设置之后，该元素会完全脱离文档流，它并不是相对于浏览器进行定位，<strong>而是一层一层向上寻找父元素，直到寻找到第一个position不为static的祖先元素，它相对于这个祖先元素进行定位。</strong><br>　　所以当你的父元素position:relative时，该子元素才会相对于你的父元素进行定位。如果任何一个祖先元素都没有设置position:relative，寻找到最外层的顶级元素html后自然不会继续寻找，所以这时才是相对于浏览器进行定位。<br>　　我们可以看一个小例子：<br>HTML:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"outer"</span>&gt;</span><br><span class="line">	&lt;div id=<span class="string">"inner"</span>&gt;</span><br><span class="line">		&lt;div id=<span class="string">"deepinner"</span>&gt;		</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
 <p>CSS:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">	margin: 0;</span><br><span class="line">	padding: 0;	</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#outer&#123;</span></span><br><span class="line">	width: 500px;</span><br><span class="line">	height: 500px;</span><br><span class="line">	border: 1px solid <span class="comment">#000;</span></span><br><span class="line">	margin-left:100px;</span><br><span class="line">	position: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#inner&#123;</span></span><br><span class="line">	width:100px;</span><br><span class="line">	height:100px;</span><br><span class="line">	position: absolute;</span><br><span class="line">	border: 1px solid red;</span><br><span class="line">	left: 100px;</span><br><span class="line">	top: 100px;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#deepinner&#123;</span></span><br><span class="line">	width:100px;</span><br><span class="line">	height: 100px;</span><br><span class="line">	position: absolute;</span><br><span class="line">	border: 1px solid red;</span><br><span class="line">	left: 50px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>　　可以发现deepinner层相对与inner层偏移了50px，所以可以证明absolute是<strong>一层一层向上寻找父元素，直到寻找到第一个position不为static的祖先元素，它相对于这个祖先元素进行定位。</strong>，这里deepinner层相对的就是inner层。</p>
-<h3 id="元素加上absolute和fixed后的影响"><a href="#元素加上absolute和fixed后的影响" class="headerlink" title="元素加上absolute和fixed后的影响"></a>元素加上absolute和fixed后的影响</h3><p>　　1.宽度改变：该元素宽度变成设置的宽度，如果无则是内部元素所占的宽度   可以加宽度修复，也可以不加，就使用自身内容大小<br>　　2.元素类型改变：内联元素可以变成块级元素。<br>　　3.文档流影响：元素完全脱离文档流，<strong>同级的定位，后写的在上层</strong>，可以通过z-index 解决层级</p>
+<h3 id="元素加上absolute和fixed后的影响"><a href="#元素加上absolute和fixed后的影响" class="headerlink" title="元素加上absolute和fixed后的影响"></a>元素加上absolute和fixed后的影响</h3><p>　　1.宽度改变：该元素宽度变成设置的宽度，如果无则是内部元素所占的宽度   可以加宽度修复，也可以不加，就使用自身内容大小<br>　　2.元素类型改变：内联元素可以变成块级元素。<br>　　3.文档流影响：元素完全脱离文档流，<strong>同级的定位，后写的在上层</strong>，可以通过<strong>z-index属性</strong>来解决层级问题</p>
+<h4 id="z-index可能出现的问题"><a href="#z-index可能出现的问题" class="headerlink" title="z-index可能出现的问题"></a>z-index可能出现的问题</h4><p>　　有时候可能会出现明明设置了absolute，z-index也设置的很大，但显示还是在另一个层的下面的情况，这时候就要注意这个节点所在树的第一个relative属性的父标签的z-index是不是太小,比如虽然图片所在div当前的层级很高，但是由于老爸的老爸不顶用，可怜了z-index=9999;如此强势的孩子也没有出头之日啊！</p>
 
       
     </div>
@@ -816,69 +883,6 @@
 <p>　　这里<strong>onload事件表示等图片加载完成后要进行的操作</strong>，所以接着上面的逻辑，则可以当图片加载完毕后再把loading图片所在层隐藏，若是图片出现错误，则会一直显示loading图片。</p>
 <p>　　大家可以注意到，代码里使用了<strong>new Image()</strong>方法做图片预加载,用没有挂载到dom树上的img对象请求图片。请求成功后图片会被缓存，这时再给真实img元素的src赋值就可以直接使用缓存的图片了,优点是可以加快页面渲染速度。但只可惜我现在才疏学浅，并没看懂在该例中有啥用。。。<br>　　<a href="https://blog.csdn.net/dcb_ripple/article/details/52175842,&quot;js 中的Image对象&quot;" target="_blank" rel="noopener">详细用法请见</a><br>　　<a href="http://www.jb51.net/article/43507.htm,&quot;js中Image对象以及对其预加载处理示例&quot;" target="_blank" rel="noopener">预加载的简便理解</a></p>
 
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-一些零星的JS，CSS知识" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2018/03/27/一些零星的JS，CSS知识/" class="article-date">
-      <time datetime="2018-03-27T11:43:45.000Z" itemprop="datePublished">2018-03-27</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/03/27/一些零星的JS，CSS知识/">一些零星的JS，CSS知识</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="CSS-使用border画三角形"><a href="#CSS-使用border画三角形" class="headerlink" title="CSS 使用border画三角形"></a>CSS 使用border画三角形</h2><p>　　盒模型中上下左右边框交界处呈现平滑的斜线. 利用这个特点, 通过设置不同的上下左右边框宽度或者颜色可以得到小三角, 小梯形等。<a href="http://caibaojian.com/css-border-triangle.html" title="CSS三角形的实现原理及运用" target="_blank" rel="noopener">具体链接</a></p>
-<h2 id="CSS-实现居中的方法"><a href="#CSS-实现居中的方法" class="headerlink" title="CSS 实现居中的方法"></a>CSS 实现居中的方法</h2><h3 id="使用width和margin实现水平居中"><a href="#使用width和margin实现水平居中" class="headerlink" title="使用width和margin实现水平居中"></a>使用width和margin实现水平居中</h3><p>　　width指定完宽度，就可以直接margin:0 auto;实现左右居中了</p>
-<h3 id="使用text-align实现水平居中"><a href="#使用text-align实现水平居中" class="headerlink" title="使用text-align实现水平居中"></a>使用text-align实现水平居中</h3><p>　　使内联元素居中，所以要在想居中的内联元素的父元素中使用</p>
-<h3 id="使用top-left和margin实现水平竖直的居中"><a href="#使用top-left和margin实现水平竖直的居中" class="headerlink" title="使用top,left和margin实现水平竖直的居中"></a>使用top,left和margin实现水平竖直的居中</h3><p>　　方法就是top: 50%;left: 50%;然后margin: -所在盒子宽度/2 0 0 -所在盒子高度/2;(可用于弹窗弹出到页面正中间)</p>
-<h3 id="使用line-height实现文本垂直居中"><a href="#使用line-height实现文本垂直居中" class="headerlink" title="使用line-height实现文本垂直居中"></a>使用line-height实现文本垂直居中</h3><p>　　方法为：把line-height设置为父容器的高度就可以实现文本垂直居中。具体原理请见：<a href="https://www.imooc.com/article/7767" title="CSS行高（line-height）及文本垂直居中原理" target="_blank" rel="noopener">行高原理</a></p>
-<h2 id="js中-大括号-中括号使用详解"><a href="#js中-大括号-中括号使用详解" class="headerlink" title="js中{}大括号,[]中括号使用详解"></a>js中{}大括号,[]中括号使用详解</h2><h3 id="大括号，表示定义一个对象，大部分情况下要有成对的属性和值，或是函数。"><a href="#大括号，表示定义一个对象，大部分情况下要有成对的属性和值，或是函数。" class="headerlink" title="{ }大括号，表示定义一个对象，大部分情况下要有成对的属性和值，或是函数。"></a>{ }大括号，表示定义一个对象，大部分情况下要有成对的属性和值，或是函数。</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var mayun=&#123;</span><br><span class="line">	name: <span class="string">"cocl"</span>,</span><br><span class="line">	age: <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		alert(<span class="string">"21"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">mayun.age();</span><br></pre></td></tr></table></figure>
-<h3 id="中括号，表示一个数组，也可以理解为一个数组对象。"><a href="#中括号，表示一个数组，也可以理解为一个数组对象。" class="headerlink" title="[ ]中括号，表示一个数组，也可以理解为一个数组对象。"></a>[ ]中括号，表示一个数组，也可以理解为一个数组对象。</h3>
       
     </div>
     

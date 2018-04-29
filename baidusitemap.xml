@@ -4,6 +4,51 @@
 
     
   <url>
+    <loc>http://yoursite.com/2018/04/29/%E5%89%8D%E7%AB%AF%E9%85%8D%E5%90%88%E8%AE%BE%E8%AE%A1%E5%B8%88%E4%B9%8Bbackground-position%E5%AE%9A%E4%BD%8D%E5%9B%BE%E7%89%87/</loc>
+    <lastmod>2018-04-29T02:55:05.060Z</lastmod>
+    <data>
+        <display>
+        <title>前端配合设计师之background-position定位图片</title>
+        <pubTime>2018-04-29T02:54:58.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/04/07/%E5%AE%9A%E4%BD%8D%E4%B8%8E%E6%B5%AE%E5%8A%A8/</loc>
+    <lastmod>2018-04-29T02:23:13.791Z</lastmod>
+    <data>
+        <display>
+        <title>定位与浮动</title>
+        <pubTime>2018-04-07T09:30:27.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/03/27/%E4%B8%80%E4%BA%9B%E9%9B%B6%E6%98%9F%E7%9A%84JS%EF%BC%8CCSS%E7%9F%A5%E8%AF%86/</loc>
+    <lastmod>2018-04-26T12:00:30.667Z</lastmod>
+    <data>
+        <display>
+        <title>一些零星的JS，CSS知识</title>
+        <pubTime>2018-03-27T11:43:45.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2018/04/25/JS%E4%B8%ADsort%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/</loc>
     <lastmod>2018-04-25T02:42:41.429Z</lastmod>
     <data>
@@ -229,21 +274,6 @@
 
     
   <url>
-    <loc>http://yoursite.com/2018/04/07/%E5%AE%9A%E4%BD%8D%E4%B8%8E%E6%B5%AE%E5%8A%A8/</loc>
-    <lastmod>2018-04-11T11:33:21.345Z</lastmod>
-    <data>
-        <display>
-        <title>定位与浮动</title>
-        <pubTime>2018-04-07T09:30:27.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yoursite.com/2018/04/10/JS%E6%B8%85%E7%A9%BA%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95/</loc>
     <lastmod>2018-04-10T12:09:40.483Z</lastmod>
     <data>
@@ -280,21 +310,6 @@
         <display>
         <title>JS中style,currentStyle和getComputedStyle的区别以及获取css操作方法</title>
         <pubTime>2018-04-06T08:55:16.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2018/03/27/%E4%B8%80%E4%BA%9B%E9%9B%B6%E6%98%9F%E7%9A%84JS%EF%BC%8CCSS%E7%9F%A5%E8%AF%86/</loc>
-    <lastmod>2018-04-06T09:04:46.107Z</lastmod>
-    <data>
-        <display>
-        <title>一些零星的JS，CSS知识</title>
-        <pubTime>2018-03-27T11:43:45.000Z</pubTime>
         
          
            

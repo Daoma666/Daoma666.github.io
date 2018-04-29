@@ -270,6 +270,73 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-前端配合设计师之background-position定位图片" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/04/29/前端配合设计师之background-position定位图片/" class="article-date">
+      <time datetime="2018-04-29T02:54:58.000Z" itemprop="datePublished">2018-04-29</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/04/29/前端配合设计师之background-position定位图片/">前端配合设计师之background-position定位图片</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>##前端配合设计师之background-position定位图片</p>
+<p>　　我们经常遇到UI设计师把同一类部件的小图片都放在一张图片里的情况，小图片就是整图分割后的各个部分，把各个部分放在一张图片上，而不是是分别存储成单独的图片，其目的就是要<strong>减少http请求次数，节省时间和带宽</strong>。对于我们前端来说，就是要把对应的小图片应用到适当的位置，这里就需要background-position属性。</p>
+<p>　　这里需要搞清楚关于定位的一些东西：</p>
+<p>1、两个值前面一个是横向的定位，我们称为x轴方向定位。后面一个值是纵向的定位，我们称为y轴方向定位。如果只有一个值，那默认的就是x轴方向，这时y轴方向就默认的是上下居中对齐，也就是center。</p>
+<h4 id="2、坐标轴的原点就是对应容器的“左上角”。"><a href="#2、坐标轴的原点就是对应容器的“左上角”。" class="headerlink" title="2、坐标轴的原点就是对应容器的“左上角”。"></a>2、坐标轴的原点就是对应容器的“左上角”。</h4><p>3、这个坐标的y轴箭头朝下，也就是右下方（容器内部）x y的值才都为正。</p>
+<p>4、x y值分别表示背景图片的左顶点相对于坐标原点（也就是容器的左顶点）的值。</p>
+<p>5、x y的值可以用百分比或者px来表示。</p>
+<h4 id="6、x-y也可以用“left、right、top、bottom、center”这五个对齐方式来表示，但注意：用“left、right、top、bottom、center”来表示的时候，“应用的是对齐规则，而不是坐标规则”。x为left是表示图片的左边和容器的左边对齐，为right的时候表示图片的右边和容器的右边对其，y为top的时候表示图片的顶部和容器的顶部对齐，为bottom时表示图片的底部和容器的底部对齐，x-y等于center的时候表示居中对齐。"><a href="#6、x-y也可以用“left、right、top、bottom、center”这五个对齐方式来表示，但注意：用“left、right、top、bottom、center”来表示的时候，“应用的是对齐规则，而不是坐标规则”。x为left是表示图片的左边和容器的左边对齐，为right的时候表示图片的右边和容器的右边对其，y为top的时候表示图片的顶部和容器的顶部对齐，为bottom时表示图片的底部和容器的底部对齐，x-y等于center的时候表示居中对齐。" class="headerlink" title="6、x y也可以用“left、right、top、bottom、center”这五个对齐方式来表示，但注意：用“left、right、top、bottom、center”来表示的时候，“应用的是对齐规则，而不是坐标规则”。x为left是表示图片的左边和容器的左边对齐，为right的时候表示图片的右边和容器的右边对其，y为top的时候表示图片的顶部和容器的顶部对齐，为bottom时表示图片的底部和容器的底部对齐，x y等于center的时候表示居中对齐。"></a>6、x y也可以用“left、right、top、bottom、center”这五个对齐方式来表示，但注意：用“left、right、top、bottom、center”来表示的时候，“应用的是对齐规则，而不是坐标规则”。x为left是表示图片的左边和容器的左边对齐，为right的时候表示图片的右边和容器的右边对其，y为top的时候表示图片的顶部和容器的顶部对齐，为bottom时表示图片的底部和容器的底部对齐，x y等于center的时候表示居中对齐。</h4><p>7、x y用百分比或者px表示的时候，其值可以为负数。我们应用坐标规则就很容易理解负数表示的意义，x为负数时候表示图片左顶点在容器左顶点的左侧，y为负数时表示图片的左顶点在容器的左定点的上方。也就是向左和向上超出容器的范围。</p>
+<p>　　例子为制作图片轮播时左右backward和forward的图片，去看一下就懂了。</p>
+<p>　　更多相关内容请参考,<a href="http://crazier9527.iteye.com/blog/715544" title="利用CSS定位背景图片 background-position" target="_blank" rel="noopener">利用CSS定位背景图片 background-position</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-JS中sort方法详解" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -871,72 +938,6 @@
 <h2 id="阻止事件默认行为"><a href="#阻止事件默认行为" class="headerlink" title="阻止事件默认行为"></a>阻止事件默认行为</h2><p>　　下面是一个阻止右键菜单栏事件的小程序<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">	document.oncontextmenu=<span class="keyword">function</span>(event)&#123;</span><br><span class="line">		event= event ? event : window.event;</span><br><span class="line">		/*下面这三种方法都可以*/</span><br><span class="line">		//event.preventDefault();</span><br><span class="line">		//event.returnValue=<span class="literal">false</span>;</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
 <h3 id="returnValue-false"><a href="#returnValue-false" class="headerlink" title="returnValue=false"></a>returnValue=false</h3><p>　　也是原本IE的方法，它也可以在它也可以在Chrome和Firefox中阻止事件默认行为。</p>
 <h3 id="DOM的preventDefault-方法"><a href="#DOM的preventDefault-方法" class="headerlink" title="DOM的preventDefault()方法"></a>DOM的preventDefault()方法</h3><p>　　简单直观，直接阻止默认的行为，可以用在多个情况。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-变量提升" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2018/04/14/变量提升/" class="article-date">
-      <time datetime="2018-04-14T03:43:59.000Z" itemprop="datePublished">2018-04-14</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/04/14/变量提升/">变量提升</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h2><p>　　最近发现了一个小问题：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var x=<span class="string">"global value"</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">getValue</span></span>()&#123;</span><br><span class="line">	alert(x);//undefined</span><br><span class="line">	var x=<span class="string">"local value"</span>;</span><br><span class="line">	alert(x);//<span class="built_in">local</span> value</span><br><span class="line">&#125;</span><br><span class="line">getValue();</span><br></pre></td></tr></table></figure></p>
-<p>　　我们可以发现第一个alert(x)结果为undefined，这就跟JS的<strong>变量提升</strong>有关系了。<br>　　var关键字声明变量，无论声明在何处，都会被视为声明在函数的<em>最顶部</em>(不在函数内即在全局作用域的最顶部)，这就是函数的<strong>变量提升</strong>。所以上面的代码实际上是：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var x=<span class="string">"global value"</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">getValue</span></span>()&#123;</span><br><span class="line">	var x; //普通的变量初始化就是undefined，所以就好理解了</span><br><span class="line">	alert(x);</span><br><span class="line">	var x=<span class="string">"local value"</span>;</span><br><span class="line">	alert(x);</span><br><span class="line">&#125;</span><br><span class="line">getValue();</span><br></pre></td></tr></table></figure>
-<p>　　<br>　　下面我们就来整理一下变量提升：</p>
-<h4 id="1-我是变量声明，我会被提升在作用域顶端！"><a href="#1-我是变量声明，我会被提升在作用域顶端！" class="headerlink" title="1.我是变量声明，我会被提升在作用域顶端！"></a>1.我是变量声明，我会被提升在作用域顶端！</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a;</span><br></pre></td></tr></table></figure>
-<h4 id="2-我是变量定义，我的声明部分会被提升，赋值部分不会被提升！"><a href="#2-我是变量定义，我的声明部分会被提升，赋值部分不会被提升！" class="headerlink" title="2.我是变量定义，我的声明部分会被提升，赋值部分不会被提升！"></a>2.我是变量定义，我的声明部分会被提升，赋值部分不会被提升！</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var b=<span class="string">"test"</span>;</span><br></pre></td></tr></table></figure>
-<h4 id="3-我是函数定义，或者叫我函数表达式。其实我就是变量定义，只不过恰好被赋值的类型是函数，所以也只提升变量名，不提升函数值！"><a href="#3-我是函数定义，或者叫我函数表达式。其实我就是变量定义，只不过恰好被赋值的类型是函数，所以也只提升变量名，不提升函数值！" class="headerlink" title="3.我是函数定义，或者叫我函数表达式。其实我就是变量定义，只不过恰好被赋值的类型是函数，所以也只提升变量名，不提升函数值！"></a>3.我是函数定义，或者叫我函数表达式。其实我就是变量定义，只不过恰好被赋值的类型是函数，所以也只提升变量名，不提升函数值！</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var c=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	console.log(<span class="string">"test"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="4-我是函数声明，所以我全部被提升了，包括函数名和函数体。另外，我的优先级比变量声明要高，名字和我相同的变量声明会被忽略！"><a href="#4-我是函数声明，所以我全部被提升了，包括函数名和函数体。另外，我的优先级比变量声明要高，名字和我相同的变量声明会被忽略！" class="headerlink" title="4.我是函数声明，所以我全部被提升了，包括函数名和函数体。另外，我的优先级比变量声明要高，名字和我相同的变量声明会被忽略！"></a>4.我是函数声明，所以我全部被提升了，包括函数名和函数体。另外，我的优先级比变量声明要高，名字和我相同的变量声明会被忽略！</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">d</span></span>()&#123;</span><br><span class="line">	console.log(<span class="string">"test"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>　　最后再补充一点，因为JS虽然有函数作用域，但没有块作用域，即函数中的参数和变量在函数外部是不可见的，而在一个函数内部任何位置定义的变量，在该函数内部任何地方都可见。</p>
 
       
     </div>
