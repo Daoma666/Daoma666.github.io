@@ -270,6 +270,75 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-预加载图片的小技巧" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/03/31/预加载图片的小技巧/" class="article-date">
+      <time datetime="2018-03-31T12:07:52.000Z" itemprop="datePublished">2018-03-31</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/03/31/预加载图片的小技巧/">预加载图片的小技巧</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="预加载图片的小技巧"><a href="#预加载图片的小技巧" class="headerlink" title="预加载图片的小技巧"></a>预加载图片的小技巧</h2><p>　　　　在做ex5-5(跟随鼠标移动显示大图)作业的时候，想要实现一个功能：即图片不能显示的话，就给把该图片设置为一个替代的loading图片。</p>
+<h4 id="1-使用Image对象做图片预加载-preload"><a href="#1-使用Image对象做图片预加载-preload" class="headerlink" title="1.使用Image对象做图片预加载(preload)"></a>1.使用Image对象做图片预加载(preload)</h4><p>　　我们还是先来看一下代码：<br>　　<br>JS:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">aLi[i].onmouseover = <span class="keyword">function</span> ()</span><br><span class="line">&#123;</span><br><span class="line">	var oImg = document.createElement(<span class="string">"img"</span>);</span><br><span class="line">	//图片预加载</span><br><span class="line">	var img = new Image();			</span><br><span class="line">	img.src = oImg.src = aLi[this.index].getElementsByTagName(<span class="string">"img"</span>)[0].src.replace(<span class="string">".jpg"</span>,<span class="string">"_big.jpg"</span>);</span><br><span class="line">	//插入大图片</span><br><span class="line">	oBig.appendChild(oImg);</span><br><span class="line">	//显示big层</span><br><span class="line">	oBig.style.display = oLoading.style.display = <span class="string">"block"</span>;</span><br><span class="line">	//判断大图是否加载成功</span><br><span class="line">	img.complete ? oLoading.style.display = <span class="string">"none"</span> : (oImg.onload = <span class="function"><span class="title">function</span></span>() &#123;oLoading.style.display = <span class="string">"none"</span>;&#125;)		</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>　　<em>其实像下面这样写就可以，功能还很清晰，不知道ex5-5的原作者多var出来一个oImg有什么用???等以后我明白了再回来补充。</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">aLi[i].onmouseover = <span class="keyword">function</span> ()</span><br><span class="line">&#123;</span><br><span class="line">	//图片预加载</span><br><span class="line">	var img = new Image();			</span><br><span class="line">	img.src = aLi[this.index].getElementsByTagName(<span class="string">"img"</span>)[0].src.replace(<span class="string">".jpg"</span>,<span class="string">"_big.jpg"</span>);</span><br><span class="line">	//插入大图片</span><br><span class="line">	oBig.appendChild(img);</span><br><span class="line">	//显示big层</span><br><span class="line">	oBig.style.display = oLoading.style.display = <span class="string">"block"</span>;</span><br><span class="line">	//判断大图是否加载成功</span><br><span class="line">	img.complete ? oLoading.style.display = <span class="string">"none"</span> : (img.onload = <span class="function"><span class="title">function</span></span>() &#123;oLoading.style.display = <span class="string">"none"</span>;&#125;)		</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>　　下面是分析：<br>　　首先要明白一点：<img> 标签每出现一次，一个 Image 对象就会被创建。所以上面的oImg也是个Image对象。但是现在还不明白为何要多出来个它？？？</p>
+<p>　　<strong>当定义Image对象的src属性时</strong>，整个文档的读取、JavaScript 的运行都暂停，让浏览器专心的读取图片,所以定义img.src和oImg.src就相当于<strong>给浏览器缓存(preload)了一张图片</strong>。然后到真正要把图片加载到浏览器中<strong>(即img.onload)</strong>的时候，就可以立刻使用缓存的图片了。</p>
+<h4 id="2-使用Image对象的complete属性来判断浏览器是否已完成对图像的加载"><a href="#2-使用Image对象的complete属性来判断浏览器是否已完成对图像的加载" class="headerlink" title="2.使用Image对象的complete属性来判断浏览器是否已完成对图像的加载"></a>2.使用Image对象的complete属性来判断浏览器是否已完成对图像的加载</h4><p>　　在该例子中，当我们第一次打开页面时，鼠标移入任意aLi[i]都是第一次，这时浏览器会缓存这张预加载的大图，但是<strong>还没有将它加载到浏览器中</strong>。所以第一次执行这段代码img.complete一定是返回false,则执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">img.onload=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	loading.style.display=<span class="string">"none"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>　　这里oImg[0].onload的作用就是<strong>把图片加载(load)到浏览器中</strong>，然后<strong>当图片加载完成后再执行花括号的内容</strong>，即将oLoading图片所在层隐藏（这样就会出现第一次鼠标移入图片时的闪现loading图片的效果），若是图片出现错误，则会一直显示oLoading层的图片。</p>
+<p>　　然后等我们鼠标第2、3…..n次移入该aLi[i]层的时候，因为图片已经加载过一次，如果再有对该图片的请求(即img.src)时，由于浏览器已经缓存住这张图片了，不会再发起一次新的请求，而是直接从缓存中加载过来,此时img.complete就会一直返回true，所以oLoading层的图片就会一直被隐藏。</p>
+<p>　　<a href="https://blog.csdn.net/dcb_ripple/article/details/52175842" title="js中的Image对象" target="_blank" rel="noopener">详细用法请见</a><br>　　<a href="http://www.jb51.net/article/43507.htm" title="js中Image对象以及对其预加载处理示例" target="_blank" rel="noopener">预加载的简便理解</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-一些零星的JS，CSS知识" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">

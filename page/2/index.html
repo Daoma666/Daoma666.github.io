@@ -270,6 +270,69 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-阻止事件的一些操作" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/04/14/阻止事件的一些操作/" class="article-date">
+      <time datetime="2018-04-14T03:45:12.000Z" itemprop="datePublished">2018-04-14</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/04/14/阻止事件的一些操作/">阻止事件的一些操作</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="阻止事件冒泡或捕获"><a href="#阻止事件冒泡或捕获" class="headerlink" title="阻止事件冒泡或捕获"></a>阻止事件冒泡或捕获</h2><p>　　有时会遇到如下情况，本元素和父层元素都有事件，但我们只想要本元素事件激活，即要阻止事件冒泡<br>HTML:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">		&lt;title&gt;&lt;/title&gt;</span><br><span class="line">		</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;button onclick=<span class="string">"clickBtn(event)"</span>&gt;Push Me&lt;/button&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">	&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">		document.onclick=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">			alert(<span class="string">"body"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">function</span> clickBtn(event)&#123;</span><br><span class="line">			event= event ? event : window.event;</span><br><span class="line">			alert(<span class="string">"button"</span>);</span><br><span class="line">			event.stopPropagation();</span><br><span class="line">			//event.cancelBubble=<span class="literal">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="cancelBubble"><a href="#cancelBubble" class="headerlink" title="cancelBubble"></a>cancelBubble</h3><p>　　cancelBubble原本是IE独有，经测试发现它也可以在Chrome和Firefox中阻止冒泡，那是因为人家Chrome，Firefox 考虑周到，提供了这么一种可选的方式。 但是，cancelBubble已经不在标准中了，相信迟早它们会移除这一特性的。</p>
+<h3 id="DOM的stopPropagation-方法"><a href="#DOM的stopPropagation-方法" class="headerlink" title="DOM的stopPropagation()方法"></a>DOM的stopPropagation()方法</h3><p>　　这是DOM层次的方法，用于立即停止事件在DOM层次中的传播，即取消进一步的事件捕获或冒泡。两者的区别为：<br>　　IE不支持事件捕获，因而只能取消事件冒泡，但stopPropagation()可以同时取消事件捕获和冒泡。</p>
+<h2 id="阻止事件默认行为"><a href="#阻止事件默认行为" class="headerlink" title="阻止事件默认行为"></a>阻止事件默认行为</h2><p>　　下面是一个阻止右键菜单栏事件的小程序<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">	document.oncontextmenu=<span class="keyword">function</span>(event)&#123;</span><br><span class="line">		event= event ? event : window.event;</span><br><span class="line">		/*下面这三种方法都可以*/</span><br><span class="line">		//event.preventDefault();</span><br><span class="line">		//event.returnValue=<span class="literal">false</span>;</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="returnValue-false"><a href="#returnValue-false" class="headerlink" title="returnValue=false"></a>returnValue=false</h3><p>　　也是原本IE的方法，它也可以在它也可以在Chrome和Firefox中阻止事件默认行为。</p>
+<h3 id="DOM的preventDefault-方法"><a href="#DOM的preventDefault-方法" class="headerlink" title="DOM的preventDefault()方法"></a>DOM的preventDefault()方法</h3><p>　　简单直观，直接阻止默认的行为，可以用在多个情况。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-变量提升" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -305,7 +368,7 @@
 <p>　　<br>　　下面我们就来整理一下变量提升：</p>
 <h4 id="1-我是变量声明，我会被提升在作用域顶端！"><a href="#1-我是变量声明，我会被提升在作用域顶端！" class="headerlink" title="1.我是变量声明，我会被提升在作用域顶端！"></a>1.我是变量声明，我会被提升在作用域顶端！</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a;</span><br></pre></td></tr></table></figure>
 <h4 id="2-我是变量定义，我的声明部分会被提升，赋值部分不会被提升！"><a href="#2-我是变量定义，我的声明部分会被提升，赋值部分不会被提升！" class="headerlink" title="2.我是变量定义，我的声明部分会被提升，赋值部分不会被提升！"></a>2.我是变量定义，我的声明部分会被提升，赋值部分不会被提升！</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var b=<span class="string">"test"</span>;</span><br></pre></td></tr></table></figure>
-<h4 id="3-我是函数定义，或者叫我函数表达式。其实我就是变量定义，只不过恰好被赋值的类型是函数，所以也只提升变量名，不提升函数值！"><a href="#3-我是函数定义，或者叫我函数表达式。其实我就是变量定义，只不过恰好被赋值的类型是函数，所以也只提升变量名，不提升函数值！" class="headerlink" title="3.我是函数定义，或者叫我函数表达式。其实我就是变量定义，只不过恰好被赋值的类型是函数，所以也只提升变量名，不提升函数值！"></a>3.我是函数定义，或者叫我函数表达式。其实我就是变量定义，只不过恰好被赋值的类型是函数，所以也只提升变量名，不提升函数值！</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var c=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	console.log(<span class="string">"test"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-我是函数定义，或者叫我函数表达式。其实我就是变量定义，只不过恰好被赋值的类型是函数，所以也只提升变量名-即提升声明部分-，不提升函数值！"><a href="#3-我是函数定义，或者叫我函数表达式。其实我就是变量定义，只不过恰好被赋值的类型是函数，所以也只提升变量名-即提升声明部分-，不提升函数值！" class="headerlink" title="3.我是函数定义，或者叫我函数表达式。其实我就是变量定义，只不过恰好被赋值的类型是函数，所以也只提升变量名(即提升声明部分)，不提升函数值！"></a>3.我是函数定义，或者叫我函数表达式。其实我就是变量定义，只不过恰好被赋值的类型是函数，所以也只提升变量名(即提升声明部分)，不提升函数值！</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var c=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	console.log(<span class="string">"test"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="4-我是函数声明，所以我全部被提升了，包括函数名和函数体。另外，我的优先级比变量声明要高，名字和我相同的变量声明会被忽略！"><a href="#4-我是函数声明，所以我全部被提升了，包括函数名和函数体。另外，我的优先级比变量声明要高，名字和我相同的变量声明会被忽略！" class="headerlink" title="4.我是函数声明，所以我全部被提升了，包括函数名和函数体。另外，我的优先级比变量声明要高，名字和我相同的变量声明会被忽略！"></a>4.我是函数声明，所以我全部被提升了，包括函数名和函数体。另外，我的优先级比变量声明要高，名字和我相同的变量声明会被忽略！</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">d</span></span>()&#123;</span><br><span class="line">	console.log(<span class="string">"test"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>　　最后再补充一点，因为JS虽然有函数作用域，但没有块作用域，即函数中的参数和变量在函数外部是不可见的，而在一个函数内部任何位置定义的变量，在该函数内部任何地方都可见。</p>
 
@@ -810,6 +873,7 @@
 <h3 id="②常用的限定符-表示它前面的字符重复的次数"><a href="#②常用的限定符-表示它前面的字符重复的次数" class="headerlink" title="②常用的限定符 (表示它前面的字符重复的次数)"></a>②常用的限定符 (表示它前面的字符重复的次数)</h3><p>　　代码　　说明<br>　　*    　　重复零次或更多次<br>　　+    　　重复一次或更多次<br>　　?    　　重复零次或一次<br>　　{n}　　重复n次<br>　　{n,}　　重复n次或更多次<br>　　{n,m}    　重复n到m次</p>
 <p>　　(?0\d{2}[) -]?\d{8}　　首先是一个转义字符(,它能出现0次或1次(?),然后是一个0，后面跟着2个数字(\d{2})，然后是)或-或空格中的一个，它出现0次或1次(?)，最后是8个数字(\d{8})。</p>
 <h3 id="③字符范围"><a href="#③字符范围" class="headerlink" title="③字符范围"></a>③字符范围</h3><p>　　代码　　说明<br>　　[]　　　　匹配方括号中任意字符<br>　　[0-9]　　代表的含意与\d就是完全一致的：匹配任意一位数字</p>
+<p>　　注意在字符范围中有很多元字符不需要转义，可以代表自身，如.?+等。常见在[]内需要转义的有<strong>\和]和-</strong></p>
 <h3 id="④分枝条件"><a href="#④分枝条件" class="headerlink" title="④分枝条件"></a>④分枝条件</h3><p>　　代码　　说明<br>　　|　　　　匹配分枝条件时，将会从左到右地测试每个条件，如果满足了某个分枝的话，就不会去再管其它的条件了。<br>　　<br>　　\d{5}-\d{4}|\d{5}　　这个表达式用于匹配美国的邮政编码。美国邮编的规则是5位数字，或者用连字号间隔的9位数字。之所以要给出这个例子是因为它能说明一个问题：<strong>使用分枝条件时，要注意各个条件的顺序</strong>。如果你把它改成\d{5}|\d{5}-\d{4}的话，那么就只会匹配5位的邮编(以及9位邮编的前5位)。</p>
 <h3 id="⑤分组"><a href="#⑤分组" class="headerlink" title="⑤分组"></a>⑤分组</h3><p>　　代码　　说明<br>　　()　　重复单个字符,直接在字符后面加上限定符就行了；但如果想要重复多个字符又该怎么办？你可以用小括号来指定子表达式(也叫做分组)，然后你就可以指定这个子表达式的重复次数了</p>
 <p>　　(\d{1,3}.){3}\d{1,3}　　是一个简单的IP地址匹配表达式。  \d{1,3}匹配1到3位的数字，(\d{1,3}.){3}匹配三位数字加上一个英文句号(这个整体也就是这个分组)重复3次，最后再加上一个一到三位的数字(\d{1,3})。</p>
@@ -819,69 +883,7 @@
 <h3 id="⑥反义"><a href="#⑥反义" class="headerlink" title="⑥反义"></a>⑥反义</h3><p>　　代码/语法    说明<br>　　\W　　　　匹配任意不是字母，数字，下划线，汉字的字符<br>　　\S　　　　匹配任意不是空白符的字符<br>　　\D　　　　匹配任意非数字的字符<br>　　\B　　　　匹配不是单词开头或结束的位置<br>　　[^x]　　　　匹配除了x以外的任意字符<br>　　[^aeiou]　　　　匹配除了aeiou这几个字母以外的任意字符</p>
 <p>　　&lt;a[^&gt;]+&gt;　　匹配用尖括号括起来的以a开头的字符串。</p>
 <h3 id="⑦零宽断言"><a href="#⑦零宽断言" class="headerlink" title="⑦零宽断言"></a>⑦零宽断言</h3><h2 id="JS中有两种方式创建正则表达式对象-eg-下面创建一个匹配字符串的正则表达式对象"><a href="#JS中有两种方式创建正则表达式对象-eg-下面创建一个匹配字符串的正则表达式对象" class="headerlink" title="JS中有两种方式创建正则表达式对象,eg:下面创建一个匹配字符串的正则表达式对象"></a>JS中有两种方式创建正则表达式对象,eg:下面创建一个匹配字符串的正则表达式对象</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//一、正则表达式字面量方法</span><br><span class="line">var my_regexp1=/<span class="string">"(?:\\.|[^\\\"])*"</span>/g;</span><br><span class="line">//二、RegExp构造器方法(此时有两个阶段，先经过字符串的转义，然后再经过正则表达式的转义，所以经常需要双反斜杠进行转义)</span><br><span class="line">var my_regexp2=new RegExp(<span class="string">"\"(?:\\\\.|[^\\\\\\\"])*"</span>,<span class="string">"g"</span>);</span><br><span class="line">document.writeln(my_regexp1.exec(<span class="string">'"Daoma is 666"'</span>)[0]);</span><br><span class="line">document.writeln(my_regexp2.exec(<span class="string">'"Daoma "is 666"'</span>)[0]);</span><br></pre></td></tr></table></figure>
-<p>　　其它具体请参考：<a href="http://www.jb51.net/tools/zhengze.html" title="快速入门正则表达式" target="_blank" rel="noopener">快速入门正则表达式</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-加载图片的小技巧" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2018/03/31/加载图片的小技巧/" class="article-date">
-      <time datetime="2018-03-31T12:07:52.000Z" itemprop="datePublished">2018-03-31</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/03/31/加载图片的小技巧/">加载图片的小技巧</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="image的onload事件和complete属性"><a href="#image的onload事件和complete属性" class="headerlink" title="image的onload事件和complete属性"></a>image的onload事件和complete属性</h2><p>　　在做一个”鼠标移过，修改图片路径”作业的时候，想要附加一个功能：即图片不能显示的话，就给把该图片设置为一个替代的loading图片。<br>HTML:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;li class=<span class="string">"first"</span>&gt;</span><br><span class="line">	&lt;img src=<span class="string">"img/big_1.jpg"</span>&gt;</span><br><span class="line">	&lt;div id=<span class="string">"loading"</span> style=<span class="string">"display: none;"</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;/li&gt;</span><br></pre></td></tr></table></figure></p>
-<p>JS:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(var i=1;i&lt;oImg.length;i++)&#123;</span><br><span class="line">	oImg[i].onmousemove=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		var img=new Image();</span><br><span class="line">		img.src=oImg[0].src=this.src.replace(/small/,<span class="string">"big"</span>);</span><br><span class="line">		loading.style.display=<span class="string">"block"</span>;</span><br><span class="line">		img.complete?loading.style.display=<span class="string">"none"</span>:oImg[0].onload=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">			loading.style.display=<span class="string">"none"</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>　　在这里我们可以<strong>用complete来判断图片是否加载完毕</strong>，如果加载完毕，则把loading图片所在的那层隐藏掉。<br>　　如果未加载完毕或遇到错误，则执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">oImg[0].onload=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	loading.style.display=<span class="string">"none"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>　　这里<strong>onload事件表示等图片加载完成后要进行的操作</strong>，所以接着上面的逻辑，则可以当图片加载完毕后再把loading图片所在层隐藏，若是图片出现错误，则会一直显示loading图片。</p>
-<p>　　大家可以注意到，代码里使用了<strong>new Image()</strong>方法做图片预加载,用没有挂载到dom树上的img对象请求图片。请求成功后图片会被缓存，这时再给真实img元素的src赋值就可以直接使用缓存的图片了,优点是可以加快页面渲染速度。但只可惜我现在才疏学浅，并没看懂在该例中有啥用。。。<br>　　<a href="https://blog.csdn.net/dcb_ripple/article/details/52175842,&quot;js 中的Image对象&quot;" target="_blank" rel="noopener">详细用法请见</a><br>　　<a href="http://www.jb51.net/article/43507.htm,&quot;js中Image对象以及对其预加载处理示例&quot;" target="_blank" rel="noopener">预加载的简便理解</a></p>
+<p>　　其它具体请参考：<a href="http://www.jb51.net/tools/zhengze.html" title="快速入门正则表达式" target="_blank" rel="noopener">快速入门正则表达式</a><br>　　有人推荐看看《精通正则表达式》一书，我等着看看再说</p>
 
       
     </div>

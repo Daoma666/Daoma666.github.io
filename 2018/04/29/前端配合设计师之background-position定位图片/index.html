@@ -9,16 +9,16 @@
   
   <title>前端配合设计师之background-position定位图片 | 岛马的主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##前端配合设计师之background-position定位图片 　　我们经常遇到UI设计师把同一类部件的小图片都放在一张图片里的情况，小图片就是整图分割后的各个部分，把各个部分放在一张图片上，而不是是分别存储成单独的图片，其目的就是要减少http请求次数，节省时间和带宽。对于我们前端来说，就是要把对应的小图片应用到适当的位置，这里就需要background-position属性。 　　这里需要">
+  <meta name="description" content="前端配合设计师之background-position定位图片　　我们经常遇到UI设计师把同一类部件的小图片都放在一张图片里的情况，小图片就是整图分割后的各个部分，把各个部分放在一张图片上，而不是是分别存储成单独的图片，其目的就是要减少http请求次数，节省时间和带宽。对于我们前端来说，就是要把对应的小图片应用到适当的位置，这里就需要background-position属性。 　　这里需要搞清楚">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端配合设计师之background-position定位图片">
 <meta property="og:url" content="http://yoursite.com/2018/04/29/前端配合设计师之background-position定位图片/index.html">
 <meta property="og:site_name" content="岛马的主页">
-<meta property="og:description" content="##前端配合设计师之background-position定位图片 　　我们经常遇到UI设计师把同一类部件的小图片都放在一张图片里的情况，小图片就是整图分割后的各个部分，把各个部分放在一张图片上，而不是是分别存储成单独的图片，其目的就是要减少http请求次数，节省时间和带宽。对于我们前端来说，就是要把对应的小图片应用到适当的位置，这里就需要background-position属性。 　　这里需要">
-<meta property="og:updated_time" content="2018-04-29T02:55:05.060Z">
+<meta property="og:description" content="前端配合设计师之background-position定位图片　　我们经常遇到UI设计师把同一类部件的小图片都放在一张图片里的情况，小图片就是整图分割后的各个部分，把各个部分放在一张图片上，而不是是分别存储成单独的图片，其目的就是要减少http请求次数，节省时间和带宽。对于我们前端来说，就是要把对应的小图片应用到适当的位置，这里就需要background-position属性。 　　这里需要搞清楚">
+<meta property="og:updated_time" content="2018-04-30T03:32:56.078Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端配合设计师之background-position定位图片">
-<meta name="twitter:description" content="##前端配合设计师之background-position定位图片 　　我们经常遇到UI设计师把同一类部件的小图片都放在一张图片里的情况，小图片就是整图分割后的各个部分，把各个部分放在一张图片上，而不是是分别存储成单独的图片，其目的就是要减少http请求次数，节省时间和带宽。对于我们前端来说，就是要把对应的小图片应用到适当的位置，这里就需要background-position属性。 　　这里需要">
+<meta name="twitter:description" content="前端配合设计师之background-position定位图片　　我们经常遇到UI设计师把同一类部件的小图片都放在一张图片里的情况，小图片就是整图分割后的各个部分，把各个部分放在一张图片上，而不是是分别存储成单独的图片，其目的就是要减少http请求次数，节省时间和带宽。对于我们前端来说，就是要把对应的小图片应用到适当的位置，这里就需要background-position属性。 　　这里需要搞清楚">
   
     <link rel="alternative" href="/atom.xml" title="岛马的主页" type="application/atom+xml">
   
@@ -305,16 +305,21 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>##前端配合设计师之background-position定位图片</p>
-<p>　　我们经常遇到UI设计师把同一类部件的小图片都放在一张图片里的情况，小图片就是整图分割后的各个部分，把各个部分放在一张图片上，而不是是分别存储成单独的图片，其目的就是要<strong>减少http请求次数，节省时间和带宽</strong>。对于我们前端来说，就是要把对应的小图片应用到适当的位置，这里就需要background-position属性。</p>
+        <h2 id="前端配合设计师之background-position定位图片"><a href="#前端配合设计师之background-position定位图片" class="headerlink" title="前端配合设计师之background-position定位图片"></a>前端配合设计师之background-position定位图片</h2><p>　　我们经常遇到UI设计师把同一类部件的小图片都放在一张图片里的情况，小图片就是整图分割后的各个部分，把各个部分放在一张图片上，而不是是分别存储成单独的图片，其目的就是要<strong>减少http请求次数，节省时间和带宽</strong>。对于我们前端来说，就是要把对应的小图片应用到适当的位置，这里就需要background-position属性。</p>
 <p>　　这里需要搞清楚关于定位的一些东西：</p>
-<p>1、两个值前面一个是横向的定位，我们称为x轴方向定位。后面一个值是纵向的定位，我们称为y轴方向定位。如果只有一个值，那默认的就是x轴方向，这时y轴方向就默认的是上下居中对齐，也就是center。</p>
-<h4 id="2、坐标轴的原点就是对应容器的“左上角”。"><a href="#2、坐标轴的原点就是对应容器的“左上角”。" class="headerlink" title="2、坐标轴的原点就是对应容器的“左上角”。"></a>2、坐标轴的原点就是对应容器的“左上角”。</h4><p>3、这个坐标的y轴箭头朝下，也就是右下方（容器内部）x y的值才都为正。</p>
-<p>4、x y值分别表示背景图片的左顶点相对于坐标原点（也就是容器的左顶点）的值。</p>
-<p>5、x y的值可以用百分比或者px来表示。</p>
-<h4 id="6、x-y也可以用“left、right、top、bottom、center”这五个对齐方式来表示，但注意：用“left、right、top、bottom、center”来表示的时候，“应用的是对齐规则，而不是坐标规则”。x为left是表示图片的左边和容器的左边对齐，为right的时候表示图片的右边和容器的右边对其，y为top的时候表示图片的顶部和容器的顶部对齐，为bottom时表示图片的底部和容器的底部对齐，x-y等于center的时候表示居中对齐。"><a href="#6、x-y也可以用“left、right、top、bottom、center”这五个对齐方式来表示，但注意：用“left、right、top、bottom、center”来表示的时候，“应用的是对齐规则，而不是坐标规则”。x为left是表示图片的左边和容器的左边对齐，为right的时候表示图片的右边和容器的右边对其，y为top的时候表示图片的顶部和容器的顶部对齐，为bottom时表示图片的底部和容器的底部对齐，x-y等于center的时候表示居中对齐。" class="headerlink" title="6、x y也可以用“left、right、top、bottom、center”这五个对齐方式来表示，但注意：用“left、right、top、bottom、center”来表示的时候，“应用的是对齐规则，而不是坐标规则”。x为left是表示图片的左边和容器的左边对齐，为right的时候表示图片的右边和容器的右边对其，y为top的时候表示图片的顶部和容器的顶部对齐，为bottom时表示图片的底部和容器的底部对齐，x y等于center的时候表示居中对齐。"></a>6、x y也可以用“left、right、top、bottom、center”这五个对齐方式来表示，但注意：用“left、right、top、bottom、center”来表示的时候，“应用的是对齐规则，而不是坐标规则”。x为left是表示图片的左边和容器的左边对齐，为right的时候表示图片的右边和容器的右边对其，y为top的时候表示图片的顶部和容器的顶部对齐，为bottom时表示图片的底部和容器的底部对齐，x y等于center的时候表示居中对齐。</h4><p>7、x y用百分比或者px表示的时候，其值可以为负数。我们应用坐标规则就很容易理解负数表示的意义，x为负数时候表示图片左顶点在容器左顶点的左侧，y为负数时表示图片的左顶点在容器的左定点的上方。也就是向左和向上超出容器的范围。</p>
-<p>　　例子为制作图片轮播时左右backward和forward的图片，去看一下就懂了。</p>
-<p>　　更多相关内容请参考,<a href="http://crazier9527.iteye.com/blog/715544" title="利用CSS定位背景图片 background-position" target="_blank" rel="noopener">利用CSS定位背景图片 background-position</a></p>
+<p>1.两个值前面一个是横向的定位，我们称为x轴方向定位。后面一个值是纵向的定位，我们称为y轴方向定位。<strong>如果只有一个值，那默认的就是x轴方向，这时y轴方向就默认的是上下居中对齐，也就是center</strong>。</p>
+<h4 id="2-背景图片定位的坐标原点就是对应容器元素的“左上角”，即元素padding的外边缘。（这个值可以通过background-origin进行定义）"><a href="#2-背景图片定位的坐标原点就是对应容器元素的“左上角”，即元素padding的外边缘。（这个值可以通过background-origin进行定义）" class="headerlink" title="2.背景图片定位的坐标原点就是对应容器元素的“左上角”，即元素padding的外边缘。（这个值可以通过background-origin进行定义）"></a>2.背景图片定位的坐标原点就是对应容器元素的“左上角”，即元素padding的外边缘。（这个值可以通过background-origin进行定义）</h4><h4 id="3-x-y值分别表示背景图片的左上角顶点相对于坐标原点（也就是容器的左顶点）的值。"><a href="#3-x-y值分别表示背景图片的左上角顶点相对于坐标原点（也就是容器的左顶点）的值。" class="headerlink" title="3.x y值分别表示背景图片的左上角顶点相对于坐标原点（也就是容器的左顶点）的值。"></a>3.x y值分别表示背景图片的左上角顶点相对于坐标原点（也就是容器的左顶点）的值。</h4><p>4.x y的值可以用px或百分比来表示。</p>
+<h4 id="5-当x-y用百分比单位时，其表现与CSS中其他的百分比单位表现都不一样。"><a href="#5-当x-y用百分比单位时，其表现与CSS中其他的百分比单位表现都不一样。" class="headerlink" title="5.当x y用百分比单位时，其表现与CSS中其他的百分比单位表现都不一样。"></a>5.当x y用百分比单位时，其表现与CSS中其他的百分比单位表现都不一样。</h4><p>　　比如一个图片：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">img &#123; position: absolute; left: 100%; &#125;</span><br></pre></td></tr></table></figure></p>
+<p>　　一定是在容器外部，但像background-position:100% 100%就是定位在容器内的右下角。</p>
+<p>　　那background-position百分比表示的背景图片的左上角顶点对应的容器坐标位置该如何计算呢？</p>
+<p>　　具体公式为：</p>
+<h5 id="positionX-容器的宽度-图片的宽度-percentX"><a href="#positionX-容器的宽度-图片的宽度-percentX" class="headerlink" title="positionX = (容器的宽度-图片的宽度) * percentX;"></a>positionX = (容器的宽度-图片的宽度) * percentX;</h5><h5 id="positionY-容器的高度-图片的高度-percentY"><a href="#positionY-容器的高度-图片的高度-percentY" class="headerlink" title="positionY = (容器的高度-图片的高度) * percentY;"></a>positionY = (容器的高度-图片的高度) * percentY;</h5><p>　　然后这样算出来的positionX和positionY就是相对于上面第三条结论的x和y，这就不难懂为什么background-position:100% 100%就是定位在容器内的右下角了吧。</p>
+<p>6、x y也可以用“left、right、top、bottom、center”这五个关键字来表示，但注意：用“left、right、top、bottom、center”来表示的时候，“应用的是对齐规则，而不是坐标规则”。x为left是表示图片的左边和容器的左边对齐，为right的时候表示图片的右边和容器的右边对齐，y为top的时候表示图片的顶部和容器的顶部对齐，为bottom时表示图片的底部和容器的底部对齐，x y等于center的时候表示居中对齐。</p>
+<p>7、x y用百分比或者px表示的时候，其值可以为负数。我们应用坐标规则就很容易理解负数表示的意义，x为负数时候表示图片左顶点在容器左顶点的左侧，y为负数时表示图片的左顶点在容器的左定点的上方。也就是向左和向上超出容器的范围。</p>
+<h5 id="但是这里要注意，有的情况下用百分比的负数时并不会像你想的那样向左和向上超出容器的范围，因为第5条中介绍的百分比定位规则，就算你"><a href="#但是这里要注意，有的情况下用百分比的负数时并不会像你想的那样向左和向上超出容器的范围，因为第5条中介绍的百分比定位规则，就算你" class="headerlink" title="但是这里要注意，有的情况下用百分比的负数时并不会像你想的那样向左和向上超出容器的范围，因为第5条中介绍的百分比定位规则，就算你"></a>但是这里要注意，有的情况下用百分比的负数时并不会像你想的那样向左和向上超出容器的范围，因为第5条中介绍的百分比定位规则，就算你</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background-position: -50% -50%;</span><br></pre></td></tr></table></figure>
+<p>　　图片会像background-position: 40px 10px;一样定位在容器内部，此时就可能是你<strong>图片的长度大于容器的长度</strong>导致的，因为此时：</p>
+<h5 id="positionX-容器的宽度-图片的宽度-50-的结果是个正值"><a href="#positionX-容器的宽度-图片的宽度-50-的结果是个正值" class="headerlink" title="positionX = (容器的宽度-图片的宽度) * -50% 的结果是个正值"></a>positionX = (容器的宽度-图片的宽度) * -50% 的结果是个正值</h5><h5 id="positionY-容器的高度-图片的高度-50-的结果也是个正值"><a href="#positionY-容器的高度-图片的高度-50-的结果也是个正值" class="headerlink" title="positionY = (容器的高度-图片的高度) * -50% 的结果也是个正值"></a>positionY = (容器的高度-图片的高度) * -50% 的结果也是个正值</h5><p>　　所以就不难理解为什么会出现像background-position: 40px 10px;这样的效果了。</p>
+<p>　　详细请参考：<a href="http://www.zhangxinxu.com/wordpress/2015/03/background-object-position-value-percent/" title="CSS &lt;position&gt;值简介理解background百分比定位" target="_blank" rel="noopener">background百分比定位<position>值简介</position></a></p>
 
       
     </div>
@@ -326,7 +331,7 @@
         <p><span>本文标题:</span><a  href="/2018/04/29/前端配合设计师之background-position定位图片/">前端配合设计师之background-position定位图片</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 岛马 的个人博客">岛马</a></p>
         <p><span>发布时间:</span>2018年04月29日 - 10时54分</p>
-        <p><span>最后更新:</span>2018年04月29日 - 10时55分</p>
+        <p><span>最后更新:</span>2018年04月30日 - 11时32分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/04/29/前端配合设计师之background-position定位图片/" title="前端配合设计师之background-position定位图片">http://yoursite.com/2018/04/29/前端配合设计师之background-position定位图片/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/04/29/前端配合设计师之background-position定位图片/　　作者: 岛马" title=""></span>
@@ -339,6 +344,15 @@
 
 
 <nav id="article-nav">
+  
+    <a  href="/2018/04/30/CSS属性值的百分比/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          CSS属性值的百分比
+        
+      </div>
+    </a>
   
   
     <a  href="/2018/04/25/JS中sort方法详解/" id="article-nav-older" class="article-nav-link-wrap">
@@ -354,7 +368,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#2、坐标轴的原点就是对应容器的“左上角”。"><span class="toc-number">1.</span> <span class="toc-text">2、坐标轴的原点就是对应容器的“左上角”。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6、x-y也可以用“left、right、top、bottom、center”这五个对齐方式来表示，但注意：用“left、right、top、bottom、center”来表示的时候，“应用的是对齐规则，而不是坐标规则”。x为left是表示图片的左边和容器的左边对齐，为right的时候表示图片的右边和容器的右边对其，y为top的时候表示图片的顶部和容器的顶部对齐，为bottom时表示图片的底部和容器的底部对齐，x-y等于center的时候表示居中对齐。"><span class="toc-number">2.</span> <span class="toc-text">6、x y也可以用“left、right、top、bottom、center”这五个对齐方式来表示，但注意：用“left、right、top、bottom、center”来表示的时候，“应用的是对齐规则，而不是坐标规则”。x为left是表示图片的左边和容器的左边对齐，为right的时候表示图片的右边和容器的右边对其，y为top的时候表示图片的顶部和容器的顶部对齐，为bottom时表示图片的底部和容器的底部对齐，x y等于center的时候表示居中对齐。</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前端配合设计师之background-position定位图片"><span class="toc-number">1.</span> <span class="toc-text">前端配合设计师之background-position定位图片</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-背景图片定位的坐标原点就是对应容器元素的“左上角”，即元素padding的外边缘。（这个值可以通过background-origin进行定义）"><span class="toc-number">1.0.1.</span> <span class="toc-text">2.背景图片定位的坐标原点就是对应容器元素的“左上角”，即元素padding的外边缘。（这个值可以通过background-origin进行定义）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-x-y值分别表示背景图片的左上角顶点相对于坐标原点（也就是容器的左顶点）的值。"><span class="toc-number">1.0.2.</span> <span class="toc-text">3.x y值分别表示背景图片的左上角顶点相对于坐标原点（也就是容器的左顶点）的值。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-当x-y用百分比单位时，其表现与CSS中其他的百分比单位表现都不一样。"><span class="toc-number">1.0.3.</span> <span class="toc-text">5.当x y用百分比单位时，其表现与CSS中其他的百分比单位表现都不一样。</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#positionX-容器的宽度-图片的宽度-percentX"><span class="toc-number">1.0.3.1.</span> <span class="toc-text">positionX = (容器的宽度-图片的宽度) * percentX;</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#positionY-容器的高度-图片的高度-percentY"><span class="toc-number">1.0.3.2.</span> <span class="toc-text">positionY = (容器的高度-图片的高度) * percentY;</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#但是这里要注意，有的情况下用百分比的负数时并不会像你想的那样向左和向上超出容器的范围，因为第5条中介绍的百分比定位规则，就算你"><span class="toc-number">1.0.3.3.</span> <span class="toc-text">但是这里要注意，有的情况下用百分比的负数时并不会像你想的那样向左和向上超出容器的范围，因为第5条中介绍的百分比定位规则，就算你</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#positionX-容器的宽度-图片的宽度-50-的结果是个正值"><span class="toc-number">1.0.3.4.</span> <span class="toc-text">positionX = (容器的宽度-图片的宽度) * -50% 的结果是个正值</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#positionY-容器的高度-图片的高度-50-的结果也是个正值"><span class="toc-number">1.0.3.5.</span> <span class="toc-text">positionY = (容器的高度-图片的高度) * -50% 的结果也是个正值</span></a></li></ol></li></ol></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -425,7 +439,9 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a  href="/2018/04/30/CSS属性值的百分比/" title="上一篇: CSS属性值的百分比">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
@@ -434,7 +450,7 @@
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/04/29/前端配合设计师之background-position定位图片/">前端配合设计师之background-position定位图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/25/JS中sort方法详解/">JS中sort方法详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/24/label标签和任意高度元素展开收起的骚操作/">label标签和任意高度元素展开收起的骚操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/21/CSS特殊的按钮闪烁效果/">CSS特殊的按钮闪烁效果</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/18/JS中的apply-使用详解/">JS中的apply()使用详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/18/闭包与模仿块作用域/">闭包与模仿块作用域</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/18/函数柯里化/">函数柯里化</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/15/秒懂汉诺塔原理函数递归/">秒懂汉诺塔原理函数递归</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/15/JS中的取整/">JS中的取整</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/14/阻止事件的一些操作/">阻止事件的一些操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/14/变量提升/">变量提升</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/11/text-indent-9999px-作用/">text-indent: -9999px;作用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/11/offsetLeft和style-left/">offsetLeft和style.left</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/10/JS清空数组的方法/">JS清空数组的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/07/内联元素和块元素/">内联元素和块元素</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/07/定位与浮动/">定位与浮动</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/06/JS中style-currentStyle和getComputedStyle的区别以及获取css操作方法/">JS中style,currentStyle和getComputedStyle的区别以及获取css操作方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/03/网页导航栏小技巧/">网页导航栏小技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/02/正则表达式摸门把级整理/">正则表达式摸门把级整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/31/加载图片的小技巧/">加载图片的小技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/27/一些零星的JS，CSS知识/">一些零星的JS，CSS知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/26/JS-for-in语句的使用/">JS for-in语句的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/26/CSS-使用overflow-hidden清除浮动/">CSS 使用overflow:hidden清除浮动</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/25/JS中-和-的奇怪用法/">JS中&&和||的奇怪用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/25/A-Front-end-newbie/">A Front-end newbie</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/24/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/04/30/CSS属性值的百分比/">CSS属性值的百分比</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/29/前端配合设计师之background-position定位图片/">前端配合设计师之background-position定位图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/25/JS中sort方法详解/">JS中sort方法详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/24/label标签和任意高度元素展开收起的骚操作/">label标签和任意高度元素展开收起的骚操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/21/CSS特殊的按钮闪烁效果/">CSS特殊的按钮闪烁效果</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/18/JS中的apply-使用详解/">JS中的apply()使用详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/18/闭包与模仿块作用域/">闭包与模仿块作用域</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/18/函数柯里化/">函数柯里化</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/15/秒懂汉诺塔原理函数递归/">秒懂汉诺塔原理函数递归</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/15/JS中的取整/">JS中的取整</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/14/阻止事件的一些操作/">阻止事件的一些操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/14/变量提升/">变量提升</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/11/text-indent-9999px-作用/">text-indent: -9999px;作用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/11/offsetLeft和style-left/">offsetLeft和style.left</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/10/JS清空数组的方法/">JS清空数组的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/07/内联元素和块元素/">内联元素和块元素</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/07/定位与浮动/">定位与浮动</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/06/JS中style-currentStyle和getComputedStyle的区别以及获取css操作方法/">JS中style,currentStyle和getComputedStyle的区别以及获取css操作方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/03/网页导航栏小技巧/">网页导航栏小技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/02/正则表达式摸门把级整理/">正则表达式摸门把级整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/31/预加载图片的小技巧/">预加载图片的小技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/27/一些零星的JS，CSS知识/">一些零星的JS，CSS知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/26/JS-for-in语句的使用/">JS for-in语句的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/26/CSS-使用overflow-hidden清除浮动/">CSS 使用overflow:hidden清除浮动</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/25/JS中-和-的奇怪用法/">JS中&&和||的奇怪用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/25/A-Front-end-newbie/">A Front-end newbie</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/24/hello-world/">Hello World</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
