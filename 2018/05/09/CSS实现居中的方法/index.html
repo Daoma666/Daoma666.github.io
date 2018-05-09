@@ -7,18 +7,18 @@
   
   
   
-  <title>网页导航栏小技巧 | 岛马的主页</title>
+  <title>CSS实现居中的方法 | 岛马的主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用li+a构建网页导航栏　　首先说一下建导航栏时使用li+a而不是直接使用li的原因：一般导航都是具有超链接功能，a标签具有这个功能，而lis标签只是罗列信息列表，不具备链接功能。　　方法：一般我们在li中指定width，float;然后在a中使用display:block;再指定width和height，让它自动填充li即可。　　具体小例子见代码：HTML：123456789101112&amp;lt">
+  <meta name="description" content="CSS实现居中的方法1.使用width和margin实现水平居中　　width指定完宽度，就可以直接margin:0 auto;实现水平居中了 2.使用text-align实现水平居中　　使内联元素居中，所以要在想居中的内联元素的父元素中使用 3.使用top,left和margin实现水平垂直的居中（但不如下面第4种方法简单）　　方法就是top: 50%;left: 50%;然后margin: -">
 <meta property="og:type" content="article">
-<meta property="og:title" content="网页导航栏小技巧">
-<meta property="og:url" content="http://yoursite.com/2018/04/03/网页导航栏小技巧/index.html">
+<meta property="og:title" content="CSS实现居中的方法">
+<meta property="og:url" content="http://yoursite.com/2018/05/09/CSS实现居中的方法/index.html">
 <meta property="og:site_name" content="岛马的主页">
-<meta property="og:description" content="使用li+a构建网页导航栏　　首先说一下建导航栏时使用li+a而不是直接使用li的原因：一般导航都是具有超链接功能，a标签具有这个功能，而lis标签只是罗列信息列表，不具备链接功能。　　方法：一般我们在li中指定width，float;然后在a中使用display:block;再指定width和height，让它自动填充li即可。　　具体小例子见代码：HTML：123456789101112&amp;lt">
-<meta property="og:updated_time" content="2018-04-05T09:08:09.094Z">
+<meta property="og:description" content="CSS实现居中的方法1.使用width和margin实现水平居中　　width指定完宽度，就可以直接margin:0 auto;实现水平居中了 2.使用text-align实现水平居中　　使内联元素居中，所以要在想居中的内联元素的父元素中使用 3.使用top,left和margin实现水平垂直的居中（但不如下面第4种方法简单）　　方法就是top: 50%;left: 50%;然后margin: -">
+<meta property="og:updated_time" content="2018-05-09T03:12:00.804Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="网页导航栏小技巧">
-<meta name="twitter:description" content="使用li+a构建网页导航栏　　首先说一下建导航栏时使用li+a而不是直接使用li的原因：一般导航都是具有超链接功能，a标签具有这个功能，而lis标签只是罗列信息列表，不具备链接功能。　　方法：一般我们在li中指定width，float;然后在a中使用display:block;再指定width和height，让它自动填充li即可。　　具体小例子见代码：HTML：123456789101112&amp;lt">
+<meta name="twitter:title" content="CSS实现居中的方法">
+<meta name="twitter:description" content="CSS实现居中的方法1.使用width和margin实现水平居中　　width指定完宽度，就可以直接margin:0 auto;实现水平居中了 2.使用text-align实现水平居中　　使内联元素居中，所以要在想居中的内联元素的父元素中使用 3.使用top,left和margin实现水平垂直的居中（但不如下面第4种方法简单）　　方法就是top: 50%;left: 50%;然后margin: -">
   
     <link rel="alternative" href="/atom.xml" title="岛马的主页" type="application/atom+xml">
   
@@ -269,11 +269,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-网页导航栏小技巧" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-CSS实现居中的方法" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2018/04/03/网页导航栏小技巧/" class="article-date">
-      <time datetime="2018-04-03T14:24:25.000Z" itemprop="datePublished">2018-04-03</time>
+      <a  href="/2018/05/09/CSS实现居中的方法/" class="article-date">
+      <time datetime="2018-05-09T02:56:22.000Z" itemprop="datePublished">2018-05-09</time>
 </a>
 
     </div>
@@ -287,7 +287,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      网页导航栏小技巧
+      CSS实现居中的方法
     </h1>
   
 
@@ -305,9 +305,15 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="使用li-a构建网页导航栏"><a href="#使用li-a构建网页导航栏" class="headerlink" title="使用li+a构建网页导航栏"></a>使用li+a构建网页导航栏</h2><p>　　首先说一下建导航栏时使用li+a而不是直接使用li的原因：一般导航都是具有超链接功能，a标签具有这个功能，而lis标签只是罗列信息列表，不具备链接功能。<br>　　方法：一般我们在li中指定width，float;然后在a中使用display:block;再指定width和height，让它自动填充li即可。<br>　　具体小例子见代码：<br>HTML：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"nav"</span>&gt;</span><br><span class="line">	&lt;ul&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;站长之家&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;行业资讯&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;站长在线&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;网站运营&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;设计在线&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;网络编程&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;联盟资讯&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;服务器&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;/ul&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
-<p>CSS：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#nav&#123;</span></span><br><span class="line">	width: 730px;</span><br><span class="line">	margin: 20px auto;</span><br><span class="line">	border:1px solid blue;</span><br><span class="line">	background: blue;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#nav ul&#123;</span></span><br><span class="line">	list-style-type: none;</span><br><span class="line">	overflow: hidden;</span><br><span class="line">	margin-left: 10px;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#nav ul li&#123;</span></span><br><span class="line">	width: 80px;</span><br><span class="line">	<span class="built_in">float</span>: left;</span><br><span class="line">	margin-right: 10px;			</span><br><span class="line">	background: cornflowerblue;</span><br><span class="line">	cursor: pointer;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#nav ul li a&#123;</span></span><br><span class="line">	display: block;</span><br><span class="line">	width: 80px;</span><br><span class="line">	height: 30px;</span><br><span class="line">	line-height: 30px;</span><br><span class="line">	padding: 5px 0;</span><br><span class="line">	text-align: center;</span><br><span class="line">	text-decoration: none;</span><br><span class="line">	color: <span class="comment">#fff;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#nav ul li a:hover&#123;</span></span><br><span class="line">	font-weight: 700;</span><br><span class="line">	background: <span class="comment">#aaa;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>　　麻雀虽小五脏俱全啊，涵盖了很多最近学到的知识点，算是在此纪念一下吧。</p>
+        <h2 id="CSS实现居中的方法"><a href="#CSS实现居中的方法" class="headerlink" title="CSS实现居中的方法"></a>CSS实现居中的方法</h2><h4 id="1-使用width和margin实现水平居中"><a href="#1-使用width和margin实现水平居中" class="headerlink" title="1.使用width和margin实现水平居中"></a>1.使用width和margin实现水平居中</h4><p>　　width指定完宽度，就可以直接margin:0 auto;实现水平居中了</p>
+<h4 id="2-使用text-align实现水平居中"><a href="#2-使用text-align实现水平居中" class="headerlink" title="2.使用text-align实现水平居中"></a>2.使用text-align实现水平居中</h4><p>　　使内联元素居中，所以要在想居中的内联元素的父元素中使用</p>
+<h4 id="3-使用top-left和margin实现水平垂直的居中（但不如下面第4种方法简单）"><a href="#3-使用top-left和margin实现水平垂直的居中（但不如下面第4种方法简单）" class="headerlink" title="3.使用top,left和margin实现水平垂直的居中（但不如下面第4种方法简单）"></a>3.使用top,left和margin实现水平垂直的居中（但不如下面第4种方法简单）</h4><p>　　方法就是top: 50%;left: 50%;然后margin: -所在盒子宽度/2 0 0 -所在盒子高度/2;(可用于弹窗弹出到页面正中间)</p>
+<h4 id="4-使用-margin-auto-实现块级元素水平垂直的居中"><a href="#4-使用-margin-auto-实现块级元素水平垂直的居中" class="headerlink" title="4.使用 margin:auto 实现块级元素水平垂直的居中"></a>4.使用 margin:auto 实现块级元素水平垂直的居中</h4><p>HTML:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=<span class="string">"father"</span>&gt;</span><br><span class="line">    &lt;div class=<span class="string">"son"</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>CSS:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">.father &#123;</span><br><span class="line">    width: 300px; height: 150px;</span><br><span class="line">    background-color: <span class="comment">#f0f3f9;</span></span><br><span class="line">    position:relative;</span><br><span class="line">&#125;</span><br><span class="line">.son &#123; </span><br><span class="line">/*重要部分*/</span><br><span class="line">    position: absolute; </span><br><span class="line">    top: 0; right: 0; bottom: 0; left: 0;</span><br><span class="line">    margin: auto;</span><br><span class="line">/*重要部分*/</span><br><span class="line">    width: 200px; height: 100px;</span><br><span class="line">    background-color: <span class="comment">#cd0000;</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="5-使用line-height实现内联元素垂直居中"><a href="#5-使用line-height实现内联元素垂直居中" class="headerlink" title="5.使用line-height实现内联元素垂直居中"></a>5.使用line-height实现内联元素垂直居中</h4><p>　　如果该内联元素只有单行文本，那么连height都不用设置，直接设置一个line-height属性就可以。</p>
+<p>　　原理为<strong>line-height=行距+font-size</strong>，即行距的上下等分机制。具体见《CSS世界》一书中5.2.2节，其中还有多行文本或替换元素的垂直居中如何用line-height和vertical-align实现。</p>
 
       
     </div>
@@ -316,13 +322,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2018/04/03/网页导航栏小技巧/">网页导航栏小技巧</a></p>
+        <p><span>本文标题:</span><a  href="/2018/05/09/CSS实现居中的方法/">CSS实现居中的方法</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 岛马 的个人博客">岛马</a></p>
-        <p><span>发布时间:</span>2018年04月03日 - 22时24分</p>
-        <p><span>最后更新:</span>2018年04月05日 - 17时08分</p>
+        <p><span>发布时间:</span>2018年05月09日 - 10时56分</p>
+        <p><span>最后更新:</span>2018年05月09日 - 11时12分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/04/03/网页导航栏小技巧/" title="网页导航栏小技巧">http://yoursite.com/2018/04/03/网页导航栏小技巧/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/04/03/网页导航栏小技巧/　　作者: 岛马" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/05/09/CSS实现居中的方法/" title="CSS实现居中的方法">http://yoursite.com/2018/05/09/CSS实现居中的方法/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/05/09/CSS实现居中的方法/　　作者: 岛马" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -333,18 +339,9 @@
 
 <nav id="article-nav">
   
-    <a  href="/2018/04/06/JS中style-currentStyle和getComputedStyle的区别以及获取css操作方法/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          JS中style,currentStyle和getComputedStyle的区别以及获取css操作方法
-        
-      </div>
-    </a>
   
-  
-    <a  href="/2018/04/02/正则表达式摸门把级整理/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">正则表达式摸门把级整理</div>
+    <a  href="/2018/04/30/CSS属性值的百分比/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CSS属性值的百分比</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -356,7 +353,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用li-a构建网页导航栏"><span class="toc-number">1.</span> <span class="toc-text">使用li+a构建网页导航栏</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS实现居中的方法"><span class="toc-number">1.</span> <span class="toc-text">CSS实现居中的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-使用width和margin实现水平居中"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.使用width和margin实现水平居中</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-使用text-align实现水平居中"><span class="toc-number">1.0.2.</span> <span class="toc-text">2.使用text-align实现水平居中</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-使用top-left和margin实现水平垂直的居中（但不如下面第4种方法简单）"><span class="toc-number">1.0.3.</span> <span class="toc-text">3.使用top,left和margin实现水平垂直的居中（但不如下面第4种方法简单）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-使用-margin-auto-实现块级元素水平垂直的居中"><span class="toc-number">1.0.4.</span> <span class="toc-text">4.使用 margin:auto 实现块级元素水平垂直的居中</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-使用line-height实现内联元素垂直居中"><span class="toc-number">1.0.5.</span> <span class="toc-text">5.使用line-height实现内联元素垂直居中</span></a></li></ol></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -427,13 +424,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2018/04/06/JS中style-currentStyle和getComputedStyle的区别以及获取css操作方法/" title="上一篇: JS中style,currentStyle和getComputedStyle的区别以及获取css操作方法">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2018/04/02/正则表达式摸门把级整理/" title="下一篇: 正则表达式摸门把级整理">
+            <a  href="/2018/04/30/CSS属性值的百分比/" title="下一篇: CSS属性值的百分比">
                 <i class="fa fa-angle-right"></i>
             </a>
         

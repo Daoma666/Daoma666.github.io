@@ -4,12 +4,57 @@
 
     
   <url>
+    <loc>http://yoursite.com/2018/03/27/%E4%B8%80%E4%BA%9B%E9%9B%B6%E6%98%9F%E7%9A%84HTML,CSS,JS%E7%9F%A5%E8%AF%86/</loc>
+    <lastmod>2018-05-09T03:14:15.113Z</lastmod>
+    <data>
+        <display>
+        <title>一些零星的HTML,CSS,JS知识</title>
+        <pubTime>2018-03-27T11:43:45.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/05/09/CSS%E5%AE%9E%E7%8E%B0%E5%B1%85%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95/</loc>
+    <lastmod>2018-05-09T03:12:00.804Z</lastmod>
+    <data>
+        <display>
+        <title>CSS实现居中的方法</title>
+        <pubTime>2018-05-09T02:56:22.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2018/03/31/%E9%A2%84%E5%8A%A0%E8%BD%BD%E5%9B%BE%E7%89%87%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</loc>
-    <lastmod>2018-05-02T08:15:10.732Z</lastmod>
+    <lastmod>2018-05-02T08:27:28.236Z</lastmod>
     <data>
         <display>
         <title>预加载图片的小技巧</title>
         <pubTime>2018-03-31T12:07:52.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/04/30/CSS%E5%B1%9E%E6%80%A7%E5%80%BC%E7%9A%84%E7%99%BE%E5%88%86%E6%AF%94/</loc>
+    <lastmod>2018-05-02T08:26:30.554Z</lastmod>
+    <data>
+        <display>
+        <title>CSS属性值的百分比</title>
+        <pubTime>2018-04-30T01:32:10.000Z</pubTime>
         
          
            
@@ -49,21 +94,6 @@
 
     
   <url>
-    <loc>http://yoursite.com/2018/04/30/CSS%E5%B1%9E%E6%80%A7%E5%80%BC%E7%9A%84%E7%99%BE%E5%88%86%E6%AF%94/</loc>
-    <lastmod>2018-04-30T05:21:24.353Z</lastmod>
-    <data>
-        <display>
-        <title>CSS属性值的百分比</title>
-        <pubTime>2018-04-30T01:32:10.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yoursite.com/2018/04/29/%E5%89%8D%E7%AB%AF%E9%85%8D%E5%90%88%E8%AE%BE%E8%AE%A1%E5%B8%88%E4%B9%8Bbackground-position%E5%AE%9A%E4%BD%8D%E5%9B%BE%E7%89%87/</loc>
     <lastmod>2018-04-30T03:32:56.078Z</lastmod>
     <data>
@@ -85,21 +115,6 @@
         <display>
         <title>定位与浮动</title>
         <pubTime>2018-04-07T09:30:27.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2018/03/27/%E4%B8%80%E4%BA%9B%E9%9B%B6%E6%98%9F%E7%9A%84JS%EF%BC%8CCSS%E7%9F%A5%E8%AF%86/</loc>
-    <lastmod>2018-04-26T12:00:30.667Z</lastmod>
-    <data>
-        <display>
-        <title>一些零星的JS，CSS知识</title>
-        <pubTime>2018-03-27T11:43:45.000Z</pubTime>
         
          
            

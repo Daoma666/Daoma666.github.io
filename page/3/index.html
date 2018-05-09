@@ -270,6 +270,79 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-正则表达式摸门把级整理" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/04/02/正则表达式摸门把级整理/" class="article-date">
+      <time datetime="2018-04-02T12:45:27.000Z" itemprop="datePublished">2018-04-02</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/04/02/正则表达式摸门把级整理/">正则表达式摸门把级整理</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="①常用的元字符-一些有特异功能的用来方便匹配的字符"><a href="#①常用的元字符-一些有特异功能的用来方便匹配的字符" class="headerlink" title="①常用的元字符 (一些有特异功能的用来方便匹配的字符)"></a>①常用的元字符 (一些有特异功能的用来方便匹配的字符)</h3><p>　　代码　　说明<br>　　.    　　匹配除换行符以外的任意字符<br>　　\w　　匹配字母或数字或下划线或汉字<br>　　\s　　匹配任意的空白符<br>　　\d　　匹配数字<br>　　\b　　匹配单词的开始或结束<br>　　^    　　匹配字符串的开始<br>　　$    　　匹配字符串的结束</p>
+<p>　　^\d{5,12}$　　因为使用了^和$，所以检测的整个字符串都要用来和\d{5,12}来匹配，也就是说整个字符串必须是5到12个数字。</p>
+<h3 id="②常用的限定符-表示它前面的字符重复的次数"><a href="#②常用的限定符-表示它前面的字符重复的次数" class="headerlink" title="②常用的限定符 (表示它前面的字符重复的次数)"></a>②常用的限定符 (表示它前面的字符重复的次数)</h3><p>　　代码　　说明<br>　　*    　　重复零次或更多次<br>　　+    　　重复一次或更多次<br>　　?    　　重复零次或一次<br>　　{n}　　重复n次<br>　　{n,}　　重复n次或更多次<br>　　{n,m}    　重复n到m次</p>
+<p>　　(?0\d{2}[) -]?\d{8}　　首先是一个转义字符(,它能出现0次或1次(?),然后是一个0，后面跟着2个数字(\d{2})，然后是)或-或空格中的一个，它出现0次或1次(?)，最后是8个数字(\d{8})。</p>
+<h3 id="③字符范围"><a href="#③字符范围" class="headerlink" title="③字符范围"></a>③字符范围</h3><p>　　代码　　说明<br>　　[]　　　　匹配方括号中任意字符<br>　　[0-9]　　代表的含意与\d就是完全一致的：匹配任意一位数字</p>
+<p>　　注意在字符范围中有很多元字符不需要转义，可以代表自身，如.?+等。常见在[]内需要转义的有<strong>\和]和-</strong></p>
+<h3 id="④分枝条件"><a href="#④分枝条件" class="headerlink" title="④分枝条件"></a>④分枝条件</h3><p>　　代码　　说明<br>　　|　　　　匹配分枝条件时，将会从左到右地测试每个条件，如果满足了某个分枝的话，就不会去再管其它的条件了。<br>　　<br>　　\d{5}-\d{4}|\d{5}　　这个表达式用于匹配美国的邮政编码。美国邮编的规则是5位数字，或者用连字号间隔的9位数字。之所以要给出这个例子是因为它能说明一个问题：<strong>使用分枝条件时，要注意各个条件的顺序</strong>。如果你把它改成\d{5}|\d{5}-\d{4}的话，那么就只会匹配5位的邮编(以及9位邮编的前5位)。</p>
+<h3 id="⑤分组"><a href="#⑤分组" class="headerlink" title="⑤分组"></a>⑤分组</h3><p>　　代码　　说明<br>　　()　　重复单个字符,直接在字符后面加上限定符就行了；但如果想要重复多个字符又该怎么办？你可以用小括号来指定子表达式(也叫做分组)，然后你就可以指定这个子表达式的重复次数了</p>
+<p>　　(\d{1,3}.){3}\d{1,3}　　是一个简单的IP地址匹配表达式。  \d{1,3}匹配1到3位的数字，(\d{1,3}.){3}匹配三位数字加上一个英文句号(这个整体也就是这个分组)重复3次，最后再加上一个一到三位的数字(\d{1,3})。</p>
+<p>　　但使用小括号的时候，还有很多特定用途的语法。下面列出了最常用的一些：
+　　</p>
+<h4 id="常用分组语法"><a href="#常用分组语法" class="headerlink" title="常用分组语法"></a>常用分组语法</h4><p>　　分类    　　代码/语法    　　说明<br>　　捕获    　　(exp)    　　　　匹配exp,并捕获文本到自动命名的组里<br>　　　　　　(?<name>exp)    　　　　匹配exp,并捕获文本到名称为name的组里，也可以写成(?’name’exp)<br>　　　　　　(?:exp)    　　　匹配exp,<strong>不捕获</strong>匹配的文本，也不给此分组分配组号<br>　　零宽断言　(?=exp)    　　匹配exp前面的位置<strong>(断言：是真的才执行。所以在这里是exp才会匹配它前面的字符)</strong><br>　　　　　　　(?&lt;=exp)    　匹配exp后面的位置<br>　　　　　　　(?!exp)    　　匹配后面跟的不是exp的位置<br>　　　　　　　(?&lt;!exp)    　　匹配前面不是exp的位置<br>　　注释    　　(?#comment)　　这种类型的分组不对正则表达式的处理产生任何影响，用于提供注释让人阅读</name></p>
+<h3 id="⑥反义"><a href="#⑥反义" class="headerlink" title="⑥反义"></a>⑥反义</h3><p>　　代码/语法    说明<br>　　\W　　　　匹配任意不是字母，数字，下划线，汉字的字符<br>　　\S　　　　匹配任意不是空白符的字符<br>　　\D　　　　匹配任意非数字的字符<br>　　\B　　　　匹配不是单词开头或结束的位置<br>　　[^x]　　　　匹配除了x以外的任意字符<br>　　[^aeiou]　　　　匹配除了aeiou这几个字母以外的任意字符</p>
+<p>　　&lt;a[^&gt;]+&gt;　　匹配用尖括号括起来的以a开头的字符串。</p>
+<h3 id="⑦零宽断言"><a href="#⑦零宽断言" class="headerlink" title="⑦零宽断言"></a>⑦零宽断言</h3><h2 id="JS中有两种方式创建正则表达式对象-eg-下面创建一个匹配字符串的正则表达式对象"><a href="#JS中有两种方式创建正则表达式对象-eg-下面创建一个匹配字符串的正则表达式对象" class="headerlink" title="JS中有两种方式创建正则表达式对象,eg:下面创建一个匹配字符串的正则表达式对象"></a>JS中有两种方式创建正则表达式对象,eg:下面创建一个匹配字符串的正则表达式对象</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//一、正则表达式字面量方法</span><br><span class="line">var my_regexp1=/<span class="string">"(?:\\.|[^\\\"])*"</span>/g;</span><br><span class="line">//二、RegExp构造器方法(此时有两个阶段，先经过字符串的转义，然后再经过正则表达式的转义，所以经常需要双反斜杠进行转义)</span><br><span class="line">var my_regexp2=new RegExp(<span class="string">"\"(?:\\\\.|[^\\\\\\\"])*"</span>,<span class="string">"g"</span>);</span><br><span class="line">document.writeln(my_regexp1.exec(<span class="string">'"Daoma is 666"'</span>)[0]);</span><br><span class="line">document.writeln(my_regexp2.exec(<span class="string">'"Daoma "is 666"'</span>)[0]);</span><br></pre></td></tr></table></figure>
+<p>　　其它具体请参考：<a href="http://www.jb51.net/tools/zhengze.html" title="快速入门正则表达式" target="_blank" rel="noopener">快速入门正则表达式</a><br>　　有人推荐看看《精通正则表达式》一书，我等着看看再说</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-预加载图片的小技巧" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -300,11 +373,12 @@
       
           
         <h2 id="预加载图片的小技巧"><a href="#预加载图片的小技巧" class="headerlink" title="预加载图片的小技巧"></a>预加载图片的小技巧</h2><p>　　　　在做ex5-5(跟随鼠标移动显示大图)作业的时候，想要实现一个功能：即图片不能显示的话，就给把该图片设置为一个替代的loading图片。</p>
-<h4 id="1-使用Image对象做图片预加载-preload"><a href="#1-使用Image对象做图片预加载-preload" class="headerlink" title="1.使用Image对象做图片预加载(preload)"></a>1.使用Image对象做图片预加载(preload)</h4><p>　　我们还是先来看一下代码：<br>　　<br>JS:</p>
+<h4 id="1-使用Image对象做图片预加载-preload"><a href="#1-使用Image对象做图片预加载-preload" class="headerlink" title="1.使用Image对象做图片预加载(preload)"></a>1.使用Image对象做图片预加载(preload)</h4><p>　　我们还是先来看一下代码：</p>
+<p>JS:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">aLi[i].onmouseover = <span class="keyword">function</span> ()</span><br><span class="line">&#123;</span><br><span class="line">	var oImg = document.createElement(<span class="string">"img"</span>);</span><br><span class="line">	//图片预加载</span><br><span class="line">	var img = new Image();			</span><br><span class="line">	img.src = oImg.src = aLi[this.index].getElementsByTagName(<span class="string">"img"</span>)[0].src.replace(<span class="string">".jpg"</span>,<span class="string">"_big.jpg"</span>);</span><br><span class="line">	//插入大图片</span><br><span class="line">	oBig.appendChild(oImg);</span><br><span class="line">	//显示big层</span><br><span class="line">	oBig.style.display = oLoading.style.display = <span class="string">"block"</span>;</span><br><span class="line">	//判断大图是否加载成功</span><br><span class="line">	img.complete ? oLoading.style.display = <span class="string">"none"</span> : (oImg.onload = <span class="function"><span class="title">function</span></span>() &#123;oLoading.style.display = <span class="string">"none"</span>;&#125;)		</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>　　<em>其实像下面这样写就可以，功能还很清晰，不知道ex5-5的原作者多var出来一个oImg有什么用???等以后我明白了再回来补充。</em></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">aLi[i].onmouseover = <span class="keyword">function</span> ()</span><br><span class="line">&#123;</span><br><span class="line">	//图片预加载</span><br><span class="line">	var img = new Image();			</span><br><span class="line">	img.src = aLi[this.index].getElementsByTagName(<span class="string">"img"</span>)[0].src.replace(<span class="string">".jpg"</span>,<span class="string">"_big.jpg"</span>);</span><br><span class="line">	//插入大图片</span><br><span class="line">	oBig.appendChild(img);</span><br><span class="line">	//显示big层</span><br><span class="line">	oBig.style.display = oLoading.style.display = <span class="string">"block"</span>;</span><br><span class="line">	//判断大图是否加载成功</span><br><span class="line">	img.complete ? oLoading.style.display = <span class="string">"none"</span> : (img.onload = <span class="function"><span class="title">function</span></span>() &#123;oLoading.style.display = <span class="string">"none"</span>;&#125;)		</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>　　下面是分析：<br>　　首先要明白一点：<img> 标签每出现一次，一个 Image 对象就会被创建。所以上面的oImg也是个Image对象。但是现在还不明白为何要多出来个它？？？</p>
+<p>　　下面是分析：<br>　　首先要明白一点：”<img>“标签每出现一次，一个 Image 对象就会被创建。所以上面的oImg也是个Image对象。但是现在还不明白为何要多出来个它？？？</p>
 <p>　　<strong>当定义Image对象的src属性时</strong>，整个文档的读取、JavaScript 的运行都暂停，让浏览器专心的读取图片,所以定义img.src和oImg.src就相当于<strong>给浏览器缓存(preload)了一张图片</strong>。然后到真正要把图片加载到浏览器中<strong>(即img.onload)</strong>的时候，就可以立刻使用缓存的图片了。</p>
 <h4 id="2-使用Image对象的complete属性来判断浏览器是否已完成对图像的加载"><a href="#2-使用Image对象的complete属性来判断浏览器是否已完成对图像的加载" class="headerlink" title="2.使用Image对象的complete属性来判断浏览器是否已完成对图像的加载"></a>2.使用Image对象的complete属性来判断浏览器是否已完成对图像的加载</h4><p>　　在该例子中，当我们第一次打开页面时，鼠标移入任意aLi[i]都是第一次，这时浏览器会缓存这张预加载的大图，但是<strong>还没有将它加载到浏览器中</strong>。所以第一次执行这段代码img.complete一定是返回false,则执行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">img.onload=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	loading.style.display=<span class="string">"none"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -339,10 +413,10 @@
 
 
   
-    <article id="post-一些零星的JS，CSS知识" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-一些零星的HTML,CSS,JS知识" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2018/03/27/一些零星的JS，CSS知识/" class="article-date">
+      <a  href="/2018/03/27/一些零星的HTML,CSS,JS知识/" class="article-date">
       <time datetime="2018-03-27T11:43:45.000Z" itemprop="datePublished">2018-03-27</time>
 </a>
 
@@ -357,7 +431,7 @@
         
   
     <h1 itemprop="name">
-      <a  class="article-title" href="/2018/03/27/一些零星的JS，CSS知识/">一些零星的JS，CSS知识</a>
+      <a  class="article-title" href="/2018/03/27/一些零星的HTML,CSS,JS知识/">一些零星的HTML,CSS,JS知识</a>
     </h1>
   
 
@@ -369,14 +443,17 @@
       
           
         <h2 id="CSS-使用border画三角形"><a href="#CSS-使用border画三角形" class="headerlink" title="CSS 使用border画三角形"></a>CSS 使用border画三角形</h2><p>　　盒模型中上下左右边框交界处呈现平滑的斜线. 利用这个特点, 通过设置不同的上下左右边框宽度或者颜色可以得到小三角, 小梯形等。<a href="http://caibaojian.com/css-border-triangle.html" title="CSS三角形的实现原理及运用" target="_blank" rel="noopener">具体链接</a></p>
-<h2 id="CSS-实现居中的方法"><a href="#CSS-实现居中的方法" class="headerlink" title="CSS 实现居中的方法"></a>CSS 实现居中的方法</h2><h3 id="使用width和margin实现水平居中"><a href="#使用width和margin实现水平居中" class="headerlink" title="使用width和margin实现水平居中"></a>使用width和margin实现水平居中</h3><p>　　width指定完宽度，就可以直接margin:0 auto;实现左右居中了</p>
-<h3 id="使用text-align实现水平居中"><a href="#使用text-align实现水平居中" class="headerlink" title="使用text-align实现水平居中"></a>使用text-align实现水平居中</h3><p>　　使内联元素居中，所以要在想居中的内联元素的父元素中使用</p>
-<h3 id="使用top-left和margin实现水平竖直的居中"><a href="#使用top-left和margin实现水平竖直的居中" class="headerlink" title="使用top,left和margin实现水平竖直的居中"></a>使用top,left和margin实现水平竖直的居中</h3><p>　　方法就是top: 50%;left: 50%;然后margin: -所在盒子宽度/2 0 0 -所在盒子高度/2;(可用于弹窗弹出到页面正中间)</p>
-<h3 id="使用line-height实现文本垂直居中"><a href="#使用line-height实现文本垂直居中" class="headerlink" title="使用line-height实现文本垂直居中"></a>使用line-height实现文本垂直居中</h3><p>　　方法为：把line-height设置为父容器的高度就可以实现文本垂直居中。具体原理请见：<a href="https://www.imooc.com/article/7767" title="CSS行高（line-height）及文本垂直居中原理" target="_blank" rel="noopener">行高原理</a></p>
 <h2 id="li标签中的a标签改变字体颜色color需要注意的地方"><a href="#li标签中的a标签改变字体颜色color需要注意的地方" class="headerlink" title="li标签中的a标签改变字体颜色color需要注意的地方"></a>li标签中的a标签改变字体颜色color需要注意的地方</h2><p>　　最近遇到了想鼠标移到li上，但里面的a字体变色不成功的问题。查了一下因为<a>默认就有样式，所以不会继承父级的color等样式，这时候就需要显式让a继承li的color才行，即：</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">li&#123;</span><br><span class="line">	color: <span class="comment">#fff;</span></span><br><span class="line">&#125;</span><br><span class="line">li&gt;a&#123;</span><br><span class="line">	color: inherit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="js中-大括号-中括号使用详解"><a href="#js中-大括号-中括号使用详解" class="headerlink" title="js中{}大括号,[]中括号使用详解"></a>js中{}大括号,[]中括号使用详解</h2><h3 id="大括号，表示定义一个对象，大部分情况下要有成对的属性和值，或是函数。"><a href="#大括号，表示定义一个对象，大部分情况下要有成对的属性和值，或是函数。" class="headerlink" title="{ }大括号，表示定义一个对象，大部分情况下要有成对的属性和值，或是函数。"></a>{ }大括号，表示定义一个对象，大部分情况下要有成对的属性和值，或是函数。</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var mayun=&#123;</span><br><span class="line">	name: <span class="string">"cocl"</span>,</span><br><span class="line">	age: <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		alert(<span class="string">"21"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">mayun.age();</span><br></pre></td></tr></table></figure>
-<h3 id="中括号，表示一个数组，也可以理解为一个数组对象。"><a href="#中括号，表示一个数组，也可以理解为一个数组对象。" class="headerlink" title="[ ]中括号，表示一个数组，也可以理解为一个数组对象。"></a>[ ]中括号，表示一个数组，也可以理解为一个数组对象。</h3>
+<h2 id="CSS想实现一个元素发生变动，改变另外元素的样式"><a href="#CSS想实现一个元素发生变动，改变另外元素的样式" class="headerlink" title="CSS想实现一个元素发生变动，改变另外元素的样式"></a>CSS想实现一个元素发生变动，改变另外元素的样式</h2><p>　　原先我一直以为CSS只能改变自身元素的样式，如果想自身变动又想要别的元素变动，必须借助JS才行，但发现并不是这样。</p>
+<p>HTML:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"box"</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;p&gt;就会发现你可以hover第一个层的时候，改变第二个层的样式。&lt;/p&gt;</span><br><span class="line">&lt;div&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>CSS:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">	width: 100px;</span><br><span class="line">	height: 100px;</span><br><span class="line">	background: red;</span><br><span class="line">	border: 3px double <span class="comment">#000;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#box:hover ~ div&#123;</span></span><br><span class="line">	background: blue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="JS取0-9的一个随机数可以用-Math-random-””-slice-1"><a href="#JS取0-9的一个随机数可以用-Math-random-””-slice-1" class="headerlink" title="JS取0~9的一个随机数可以用: (Math.random()+””).slice(-1)"></a>JS取0~9的一个随机数可以用: (Math.random()+””).slice(-1)</h4><h2 id="结构伪类选择器-nth-child-n-需要注意的地方"><a href="#结构伪类选择器-nth-child-n-需要注意的地方" class="headerlink" title="结构伪类选择器:nth-child(n)需要注意的地方"></a>结构伪类选择器:nth-child(n)需要注意的地方</h2><p>　　:nth-child选择的是<strong>某父元素</strong>的子元素，这个子元素并没有指定确切的类型，必须同时满足两个条件时方能有效果：</p>
+<p>　　1.是子元素<br>　　2.该子元素刚好处在n那个位置</p>
+<h2 id="js中-大括号-中括号使用详解"><a href="#js中-大括号-中括号使用详解" class="headerlink" title="js中{}大括号,[]中括号使用详解"></a>js中{}大括号,[]中括号使用详解</h2><h4 id="大括号，表示定义一个对象，大部分情况下要有成对的属性和值，或是函数。"><a href="#大括号，表示定义一个对象，大部分情况下要有成对的属性和值，或是函数。" class="headerlink" title="{ }大括号，表示定义一个对象，大部分情况下要有成对的属性和值，或是函数。"></a>{ }大括号，表示定义一个对象，大部分情况下要有成对的属性和值，或是函数。</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var mayun=&#123;</span><br><span class="line">	name: <span class="string">"cocl"</span>,</span><br><span class="line">	age: <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		alert(<span class="string">"21"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">mayun.age();</span><br></pre></td></tr></table></figure>
+<h4 id="中括号，表示一个数组，也可以理解为一个数组对象。"><a href="#中括号，表示一个数组，也可以理解为一个数组对象。" class="headerlink" title="[ ]中括号，表示一个数组，也可以理解为一个数组对象。"></a>[ ]中括号，表示一个数组，也可以理解为一个数组对象。</h4>
       
     </div>
     
