@@ -7,18 +7,18 @@
   
   
   
-  <title>函数柯里化 | 岛马的主页</title>
+  <title>JS中insertAdjacentHTML()方法 | 岛马的主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="函数柯里化　　函数柯里化Currying指的是把函数与传递给它的参数相结合，产生出一个新的函数。 　　原理：Currying通过创建一个保存着原始函数(对象)和要被套用的参数的闭包来工作。它返回另一个函数，当函数被调用时，会返回调用原始函数(对象)的结果，并传递调用curry时的参数“加上”当前调用的参数。”加上”是通过Array.concat()方法连接两个参数数组。 　　上面的原理balaba">
+  <meta name="description" content="JS中insertAdjacentHTML()方法　　一般我们在写JS时，想在一个DOM节点中插入HTML代码，这时有三种方法： 1.使用innerHTML　　缺点是会把原先该节点的代码全部覆盖掉。 2.使用insertBefore(),appendChild()方法　　缺点一是麻烦，需要先createElement()创建一个节点，再插入内容，最后再append到DOM树中。二是性能低下，具体见">
 <meta property="og:type" content="article">
-<meta property="og:title" content="函数柯里化">
-<meta property="og:url" content="http://yoursite.com/2018/04/18/函数柯里化/index.html">
+<meta property="og:title" content="JS中insertAdjacentHTML()方法">
+<meta property="og:url" content="http://yoursite.com/2018/05/12/JS中insertAdjacentHTML-方法/index.html">
 <meta property="og:site_name" content="岛马的主页">
-<meta property="og:description" content="函数柯里化　　函数柯里化Currying指的是把函数与传递给它的参数相结合，产生出一个新的函数。 　　原理：Currying通过创建一个保存着原始函数(对象)和要被套用的参数的闭包来工作。它返回另一个函数，当函数被调用时，会返回调用原始函数(对象)的结果，并传递调用curry时的参数“加上”当前调用的参数。”加上”是通过Array.concat()方法连接两个参数数组。 　　上面的原理balaba">
-<meta property="og:updated_time" content="2018-04-22T02:57:44.596Z">
+<meta property="og:description" content="JS中insertAdjacentHTML()方法　　一般我们在写JS时，想在一个DOM节点中插入HTML代码，这时有三种方法： 1.使用innerHTML　　缺点是会把原先该节点的代码全部覆盖掉。 2.使用insertBefore(),appendChild()方法　　缺点一是麻烦，需要先createElement()创建一个节点，再插入内容，最后再append到DOM树中。二是性能低下，具体见">
+<meta property="og:updated_time" content="2018-05-12T07:52:07.707Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="函数柯里化">
-<meta name="twitter:description" content="函数柯里化　　函数柯里化Currying指的是把函数与传递给它的参数相结合，产生出一个新的函数。 　　原理：Currying通过创建一个保存着原始函数(对象)和要被套用的参数的闭包来工作。它返回另一个函数，当函数被调用时，会返回调用原始函数(对象)的结果，并传递调用curry时的参数“加上”当前调用的参数。”加上”是通过Array.concat()方法连接两个参数数组。 　　上面的原理balaba">
+<meta name="twitter:title" content="JS中insertAdjacentHTML()方法">
+<meta name="twitter:description" content="JS中insertAdjacentHTML()方法　　一般我们在写JS时，想在一个DOM节点中插入HTML代码，这时有三种方法： 1.使用innerHTML　　缺点是会把原先该节点的代码全部覆盖掉。 2.使用insertBefore(),appendChild()方法　　缺点一是麻烦，需要先createElement()创建一个节点，再插入内容，最后再append到DOM树中。二是性能低下，具体见">
   
     <link rel="alternative" href="/atom.xml" title="岛马的主页" type="application/atom+xml">
   
@@ -269,11 +269,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-函数柯里化" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-JS中insertAdjacentHTML-方法" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2018/04/18/函数柯里化/" class="article-date">
-      <time datetime="2018-04-17T23:19:07.000Z" itemprop="datePublished">2018-04-18</time>
+      <a  href="/2018/05/12/JS中insertAdjacentHTML-方法/" class="article-date">
+      <time datetime="2018-05-12T07:51:26.000Z" itemprop="datePublished">2018-05-12</time>
 </a>
 
     </div>
@@ -287,7 +287,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      函数柯里化
+      JS中insertAdjacentHTML()方法
     </h1>
   
 
@@ -305,22 +305,25 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="函数柯里化"><a href="#函数柯里化" class="headerlink" title="函数柯里化"></a>函数柯里化</h2><p>　　函数柯里化Currying指的是<strong>把函数与传递给它的参数相结合，产生出一个新的函数</strong>。</p>
-<p>　　原理：Currying通过创建一个保存着原始函数(对象)和要被套用的参数的闭包来工作。它返回另一个函数，当函数被调用时，会返回调用原始函数(对象)的结果，并传递调用curry时的参数“加上”当前调用的参数。”加上”是通过Array.concat()方法连接两个参数数组。</p>
-<p>　　上面的原理balabala一大顿，我都没看懂，所以为了更容易懂，还是得看代码：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.method=<span class="keyword">function</span>(name,func)&#123;</span><br><span class="line">	this.prototype[name]=func;</span><br><span class="line">	<span class="built_in">return</span> this;</span><br><span class="line">&#125;</span><br><span class="line">Function.method(<span class="string">"curry"</span>,<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	var slice=Array.prototype.slice,</span><br><span class="line">		args=slice.apply(arguments),</span><br><span class="line">		that=this;</span><br><span class="line">	<span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		<span class="built_in">return</span> that.apply(null,args.concat(slice.apply(arguments)));</span><br><span class="line">	&#125;;	</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>　　然后接下来我们就可以看到它运用的结果</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> add(num1,num2)&#123;</span><br><span class="line">	<span class="built_in">return</span> num1+num2;</span><br><span class="line">&#125;</span><br><span class="line">var add1=add.curry(1);</span><br><span class="line">alert(add1(6)); //7</span><br></pre></td></tr></table></figure>
-<p>　　这里的method方法中，要注意四点：</p>
-<h4 id="1-arguments对象保存着函数被调用时的参数列表，它是一个类数组对象，有一个length属性但没有任何数组的方法。"><a href="#1-arguments对象保存着函数被调用时的参数列表，它是一个类数组对象，有一个length属性但没有任何数组的方法。" class="headerlink" title="1.arguments对象保存着函数被调用时的参数列表，它是一个类数组对象，有一个length属性但没有任何数组的方法。"></a>1.arguments对象保存着函数被调用时的参数列表，它是一个类数组对象，有一个length属性但没有任何数组的方法。</h4><p>　　第一个arguments是curry()函数的参数,return里的arguments是return function()的参数，这样可能听不懂，其实在例子中就是add1()函数里的参数。</p>
-<h4 id="2-正因为第一点，所以要想在最后使用args-concat，必须将arguments对象转换为一个真的数组，这里用Array-prototype-slice-方法，它可以将一个类数组（Array-like）对象-集合转换成一个新数组。"><a href="#2-正因为第一点，所以要想在最后使用args-concat，必须将arguments对象转换为一个真的数组，这里用Array-prototype-slice-方法，它可以将一个类数组（Array-like）对象-集合转换成一个新数组。" class="headerlink" title="2.正因为第一点，所以要想在最后使用args.concat，必须将arguments对象转换为一个真的数组，这里用Array.prototype.slice()方法，它可以将一个类数组（Array-like）对象/集合转换成一个新数组。"></a>2.正因为第一点，所以要想在最后使用args.concat，必须将arguments对象转换为一个真的数组，这里用Array.prototype.slice()方法，它可以将一个类数组（Array-like）对象/集合转换成一个新数组。</h4><p>　　具体见：<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/slice" title="Array.prototype.slice()" target="_blank" rel="noopener">MDN文档</a></p>
-<h4 id="3-第一个that-this-中的this在这里属于方法调用模式，绑定到调用该方法的对象上，即一个Function对象。"><a href="#3-第一个that-this-中的this在这里属于方法调用模式，绑定到调用该方法的对象上，即一个Function对象。" class="headerlink" title="3.第一个that=this;中的this在这里属于方法调用模式，绑定到调用该方法的对象上，即一个Function对象。"></a>3.第一个that=this;中的this在这里属于方法调用模式，绑定到调用该方法的对象上，即一个Function对象。</h4><p>　　所以add.curry(1)，this被绑定到add函数对象上</p>
-<h4 id="4-调用函数的方法apply-要绑定给this的值-参数数组"><a href="#4-调用函数的方法apply-要绑定给this的值-参数数组" class="headerlink" title="4.调用函数的方法apply(要绑定给this的值,参数数组)"></a>4.调用函数的方法apply(要绑定给this的值,参数数组)</h4><p>　　具体可见博客中“JS中的apply()使用详解一节”。</p>
-<p>　　最后我们再结合代码来看curry方法的具体作用：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Function.method(<span class="string">"curry"</span>,<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	//curry方法通过创建一个保存着原始函数和要被套用的参数的闭包来工作。</span><br><span class="line">	var slice=Array.prototype.slice,</span><br><span class="line">		args=slice.apply(arguments),  //要被套用的参数</span><br><span class="line">		that=this;  //that=this保存着原始函数对象</span><br><span class="line">	<span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123; //闭包  &amp;&amp; 它返回另一个函数</span><br><span class="line">		<span class="built_in">return</span> that.apply(null,args.concat(slice.apply(arguments)));</span><br><span class="line">		//当函数被调用时，会返回调用原始函数的结果，并传递调用curry时的参数“加上”当前调用的参数</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>　　所以当执行add1(6)时，相当于执行了add.apply(null,args.concat(slice.apply(arguments))),即执行了add(curry中的参数1,自己的参数6),所以放回1+6=7.</p>
-<p>#####　　这样就好理解柯里化的概念了：把函数与传递给它的参数相结合，产生出一个新的函数。</p>
-<p>　　add函数使用curry(参数)方法=&gt;add.curry(参数);把函数与传递给它的参数 相结合，<br>　　产生一个新的函数add1=&gt;var add1=add.curry(1);<br>　　用处就是可以用add1函数给原函数add传参，现阶段光是理论懂了，但是不懂具体用在哪，后期一定会再补充。</p>
+        <h2 id="JS中insertAdjacentHTML-方法"><a href="#JS中insertAdjacentHTML-方法" class="headerlink" title="JS中insertAdjacentHTML()方法"></a>JS中insertAdjacentHTML()方法</h2><p>　　一般我们在写JS时，想在一个DOM节点中插入HTML代码，这时有三种方法：</p>
+<h4 id="1-使用innerHTML"><a href="#1-使用innerHTML" class="headerlink" title="1.使用innerHTML"></a>1.使用innerHTML</h4><p>　　缺点是会把原先该节点的代码全部覆盖掉。</p>
+<h4 id="2-使用insertBefore-appendChild-方法"><a href="#2-使用insertBefore-appendChild-方法" class="headerlink" title="2.使用insertBefore(),appendChild()方法"></a>2.使用insertBefore(),appendChild()方法</h4><p>　　缺点一是麻烦，需要先createElement()创建一个节点，再插入内容，最后再append到DOM树中。二是性能低下，具体见：<a href="http://www.zhangxinxu.com/wordpress/?p=3210http://www.zhangxinxu.com/wordpress/?p=3210" title="小tip: DOM appendHTML实现及insertAdjacentHTML" target="_blank" rel="noopener">DOM appendHTML实现及insertAdjacentHTML</a></p>
+<h4 id="3-使用insertAdjacentHTML-方法，更加灵活"><a href="#3-使用insertAdjacentHTML-方法，更加灵活" class="headerlink" title="3.使用insertAdjacentHTML()方法，更加灵活"></a>3.使用insertAdjacentHTML()方法，更加灵活</h4><p>　　insertAdjacentHTML 方法：在指定的地方插入html标签语句</p>
+<p>　　原型：insertAdajcentHTML(swhere,stext)</p>
+<p>　　参数：</p>
+<p>　　swhere: 指定插入html标签语句的地方，</p>
+<p>　　stext:要插入的内容</p>
+<p>　　有四种值可用：</p>
+<ol>
+<li><p>beforeBegin: 插入到标签开始标记前</p>
+</li>
+<li><p>afterBegin:插入到标签开始标记之后</p>
+</li>
+<li><p>beforeEnd:插入到标签结束标记前</p>
+</li>
+<li><p>afterEnd:插入到标签结束标记后</p>
+</li>
+</ol>
 
       
     </div>
@@ -329,13 +332,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2018/04/18/函数柯里化/">函数柯里化</a></p>
+        <p><span>本文标题:</span><a  href="/2018/05/12/JS中insertAdjacentHTML-方法/">JS中insertAdjacentHTML()方法</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 岛马 的个人博客">岛马</a></p>
-        <p><span>发布时间:</span>2018年04月18日 - 07时19分</p>
-        <p><span>最后更新:</span>2018年04月22日 - 10时57分</p>
+        <p><span>发布时间:</span>2018年05月12日 - 15时51分</p>
+        <p><span>最后更新:</span>2018年05月12日 - 15时52分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/04/18/函数柯里化/" title="函数柯里化">http://yoursite.com/2018/04/18/函数柯里化/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/04/18/函数柯里化/　　作者: 岛马" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/05/12/JS中insertAdjacentHTML-方法/" title="JS中insertAdjacentHTML()方法">http://yoursite.com/2018/05/12/JS中insertAdjacentHTML-方法/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/05/12/JS中insertAdjacentHTML-方法/　　作者: 岛马" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -346,18 +349,9 @@
 
 <nav id="article-nav">
   
-    <a  href="/2018/04/18/闭包与模仿块作用域/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          闭包与模仿块作用域
-        
-      </div>
-    </a>
   
-  
-    <a  href="/2018/04/15/秒懂汉诺塔原理函数递归/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">秒懂汉诺塔原理函数递归</div>
+    <a  href="/2018/05/09/CSS实现居中的方法/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CSS实现居中的方法</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -369,7 +363,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#函数柯里化"><span class="toc-number">1.</span> <span class="toc-text">函数柯里化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-arguments对象保存着函数被调用时的参数列表，它是一个类数组对象，有一个length属性但没有任何数组的方法。"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.arguments对象保存着函数被调用时的参数列表，它是一个类数组对象，有一个length属性但没有任何数组的方法。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-正因为第一点，所以要想在最后使用args-concat，必须将arguments对象转换为一个真的数组，这里用Array-prototype-slice-方法，它可以将一个类数组（Array-like）对象-集合转换成一个新数组。"><span class="toc-number">1.0.2.</span> <span class="toc-text">2.正因为第一点，所以要想在最后使用args.concat，必须将arguments对象转换为一个真的数组，这里用Array.prototype.slice()方法，它可以将一个类数组（Array-like）对象/集合转换成一个新数组。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-第一个that-this-中的this在这里属于方法调用模式，绑定到调用该方法的对象上，即一个Function对象。"><span class="toc-number">1.0.3.</span> <span class="toc-text">3.第一个that=this;中的this在这里属于方法调用模式，绑定到调用该方法的对象上，即一个Function对象。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-调用函数的方法apply-要绑定给this的值-参数数组"><span class="toc-number">1.0.4.</span> <span class="toc-text">4.调用函数的方法apply(要绑定给this的值,参数数组)</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JS中insertAdjacentHTML-方法"><span class="toc-number">1.</span> <span class="toc-text">JS中insertAdjacentHTML()方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-使用innerHTML"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.使用innerHTML</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-使用insertBefore-appendChild-方法"><span class="toc-number">1.0.2.</span> <span class="toc-text">2.使用insertBefore(),appendChild()方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-使用insertAdjacentHTML-方法，更加灵活"><span class="toc-number">1.0.3.</span> <span class="toc-text">3.使用insertAdjacentHTML()方法，更加灵活</span></a></li></ol></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -440,13 +434,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2018/04/18/闭包与模仿块作用域/" title="上一篇: 闭包与模仿块作用域">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2018/04/15/秒懂汉诺塔原理函数递归/" title="下一篇: 秒懂汉诺塔原理函数递归">
+            <a  href="/2018/05/09/CSS实现居中的方法/" title="下一篇: CSS实现居中的方法">
                 <i class="fa fa-angle-right"></i>
             </a>
         
