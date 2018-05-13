@@ -270,6 +270,150 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-定位与浮动" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/04/07/定位与浮动/" class="article-date">
+      <time datetime="2018-04-07T09:30:27.000Z" itemprop="datePublished">2018-04-07</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/04/07/定位与浮动/">定位与浮动</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="元素加上浮动float后的影响"><a href="#元素加上浮动float后的影响" class="headerlink" title="元素加上浮动float后的影响"></a>元素加上浮动float后的影响</h2><p>　　0.float设计初衷就是为了实现文字环绕效果，<a href="http://www.cnblogs.com/liyunhua/p/4670908.html" title="你所不了解的float(滥用float的怪异现象)" target="_blank" rel="noopener">详情请见</a><br>　　1.浮动的参考对象：浮动的框可以向左或向右移动，直到它的外边缘碰到<strong>包含框</strong>或<strong>另一个浮动框的边框</strong>为止。<br>　　2.父级元素受影响：该元素脱离文档流，使父级元素高度消失，在父级元素上加overflow:hidden 或 加height 或在父级元素上加一个clearfix类来修复父级元素的高度 (content 属性与 :before 及 :after 伪元素配合使用，定义元素之前或之后放置的生成内容。其中\0020是空格的转义字符，一般直接写空格就行)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.clearfix:before, .clearfix:after &#123; content: <span class="string">"\0020"</span>; display: block; height: 0; overflow: hidden; &#125;  </span><br><span class="line">.clearfix:after &#123; clear: both; &#125;  </span><br><span class="line">.clearfix &#123; zoom: 1; &#125;</span><br></pre></td></tr></table></figure></p>
+<p>　　3.设置了float的元素,<strong>脱离了文档流，但没有脱离文本流</strong>。也就是说当它后面还有元素时，其他元素会无视它所占据了的区域，直接在它身下布局。但是文字却会认同浮动元素所占据的区域，围绕它布局。<br>　　4.同级不加浮动的元素受影响：正常没加浮动的文档流元素，会无视该浮动元素   在没加浮动的元素上加 clear:both 来修复该元素上面浮动元素所占的高度</p>
+<h2 id="定位详解"><a href="#定位详解" class="headerlink" title="定位详解"></a>定位详解</h2><p>　　值    　　　　　　描述<br>　　static    　　　　默认。位置设置为 static 的元素，它始终会处于页面流给予的位置（static 元素会忽略任何 top、bottom、left 或 right 声明）。<br>　　relative　　　位置被设置为 relative 的元素，可将其移至<strong>相对于其本身</strong>正常位置的地方，因此 “left:20” 会将元素移至元素正常位置左边 20 个像素的位置。<br>　　absolute　　位置设置为 absolute 的元素，可定位于相对于包含它的元素的指定坐标。此元素的位置可通过 <strong>“left”、”top”、”right” 以及 “bottom” 属性</strong>来规定。<br>　　fixed　　　　位置被设置为 fixed 的元素，可定位于相对于浏览器窗口的指定坐标。此元素的位置可通过 “left”、”top”、”right” 以及”bottom” 属性来规定。不论窗口滚动与否，元素都会留在那个位置。工作于 IE7（strict 模式）。</p>
+<h3 id="扩充详解-position-absolute"><a href="#扩充详解-position-absolute" class="headerlink" title="扩充详解　position:absolute"></a>扩充详解　position:absolute</h3><p>　　这个顾名思义是绝对布局，在元素中设置之后，该元素会完全脱离文档流，它并不是相对于浏览器进行定位，<strong>而是一层一层向上寻找父元素，直到寻找到第一个position不为static的祖先元素，它相对于这个祖先元素进行定位。</strong><br>　　所以当你的父元素position:relative时，该子元素才会相对于你的父元素进行定位。如果任何一个祖先元素都没有设置position:relative，寻找到最外层的顶级元素html后自然不会继续寻找，所以这时才是相对于浏览器进行定位。<br>　　我们可以看一个小例子：<br>HTML:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"outer"</span>&gt;</span><br><span class="line">	&lt;div id=<span class="string">"inner"</span>&gt;</span><br><span class="line">		&lt;div id=<span class="string">"deepinner"</span>&gt;		</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>CSS:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">	margin: 0;</span><br><span class="line">	padding: 0;	</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#outer&#123;</span></span><br><span class="line">	width: 500px;</span><br><span class="line">	height: 500px;</span><br><span class="line">	border: 1px solid <span class="comment">#000;</span></span><br><span class="line">	margin-left:100px;</span><br><span class="line">	position: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#inner&#123;</span></span><br><span class="line">	width:100px;</span><br><span class="line">	height:100px;</span><br><span class="line">	position: absolute;</span><br><span class="line">	border: 1px solid red;</span><br><span class="line">	left: 100px;</span><br><span class="line">	top: 100px;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#deepinner&#123;</span></span><br><span class="line">	width:100px;</span><br><span class="line">	height: 100px;</span><br><span class="line">	position: absolute;</span><br><span class="line">	border: 1px solid red;</span><br><span class="line">	left: 50px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>　　可以发现deepinner层相对与inner层偏移了50px，所以可以证明absolute是<strong>一层一层向上寻找父元素，直到寻找到第一个position不为static的祖先元素，它相对于这个祖先元素进行定位。</strong>，这里deepinner层相对的就是inner层。</p>
+<h3 id="元素加上absolute和fixed后的影响"><a href="#元素加上absolute和fixed后的影响" class="headerlink" title="元素加上absolute和fixed后的影响"></a>元素加上absolute和fixed后的影响</h3><p>　　1.宽度改变：该元素宽度变成设置的宽度，如果无则是内部元素所占的宽度   可以加宽度修复，也可以不加，就使用自身内容大小<br>　　2.元素类型改变：内联元素可以变成块级元素。<br>　　3.文档流影响：元素完全脱离文档流，<strong>同级的定位，后写的在上层</strong>，可以通过<strong>z-index属性</strong>来解决层级问题</p>
+<h4 id="z-index可能出现的问题"><a href="#z-index可能出现的问题" class="headerlink" title="z-index可能出现的问题"></a>z-index可能出现的问题</h4><p>　　有时候可能会出现明明设置了absolute，z-index也设置的很大，但显示还是在另一个层的下面的情况，这时候就要注意这个节点所在树的第一个relative属性的父标签的z-index是不是太小,比如虽然图片所在div当前的层级很高，但是由于老爸的老爸不顶用，可怜了z-index=9999;如此强势的孩子也没有出头之日啊！</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-JS中style-currentStyle和getComputedStyle的区别以及获取css操作方法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/04/06/JS中style-currentStyle和getComputedStyle的区别以及获取css操作方法/" class="article-date">
+      <time datetime="2018-04-06T08:55:16.000Z" itemprop="datePublished">2018-04-06</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/04/06/JS中style-currentStyle和getComputedStyle的区别以及获取css操作方法/">JS中style,currentStyle和getComputedStyle的区别以及获取css操作方法</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="JS中style-currentStyle和getComputedStyle的区别以及获取css操作方法"><a href="#JS中style-currentStyle和getComputedStyle的区别以及获取css操作方法" class="headerlink" title="JS中style,currentStyle和getComputedStyle的区别以及获取css操作方法"></a>JS中style,currentStyle和getComputedStyle的区别以及获取css操作方法</h2><p>　　首先需要了解CSS的三种使用方法：</p>
+<h4 id="1-行内样式"><a href="#1-行内样式" class="headerlink" title="1.行内样式"></a>1.行内样式</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">	&lt;title&gt;css行内样式&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div style=<span class="string">"width:100px;height:100px;background:red;"</span>&gt;&lt;/div&gt;</span><br><span class="line">	</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="2-内嵌样式"><a href="#2-内嵌样式" class="headerlink" title="2.内嵌样式"></a>2.内嵌样式</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">	&lt;title&gt;css内嵌样式&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;style <span class="built_in">type</span>=<span class="string">"text/css"</span>&gt;</span><br><span class="line"><span class="comment">#div&#123;width:100px;height:100px;background:red;&#125;</span></span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;div id=<span class="string">"div"</span>&gt;&lt;/div&gt;</span><br><span class="line">	</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="3-外部样式"><a href="#3-外部样式" class="headerlink" title="3.外部样式"></a>3.外部样式</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">	&lt;title&gt;css内嵌样式&lt;/title&gt;</span><br><span class="line">	&lt;link rel=<span class="string">"stylesheet"</span> <span class="built_in">type</span>=<span class="string">"text/css"</span> href=<span class="string">"XX.css"</span>&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div id=<span class="string">"div"</span>&gt;&lt;/div&gt;</span><br><span class="line">	</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>　　最近做了个小练习，点击h2想让ul元素在隐藏和显示中切换，但发现第一次点击总是无效，必须点到第二下以后才有想要的效果</p>
+<p>HTML:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;h2&gt;播放列表...&lt;/h2&gt;</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">	&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;玩家之徒 - 蔡依林&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;原谅我就是这样的女生 - 戴佩妮&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;猜不透 - 丁当&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;自导自演 - 周杰伦&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;浪漫窝 - 弦子&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;流年 - 王菲&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<p>JS:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var oUl=document.getElementsByTagName(<span class="string">"UL"</span>)[0];</span><br><span class="line">var oH2=document.getElementsByTagName(<span class="string">"H2"</span>)[0];</span><br><span class="line">oH2.onclick=<span class="keyword">function</span>(event)&#123;</span><br><span class="line">	oUl.style.display=oUl.style.display==<span class="string">"block"</span>?<span class="string">"none"</span>:<span class="string">"block"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>　　原因为我以为ul默认为display:block; JS中的oUl.style.display能获取到block这个样式，但其实不然，<strong>js的style属性只能获取行内样式</strong>,所以一开始oUl.style.display=undefined，自然就不会第一下点击就隐藏了。</p>
+<p>　　解决方法是:在行内直接写入样式</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul style=<span class="string">"display: block;"</span>&gt;</span><br><span class="line">...</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<p>　　这样就能获取到了，所以在这里做一个总结：</p>
+<h4 id="1-style-各大浏览器都兼容-能设置样式和获取样式-但是获取不了嵌入和外部样式-如果写了行内没有的样式-返回的是空值"><a href="#1-style-各大浏览器都兼容-能设置样式和获取样式-但是获取不了嵌入和外部样式-如果写了行内没有的样式-返回的是空值" class="headerlink" title="1.style:各大浏览器都兼容,能设置样式和获取样式,但是获取不了嵌入和外部样式,如果写了行内没有的样式,返回的是空值"></a>1.style:各大浏览器都兼容,能设置样式和获取样式,但是获取不了嵌入和外部样式,如果写了行内没有的样式,返回的是空值</h4><p>　　写法:ele.style.attr(获取),ele.style.attr=”值”(设置);</p>
+<p>　　<strong>注意只是获取不了嵌入和外部样式，但可以设置样式。</strong></p>
+<h5 id="currentStyle属性和getComputedStyle属性不能设置属性-只能获取"><a href="#currentStyle属性和getComputedStyle属性不能设置属性-只能获取" class="headerlink" title="currentStyle属性和getComputedStyle属性不能设置属性,只能获取"></a>currentStyle属性和getComputedStyle属性不能设置属性,只能获取</h5><h4 id="2-currentStyle-该属性只兼容IE"><a href="#2-currentStyle-该属性只兼容IE" class="headerlink" title="2.currentStyle:该属性只兼容IE"></a>2.currentStyle:该属性只兼容IE</h4><p>　　Element.currentStyle 是一个与 window.getComputedStyle方法功能相同的属性。这个属性实现在旧版本的IE浏览器中.</p>
+<p>　　写法:ele.currentStyle[“attr”]或者ele.currentStyle.attr;</p>
+<h4 id="3-getComputedStyle-该属性是兼容火狐谷歌-不兼容IE9-0以下版本"><a href="#3-getComputedStyle-该属性是兼容火狐谷歌-不兼容IE9-0以下版本" class="headerlink" title="3.getComputedStyle:该属性是兼容火狐谷歌,不兼容IE9.0以下版本"></a>3.getComputedStyle:该属性是兼容火狐谷歌,不兼容IE9.0以下版本</h4><p>　　getComputeStyle返回的样式是一个实时的 CSSStyleDeclaration 对象，当元素的样式更改时，它会自动更新本身。详情见<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/getComputedStyle" title="Window.getComputedStyle()" target="_blank" rel="noopener">MDN文档</a></p>
+<p>　　写法:window.getComputedStyle(ele,null)[attr]获取是window.getComputedStyle(ele,null).attr</p>
+<p>　　关于它们的区别可以参考：<a href="http://www.zhangxinxu.com/wordpress/?p=2378" title="获取元素CSS值之getComputedStyle方法熟悉" target="_blank" rel="noopener">获取元素CSS值之getComputedStyle方法熟悉</a>　　</p>
+<p>　　最后附上一段封装的获取CSS的代码</p>
+<p>JS:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//设置或读取CSS样式</span><br><span class="line"><span class="keyword">function</span> css(obj,attr,value)&#123;</span><br><span class="line">	switch(arguments.length)&#123;</span><br><span class="line">		<span class="keyword">case</span> 2://如果有两个参数可能是设置或读取样式</span><br><span class="line">			<span class="keyword">if</span>(typeof arguments[1] == <span class="string">"object"</span>)&#123;//即attr是个数组对象就设置样式</span><br><span class="line">				<span class="keyword">for</span>(var i <span class="keyword">in</span> attr)&#123;</span><br><span class="line">					i == <span class="string">"opacity"</span> ? (obj.style[<span class="string">"filter"</span>]=<span class="string">"alpha(opacity="</span>+attr[i]+<span class="string">")"</span>, </span><br><span class="line">						obj.style[i]=attr[i]/100) : obj.style[i]=attr[i];							   </span><br><span class="line">				&#125;</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;//attr是个字符串就读取CSS样式</span><br><span class="line">				<span class="built_in">return</span> obj.currentStyle ? obj.currentStyle[attr] : getComputeStyle(obj,null)[attr]</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">break</span>;</span><br><span class="line">		<span class="keyword">case</span> 3://三个参数就是设置样式</span><br><span class="line">			attr == <span class="string">"opacity"</span> ? (obj.style[<span class="string">"filter"</span>]=<span class="string">"alpha(opacity="</span>+value+<span class="string">")"</span>, </span><br><span class="line">				obj.style[attr]=value/100) : obj.style[attr]=value;</span><br><span class="line">			<span class="built_in">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-网页导航栏小技巧" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -366,6 +510,7 @@
 <h3 id="③字符范围"><a href="#③字符范围" class="headerlink" title="③字符范围"></a>③字符范围</h3><p>　　代码　　说明<br>　　[]　　　　匹配方括号中任意字符<br>　　[0-9]　　代表的含意与\d就是完全一致的：匹配任意一位数字</p>
 <p>　　注意在字符范围中有很多元字符不需要转义，可以代表自身，如.?+等。常见在[]内需要转义的有<strong>\和]和-</strong></p>
 <p>　　注：如果想匹配任意汉字的话，可以使用：<em>[\u4e00-\u9fa5]</em>。</p>
+<p>　　有时也会见到[^\x00-\xff]，即匹配不是ASCII代码中十六进制代码00到ff的字符，即不是ASCII代码十进制0到255的字符，所以汉字包括在里面。</p>
 <h3 id="④分枝条件"><a href="#④分枝条件" class="headerlink" title="④分枝条件"></a>④分枝条件</h3><p>　　代码　　说明<br>　　|　　　　匹配分枝条件时，将会从左到右地测试每个条件，如果满足了某个分枝的话，就不会去再管其它的条件了。<br>　　<br>　　\d{5}-\d{4}|\d{5}　　这个表达式用于匹配美国的邮政编码。美国邮编的规则是5位数字，或者用连字号间隔的9位数字。之所以要给出这个例子是因为它能说明一个问题：<strong>使用分枝条件时，要注意各个条件的顺序</strong>。如果你把它改成\d{5}|\d{5}-\d{4}的话，那么就只会匹配5位的邮编(以及9位邮编的前5位)。</p>
 <h3 id="⑤分组"><a href="#⑤分组" class="headerlink" title="⑤分组"></a>⑤分组</h3><p>　　代码　　说明<br>　　()　　重复单个字符,直接在字符后面加上限定符就行了；但如果想要重复多个字符又该怎么办？你可以用小括号来指定子表达式(也叫做分组)，然后你就可以指定这个子表达式的重复次数了</p>
 <p>　　(\d{1,3}.){3}\d{1,3}　　是一个简单的IP地址匹配表达式。  \d{1,3}匹配1到3位的数字，(\d{1,3}.){3}匹配三位数字加上一个英文句号(这个整体也就是这个分组)重复3次，最后再加上一个一到三位的数字(\d{1,3})。</p>
@@ -782,75 +927,9 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2018/03/24/hello-world/" class="article-date">
-      <time datetime="2018-03-24T12:45:44.081Z" itemprop="datePublished">2018-03-24</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/03/24/hello-world/">Hello World</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate or $ hexo g</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Debug"><a href="#Debug" class="headerlink" title="Debug"></a>Debug</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s --debug</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/zh-cn/docs/commands.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy or $ hexo d</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 

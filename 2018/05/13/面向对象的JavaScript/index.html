@@ -7,18 +7,18 @@
   
   
   
-  <title>JS清空数组的方法 | 岛马的主页</title>
+  <title>面向对象的JavaScript | 岛马的主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="①splice12var ary = [1,2,3,4]; ary.splice(0); //不用写要删的长度，直接从0全删掉 ②length=012var ary = [1,2,3,4]; ary.length=0; 　　这种方式很有意思，其它语言如Java，其数组的length是只读的，不能被赋值。而JS中则可以。 ③赋值为[]12var ary = [1,2,3,4]; ary = [];">
+  <meta name="description" content="最近刚开始看《JavaScrit设计模式与开发实践一书》，感觉着实不错，让我对JS的面向对象有了更多的认识，下面就来总结一下： 　　首先要了解的一点是：JavaScript是动态类型语言，与Java，C++这些静态类型语言不同，它无需类型检测。 多态　　多态就是将“做什么”和“谁去做以及怎样去做”分离开，也就是将“不变的事物”与“可能改变的事物”分离开来，然后把不变的部分隔离出来，把可变的部分">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS清空数组的方法">
-<meta property="og:url" content="http://yoursite.com/2018/04/10/JS清空数组的方法/index.html">
+<meta property="og:title" content="面向对象的JavaScript">
+<meta property="og:url" content="http://yoursite.com/2018/05/13/面向对象的JavaScript/index.html">
 <meta property="og:site_name" content="岛马的主页">
-<meta property="og:description" content="①splice12var ary = [1,2,3,4]; ary.splice(0); //不用写要删的长度，直接从0全删掉 ②length=012var ary = [1,2,3,4]; ary.length=0; 　　这种方式很有意思，其它语言如Java，其数组的length是只读的，不能被赋值。而JS中则可以。 ③赋值为[]12var ary = [1,2,3,4]; ary = [];">
-<meta property="og:updated_time" content="2018-04-10T12:09:40.483Z">
+<meta property="og:description" content="最近刚开始看《JavaScrit设计模式与开发实践一书》，感觉着实不错，让我对JS的面向对象有了更多的认识，下面就来总结一下： 　　首先要了解的一点是：JavaScript是动态类型语言，与Java，C++这些静态类型语言不同，它无需类型检测。 多态　　多态就是将“做什么”和“谁去做以及怎样去做”分离开，也就是将“不变的事物”与“可能改变的事物”分离开来，然后把不变的部分隔离出来，把可变的部分">
+<meta property="og:updated_time" content="2018-05-13T01:56:35.499Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JS清空数组的方法">
-<meta name="twitter:description" content="①splice12var ary = [1,2,3,4]; ary.splice(0); //不用写要删的长度，直接从0全删掉 ②length=012var ary = [1,2,3,4]; ary.length=0; 　　这种方式很有意思，其它语言如Java，其数组的length是只读的，不能被赋值。而JS中则可以。 ③赋值为[]12var ary = [1,2,3,4]; ary = [];">
+<meta name="twitter:title" content="面向对象的JavaScript">
+<meta name="twitter:description" content="最近刚开始看《JavaScrit设计模式与开发实践一书》，感觉着实不错，让我对JS的面向对象有了更多的认识，下面就来总结一下： 　　首先要了解的一点是：JavaScript是动态类型语言，与Java，C++这些静态类型语言不同，它无需类型检测。 多态　　多态就是将“做什么”和“谁去做以及怎样去做”分离开，也就是将“不变的事物”与“可能改变的事物”分离开来，然后把不变的部分隔离出来，把可变的部分">
   
     <link rel="alternative" href="/atom.xml" title="岛马的主页" type="application/atom+xml">
   
@@ -269,11 +269,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-JS清空数组的方法" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-面向对象的JavaScript" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2018/04/10/JS清空数组的方法/" class="article-date">
-      <time datetime="2018-04-10T11:55:32.000Z" itemprop="datePublished">2018-04-10</time>
+      <a  href="/2018/05/13/面向对象的JavaScript/" class="article-date">
+      <time datetime="2018-05-13T01:41:52.000Z" itemprop="datePublished">2018-05-13</time>
 </a>
 
     </div>
@@ -287,7 +287,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      JS清空数组的方法
+      面向对象的JavaScript
     </h1>
   
 
@@ -305,12 +305,12 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="①splice"><a href="#①splice" class="headerlink" title="①splice"></a>①splice</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var ary = [1,2,3,4]; </span><br><span class="line">ary.splice(0); //不用写要删的长度，直接从0全删掉</span><br></pre></td></tr></table></figure>
-<h3 id="②length-0"><a href="#②length-0" class="headerlink" title="②length=0"></a>②length=0</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var ary = [1,2,3,4]; </span><br><span class="line">ary.length=0;</span><br></pre></td></tr></table></figure>
-<p>　　这种方式很有意思，其它语言如Java，其数组的length是只读的，不能被赋值。而JS中则可以。</p>
-<h3 id="③赋值为"><a href="#③赋值为" class="headerlink" title="③赋值为[]"></a>③赋值为[]</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var ary = [1,2,3,4]; </span><br><span class="line">ary = []; // 赋值为一个空数组以达到清空原数组</span><br></pre></td></tr></table></figure>
-<p>　　方式2 保留了数组其它属性，方式3 则未保留。很多人认为方式2的效率很高些，因为仅仅是给length重新赋值了，而方式3则重新建立个对象。经 测试 恰恰是方式3的效率高。测试代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var a=[];</span><br><span class="line"><span class="keyword">for</span>(var i=0;i&lt;1000000;i++)&#123;</span><br><span class="line">	a.push(i);</span><br><span class="line">&#125;</span><br><span class="line">var start=new Date();</span><br><span class="line">a=[];</span><br><span class="line">var end=new Date();</span><br><span class="line">alert(end-start);</span><br></pre></td></tr></table></figure></p>
-<p>　　可以多试几个浏览器，结果是方式3更快一点点。</p>
+        <p>　　最近刚开始看《JavaScrit设计模式与开发实践一书》，感觉着实不错，让我对JS的面向对象有了更多的认识，下面就来总结一下：</p>
+<p>　　首先要了解的一点是：JavaScript是<strong>动态类型语言</strong>，与Java，C++这些<em>静态类型语言</em>不同，它无需类型检测。</p>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>　　多态就是将“做什么”和“谁去做以及怎样去做”分离开，也就是将“不变的事物”与“可能改变的事物”分离开来，然后把不变的部分隔离出来，把可变的部分<em>封装</em>起来，这样即可实现：同一操作作用于不同的对象，可以产生不同的解释和不同的执行结果。</p>
+<p>　　多态最根本的作用就是通过<strong>把过程化的条件分支语句转化为对象的多态性</strong>，从而消除这些条件分支语句。</p>
+<h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><p>　　因为JavaScript没有一些语言中的public,private,protected等关键字，所以只能依赖<strong>变量的作用域</strong>来实现封装特性，而且只能模拟出public和private这两种封装性。</p>
+<p>　　一般通过函数来创建作用域（如闭包就是实现了公开方法访问私有变量），但最新的ES6提供了let关键字，和Symbol创建私有属性，现在我还没看，等着一定会去了解。</p>
 
       
     </div>
@@ -319,13 +319,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2018/04/10/JS清空数组的方法/">JS清空数组的方法</a></p>
+        <p><span>本文标题:</span><a  href="/2018/05/13/面向对象的JavaScript/">面向对象的JavaScript</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 岛马 的个人博客">岛马</a></p>
-        <p><span>发布时间:</span>2018年04月10日 - 19时55分</p>
-        <p><span>最后更新:</span>2018年04月10日 - 20时09分</p>
+        <p><span>发布时间:</span>2018年05月13日 - 09时41分</p>
+        <p><span>最后更新:</span>2018年05月13日 - 09时56分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/04/10/JS清空数组的方法/" title="JS清空数组的方法">http://yoursite.com/2018/04/10/JS清空数组的方法/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/04/10/JS清空数组的方法/　　作者: 岛马" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/05/13/面向对象的JavaScript/" title="面向对象的JavaScript">http://yoursite.com/2018/05/13/面向对象的JavaScript/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/05/13/面向对象的JavaScript/　　作者: 岛马" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -336,18 +336,18 @@
 
 <nav id="article-nav">
   
-    <a  href="/2018/04/11/offsetLeft和style-left/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a  href="/2018/05/13/我的前端学习路线/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          offsetLeft和style.left
+          我的前端学习路线
         
       </div>
     </a>
   
   
-    <a  href="/2018/04/07/内联元素和块元素/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">内联元素和块元素</div>
+    <a  href="/2018/05/12/JS中insertAdjacentHTML-方法/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JS中insertAdjacentHTML()方法</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -359,7 +359,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#①splice"><span class="toc-number">1.</span> <span class="toc-text">①splice</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#②length-0"><span class="toc-number">2.</span> <span class="toc-text">②length=0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#③赋值为"><span class="toc-number">3.</span> <span class="toc-text">③赋值为[]</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#多态"><span class="toc-number">1.</span> <span class="toc-text">多态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#封装"><span class="toc-number">2.</span> <span class="toc-text">封装</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -430,13 +430,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2018/04/11/offsetLeft和style-left/" title="上一篇: offsetLeft和style.left">
+            <a  href="/2018/05/13/我的前端学习路线/" title="上一篇: 我的前端学习路线">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2018/04/07/内联元素和块元素/" title="下一篇: 内联元素和块元素">
+            <a  href="/2018/05/12/JS中insertAdjacentHTML-方法/" title="下一篇: JS中insertAdjacentHTML()方法">
                 <i class="fa fa-angle-right"></i>
             </a>
         
