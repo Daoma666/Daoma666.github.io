@@ -270,6 +270,184 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-CSS-使用overflow-hidden清除浮动" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/03/26/CSS-使用overflow-hidden清除浮动/" class="article-date">
+      <time datetime="2018-03-26T10:59:09.000Z" itemprop="datePublished">2018-03-26</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/03/26/CSS-使用overflow-hidden清除浮动/">CSS 使用overflow:hidden清除浮动</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="CSS-使用overflow-hidden清除浮动"><a href="#CSS-使用overflow-hidden清除浮动" class="headerlink" title="CSS 使用overflow:hidden清除浮动"></a>CSS 使用overflow:hidden清除浮动</h2><p>　　今天做了一道网页换肤的练习，但发现了其中的两个小问题，详情如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"outer"</span>&gt;</span><br><span class="line">	&lt;ul id=<span class="string">"skin"</span>&gt;</span><br><span class="line">		&lt;li id=<span class="string">"red"</span> title=<span class="string">"红色"</span>&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li id=<span class="string">"green"</span> title=<span class="string">"绿色"</span>&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li id=<span class="string">"blue"</span> title=<span class="string">"蓝色"</span>&gt;&lt;/li&gt;</span><br><span class="line">	&lt;/ul&gt;</span><br><span class="line">	&lt;ul id=<span class="string">"nav"</span>&gt;</span><br><span class="line">			&lt;!--</span><br><span class="line">               	javascript: 是一个伪协议javascript:是表示在触发&lt;a&gt;默认动作时，执行一段JavaScript代码，</span><br><span class="line">               	而 javascript:;表示什么都不执行，这样点击&lt;a&gt;时就没有任何反应。</span><br><span class="line">               --&gt;</span><br><span class="line">			&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;新闻&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">			&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;娱乐&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">			&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;体育&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">			&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;电影&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">			&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;音乐&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">			&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;旅游&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;/ul&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>　　在div里有两个ul，对它们的li分别都设置了float: left后发现：<br>　　1.  这两个ul中的li都脱离了文档流，跑到一行上去了<br>　　2.  为ul设置过黑色背景，但都消失了<br>　　于是我使用了br来换行，但发现原作者并没有这样做，这不由得让我产生了疑问。在反复查看源码后，我发现是overflow: hidden;在起作用，遂到网上一查发现，它并不只有<strong>隐藏溢出</strong>的功能，还有<strong>清除浮动</strong>和<strong>解除坍塌</strong>的功能。原理如下：<br>　　浮动的元素(两个ul中的li)脱离文档元素， 不占据空间，所以跑到了一行上。 不浮动的元素(ul,div)会直接无视掉这个元素。因为我们没有设置父ul的高度，父ul无视了自己的两个孩子，其高度变为0，所以父ul没有显现。 解决方法就是：<br>　　1.  如果只想换行，给ul添加overflow:hidden属性即可，清除浮动，恢复它原先占据的ul的位置<br>　　2.  为父ul添加overflow:hidden属性用以清除浮动，使得父ul显现</p>
+<p>　　若想更细致的查看该属性的用法：<a href="https://blog.csdn.net/hukaihe/article/details/51298665" title="深入理解：overflow:hidden——溢出,坍塌,清除浮动" target="_blank" rel="noopener">详细链接</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-JS中-和-的奇怪用法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/03/25/JS中-和-的奇怪用法/" class="article-date">
+      <time datetime="2018-03-25T08:15:19.000Z" itemprop="datePublished">2018-03-25</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/03/25/JS中-和-的奇怪用法/">JS中&amp;&amp;和||的奇怪用法</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="JS中-amp-amp-和-的奇怪用法"><a href="#JS中-amp-amp-和-的奇怪用法" class="headerlink" title="JS中&amp;&amp;和||的奇怪用法"></a>JS中&amp;&amp;和||的奇怪用法</h2><p>　　最近正在学 JS，找了点练习来做，然后看到如下的代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (var i = 0; i &lt; oBtn.length; i++)</span><br><span class="line">&#123;</span><br><span class="line">	oBtn[i].index = i;</span><br><span class="line">	oBtn[i].onclick = <span class="keyword">function</span> ()</span><br><span class="line">	&#123;</span><br><span class="line">	this.index == oBtn.length - 1 &amp;&amp; (oDiv.style.cssText = <span class="string">""</span>);</span><br><span class="line">	changeStyle(oDiv, oAtt[this.index], oVal[this.index]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>　　然后我上网搜了一下明白了 var c=a||b;或var c=a&amp;&b;这种情况时<br><strong>a &amp;&amp; b :如果执行 a 后返回 true，则执行 b 并返回 b 的值；如果执行 a 后返回 false，则整个表达式返回 a 的值，b 不执行</strong><br><strong>a || b :如果执行 a 后返回 true，则整个表达式返回 a 的值，b 不执行；如果执行 a 后返回 false，则执行 b 并返回 b 的值</strong></p>
+<p>　　所以这句就好理解了this.index == oBtn.length - 1 &amp;&amp; (oDiv.style.cssText = “”);<br>　　这可以算是一种炫技代码⊙﹏⊙，相当于：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(this.index == oBtn.length - 1)&#123;</span><br><span class="line">	oDiv.style.cssText = <span class="string">""</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-A-Front-end-newbie" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/03/25/A-Front-end-newbie/" class="article-date">
+      <time datetime="2018-03-25T07:26:03.000Z" itemprop="datePublished">2018-03-25</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/03/25/A-Front-end-newbie/">A Front-end newbie</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="新手上路啦"><a href="#新手上路啦" class="headerlink" title="新手上路啦"></a>新手上路啦</h2><p>　　忙活了三天搭起了个人的博客，虽然只是开了一个框架，但看到属于自己的页面那一刻，心情是很激动的.作为一只准备投身前端领域的小菜鸟，这一个月越发的感受到了前端的魅力，也见识了前端的深邃，自己目前的水平也就是刚对JS和CSS入了门，上论坛看大家讨论的一堆名词连听都没听说过，所以革命还需努力啦！<br>　　鉴于目前已大三下学期，马上就要找实习了，故在文章最后分享一下最近看到一句话：“你第一个月的工资=你之前看过的所有技术性书籍价值的总和”，我感觉这是非常有道理的，小时候读书少，现在有动力读相关技术的书了，也算是一个好兆头。<br>　　最后分享一下搭建博客的过程中用到的教程：<br>　　1.  GitHub搭建博客 <a href="https://blog.csdn.net/u012075670/article/details/54581015" title="如何用github搭建自己的个人网站" target="_blank" rel="noopener">具体教程</a><br>　　2.  Hexo完善博客       <a href="https://www.cnblogs.com/visugar/p/6821777.html" title="hexo从零开始到搭建完整" target="_blank" rel="noopener">具体教程</a><br>　　3.  使用markdown来写博客(ps:要是想要段首缩进可以切换到输入法全角模式打两个空格) <a href="https://www.w3cschool.cn/markdownyfsm/cbx1e7.html" title="Markdown 语法说明" target="_blank" rel="noopener">语法参考</a><br>　　那今天就先到这里啦，我们下篇博客再会！</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">

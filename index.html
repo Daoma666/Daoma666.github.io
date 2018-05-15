@@ -270,6 +270,203 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-JS中this的指向" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/05/15/JS中this的指向/" class="article-date">
+      <time datetime="2018-05-15T14:37:32.000Z" itemprop="datePublished">2018-05-15</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/05/15/JS中this的指向/">JS中this的指向</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="JS中this的指向"><a href="#JS中this的指向" class="headerlink" title="JS中this的指向"></a>JS中this的指向</h2><h4 id="方法调用模式"><a href="#方法调用模式" class="headerlink" title="方法调用模式"></a>方法调用模式</h4><p>　　当函数作为对象的方法被调用时，this指向该对象。</p>
+<h4 id="普通函数调用模式"><a href="#普通函数调用模式" class="headerlink" title="普通函数调用模式"></a>普通函数调用模式</h4><p>　　this总是指向全局对象，在浏览器中，这个全局对象就是window对象。</p>
+<h4 id="构造器调用模式"><a href="#构造器调用模式" class="headerlink" title="构造器调用模式"></a>构造器调用模式</h4><p>　　因为new运算符会返回一个指向构造器函数原型的对象，所以<em>通常</em>情况下this就指向返回的这个对象。</p>
+<p>　　但还有特殊的情况，比如构造器<strong>显式的返回了一个object类型的对象</strong>时，new调用构造器则会最终返回这个对象，而不是我们期待的this。</p>
+<h4 id="Function-prototype-apply调用模式"><a href="#Function-prototype-apply调用模式" class="headerlink" title="Function.prototype.apply调用模式"></a>Function.prototype.apply调用模式</h4><p>　　详情见我博客中的“JS中的apply()使用详解”一文，它的第一个参数可以改变函数体内this对象的指向。</p>
+<p>　　但如果第一个参数是null，则会像普通函数调用模式那样，函数体内的this指向默认宿主对象，在浏览器中则是window。</p>
+<h3 id="利用apply实现的bind函数"><a href="#利用apply实现的bind函数" class="headerlink" title="利用apply实现的bind函数"></a>利用apply实现的bind函数</h3><p>　　Function.prototype.bind，用来<strong>指定函数内部的this指向</strong>，其<em>简化版</em>实现可以这样模拟：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">   Function.prototype.bind=<span class="keyword">function</span>(context)&#123;</span><br><span class="line">	var that=this;//保存方法调用模式下被调用的原函数</span><br><span class="line">	<span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123;//闭包返回一个新函数（可访问外层函数的变量和参数）</span><br><span class="line">		<span class="built_in">return</span> that.apply(context,arguments);//改变that原函数的内部this指向为我们指定的context</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">   var obj1=&#123;</span><br><span class="line">	name: <span class="string">"Daoma"</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">   var func=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	alert(this.name);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">func();//未定义</span><br><span class="line"></span><br><span class="line">   var func=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	alert(this.name);</span><br><span class="line">&#125;.<span class="built_in">bind</span>(obj1);</span><br><span class="line">	</span><br><span class="line">func();//Daoma</span><br></pre></td></tr></table></figure>
+<p>　　通常我们还会实现的稍微复杂一点，可以往func函数中预先填入一些参数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">  Function.prototype.bind=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">var that=this,</span><br><span class="line">		context=[].shift.call(arguments),//将第一个元素删掉并返回</span><br><span class="line">		args=[].slice.call(arguments);//用slice的另一个功能将剩余的参数类数组转换成数组</span><br><span class="line">	<span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		//这里运用了函数柯里化的思想，组合两次分别传入的参数，作为新函数的参数</span><br><span class="line">		<span class="built_in">return</span> that.apply(context,[].concat.call(args,[].slice.call(arguments)));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var obj1=&#123;</span><br><span class="line">	name: <span class="string">"daoma"</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var func=<span class="keyword">function</span>(a,b,c,d)&#123;</span><br><span class="line">	alert(this.name);</span><br><span class="line">	alert([a,b,c,d]);</span><br><span class="line">&#125;.<span class="built_in">bind</span>(obj1,1,2);</span><br><span class="line"></span><br><span class="line">func(3,4);//即可以传参两次拼到一起</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-arguments类数组对象详解" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/05/15/arguments类数组对象详解/" class="article-date">
+      <time datetime="2018-05-15T14:36:53.000Z" itemprop="datePublished">2018-05-15</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/05/15/arguments类数组对象详解/">arguments类数组对象详解</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="arguments类数组对象详解"><a href="#arguments类数组对象详解" class="headerlink" title="arguments类数组对象详解"></a>arguments类数组对象详解</h2><h4 id="arguments对象保存着函数被调用时的参数列表，它是一个类数组对象，有一个length属性但没有任何数组的方法。"><a href="#arguments对象保存着函数被调用时的参数列表，它是一个类数组对象，有一个length属性但没有任何数组的方法。" class="headerlink" title="arguments对象保存着函数被调用时的参数列表，它是一个类数组对象，有一个length属性但没有任何数组的方法。"></a>arguments对象保存着函数被调用时的参数列表，它是一个类数组对象，有一个length属性但没有任何数组的方法。</h4><p>　　它不能像数组一样，进行排序操作或者往集合里添加一个新的元素。</p>
+<h4 id="所以我们经常非常频繁的找Array-prototype对象借用方法。"><a href="#所以我们经常非常频繁的找Array-prototype对象借用方法。" class="headerlink" title="所以我们经常非常频繁的找Array.prototype对象借用方法。"></a>所以我们经常非常频繁的找Array.prototype对象借用方法。</h4><p>　　像Array.prototype.slice可以把arguments转成真正的数组；想截去arguments列表中头一个元素时，又可以借用Array.prototype.shift方法。</p>
+<p>　　要了解这种机制的实现原理，需要查看一下V8引擎的源码，比如Array.prototype.push：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">function</span> <span class="function"><span class="title">ArrayPush</span></span>()&#123;</span><br><span class="line">var n=TO_UINT32(this.length); //被push的对象的length</span><br><span class="line">var m=%_ArgumentsLength(); //push的参数个数</span><br><span class="line"><span class="keyword">for</span>(var i=0;i&lt;m;i++)&#123;</span><br><span class="line">	this[i+n]=%_Arguments(i);  //复制元素</span><br><span class="line">&#125;</span><br><span class="line">this.length=n+m; //修正length属性的值</span><br><span class="line"><span class="built_in">return</span> this.length;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>　可见Array.prototype.push实际上是一个<strong>属性复制</strong>的过程，把参数按照下标依次添加到被push的<strong>对象</strong>上面，顺便修改了这个对象的属性。所以只要是个对象，不管是数组对象还是类数组对象，都可以操作。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-CSS使用border构建图标" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/05/14/CSS使用border构建图标/" class="article-date">
+      <time datetime="2018-05-14T14:58:33.000Z" itemprop="datePublished">2018-05-14</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/05/14/CSS使用border构建图标/">CSS使用border构建图标</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="CSS使用border构建图标"><a href="#CSS使用border构建图标" class="headerlink" title="CSS使用border构建图标"></a>CSS使用border构建图标</h2><h3 id="使用border画三角形"><a href="#使用border画三角形" class="headerlink" title="使用border画三角形"></a>使用border画三角形</h3><p>　　盒模型中上下左右边框交界处呈现平滑的斜线. 利用这个特点, 通过设置不同的上下左右边框宽度或者颜色可以得到小三角, 小梯形等。<a href="http://caibaojian.com/css-border-triangle.html" title="CSS三角形的实现原理及运用" target="_blank" rel="noopener">具体链接</a></p>
+<h3 id="画朝上朝下的√小图标"><a href="#画朝上朝下的√小图标" class="headerlink" title="画朝上朝下的√小图标"></a>画朝上朝下的√小图标</h3><p>　　使用border可以画很多与三角形有关的东东，比如我们经常见到的向上向下的“对号图标”就是使用两层border叠加生成的。<br>  <img src="https://github.com/Daoma666/JS-CSS_train1/blob/master/%E5%8D%9A%E5%AE%A2%E5%9B%BE%E5%BA%93/border%E5%AF%B9%E5%8F%B7%E5%B0%8F%E5%9B%BE%E6%A0%87.png?raw=true" alt="border对号小图标"></p>
+<p>　　首先我们需要一个div和两个i，两个i就是用来叠加生成对号图标用的。</p>
+<p>HTML:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   &lt;div class=<span class="string">"bottom"</span>&gt;&lt;!-- 这里换成top就是向上的对号--&gt;</span><br><span class="line">	&lt;i class=<span class="string">"arrow1"</span>&gt;&lt;/i&gt;</span><br><span class="line">	&lt;i class=<span class="string">"arrow2"</span>&gt;&lt;/i&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>CSS:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">   .bottom&#123;</span><br><span class="line">	width: 20px;</span><br><span class="line">	height: 20px;</span><br><span class="line">	position: relative;</span><br><span class="line">&#125;</span><br><span class="line">   .bottom .arrow1,.bottom .arrow2&#123;</span><br><span class="line">	display: block;</span><br><span class="line">	position: absolute;</span><br><span class="line">	width: 0px;/*宽高设为0才能上下左右的border显示为三角形*/</span><br><span class="line">	height: 0px;</span><br><span class="line">	border-left: 8px dashed transparent;/*transparent主要为了应用在网页中不盖住底色*/</span><br><span class="line">	border-right: 8px dashed transparent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>　　然后下面关键的就来了，我们给第一个<em><i></i></em>只设置上边框的话在这种情况下是个三角形：<img src="https://github.com/Daoma666/JS-CSS_train1/blob/master/%E5%8D%9A%E5%AE%A2%E5%9B%BE%E5%BA%93/border1.png?raw=true" alt="border1.png"></p>
+<p>　　然后我们可以给第二个<em><i></i></em>再设置一个白色的三角形然后用绝对定位的偏移使它下移盖住灰色三角形的一部分：<img src="https://github.com/Daoma666/JS-CSS_train1/blob/master/%E5%8D%9A%E5%AE%A2%E5%9B%BE%E5%BA%93/border2.png?raw=true" alt="border2.png"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">   .bottom .arrow1&#123;</span><br><span class="line">	border-top: 8px solid <span class="comment">#999;</span></span><br><span class="line">	border-bottom: 8px dashed transparent;</span><br><span class="line">&#125;</span><br><span class="line">.bottom .arrow2&#123;</span><br><span class="line">    top: -2px;</span><br><span class="line">    border-top: 8px solid <span class="comment">#fff;</span></span><br><span class="line">    border-bottom: 8px dashed transparent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>　　然后我们一开始的那个向下的对号图标就出现啦，向上同理啦，下面就是向上向下放在一起的完整版CSS。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">.bottom,.top&#123;</span><br><span class="line">	width: 20px;</span><br><span class="line">	height: 20px;</span><br><span class="line">	position: relative;</span><br><span class="line">&#125;</span><br><span class="line">.bottom .arrow1,.bottom .arrow2,.top .arrow1,.top .arrow2&#123;</span><br><span class="line">	display: block;</span><br><span class="line">	position: absolute;</span><br><span class="line">	width: 0px;</span><br><span class="line">	height: 0px;</span><br><span class="line">	border-left: 8px dashed transparent;</span><br><span class="line">	border-right: 8px dashed transparent;</span><br><span class="line">&#125;</span><br><span class="line">.bottom .arrow1&#123;</span><br><span class="line">	border-top: 8px solid <span class="comment">#999;</span></span><br><span class="line">	border-bottom: 8px dashed transparent;</span><br><span class="line">&#125;</span><br><span class="line">.bottom .arrow2&#123;</span><br><span class="line">	top: -2px;</span><br><span class="line">	border-top: 8px solid <span class="comment">#fff;</span></span><br><span class="line">	border-bottom: 8px dashed transparent;</span><br><span class="line">&#125; </span><br><span class="line">.top .arrow1&#123;</span><br><span class="line">	border-top: 8px dashed transparent;</span><br><span class="line">	border-bottom: 8px solid <span class="comment">#999;			</span></span><br><span class="line">&#125;</span><br><span class="line">.top .arrow2&#123;</span><br><span class="line">	top: 2px;</span><br><span class="line">	border-top: 8px dashed transparent;</span><br><span class="line">	border-bottom: 8px solid <span class="comment">#fff;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-我的前端学习路线" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -772,199 +969,6 @@
 <p>　　我们还可以令<strong>对象数组</strong>排序，这里是加强版排序，首先按last排序，然后按照first排序。</p>
 <p>JS:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">var s=[</span><br><span class="line">	&#123;first:<span class="string">"Tom"</span>,last:<span class="string">"cruse"</span>&#125;,</span><br><span class="line">	&#123;first:<span class="string">"Jack"</span>,last:<span class="string">"awddwa"</span>&#125;,</span><br><span class="line">	&#123;first:<span class="string">"Aommy"</span>,last:<span class="string">"rththr"</span>&#125;,</span><br><span class="line">	&#123;first:<span class="string">"Fuck"</span>,last:<span class="string">"ererg"</span>&#125;,</span><br><span class="line">	&#123;first:<span class="string">"Shit"</span>,last:<span class="string">"nbnb"</span>&#125;,</span><br><span class="line">	&#123;first:<span class="string">"Jessy"</span>,last:<span class="string">"awddwa"</span>&#125;</span><br><span class="line">];</span><br><span class="line">var by=<span class="keyword">function</span>(name,minor)&#123;</span><br><span class="line">	<span class="built_in">return</span> <span class="keyword">function</span>(o,p)&#123;</span><br><span class="line">		var a,b;</span><br><span class="line">		<span class="keyword">if</span>(typeof o===<span class="string">'object'</span> &amp;&amp; typeof p===<span class="string">'object'</span> &amp;&amp; o &amp;&amp; p)&#123;</span><br><span class="line">			a=o[name];</span><br><span class="line">			b=p[name];</span><br><span class="line">			<span class="keyword">if</span>(a===b)&#123;</span><br><span class="line">				//这里的minor(o,p)实际上是by(<span class="string">'first'</span>)(o,p)</span><br><span class="line">				<span class="built_in">return</span> typeof minor ===  <span class="string">'function'</span> ? minor(o,p) : 0;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(typeof a=== typeof b)&#123;</span><br><span class="line">				<span class="built_in">return</span> a&lt;b?-1:1;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">return</span> typeof a &lt; typeof b ? -1 : 1;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			throw&#123;</span><br><span class="line">				name: <span class="string">'Error'</span>,</span><br><span class="line">				message: <span class="string">'Expected an object when sorting by '</span>+name</span><br><span class="line">			&#125;;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;;</span><br><span class="line">//因为by函数使用了闭包，这里的带两个参数的比较函数实际上是by(name)函数,即func(o,p)=by(name)(o,p)</span><br><span class="line">//一个函数当参数的时候只写函数名即可,所以写成sort(by(<span class="string">'last'</span>))就行</span><br><span class="line">s.sort(by(<span class="string">"last"</span>,by(<span class="string">"first"</span>)));</span><br><span class="line"><span class="keyword">for</span>(var i <span class="keyword">in</span> s)&#123;</span><br><span class="line">	console.log(s[i].first+<span class="string">" "</span>+s[i].last);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>　　更多关于sort()的内容，请见<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/sort" title="Array.prototype.sort()" target="_blank" rel="noopener">MDN文档</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-label标签和任意高度元素展开收起的骚操作" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2018/04/24/label标签和任意高度元素展开收起的骚操作/" class="article-date">
-      <time datetime="2018-04-23T23:33:57.000Z" itemprop="datePublished">2018-04-24</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/04/24/label标签和任意高度元素展开收起的骚操作/">label标签和任意高度元素展开收起的骚操作</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="label标签和任意高度元素展开收起的骚操作"><a href="#label标签和任意高度元素展开收起的骚操作" class="headerlink" title="label标签和任意高度元素展开收起的骚操作"></a>label标签和任意高度元素展开收起的骚操作</h2><p>　　<em><label></label></em> 标签为 input 元素定义标注（标记）。</p>
-<p>　　<em><label></label></em> 元素不会向用户呈现任何特殊效果。不过，它为鼠标用户改进了可用性。如果您在 label 元素内点击文本，就会触发此控件。就是说，当用户选择该标签时，浏览器就会自动将焦点转到和标签相关的表单控件上。</p>
-<p>　　<em><label></label></em> 标签的 for 属性应当与相关元素的 id 属性相同。</p>
-<p>HTML:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;input id=<span class="string">"check"</span> <span class="built_in">type</span>=<span class="string">"checkbox"</span>&gt;</span><br><span class="line">&lt;p&gt;:checked 选择器匹配每个已被选中的 input 元素（只用于单选按钮和复选框）。&lt;/p&gt;</span><br><span class="line">&lt;div class=<span class="string">"element"</span>&gt;</span><br><span class="line">  &lt;p&gt;若指定了label标签的<span class="keyword">for</span>属性和input标签的id属性相同的话，则可以实现两者的关联，在该例子里就是label也可以点击触发:checked&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;label <span class="keyword">for</span>=<span class="string">"check"</span> class=<span class="string">"check-in"</span>&gt;更多↓&lt;/label&gt;</span><br><span class="line">&lt;label <span class="keyword">for</span>=<span class="string">"check"</span> class=<span class="string">"check-out"</span>&gt;收起↑&lt;/label&gt;</span><br></pre></td></tr></table></figure>
-<p>CSS:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">/*把复选框隐藏掉*/</span><br><span class="line">input[<span class="built_in">type</span>=<span class="string">"checkbox"</span>]&#123;</span><br><span class="line">	position: absolute;</span><br><span class="line">	clip: rect(0,0,0,0);/*clip属性裁剪出一个绝对定位元素的可见尺寸*/</span><br><span class="line">&#125;</span><br><span class="line">/*实现任意高度元素展开收起 的骚操作*/</span><br><span class="line">.element &#123;</span><br><span class="line">  max-height: 0;</span><br><span class="line">  overflow: hidden;</span><br><span class="line">  transition: max-height 1.25s;</span><br><span class="line">&#125;</span><br><span class="line">:checked ~ .element &#123;</span><br><span class="line">  max-height: 666px; /*一个足够大的最大高度值*/</span><br><span class="line">&#125;</span><br><span class="line">/*为了更美观，实现两个label的显示交替*/</span><br><span class="line">:checked ~ .check-in&#123;</span><br><span class="line">	display: none;</span><br><span class="line">&#125;</span><br><span class="line">.check-out&#123;</span><br><span class="line">	display: none;</span><br><span class="line">&#125;</span><br><span class="line">:checked ~ .check-out&#123;</span><br><span class="line">	display: block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-CSS特殊的按钮闪烁效果" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2018/04/21/CSS特殊的按钮闪烁效果/" class="article-date">
-      <time datetime="2018-04-21T02:57:49.000Z" itemprop="datePublished">2018-04-21</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/04/21/CSS特殊的按钮闪烁效果/">CSS特殊的按钮闪烁效果</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="CSS特殊的按钮闪烁效果"><a href="#CSS特殊的按钮闪烁效果" class="headerlink" title="CSS特殊的按钮闪烁效果"></a>CSS特殊的按钮闪烁效果</h2><p>　　本来想练习线性渐变做按钮的，但无意中发现了一个闪烁的效果，具体见代码</p>
-<p>HTML:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">	&lt;a href=<span class="string">"javascript:void(0)"</span> class=<span class="string">"button cyan"</span>&gt;Daoma666&lt;/a&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<p>CSS：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">body&gt;div&#123;</span><br><span class="line">		text-align: center;</span><br><span class="line">		display: block;</span><br><span class="line">		width: 800px;</span><br><span class="line">		margin: 50px auto;</span><br><span class="line">	&#125;</span><br><span class="line">.button</span><br><span class="line">&#123;</span><br><span class="line">	font-family: Arial,helvetica,sans-serif;</span><br><span class="line">	font-size: 13px;</span><br><span class="line">	color: <span class="comment">#000;</span></span><br><span class="line">	text-decoration: none;</span><br><span class="line">	display: inline-block;</span><br><span class="line">	text-align: center;</span><br><span class="line">	padding: 7px 20px 9px;</span><br><span class="line">	margin: .5em .5em .5em 0;/*根据相应字体大小font-size来定，在这个类里1em=13px*/</span><br><span class="line">	cursor: pointer;</span><br><span class="line">	text-shadow: 0 1px 1px rgba(0,0,0,0.4);</span><br><span class="line">	text-transform: capitalize;</span><br><span class="line">	transition: 0.1s linear;</span><br><span class="line">&#125;</span><br><span class="line">.cyan &#123;</span><br><span class="line">	background: rgb(130,207,241);</span><br><span class="line">	background: -webkit-linear-gradient(to bottom,  rgba(130,207,241,1) 0%,rgba(56,174,234,1) 100%);</span><br><span class="line">	background: linear-gradient(to bottom,  rgba(130,207,241,1) 0%,rgba(56,174,234,1) 100%);</span><br><span class="line">	border: 1px solid <span class="comment">#3cafcf;</span></span><br><span class="line">&#125;  </span><br><span class="line">.cyan:hover &#123;</span><br><span class="line">	background: rgb(153,216,244);</span><br><span class="line">	/*background: -webkit-linear-gradient(to bottom,  rgba(153,216,244,1) 0%,rgba(79,183,236,1) 100%);</span><br><span class="line">	background: linear-gradient(to bottom,  rgba(153,216,244,1) 0%,rgba(79,183,236,1) 100%);*/</span><br><span class="line">	//原先这里的background打错了，导致渐变无效，然后就出现了闪烁效果，感觉比较抓人眼球。</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-JS中的apply-使用详解" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2018/04/18/JS中的apply-使用详解/" class="article-date">
-      <time datetime="2018-04-17T23:20:35.000Z" itemprop="datePublished">2018-04-18</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/04/18/JS中的apply-使用详解/">JS中的apply()使用详解</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="JS中的apply-使用详解"><a href="#JS中的apply-使用详解" class="headerlink" title="JS中的apply()使用详解"></a>JS中的apply()使用详解</h2><h3 id="apply-要绑定给this的值-参数数组-方法用来调用函数及扩展作用域"><a href="#apply-要绑定给this的值-参数数组-方法用来调用函数及扩展作用域" class="headerlink" title="apply(要绑定给this的值,参数数组)方法用来调用函数及扩展作用域"></a>apply(要绑定给this的值,参数数组)方法用来调用函数及扩展作用域</h3><h4 id="eg-Function-apply-obj-args-方法能接收两个参数，其中"><a href="#eg-Function-apply-obj-args-方法能接收两个参数，其中" class="headerlink" title="eg:Function.apply(obj,args)方法能接收两个参数，其中"></a>eg:Function.apply(obj,args)方法能接收两个参数，其中</h4><h4 id="obj-这个对象将代替Function函数里的this对象"><a href="#obj-这个对象将代替Function函数里的this对象" class="headerlink" title="obj:这个对象将代替Function函数里的this对象"></a>obj:这个对象将代替Function函数里的this对象</h4><h4 id="args-这个是数组，它将作为参数传给Function-args"><a href="#args-这个是数组，它将作为参数传给Function-args" class="headerlink" title="args:这个是数组，它将作为参数传给Function(args);　　"></a>args:这个是数组，它将作为参数传给Function(args);　　</h4><p>　　之前我一直从语义上蒙圈，还以为是Function调用啥啥啥，结果不是。。。而是<strong>obj.Function(args)</strong>，即obj调用Function函数并传入参数数组args。</p>
-<h3 id="call和apply的意思一样-只不过是参数要一个一个列出来"><a href="#call和apply的意思一样-只不过是参数要一个一个列出来" class="headerlink" title="call和apply的意思一样,只不过是参数要一个一个列出来."></a>call和apply的意思一样,只不过是参数要一个一个列出来.</h3><h4 id="eg-Function-call-obj-param1-param2-…-paramN"><a href="#eg-Function-call-obj-param1-param2-…-paramN" class="headerlink" title="eg:Function.call(obj,[param1[,param2[,…[,paramN]]]])"></a>eg:Function.call(obj,[param1[,param2[,…[,paramN]]]])</h4><h4 id="obj：这个对象将代替Function函数里的this对象"><a href="#obj：这个对象将代替Function函数里的this对象" class="headerlink" title="obj：这个对象将代替Function函数里的this对象"></a>obj：这个对象将代替Function函数里的this对象</h4><h4 id="params：这个是一个参数列表"><a href="#params：这个是一个参数列表" class="headerlink" title="params：这个是一个参数列表"></a>params：这个是一个参数列表</h4><p>具体见一个例子：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Person(name,age)&#123;</span><br><span class="line">	this.name=name;</span><br><span class="line">	this.age=age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> Student(name,age,grade)&#123;</span><br><span class="line">	Person.apply(this,arguments);</span><br><span class="line">	this.grade=grade;</span><br><span class="line">&#125;</span><br><span class="line">var student=new Student(<span class="string">"MaYun"</span>,21,<span class="string">"大三"</span>);</span><br><span class="line">alert(student.name+<span class="string">" "</span>+student.age+<span class="string">" "</span>+student.grade);</span><br></pre></td></tr></table></figure></p>
-<h3 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h3><p>　　这里Student里虽然没有给name和age属性赋值的语句，但调用了Person构造函数。所以var student=new Student(“MaYun”,21,”大三”);new出来的Student构造函数里：</p>
-<p>　　因为遵循<strong>构造器调用模式</strong>(new)中this被绑定到<strong>新对象</strong>(即student)，所以</p>
-<p>　　Person.apply(this,arguments);就相当于Person.apply(student,arguments);就相当于student.Person(name,age,grade);</p>
-<p>　　此时Person中的this.name=name;this.age=age;中的this因为属于<strong>方法调用模式</strong>被绑定到<strong>调用该方法的对象</strong>上，所以就相当于student.name=name;student.age=age;</p>
-<h4 id="巧妙使用apply-this-args-的args参数"><a href="#巧妙使用apply-this-args-的args参数" class="headerlink" title="巧妙使用apply(this,args)的args参数"></a>巧妙使用apply(this,args)的args参数</h4><p>　　如果见到apply(null,args);这种写法，这样其实不算调用什么东东了，只是可以将一个args数组默认的转换为一个参数列表(即[param1,param2,param3] 转换为 param1,param2,param3)来传惨。</p>
-<h3 id="比如下面的例子想得到数组中最大的一项-。"><a href="#比如下面的例子想得到数组中最大的一项-。" class="headerlink" title="比如下面的例子想得到数组中最大的一项 。"></a>比如下面的例子想得到数组中最大的一项 。</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var array=[50,60,70,90,100];</span><br><span class="line">var max=Math.max(array);</span><br><span class="line">alert(max); //NaN</span><br><span class="line">max=Math.max.apply(null,array);</span><br><span class="line">alert(max); //100</span><br></pre></td></tr></table></figure>
-<p>　　因为Math.max 参数里面不支持Math.max([param1,param2]) 也就是数组  </p>
-<p>　　但是它支持Math.max(param1,param2,param3…),所以可以根据刚才apply的这个特点可以得到一个数组中最大的一项  。</p>
-<h3 id="同样的push方法没有提供push一个数组中的每一项"><a href="#同样的push方法没有提供push一个数组中的每一项" class="headerlink" title="同样的push方法没有提供push一个数组中的每一项"></a>同样的push方法没有提供push一个数组中的每一项</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var a1=[<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>];</span><br><span class="line">var a2=[<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>];</span><br><span class="line">var b=[<span class="string">"x"</span>,<span class="string">"y"</span>,<span class="string">"z"</span>];</span><br><span class="line">a1.push(b);</span><br><span class="line">alert(a1.length);//4,即把b数组作为单个元素push了,a1=[<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>,[<span class="string">"x"</span>,<span class="string">"y"</span>,<span class="string">"z"</span>]]</span><br><span class="line">Array.prototype.push.apply(a2,b);</span><br><span class="line">alert(a2.length);//6,即把b数组中的每一项都push了,a2=[<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>,<span class="string">"x"</span>,<span class="string">"y"</span>,<span class="string">"z"</span>]</span><br></pre></td></tr></table></figure>
-<p>　　因为push方法会修改原数组，所以这里用了a1和a2两个数组来作例子。</p>
 
       
     </div>

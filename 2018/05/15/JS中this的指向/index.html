@@ -7,18 +7,18 @@
   
   
   
-  <title>text-indent: -9999px;作用 | 岛马的主页</title>
+  <title>JS中this的指向 | 岛马的主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="text-indent: -9999px;作用　　最近在做星级评分系统作业时遇到了这个写法。HTML:12345678&amp;lt;span&amp;gt;点击星星就能打分&amp;lt;/span&amp;gt;&amp;lt;ul&amp;gt;	&amp;lt;li class=&quot;&quot;&amp;gt;&amp;lt;a href=&quot;javascript:;&quot;&amp;gt;1&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;	&amp;lt;li class=&quot;&quot;&amp;gt;&amp;lt;a h">
+  <meta name="description" content="JS中this的指向方法调用模式　　当函数作为对象的方法被调用时，this指向该对象。 普通函数调用模式　　this总是指向全局对象，在浏览器中，这个全局对象就是window对象。 构造器调用模式　　因为new运算符会返回一个指向构造器函数原型的对象，所以通常情况下this就指向返回的这个对象。 　　但还有特殊的情况，比如构造器显式的返回了一个object类型的对象时，new调用构造器则会最终返回">
 <meta property="og:type" content="article">
-<meta property="og:title" content="text-indent: -9999px;作用">
-<meta property="og:url" content="http://yoursite.com/2018/04/11/text-indent-9999px-作用/index.html">
+<meta property="og:title" content="JS中this的指向">
+<meta property="og:url" content="http://yoursite.com/2018/05/15/JS中this的指向/index.html">
 <meta property="og:site_name" content="岛马的主页">
-<meta property="og:description" content="text-indent: -9999px;作用　　最近在做星级评分系统作业时遇到了这个写法。HTML:12345678&amp;lt;span&amp;gt;点击星星就能打分&amp;lt;/span&amp;gt;&amp;lt;ul&amp;gt;	&amp;lt;li class=&quot;&quot;&amp;gt;&amp;lt;a href=&quot;javascript:;&quot;&amp;gt;1&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;	&amp;lt;li class=&quot;&quot;&amp;gt;&amp;lt;a h">
-<meta property="og:updated_time" content="2018-04-11T11:38:52.899Z">
+<meta property="og:description" content="JS中this的指向方法调用模式　　当函数作为对象的方法被调用时，this指向该对象。 普通函数调用模式　　this总是指向全局对象，在浏览器中，这个全局对象就是window对象。 构造器调用模式　　因为new运算符会返回一个指向构造器函数原型的对象，所以通常情况下this就指向返回的这个对象。 　　但还有特殊的情况，比如构造器显式的返回了一个object类型的对象时，new调用构造器则会最终返回">
+<meta property="og:updated_time" content="2018-05-15T14:38:05.366Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="text-indent: -9999px;作用">
-<meta name="twitter:description" content="text-indent: -9999px;作用　　最近在做星级评分系统作业时遇到了这个写法。HTML:12345678&amp;lt;span&amp;gt;点击星星就能打分&amp;lt;/span&amp;gt;&amp;lt;ul&amp;gt;	&amp;lt;li class=&quot;&quot;&amp;gt;&amp;lt;a href=&quot;javascript:;&quot;&amp;gt;1&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;	&amp;lt;li class=&quot;&quot;&amp;gt;&amp;lt;a h">
+<meta name="twitter:title" content="JS中this的指向">
+<meta name="twitter:description" content="JS中this的指向方法调用模式　　当函数作为对象的方法被调用时，this指向该对象。 普通函数调用模式　　this总是指向全局对象，在浏览器中，这个全局对象就是window对象。 构造器调用模式　　因为new运算符会返回一个指向构造器函数原型的对象，所以通常情况下this就指向返回的这个对象。 　　但还有特殊的情况，比如构造器显式的返回了一个object类型的对象时，new调用构造器则会最终返回">
   
     <link rel="alternative" href="/atom.xml" title="岛马的主页" type="application/atom+xml">
   
@@ -269,11 +269,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-text-indent-9999px-作用" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-JS中this的指向" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2018/04/11/text-indent-9999px-作用/" class="article-date">
-      <time datetime="2018-04-11T11:37:57.000Z" itemprop="datePublished">2018-04-11</time>
+      <a  href="/2018/05/15/JS中this的指向/" class="article-date">
+      <time datetime="2018-05-15T14:37:32.000Z" itemprop="datePublished">2018-05-15</time>
 </a>
 
     </div>
@@ -287,7 +287,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      text-indent: -9999px;作用
+      JS中this的指向
     </h1>
   
 
@@ -305,9 +305,16 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="text-indent-9999px-作用"><a href="#text-indent-9999px-作用" class="headerlink" title="text-indent: -9999px;作用"></a>text-indent: -9999px;作用</h2><p>　　最近在做星级评分系统作业时遇到了这个写法。<br>HTML:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;span&gt;点击星星就能打分&lt;/span&gt;</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">	&lt;li class=<span class="string">""</span>&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;1&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li class=<span class="string">""</span>&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;2&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li class=<span class="string">""</span>&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;3&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li class=<span class="string">""</span>&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;4&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li class=<span class="string">""</span>&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;5&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure></p>
-<p>CSS:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#star li&#123;</span></span><br><span class="line">	width: 24px;</span><br><span class="line">	<span class="built_in">float</span>: left;</span><br><span class="line">	cursor: pointer;</span><br><span class="line">	text-indent: -9999px;/*&lt;a&gt;之间有文字，有时为了搜索引擎需要,但我们实际的星星上不想要文字，则添加了这个属性隐藏它*/</span><br><span class="line">	background: url(img/star.png) no-repeat;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>　　text-indent:-9999px 一般用于隐藏文字。比如LOGO 部分，因为SEO(Search Engine Optimization)搜索引擎优化 的需要，所以要有文字在，但事实上显示的时候用了图片代替，所以就要使用text-indent:-9999px; 把它从界面上隐藏掉。<br>　　text-indent 是缩进，使用9999 是为了让他的缩进足够大，大分辨率下也能缩到不见。</p>
+        <h2 id="JS中this的指向"><a href="#JS中this的指向" class="headerlink" title="JS中this的指向"></a>JS中this的指向</h2><h4 id="方法调用模式"><a href="#方法调用模式" class="headerlink" title="方法调用模式"></a>方法调用模式</h4><p>　　当函数作为对象的方法被调用时，this指向该对象。</p>
+<h4 id="普通函数调用模式"><a href="#普通函数调用模式" class="headerlink" title="普通函数调用模式"></a>普通函数调用模式</h4><p>　　this总是指向全局对象，在浏览器中，这个全局对象就是window对象。</p>
+<h4 id="构造器调用模式"><a href="#构造器调用模式" class="headerlink" title="构造器调用模式"></a>构造器调用模式</h4><p>　　因为new运算符会返回一个指向构造器函数原型的对象，所以<em>通常</em>情况下this就指向返回的这个对象。</p>
+<p>　　但还有特殊的情况，比如构造器<strong>显式的返回了一个object类型的对象</strong>时，new调用构造器则会最终返回这个对象，而不是我们期待的this。</p>
+<h4 id="Function-prototype-apply调用模式"><a href="#Function-prototype-apply调用模式" class="headerlink" title="Function.prototype.apply调用模式"></a>Function.prototype.apply调用模式</h4><p>　　详情见我博客中的“JS中的apply()使用详解”一文，它的第一个参数可以改变函数体内this对象的指向。</p>
+<p>　　但如果第一个参数是null，则会像普通函数调用模式那样，函数体内的this指向默认宿主对象，在浏览器中则是window。</p>
+<h3 id="利用apply实现的bind函数"><a href="#利用apply实现的bind函数" class="headerlink" title="利用apply实现的bind函数"></a>利用apply实现的bind函数</h3><p>　　Function.prototype.bind，用来<strong>指定函数内部的this指向</strong>，其<em>简化版</em>实现可以这样模拟：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">   Function.prototype.bind=<span class="keyword">function</span>(context)&#123;</span><br><span class="line">	var that=this;//保存方法调用模式下被调用的原函数</span><br><span class="line">	<span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123;//闭包返回一个新函数（可访问外层函数的变量和参数）</span><br><span class="line">		<span class="built_in">return</span> that.apply(context,arguments);//改变that原函数的内部this指向为我们指定的context</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">   var obj1=&#123;</span><br><span class="line">	name: <span class="string">"Daoma"</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">   var func=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	alert(this.name);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">func();//未定义</span><br><span class="line"></span><br><span class="line">   var func=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	alert(this.name);</span><br><span class="line">&#125;.<span class="built_in">bind</span>(obj1);</span><br><span class="line">	</span><br><span class="line">func();//Daoma</span><br></pre></td></tr></table></figure>
+<p>　　通常我们还会实现的稍微复杂一点，可以往func函数中预先填入一些参数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">  Function.prototype.bind=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">var that=this,</span><br><span class="line">		context=[].shift.call(arguments),//将第一个元素删掉并返回</span><br><span class="line">		args=[].slice.call(arguments);//用slice的另一个功能将剩余的参数类数组转换成数组</span><br><span class="line">	<span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		//这里运用了函数柯里化的思想，组合两次分别传入的参数，作为新函数的参数</span><br><span class="line">		<span class="built_in">return</span> that.apply(context,[].concat.call(args,[].slice.call(arguments)));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var obj1=&#123;</span><br><span class="line">	name: <span class="string">"daoma"</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var func=<span class="keyword">function</span>(a,b,c,d)&#123;</span><br><span class="line">	alert(this.name);</span><br><span class="line">	alert([a,b,c,d]);</span><br><span class="line">&#125;.<span class="built_in">bind</span>(obj1,1,2);</span><br><span class="line"></span><br><span class="line">func(3,4);//即可以传参两次拼到一起</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -316,13 +323,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2018/04/11/text-indent-9999px-作用/">text-indent: -9999px;作用</a></p>
+        <p><span>本文标题:</span><a  href="/2018/05/15/JS中this的指向/">JS中this的指向</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 岛马 的个人博客">岛马</a></p>
-        <p><span>发布时间:</span>2018年04月11日 - 19时37分</p>
-        <p><span>最后更新:</span>2018年04月11日 - 19时38分</p>
+        <p><span>发布时间:</span>2018年05月15日 - 22时37分</p>
+        <p><span>最后更新:</span>2018年05月15日 - 22时38分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/04/11/text-indent-9999px-作用/" title="text-indent: -9999px;作用">http://yoursite.com/2018/04/11/text-indent-9999px-作用/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/04/11/text-indent-9999px-作用/　　作者: 岛马" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/05/15/JS中this的指向/" title="JS中this的指向">http://yoursite.com/2018/05/15/JS中this的指向/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/05/15/JS中this的指向/　　作者: 岛马" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -333,18 +340,9 @@
 
 <nav id="article-nav">
   
-    <a  href="/2018/04/14/变量提升/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          变量提升
-        
-      </div>
-    </a>
   
-  
-    <a  href="/2018/04/11/offsetLeft和style-left/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">offsetLeft和style.left</div>
+    <a  href="/2018/05/15/arguments类数组对象详解/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">arguments类数组对象详解</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -356,7 +354,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#text-indent-9999px-作用"><span class="toc-number">1.</span> <span class="toc-text">text-indent: -9999px;作用</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JS中this的指向"><span class="toc-number">1.</span> <span class="toc-text">JS中this的指向</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#方法调用模式"><span class="toc-number">1.0.1.</span> <span class="toc-text">方法调用模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#普通函数调用模式"><span class="toc-number">1.0.2.</span> <span class="toc-text">普通函数调用模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#构造器调用模式"><span class="toc-number">1.0.3.</span> <span class="toc-text">构造器调用模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Function-prototype-apply调用模式"><span class="toc-number">1.0.4.</span> <span class="toc-text">Function.prototype.apply调用模式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#利用apply实现的bind函数"><span class="toc-number">1.1.</span> <span class="toc-text">利用apply实现的bind函数</span></a></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -427,13 +425,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2018/04/14/变量提升/" title="上一篇: 变量提升">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2018/04/11/offsetLeft和style-left/" title="下一篇: offsetLeft和style.left">
+            <a  href="/2018/05/15/arguments类数组对象详解/" title="下一篇: arguments类数组对象详解">
                 <i class="fa fa-angle-right"></i>
             </a>
         

@@ -7,18 +7,22 @@
   
   
   
-  <title>text-indent: -9999px;作用 | 岛马的主页</title>
+  <title>CSS使用border构建图标 | 岛马的主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="text-indent: -9999px;作用　　最近在做星级评分系统作业时遇到了这个写法。HTML:12345678&amp;lt;span&amp;gt;点击星星就能打分&amp;lt;/span&amp;gt;&amp;lt;ul&amp;gt;	&amp;lt;li class=&quot;&quot;&amp;gt;&amp;lt;a href=&quot;javascript:;&quot;&amp;gt;1&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;	&amp;lt;li class=&quot;&quot;&amp;gt;&amp;lt;a h">
+  <meta name="description" content="CSS使用border构建图标使用border画三角形　　盒模型中上下左右边框交界处呈现平滑的斜线. 利用这个特点, 通过设置不同的上下左右边框宽度或者颜色可以得到小三角, 小梯形等。具体链接 画朝上朝下的√小图标　　使用border可以画很多与三角形有关的东东，比如我们经常见到的向上向下的“对号图标”就是使用两层border叠加生成的。   　　首先我们需要一个div和两个i，两个i就是用来叠加">
 <meta property="og:type" content="article">
-<meta property="og:title" content="text-indent: -9999px;作用">
-<meta property="og:url" content="http://yoursite.com/2018/04/11/text-indent-9999px-作用/index.html">
+<meta property="og:title" content="CSS使用border构建图标">
+<meta property="og:url" content="http://yoursite.com/2018/05/14/CSS使用border构建图标/index.html">
 <meta property="og:site_name" content="岛马的主页">
-<meta property="og:description" content="text-indent: -9999px;作用　　最近在做星级评分系统作业时遇到了这个写法。HTML:12345678&amp;lt;span&amp;gt;点击星星就能打分&amp;lt;/span&amp;gt;&amp;lt;ul&amp;gt;	&amp;lt;li class=&quot;&quot;&amp;gt;&amp;lt;a href=&quot;javascript:;&quot;&amp;gt;1&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;	&amp;lt;li class=&quot;&quot;&amp;gt;&amp;lt;a h">
-<meta property="og:updated_time" content="2018-04-11T11:38:52.899Z">
+<meta property="og:description" content="CSS使用border构建图标使用border画三角形　　盒模型中上下左右边框交界处呈现平滑的斜线. 利用这个特点, 通过设置不同的上下左右边框宽度或者颜色可以得到小三角, 小梯形等。具体链接 画朝上朝下的√小图标　　使用border可以画很多与三角形有关的东东，比如我们经常见到的向上向下的“对号图标”就是使用两层border叠加生成的。   　　首先我们需要一个div和两个i，两个i就是用来叠加">
+<meta property="og:image" content="https://github.com/Daoma666/JS-CSS_train1/blob/master/%E5%8D%9A%E5%AE%A2%E5%9B%BE%E5%BA%93/border%E5%AF%B9%E5%8F%B7%E5%B0%8F%E5%9B%BE%E6%A0%87.png?raw=true">
+<meta property="og:image" content="https://github.com/Daoma666/JS-CSS_train1/blob/master/%E5%8D%9A%E5%AE%A2%E5%9B%BE%E5%BA%93/border1.png?raw=true">
+<meta property="og:image" content="https://github.com/Daoma666/JS-CSS_train1/blob/master/%E5%8D%9A%E5%AE%A2%E5%9B%BE%E5%BA%93/border2.png?raw=true">
+<meta property="og:updated_time" content="2018-05-15T15:14:03.017Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="text-indent: -9999px;作用">
-<meta name="twitter:description" content="text-indent: -9999px;作用　　最近在做星级评分系统作业时遇到了这个写法。HTML:12345678&amp;lt;span&amp;gt;点击星星就能打分&amp;lt;/span&amp;gt;&amp;lt;ul&amp;gt;	&amp;lt;li class=&quot;&quot;&amp;gt;&amp;lt;a href=&quot;javascript:;&quot;&amp;gt;1&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;	&amp;lt;li class=&quot;&quot;&amp;gt;&amp;lt;a h">
+<meta name="twitter:title" content="CSS使用border构建图标">
+<meta name="twitter:description" content="CSS使用border构建图标使用border画三角形　　盒模型中上下左右边框交界处呈现平滑的斜线. 利用这个特点, 通过设置不同的上下左右边框宽度或者颜色可以得到小三角, 小梯形等。具体链接 画朝上朝下的√小图标　　使用border可以画很多与三角形有关的东东，比如我们经常见到的向上向下的“对号图标”就是使用两层border叠加生成的。   　　首先我们需要一个div和两个i，两个i就是用来叠加">
+<meta name="twitter:image" content="https://github.com/Daoma666/JS-CSS_train1/blob/master/%E5%8D%9A%E5%AE%A2%E5%9B%BE%E5%BA%93/border%E5%AF%B9%E5%8F%B7%E5%B0%8F%E5%9B%BE%E6%A0%87.png?raw=true">
   
     <link rel="alternative" href="/atom.xml" title="岛马的主页" type="application/atom+xml">
   
@@ -269,11 +273,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-text-indent-9999px-作用" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-CSS使用border构建图标" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2018/04/11/text-indent-9999px-作用/" class="article-date">
-      <time datetime="2018-04-11T11:37:57.000Z" itemprop="datePublished">2018-04-11</time>
+      <a  href="/2018/05/14/CSS使用border构建图标/" class="article-date">
+      <time datetime="2018-05-14T14:58:33.000Z" itemprop="datePublished">2018-05-14</time>
 </a>
 
     </div>
@@ -287,7 +291,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      text-indent: -9999px;作用
+      CSS使用border构建图标
     </h1>
   
 
@@ -305,10 +309,18 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="text-indent-9999px-作用"><a href="#text-indent-9999px-作用" class="headerlink" title="text-indent: -9999px;作用"></a>text-indent: -9999px;作用</h2><p>　　最近在做星级评分系统作业时遇到了这个写法。<br>HTML:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;span&gt;点击星星就能打分&lt;/span&gt;</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">	&lt;li class=<span class="string">""</span>&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;1&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li class=<span class="string">""</span>&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;2&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li class=<span class="string">""</span>&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;3&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li class=<span class="string">""</span>&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;4&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li class=<span class="string">""</span>&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;5&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure></p>
-<p>CSS:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#star li&#123;</span></span><br><span class="line">	width: 24px;</span><br><span class="line">	<span class="built_in">float</span>: left;</span><br><span class="line">	cursor: pointer;</span><br><span class="line">	text-indent: -9999px;/*&lt;a&gt;之间有文字，有时为了搜索引擎需要,但我们实际的星星上不想要文字，则添加了这个属性隐藏它*/</span><br><span class="line">	background: url(img/star.png) no-repeat;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>　　text-indent:-9999px 一般用于隐藏文字。比如LOGO 部分，因为SEO(Search Engine Optimization)搜索引擎优化 的需要，所以要有文字在，但事实上显示的时候用了图片代替，所以就要使用text-indent:-9999px; 把它从界面上隐藏掉。<br>　　text-indent 是缩进，使用9999 是为了让他的缩进足够大，大分辨率下也能缩到不见。</p>
-
+        <h2 id="CSS使用border构建图标"><a href="#CSS使用border构建图标" class="headerlink" title="CSS使用border构建图标"></a>CSS使用border构建图标</h2><h3 id="使用border画三角形"><a href="#使用border画三角形" class="headerlink" title="使用border画三角形"></a>使用border画三角形</h3><p>　　盒模型中上下左右边框交界处呈现平滑的斜线. 利用这个特点, 通过设置不同的上下左右边框宽度或者颜色可以得到小三角, 小梯形等。<a href="http://caibaojian.com/css-border-triangle.html" title="CSS三角形的实现原理及运用" target="_blank" rel="noopener">具体链接</a></p>
+<h3 id="画朝上朝下的√小图标"><a href="#画朝上朝下的√小图标" class="headerlink" title="画朝上朝下的√小图标"></a>画朝上朝下的√小图标</h3><p>　　使用border可以画很多与三角形有关的东东，比如我们经常见到的向上向下的“对号图标”就是使用两层border叠加生成的。<br>  <img src="https://github.com/Daoma666/JS-CSS_train1/blob/master/%E5%8D%9A%E5%AE%A2%E5%9B%BE%E5%BA%93/border%E5%AF%B9%E5%8F%B7%E5%B0%8F%E5%9B%BE%E6%A0%87.png?raw=true" alt="border对号小图标"></p>
+<p>　　首先我们需要一个div和两个i，两个i就是用来叠加生成对号图标用的。</p>
+<p>HTML:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   &lt;div class=<span class="string">"bottom"</span>&gt;&lt;!-- 这里换成top就是向上的对号--&gt;</span><br><span class="line">	&lt;i class=<span class="string">"arrow1"</span>&gt;&lt;/i&gt;</span><br><span class="line">	&lt;i class=<span class="string">"arrow2"</span>&gt;&lt;/i&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>CSS:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">   .bottom&#123;</span><br><span class="line">	width: 20px;</span><br><span class="line">	height: 20px;</span><br><span class="line">	position: relative;</span><br><span class="line">&#125;</span><br><span class="line">   .bottom .arrow1,.bottom .arrow2&#123;</span><br><span class="line">	display: block;</span><br><span class="line">	position: absolute;</span><br><span class="line">	width: 0px;/*宽高设为0才能上下左右的border显示为三角形*/</span><br><span class="line">	height: 0px;</span><br><span class="line">	border-left: 8px dashed transparent;/*transparent主要为了应用在网页中不盖住底色*/</span><br><span class="line">	border-right: 8px dashed transparent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>　　然后下面关键的就来了，我们给第一个<em><i></i></em>只设置上边框的话在这种情况下是个三角形：<img src="https://github.com/Daoma666/JS-CSS_train1/blob/master/%E5%8D%9A%E5%AE%A2%E5%9B%BE%E5%BA%93/border1.png?raw=true" alt="border1.png"></p>
+<p>　　然后我们可以给第二个<em><i></i></em>再设置一个白色的三角形然后用绝对定位的偏移使它下移盖住灰色三角形的一部分：<img src="https://github.com/Daoma666/JS-CSS_train1/blob/master/%E5%8D%9A%E5%AE%A2%E5%9B%BE%E5%BA%93/border2.png?raw=true" alt="border2.png"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">   .bottom .arrow1&#123;</span><br><span class="line">	border-top: 8px solid <span class="comment">#999;</span></span><br><span class="line">	border-bottom: 8px dashed transparent;</span><br><span class="line">&#125;</span><br><span class="line">.bottom .arrow2&#123;</span><br><span class="line">    top: -2px;</span><br><span class="line">    border-top: 8px solid <span class="comment">#fff;</span></span><br><span class="line">    border-bottom: 8px dashed transparent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>　　然后我们一开始的那个向下的对号图标就出现啦，向上同理啦，下面就是向上向下放在一起的完整版CSS。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">.bottom,.top&#123;</span><br><span class="line">	width: 20px;</span><br><span class="line">	height: 20px;</span><br><span class="line">	position: relative;</span><br><span class="line">&#125;</span><br><span class="line">.bottom .arrow1,.bottom .arrow2,.top .arrow1,.top .arrow2&#123;</span><br><span class="line">	display: block;</span><br><span class="line">	position: absolute;</span><br><span class="line">	width: 0px;</span><br><span class="line">	height: 0px;</span><br><span class="line">	border-left: 8px dashed transparent;</span><br><span class="line">	border-right: 8px dashed transparent;</span><br><span class="line">&#125;</span><br><span class="line">.bottom .arrow1&#123;</span><br><span class="line">	border-top: 8px solid <span class="comment">#999;</span></span><br><span class="line">	border-bottom: 8px dashed transparent;</span><br><span class="line">&#125;</span><br><span class="line">.bottom .arrow2&#123;</span><br><span class="line">	top: -2px;</span><br><span class="line">	border-top: 8px solid <span class="comment">#fff;</span></span><br><span class="line">	border-bottom: 8px dashed transparent;</span><br><span class="line">&#125; </span><br><span class="line">.top .arrow1&#123;</span><br><span class="line">	border-top: 8px dashed transparent;</span><br><span class="line">	border-bottom: 8px solid <span class="comment">#999;			</span></span><br><span class="line">&#125;</span><br><span class="line">.top .arrow2&#123;</span><br><span class="line">	top: 2px;</span><br><span class="line">	border-top: 8px dashed transparent;</span><br><span class="line">	border-bottom: 8px solid <span class="comment">#fff;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -316,13 +328,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2018/04/11/text-indent-9999px-作用/">text-indent: -9999px;作用</a></p>
+        <p><span>本文标题:</span><a  href="/2018/05/14/CSS使用border构建图标/">CSS使用border构建图标</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 岛马 的个人博客">岛马</a></p>
-        <p><span>发布时间:</span>2018年04月11日 - 19时37分</p>
-        <p><span>最后更新:</span>2018年04月11日 - 19时38分</p>
+        <p><span>发布时间:</span>2018年05月14日 - 22时58分</p>
+        <p><span>最后更新:</span>2018年05月15日 - 23时14分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/04/11/text-indent-9999px-作用/" title="text-indent: -9999px;作用">http://yoursite.com/2018/04/11/text-indent-9999px-作用/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/04/11/text-indent-9999px-作用/　　作者: 岛马" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/05/14/CSS使用border构建图标/" title="CSS使用border构建图标">http://yoursite.com/2018/05/14/CSS使用border构建图标/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/05/14/CSS使用border构建图标/　　作者: 岛马" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -333,18 +345,18 @@
 
 <nav id="article-nav">
   
-    <a  href="/2018/04/14/变量提升/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a  href="/2018/05/15/arguments类数组对象详解/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          变量提升
+          arguments类数组对象详解
         
       </div>
     </a>
   
   
-    <a  href="/2018/04/11/offsetLeft和style-left/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">offsetLeft和style.left</div>
+    <a  href="/2018/05/13/我的前端学习路线/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">我的前端学习路线</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -356,7 +368,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#text-indent-9999px-作用"><span class="toc-number">1.</span> <span class="toc-text">text-indent: -9999px;作用</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS使用border构建图标"><span class="toc-number">1.</span> <span class="toc-text">CSS使用border构建图标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用border画三角形"><span class="toc-number">1.1.</span> <span class="toc-text">使用border画三角形</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#画朝上朝下的√小图标"><span class="toc-number">1.2.</span> <span class="toc-text">画朝上朝下的√小图标</span></a></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -427,13 +439,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2018/04/14/变量提升/" title="上一篇: 变量提升">
+            <a  href="/2018/05/15/arguments类数组对象详解/" title="上一篇: arguments类数组对象详解">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2018/04/11/offsetLeft和style-left/" title="下一篇: offsetLeft和style.left">
+            <a  href="/2018/05/13/我的前端学习路线/" title="下一篇: 我的前端学习路线">
                 <i class="fa fa-angle-right"></i>
             </a>
         

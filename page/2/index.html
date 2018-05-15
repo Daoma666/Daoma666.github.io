@@ -270,6 +270,199 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-label标签和任意高度元素展开收起的骚操作" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/04/24/label标签和任意高度元素展开收起的骚操作/" class="article-date">
+      <time datetime="2018-04-23T23:33:57.000Z" itemprop="datePublished">2018-04-24</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/04/24/label标签和任意高度元素展开收起的骚操作/">label标签和任意高度元素展开收起的骚操作</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="label标签和任意高度元素展开收起的骚操作"><a href="#label标签和任意高度元素展开收起的骚操作" class="headerlink" title="label标签和任意高度元素展开收起的骚操作"></a>label标签和任意高度元素展开收起的骚操作</h2><p>　　<em><label></label></em> 标签为 input 元素定义标注（标记）。</p>
+<p>　　<em><label></label></em> 元素不会向用户呈现任何特殊效果。不过，它为鼠标用户改进了可用性。如果您在 label 元素内点击文本，就会触发此控件。就是说，当用户选择该标签时，浏览器就会自动将焦点转到和标签相关的表单控件上。</p>
+<p>　　<em><label></label></em> 标签的 for 属性应当与相关元素的 id 属性相同。</p>
+<p>HTML:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;input id=<span class="string">"check"</span> <span class="built_in">type</span>=<span class="string">"checkbox"</span>&gt;</span><br><span class="line">&lt;p&gt;:checked 选择器匹配每个已被选中的 input 元素（只用于单选按钮和复选框）。&lt;/p&gt;</span><br><span class="line">&lt;div class=<span class="string">"element"</span>&gt;</span><br><span class="line">  &lt;p&gt;若指定了label标签的<span class="keyword">for</span>属性和input标签的id属性相同的话，则可以实现两者的关联，在该例子里就是label也可以点击触发:checked&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;label <span class="keyword">for</span>=<span class="string">"check"</span> class=<span class="string">"check-in"</span>&gt;更多↓&lt;/label&gt;</span><br><span class="line">&lt;label <span class="keyword">for</span>=<span class="string">"check"</span> class=<span class="string">"check-out"</span>&gt;收起↑&lt;/label&gt;</span><br></pre></td></tr></table></figure>
+<p>CSS:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">/*把复选框隐藏掉*/</span><br><span class="line">input[<span class="built_in">type</span>=<span class="string">"checkbox"</span>]&#123;</span><br><span class="line">	position: absolute;</span><br><span class="line">	clip: rect(0,0,0,0);/*clip属性裁剪出一个绝对定位元素的可见尺寸*/</span><br><span class="line">&#125;</span><br><span class="line">/*实现任意高度元素展开收起 的骚操作*/</span><br><span class="line">.element &#123;</span><br><span class="line">  max-height: 0;</span><br><span class="line">  overflow: hidden;</span><br><span class="line">  transition: max-height 1.25s;</span><br><span class="line">&#125;</span><br><span class="line">:checked ~ .element &#123;</span><br><span class="line">  max-height: 666px; /*一个足够大的最大高度值*/</span><br><span class="line">&#125;</span><br><span class="line">/*为了更美观，实现两个label的显示交替*/</span><br><span class="line">:checked ~ .check-in&#123;</span><br><span class="line">	display: none;</span><br><span class="line">&#125;</span><br><span class="line">.check-out&#123;</span><br><span class="line">	display: none;</span><br><span class="line">&#125;</span><br><span class="line">:checked ~ .check-out&#123;</span><br><span class="line">	display: block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-CSS特殊的按钮闪烁效果" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/04/21/CSS特殊的按钮闪烁效果/" class="article-date">
+      <time datetime="2018-04-21T02:57:49.000Z" itemprop="datePublished">2018-04-21</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/04/21/CSS特殊的按钮闪烁效果/">CSS特殊的按钮闪烁效果</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="CSS特殊的按钮闪烁效果"><a href="#CSS特殊的按钮闪烁效果" class="headerlink" title="CSS特殊的按钮闪烁效果"></a>CSS特殊的按钮闪烁效果</h2><p>　　本来想练习线性渐变做按钮的，但无意中发现了一个闪烁的效果，具体见代码</p>
+<p>HTML:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">	&lt;a href=<span class="string">"javascript:void(0)"</span> class=<span class="string">"button cyan"</span>&gt;Daoma666&lt;/a&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>CSS：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">body&gt;div&#123;</span><br><span class="line">		text-align: center;</span><br><span class="line">		display: block;</span><br><span class="line">		width: 800px;</span><br><span class="line">		margin: 50px auto;</span><br><span class="line">	&#125;</span><br><span class="line">.button</span><br><span class="line">&#123;</span><br><span class="line">	font-family: Arial,helvetica,sans-serif;</span><br><span class="line">	font-size: 13px;</span><br><span class="line">	color: <span class="comment">#000;</span></span><br><span class="line">	text-decoration: none;</span><br><span class="line">	display: inline-block;</span><br><span class="line">	text-align: center;</span><br><span class="line">	padding: 7px 20px 9px;</span><br><span class="line">	margin: .5em .5em .5em 0;/*根据相应字体大小font-size来定，在这个类里1em=13px*/</span><br><span class="line">	cursor: pointer;</span><br><span class="line">	text-shadow: 0 1px 1px rgba(0,0,0,0.4);</span><br><span class="line">	text-transform: capitalize;</span><br><span class="line">	transition: 0.1s linear;</span><br><span class="line">&#125;</span><br><span class="line">.cyan &#123;</span><br><span class="line">	background: rgb(130,207,241);</span><br><span class="line">	background: -webkit-linear-gradient(to bottom,  rgba(130,207,241,1) 0%,rgba(56,174,234,1) 100%);</span><br><span class="line">	background: linear-gradient(to bottom,  rgba(130,207,241,1) 0%,rgba(56,174,234,1) 100%);</span><br><span class="line">	border: 1px solid <span class="comment">#3cafcf;</span></span><br><span class="line">&#125;  </span><br><span class="line">.cyan:hover &#123;</span><br><span class="line">	background: rgb(153,216,244);</span><br><span class="line">	/*background: -webkit-linear-gradient(to bottom,  rgba(153,216,244,1) 0%,rgba(79,183,236,1) 100%);</span><br><span class="line">	background: linear-gradient(to bottom,  rgba(153,216,244,1) 0%,rgba(79,183,236,1) 100%);*/</span><br><span class="line">	//原先这里的background打错了，导致渐变无效，然后就出现了闪烁效果，感觉比较抓人眼球。</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-JS中的apply-使用详解" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/04/18/JS中的apply-使用详解/" class="article-date">
+      <time datetime="2018-04-17T23:20:35.000Z" itemprop="datePublished">2018-04-18</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/04/18/JS中的apply-使用详解/">JS中的apply()使用详解</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="JS中的apply-使用详解"><a href="#JS中的apply-使用详解" class="headerlink" title="JS中的apply()使用详解"></a>JS中的apply()使用详解</h2><h3 id="apply-要绑定给this的值-参数数组-方法用来调用函数及扩展作用域"><a href="#apply-要绑定给this的值-参数数组-方法用来调用函数及扩展作用域" class="headerlink" title="apply(要绑定给this的值,参数数组)方法用来调用函数及扩展作用域"></a>apply(要绑定给this的值,参数数组)方法用来调用函数及扩展作用域</h3><h4 id="eg-Function-apply-obj-args-方法能接收两个参数，其中"><a href="#eg-Function-apply-obj-args-方法能接收两个参数，其中" class="headerlink" title="eg:Function.apply(obj,args)方法能接收两个参数，其中"></a>eg:Function.apply(obj,args)方法能接收两个参数，其中</h4><h4 id="obj-这个对象将代替Function函数里的this对象"><a href="#obj-这个对象将代替Function函数里的this对象" class="headerlink" title="obj:这个对象将代替Function函数里的this对象"></a>obj:这个对象将代替Function函数里的this对象</h4><h4 id="args-这个是数组，它将作为参数传给Function-args"><a href="#args-这个是数组，它将作为参数传给Function-args" class="headerlink" title="args:这个是数组，它将作为参数传给Function(args);　　"></a>args:这个是数组，它将作为参数传给Function(args);　　</h4><p>　　之前我一直从语义上蒙圈，还以为是Function调用啥啥啥，结果不是。。。而是<strong>obj.Function(args)</strong>，即obj调用Function函数并传入参数数组args。</p>
+<h3 id="call和apply的意思一样-只不过是参数要一个一个列出来"><a href="#call和apply的意思一样-只不过是参数要一个一个列出来" class="headerlink" title="call和apply的意思一样,只不过是参数要一个一个列出来."></a>call和apply的意思一样,只不过是参数要一个一个列出来.</h3><h4 id="eg-Function-call-obj-param1-param2-…-paramN"><a href="#eg-Function-call-obj-param1-param2-…-paramN" class="headerlink" title="eg:Function.call(obj,[param1[,param2[,…[,paramN]]]])"></a>eg:Function.call(obj,[param1[,param2[,…[,paramN]]]])</h4><h4 id="obj：这个对象将代替Function函数里的this对象"><a href="#obj：这个对象将代替Function函数里的this对象" class="headerlink" title="obj：这个对象将代替Function函数里的this对象"></a>obj：这个对象将代替Function函数里的this对象</h4><h4 id="params：这个是一个参数列表"><a href="#params：这个是一个参数列表" class="headerlink" title="params：这个是一个参数列表"></a>params：这个是一个参数列表</h4><p>具体见一个例子：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Person(name,age)&#123;</span><br><span class="line">	this.name=name;</span><br><span class="line">	this.age=age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> Student(name,age,grade)&#123;</span><br><span class="line">	Person.apply(this,arguments);</span><br><span class="line">	this.grade=grade;</span><br><span class="line">&#125;</span><br><span class="line">var student=new Student(<span class="string">"MaYun"</span>,21,<span class="string">"大三"</span>);</span><br><span class="line">alert(student.name+<span class="string">" "</span>+student.age+<span class="string">" "</span>+student.grade);</span><br></pre></td></tr></table></figure></p>
+<h3 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h3><p>　　这里Student里虽然没有给name和age属性赋值的语句，但调用了Person构造函数。所以var student=new Student(“MaYun”,21,”大三”);new出来的Student构造函数里：</p>
+<p>　　因为遵循<strong>构造器调用模式</strong>(new)中this被绑定到<strong>新对象</strong>(即student)，所以</p>
+<p>　　Person.apply(this,arguments);就相当于Person.apply(student,arguments);就相当于student.Person(name,age,grade);</p>
+<p>　　此时Person中的this.name=name;this.age=age;中的this因为属于<strong>方法调用模式</strong>被绑定到<strong>调用该方法的对象</strong>上，所以就相当于student.name=name;student.age=age;</p>
+<h4 id="巧妙使用apply-this-args-的args参数"><a href="#巧妙使用apply-this-args-的args参数" class="headerlink" title="巧妙使用apply(this,args)的args参数"></a>巧妙使用apply(this,args)的args参数</h4><p>　　如果见到apply(null,args);这种写法，这样其实不算调用什么东东了，只是可以将一个args数组默认的转换为一个参数列表(即[param1,param2,param3] 转换为 param1,param2,param3)来传惨。</p>
+<h3 id="比如下面的例子想得到数组中最大的一项-。"><a href="#比如下面的例子想得到数组中最大的一项-。" class="headerlink" title="比如下面的例子想得到数组中最大的一项 。"></a>比如下面的例子想得到数组中最大的一项 。</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var array=[50,60,70,90,100];</span><br><span class="line">var max=Math.max(array);</span><br><span class="line">alert(max); //NaN</span><br><span class="line">max=Math.max.apply(null,array);</span><br><span class="line">alert(max); //100</span><br></pre></td></tr></table></figure>
+<p>　　因为Math.max 参数里面不支持Math.max([param1,param2]) 也就是数组  </p>
+<p>　　但是它支持Math.max(param1,param2,param3…),所以可以根据刚才apply的这个特点可以得到一个数组中最大的一项  。</p>
+<h3 id="同样的push方法没有提供push一个数组中的每一项"><a href="#同样的push方法没有提供push一个数组中的每一项" class="headerlink" title="同样的push方法没有提供push一个数组中的每一项"></a>同样的push方法没有提供push一个数组中的每一项</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var a1=[<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>];</span><br><span class="line">var a2=[<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>];</span><br><span class="line">var b=[<span class="string">"x"</span>,<span class="string">"y"</span>,<span class="string">"z"</span>];</span><br><span class="line">a1.push(b);</span><br><span class="line">alert(a1.length);//4,即把b数组作为单个元素push了,a1=[<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>,[<span class="string">"x"</span>,<span class="string">"y"</span>,<span class="string">"z"</span>]]</span><br><span class="line">Array.prototype.push.apply(a2,b);</span><br><span class="line">alert(a2.length);//6,即把b数组中的每一项都push了,a2=[<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>,<span class="string">"x"</span>,<span class="string">"y"</span>,<span class="string">"z"</span>]</span><br></pre></td></tr></table></figure>
+<p>　　因为push方法会修改原数组，所以这里用了a1和a2两个数组来作例子。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-闭包与模仿块作用域" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -306,7 +499,7 @@
 <p>　　然后就是我们主要整理的东西了：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">String.method(<span class="string">"deentityify"</span>,<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	var entity=&#123;</span><br><span class="line">		quot: <span class="string">'"'</span>,</span><br><span class="line">		lt: <span class="string">'&lt;'</span>,</span><br><span class="line">		gt: <span class="string">'&gt;'</span></span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		<span class="built_in">return</span> this.replace(/&amp;([^&amp;;]+);$/g,<span class="keyword">function</span>(a,b)&#123;</span><br><span class="line">			var r=entity[b];</span><br><span class="line">			<span class="built_in">return</span> typeof r === <span class="string">"string"</span> ? r : a;</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;());</span><br><span class="line">document.writeln(<span class="string">"&amp;lt;body&amp;gt;&amp;quot;HAHAHA&amp;quot;&amp;lt;body&amp;gt;"</span>.deentityify());//&lt;body&gt;<span class="string">"HAHAHA"</span>&lt;body&gt;</span><br></pre></td></tr></table></figure></p>
 <p>　　这段代码的主要功能是：给String对象添加一个deentityify方法。它的任务是寻找字符串中的HTML字符实体并把它们替换为对应的字符。<br>　　这里有四个需要注意的点：</p>
 <h4 id="1-模仿块作用域"><a href="#1-模仿块作用域" class="headerlink" title="1.模仿块作用域"></a>1.模仿块作用域</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	var s=<span class="string">"test"</span>;</span><br><span class="line">&#125;())</span><br></pre></td></tr></table></figure>
-<p>　<br>　　因为JS有函数作用域，所以函数中的参数和变量在函数外部是不可见的，在一个函数内部任何位置定义的变量，在该函数内部任何地方都可见。</p>
+<p>　<br>　　JS中函数可以用来构造函数作用域，在函数里面可以看到外面的变量，但在函数外面则无法看到函数里面的变量，这是因为函数中搜索变量的过程是由内到外沿着作用域链逐层搜索，一直搜索到全局对象为止。</p>
 <p>　　因为JS将function关键字当作一个函数声明的开始，而函数声明后面不能跟圆括号。然而，函数表达式的后面可以跟圆括号。所以最外层的把整个函数包起来的圆括号表示：将函数声明转换成函数表达式。</p>
 <p>　　这段代码实际上定义并立即<strong>调用</strong>了一个匿名函数，其中最后的<em>()</em>圆括号是<strong>调用运算符</strong>。</p>
 <p>　　要注意()调用运算符立刻调用了我们刚刚构造出来的函数，这个调用创建并返回的函数才是deentityify()方法，<br>　　即:</p>
@@ -315,6 +508,11 @@
 <h4 id="2-闭包"><a href="#2-闭包" class="headerlink" title="2.闭包"></a>2.闭包</h4><p>　　一个<strong>函数</strong>可以访问它被创建时所处的上下文环境，这称为<strong>闭包</strong>。例子中第一个return的函数就是一个闭包：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	<span class="built_in">return</span> this.replace(/&amp;([^&amp;;]+);$/g,<span class="keyword">function</span>(a,b)&#123;</span><br><span class="line">		var r=entity[b];</span><br><span class="line">		<span class="built_in">return</span> typeof r === <span class="string">"string"</span> ? r : a;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>　　上面的函数可以访问到deentityify方法上下文环境定义的entity对象，所以这个函数就可以被称作<strong>闭包</strong>。</p>
+<p>　　在这里再讨论一下变量的生存周期：</p>
+<p>　　全局变量的生存周期是永久，除非我们主动销毁(=null)这个全局变量。</p>
+<p>　　在函数内用var关键字声明的局部变量，当退出函数时，会随着函数调用的结束而被销毁。</p>
+<p>　　但是如果像上面的闭包，它可以访问到deentityify()被调用时产生的环境，所以局部变量entity因为能被外界访问，所以就不会被销毁，除非我们手动销毁。</p>
+<p>　　所以说闭包可以延长局部变量的生存周期。</p>
 <h4 id="3-模块模式"><a href="#3-模块模式" class="headerlink" title="3.模块模式"></a>3.模块模式</h4><p>　　模块是一个提供接口却隐藏状态与实现的函数或对象。它利用函数作用域与闭包来创建被绑定对象与私有成员的关联，模块模式的一般形式是：一个定义了私有变量和函数的函数；利用闭包创建可以访问私有变量和函数的特权函数；最后返回这个特权函数，或者把它们保存到一个可访问到的地方。</p>
 <h4 id="4-String-prototype-replace-进阶用法"><a href="#4-String-prototype-replace-进阶用法" class="headerlink" title="4.String.prototype.replace()进阶用法"></a>4.String.prototype.replace()进阶用法</h4><p>　　我这也是第一次知道它的第二个参数可以是一个函数，且非常有用，具体见：<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace" title="replace详细用法" target="_blank" rel="noopener">MDN文档</a></p>
 <h5 id="指定一个函数作为参数"><a href="#指定一个函数作为参数" class="headerlink" title="指定一个函数作为参数"></a>指定一个函数作为参数</h5><p>　　你可以指定一个函数作为第二个参数。在这种情况下，当匹配执行后， 该函数就会执行。 函数的<strong>返回值</strong>作为替换字符串。 (注意:上面提到的特殊替换参数在这里不能被使用。) 另外要注意的是， 如果第一个参数是正则表达式， 并且其为全局匹配模式， 那么这个方法将被<strong>多次调用</strong>， 每次匹配都会被调用。</p>
@@ -735,194 +933,6 @@
         <h2 id="text-indent-9999px-作用"><a href="#text-indent-9999px-作用" class="headerlink" title="text-indent: -9999px;作用"></a>text-indent: -9999px;作用</h2><p>　　最近在做星级评分系统作业时遇到了这个写法。<br>HTML:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;span&gt;点击星星就能打分&lt;/span&gt;</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">	&lt;li class=<span class="string">""</span>&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;1&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li class=<span class="string">""</span>&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;2&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li class=<span class="string">""</span>&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;3&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li class=<span class="string">""</span>&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;4&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li class=<span class="string">""</span>&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;5&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure></p>
 <p>CSS:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#star li&#123;</span></span><br><span class="line">	width: 24px;</span><br><span class="line">	<span class="built_in">float</span>: left;</span><br><span class="line">	cursor: pointer;</span><br><span class="line">	text-indent: -9999px;/*&lt;a&gt;之间有文字，有时为了搜索引擎需要,但我们实际的星星上不想要文字，则添加了这个属性隐藏它*/</span><br><span class="line">	background: url(img/star.png) no-repeat;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>　　text-indent:-9999px 一般用于隐藏文字。比如LOGO 部分，因为SEO(Search Engine Optimization)搜索引擎优化 的需要，所以要有文字在，但事实上显示的时候用了图片代替，所以就要使用text-indent:-9999px; 把它从界面上隐藏掉。<br>　　text-indent 是缩进，使用9999 是为了让他的缩进足够大，大分辨率下也能缩到不见。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-offsetLeft和style-left" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2018/04/11/offsetLeft和style-left/" class="article-date">
-      <time datetime="2018-04-11T11:34:36.000Z" itemprop="datePublished">2018-04-11</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/04/11/offsetLeft和style-left/">offsetLeft和style.left</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="offsetLeft和style-left"><a href="#offsetLeft和style-left" class="headerlink" title="offsetLeft和style.left"></a>offsetLeft和style.left</h2><h3 id="offsetLeft"><a href="#offsetLeft" class="headerlink" title="offsetLeft"></a>offsetLeft</h3><p>　　1.如果父辈元素中有定位的元素，那么就返回距离当前元素最近的定位元素边缘的距离。<br>　　2.如果父辈元素中没有定位元素，那么就返回相对于body左边缘距离。</p>
-<h3 id="两者的区别"><a href="#两者的区别" class="headerlink" title="两者的区别"></a>两者的区别</h3><p>　　1. style.left 返回的是字符串，如28px，offsetLeft返回的是数值28，如果需要对取得的值进行计算，还用offsetLeft比较方便。<br>　　2. style.left是读写的，offsetLeft是只读的，所以要改变元素的位置，只能修改style.left。<br>　　3. style.left的值需要事先定义，否则取到的值为空。而且必须要定义在html里，offsetLeft的值随时可以取到。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-JS清空数组的方法" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2018/04/10/JS清空数组的方法/" class="article-date">
-      <time datetime="2018-04-10T11:55:32.000Z" itemprop="datePublished">2018-04-10</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/04/10/JS清空数组的方法/">JS清空数组的方法</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="①splice"><a href="#①splice" class="headerlink" title="①splice"></a>①splice</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var ary = [1,2,3,4]; </span><br><span class="line">ary.splice(0); //不用写要删的长度，直接从0全删掉</span><br></pre></td></tr></table></figure>
-<h3 id="②length-0"><a href="#②length-0" class="headerlink" title="②length=0"></a>②length=0</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var ary = [1,2,3,4]; </span><br><span class="line">ary.length=0;</span><br></pre></td></tr></table></figure>
-<p>　　这种方式很有意思，其它语言如Java，其数组的length是只读的，不能被赋值。而JS中则可以。</p>
-<h3 id="③赋值为"><a href="#③赋值为" class="headerlink" title="③赋值为[]"></a>③赋值为[]</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var ary = [1,2,3,4]; </span><br><span class="line">ary = []; // 赋值为一个空数组以达到清空原数组</span><br></pre></td></tr></table></figure>
-<p>　　方式2 保留了数组其它属性，方式3 则未保留。很多人认为方式2的效率很高些，因为仅仅是给length重新赋值了，而方式3则重新建立个对象。经 测试 恰恰是方式3的效率高。测试代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var a=[];</span><br><span class="line"><span class="keyword">for</span>(var i=0;i&lt;1000000;i++)&#123;</span><br><span class="line">	a.push(i);</span><br><span class="line">&#125;</span><br><span class="line">var start=new Date();</span><br><span class="line">a=[];</span><br><span class="line">var end=new Date();</span><br><span class="line">alert(end-start);</span><br></pre></td></tr></table></figure></p>
-<p>　　可以多试几个浏览器，结果是方式3更快一点点。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-内联元素和块元素" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2018/04/07/内联元素和块元素/" class="article-date">
-      <time datetime="2018-04-07T11:12:03.000Z" itemprop="datePublished">2018-04-07</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/04/07/内联元素和块元素/">内联元素和块元素</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="内联元素和块元素"><a href="#内联元素和块元素" class="headerlink" title="内联元素和块元素"></a>内联元素和块元素</h2><h3 id="①块级元素-默认100-撑满外层盒子的宽度（浏览器显示区域），独占一行，垂直排列，里能用行内元素，可以设置宽高"><a href="#①块级元素-默认100-撑满外层盒子的宽度（浏览器显示区域），独占一行，垂直排列，里能用行内元素，可以设置宽高" class="headerlink" title="①块级元素:默认100%撑满外层盒子的宽度（浏览器显示区域），独占一行，垂直排列，里能用行内元素，可以设置宽高"></a>①块级元素:默认100%撑满外层盒子的宽度（浏览器显示区域），独占一行，垂直排列，里能用行内元素，可以设置宽高</h3><p>　　|–&gt;div 没有任何CSS属性（主要用在大框架）<br>　　|–&gt;p     自带上下外边据  （用在段落）<br>　　|–&gt;h1-h6   自带上下外边据，自带字体大小（用在栏目大标题）<br>　　|–&gt;ul li       自带上下外边据，li自带圆点 （用在列表，多个元素大小一致）<br>　　|–&gt;dl dt dd   用在带标题的列表上 </p>
-<h3 id="②行内元素（内联元素）-默认宽度只有本身所占的宽度，默认水平排列，不支持宽高-，margin-padding左右有效果-上下没有效果"><a href="#②行内元素（内联元素）-默认宽度只有本身所占的宽度，默认水平排列，不支持宽高-，margin-padding左右有效果-上下没有效果" class="headerlink" title="②行内元素（内联元素）:默认宽度只有本身所占的宽度，默认水平排列，不支持宽高 ，margin padding左右有效果 上下没有效果"></a>②行内元素（内联元素）:默认宽度只有本身所占的宽度，默认水平排列，不支持宽高 ，margin padding左右有效果 上下没有效果</h3><p>　　|–&gt;a  超链接  自带标签颜色、鼠标放上颜色，点击时的颜色，点击过颜色，下划线<br>　　|–&gt; span<br>　　|–&gt;em、i（默认斜体）<br>　　|–&gt;strong,b（默认加粗）<br>　　|–&gt;u（默认下划线）</p>
-<h3 id="③行内块级元素-默认宽度只有本身所占的宽度，默认水平排列，支持宽高，受到父级text-align影响，可以居中"><a href="#③行内块级元素-默认宽度只有本身所占的宽度，默认水平排列，支持宽高，受到父级text-align影响，可以居中" class="headerlink" title="③行内块级元素:默认宽度只有本身所占的宽度，默认水平排列，支持宽高，受到父级text-align影响，可以居中"></a>③行内块级元素:默认宽度只有本身所占的宽度，默认水平排列，支持宽高，受到父级text-align影响，可以居中</h3><p>　　|–&gt;img 图片<br>　　|–&gt;input 输入框<br>　　|–&gt;select  下拉菜单<br>　　|–&gt;textarea 输入区域</p>
-<p>IE6—————-BUG———————-<br>块级元素转化成行内块级元素   IE6不支持<br>行内元素转化成行内块级元素 IE6支持</p>
-<p>块级元素加上position:absolute fixed（定位）或者浮动 宽度不是100% 是本身内容的宽度<br>行内元素加上position:absolute fixed（定位）或者浮动  就会变成块级元素</p>
-<h2 id="display-block-display-inline-和display-inline-block"><a href="#display-block-display-inline-和display-inline-block" class="headerlink" title="display:block; display:inline;和display:inline-block;"></a>display:block; display:inline;和display:inline-block;</h2><h3 id="block：使用此属性后，元素会被显示为块级元素，元素会进行换行，默认宽度为撑满外层盒子的宽度-因为块元素霸道-。"><a href="#block：使用此属性后，元素会被显示为块级元素，元素会进行换行，默认宽度为撑满外层盒子的宽度-因为块元素霸道-。" class="headerlink" title="block：使用此属性后，元素会被显示为块级元素，元素会进行换行，默认宽度为撑满外层盒子的宽度(因为块元素霸道)。"></a>block：使用此属性后，元素会被显示为块级元素，元素会进行换行，默认宽度为撑满外层盒子的宽度(因为块元素霸道)。</h3><h3 id="inline：使用此属性后，元素会被显示为内联元素，元素则不会换行，默认宽度为内容的宽度。"><a href="#inline：使用此属性后，元素会被显示为内联元素，元素则不会换行，默认宽度为内容的宽度。" class="headerlink" title="inline：使用此属性后，元素会被显示为内联元素，元素则不会换行，默认宽度为内容的宽度。"></a>inline：使用此属性后，元素会被显示为内联元素，元素则不会换行，默认宽度为内容的宽度。</h3><h3 id="inline-block：是使元素以块级元素的形式呈现在行内。意思就是说，让这个元素显示在同一行不换行，但是又可以控制高度和宽度，这相当于行内元素的增强。"><a href="#inline-block：是使元素以块级元素的形式呈现在行内。意思就是说，让这个元素显示在同一行不换行，但是又可以控制高度和宽度，这相当于行内元素的增强。" class="headerlink" title="inline-block：是使元素以块级元素的形式呈现在行内。意思就是说，让这个元素显示在同一行不换行，但是又可以控制高度和宽度，这相当于行内元素的增强。"></a>inline-block：是使元素以块级元素的形式呈现在行内。意思就是说，让这个元素显示在同一行不换行，但是又可以控制高度和宽度，这相当于行内元素的增强。</h3><p>　　应用：<br>　　1.display:inline-block把一个元素变成块级元素，但他的大小只是他本身内容的大小并不撑满外围盒子，如下图所示：<br>　　<img src="https://github.com/Daoma666/JS-CSS_train1/blob/master/img/display.jpg" alt="图片放在GitHub仓库里了也显示不出来...">所以在一道练习中出现下面的情况：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;手写&lt;/a&gt;&lt;/li&gt;</span><br></pre></td></tr></table></figure></p>
-<p>　　若不把a变成块元素，则a上的背景不会撑满整个li。</p>
-<p>　　2.li是块元素，原本会换行，是竖着一列的布局，但改为inline-block并在父元素指定了width后，则会以块级元素的形式呈现在行内，不换行，但能控制高度宽度，这样就可以变成一行行排列的布局了。</p>
-<h2 id="css属性"><a href="#css属性" class="headerlink" title="css属性"></a>css属性</h2><p>　　| ———-①盒子模型：width、height，padding、border、margin<br> 　　　注意事项：padding 上下左右 全部相加       margin 上下取最大  左右相加     margin-top如想父级元素不受影响，父级元素要加overflow:hidden<br>　　| ———-②-1 背景相关：background背景缩写:background-color,background-image,background-repeat,background-attachment,background-position<br>　　| ———-②-2 文本样式：font-size文字大小/line-height行高、color文本颜色、text-align水平位置、font-family文字字体、letter-spcing文字间隔、text-decoration文本样式<br>　　| ———-②-3 UL li：list-style列表样式<br>　　| ———-②-4 A链接：a{}<br>　　　　a:link - 普通的、未被访问的链接<br>　　　　a:visited - 用户已访问的链接<br>　　　　a:hover - 鼠标指针位于链接的上方<br>　　　　a:active - 链接被点击的时刻<br>　　| ———-③选择器    style 优先级最高  |   ID选择器   #xxx  id=”xxx”  |  类选择器 .xxx  class=”xxx”  |   元素选择器   p  | 后代选择器   .xxx .yyy<br>　　| ———-④定位        float（浮动）  position（定位）：relative（相对）absolute（绝对）fixed（相对浏览器固定）</p>
 
       
     </div>

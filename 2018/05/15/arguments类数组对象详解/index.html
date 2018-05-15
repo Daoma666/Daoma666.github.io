@@ -7,18 +7,18 @@
   
   
   
-  <title>text-indent: -9999px;作用 | 岛马的主页</title>
+  <title>arguments类数组对象详解 | 岛马的主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="text-indent: -9999px;作用　　最近在做星级评分系统作业时遇到了这个写法。HTML:12345678&amp;lt;span&amp;gt;点击星星就能打分&amp;lt;/span&amp;gt;&amp;lt;ul&amp;gt;	&amp;lt;li class=&quot;&quot;&amp;gt;&amp;lt;a href=&quot;javascript:;&quot;&amp;gt;1&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;	&amp;lt;li class=&quot;&quot;&amp;gt;&amp;lt;a h">
+  <meta name="description" content="arguments类数组对象详解arguments对象保存着函数被调用时的参数列表，它是一个类数组对象，有一个length属性但没有任何数组的方法。　　它不能像数组一样，进行排序操作或者往集合里添加一个新的元素。 所以我们经常非常频繁的找Array.prototype对象借用方法。　　像Array.prototype.slice可以把arguments转成真正的数组；想截去arguments列表中">
 <meta property="og:type" content="article">
-<meta property="og:title" content="text-indent: -9999px;作用">
-<meta property="og:url" content="http://yoursite.com/2018/04/11/text-indent-9999px-作用/index.html">
+<meta property="og:title" content="arguments类数组对象详解">
+<meta property="og:url" content="http://yoursite.com/2018/05/15/arguments类数组对象详解/index.html">
 <meta property="og:site_name" content="岛马的主页">
-<meta property="og:description" content="text-indent: -9999px;作用　　最近在做星级评分系统作业时遇到了这个写法。HTML:12345678&amp;lt;span&amp;gt;点击星星就能打分&amp;lt;/span&amp;gt;&amp;lt;ul&amp;gt;	&amp;lt;li class=&quot;&quot;&amp;gt;&amp;lt;a href=&quot;javascript:;&quot;&amp;gt;1&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;	&amp;lt;li class=&quot;&quot;&amp;gt;&amp;lt;a h">
-<meta property="og:updated_time" content="2018-04-11T11:38:52.899Z">
+<meta property="og:description" content="arguments类数组对象详解arguments对象保存着函数被调用时的参数列表，它是一个类数组对象，有一个length属性但没有任何数组的方法。　　它不能像数组一样，进行排序操作或者往集合里添加一个新的元素。 所以我们经常非常频繁的找Array.prototype对象借用方法。　　像Array.prototype.slice可以把arguments转成真正的数组；想截去arguments列表中">
+<meta property="og:updated_time" content="2018-05-15T14:37:08.361Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="text-indent: -9999px;作用">
-<meta name="twitter:description" content="text-indent: -9999px;作用　　最近在做星级评分系统作业时遇到了这个写法。HTML:12345678&amp;lt;span&amp;gt;点击星星就能打分&amp;lt;/span&amp;gt;&amp;lt;ul&amp;gt;	&amp;lt;li class=&quot;&quot;&amp;gt;&amp;lt;a href=&quot;javascript:;&quot;&amp;gt;1&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;	&amp;lt;li class=&quot;&quot;&amp;gt;&amp;lt;a h">
+<meta name="twitter:title" content="arguments类数组对象详解">
+<meta name="twitter:description" content="arguments类数组对象详解arguments对象保存着函数被调用时的参数列表，它是一个类数组对象，有一个length属性但没有任何数组的方法。　　它不能像数组一样，进行排序操作或者往集合里添加一个新的元素。 所以我们经常非常频繁的找Array.prototype对象借用方法。　　像Array.prototype.slice可以把arguments转成真正的数组；想截去arguments列表中">
   
     <link rel="alternative" href="/atom.xml" title="岛马的主页" type="application/atom+xml">
   
@@ -269,11 +269,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-text-indent-9999px-作用" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-arguments类数组对象详解" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2018/04/11/text-indent-9999px-作用/" class="article-date">
-      <time datetime="2018-04-11T11:37:57.000Z" itemprop="datePublished">2018-04-11</time>
+      <a  href="/2018/05/15/arguments类数组对象详解/" class="article-date">
+      <time datetime="2018-05-15T14:36:53.000Z" itemprop="datePublished">2018-05-15</time>
 </a>
 
     </div>
@@ -287,7 +287,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      text-indent: -9999px;作用
+      arguments类数组对象详解
     </h1>
   
 
@@ -305,9 +305,11 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="text-indent-9999px-作用"><a href="#text-indent-9999px-作用" class="headerlink" title="text-indent: -9999px;作用"></a>text-indent: -9999px;作用</h2><p>　　最近在做星级评分系统作业时遇到了这个写法。<br>HTML:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;span&gt;点击星星就能打分&lt;/span&gt;</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">	&lt;li class=<span class="string">""</span>&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;1&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li class=<span class="string">""</span>&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;2&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li class=<span class="string">""</span>&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;3&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li class=<span class="string">""</span>&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;4&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li class=<span class="string">""</span>&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;5&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure></p>
-<p>CSS:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#star li&#123;</span></span><br><span class="line">	width: 24px;</span><br><span class="line">	<span class="built_in">float</span>: left;</span><br><span class="line">	cursor: pointer;</span><br><span class="line">	text-indent: -9999px;/*&lt;a&gt;之间有文字，有时为了搜索引擎需要,但我们实际的星星上不想要文字，则添加了这个属性隐藏它*/</span><br><span class="line">	background: url(img/star.png) no-repeat;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>　　text-indent:-9999px 一般用于隐藏文字。比如LOGO 部分，因为SEO(Search Engine Optimization)搜索引擎优化 的需要，所以要有文字在，但事实上显示的时候用了图片代替，所以就要使用text-indent:-9999px; 把它从界面上隐藏掉。<br>　　text-indent 是缩进，使用9999 是为了让他的缩进足够大，大分辨率下也能缩到不见。</p>
+        <h2 id="arguments类数组对象详解"><a href="#arguments类数组对象详解" class="headerlink" title="arguments类数组对象详解"></a>arguments类数组对象详解</h2><h4 id="arguments对象保存着函数被调用时的参数列表，它是一个类数组对象，有一个length属性但没有任何数组的方法。"><a href="#arguments对象保存着函数被调用时的参数列表，它是一个类数组对象，有一个length属性但没有任何数组的方法。" class="headerlink" title="arguments对象保存着函数被调用时的参数列表，它是一个类数组对象，有一个length属性但没有任何数组的方法。"></a>arguments对象保存着函数被调用时的参数列表，它是一个类数组对象，有一个length属性但没有任何数组的方法。</h4><p>　　它不能像数组一样，进行排序操作或者往集合里添加一个新的元素。</p>
+<h4 id="所以我们经常非常频繁的找Array-prototype对象借用方法。"><a href="#所以我们经常非常频繁的找Array-prototype对象借用方法。" class="headerlink" title="所以我们经常非常频繁的找Array.prototype对象借用方法。"></a>所以我们经常非常频繁的找Array.prototype对象借用方法。</h4><p>　　像Array.prototype.slice可以把arguments转成真正的数组；想截去arguments列表中头一个元素时，又可以借用Array.prototype.shift方法。</p>
+<p>　　要了解这种机制的实现原理，需要查看一下V8引擎的源码，比如Array.prototype.push：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">function</span> <span class="function"><span class="title">ArrayPush</span></span>()&#123;</span><br><span class="line">var n=TO_UINT32(this.length); //被push的对象的length</span><br><span class="line">var m=%_ArgumentsLength(); //push的参数个数</span><br><span class="line"><span class="keyword">for</span>(var i=0;i&lt;m;i++)&#123;</span><br><span class="line">	this[i+n]=%_Arguments(i);  //复制元素</span><br><span class="line">&#125;</span><br><span class="line">this.length=n+m; //修正length属性的值</span><br><span class="line"><span class="built_in">return</span> this.length;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>　可见Array.prototype.push实际上是一个<strong>属性复制</strong>的过程，把参数按照下标依次添加到被push的<strong>对象</strong>上面，顺便修改了这个对象的属性。所以只要是个对象，不管是数组对象还是类数组对象，都可以操作。</p>
 
       
     </div>
@@ -316,13 +318,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2018/04/11/text-indent-9999px-作用/">text-indent: -9999px;作用</a></p>
+        <p><span>本文标题:</span><a  href="/2018/05/15/arguments类数组对象详解/">arguments类数组对象详解</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 岛马 的个人博客">岛马</a></p>
-        <p><span>发布时间:</span>2018年04月11日 - 19时37分</p>
-        <p><span>最后更新:</span>2018年04月11日 - 19时38分</p>
+        <p><span>发布时间:</span>2018年05月15日 - 22时36分</p>
+        <p><span>最后更新:</span>2018年05月15日 - 22时37分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/04/11/text-indent-9999px-作用/" title="text-indent: -9999px;作用">http://yoursite.com/2018/04/11/text-indent-9999px-作用/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/04/11/text-indent-9999px-作用/　　作者: 岛马" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/05/15/arguments类数组对象详解/" title="arguments类数组对象详解">http://yoursite.com/2018/05/15/arguments类数组对象详解/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/05/15/arguments类数组对象详解/　　作者: 岛马" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -333,18 +335,18 @@
 
 <nav id="article-nav">
   
-    <a  href="/2018/04/14/变量提升/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a  href="/2018/05/15/JS中this的指向/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          变量提升
+          JS中this的指向
         
       </div>
     </a>
   
   
-    <a  href="/2018/04/11/offsetLeft和style-left/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">offsetLeft和style.left</div>
+    <a  href="/2018/05/14/CSS使用border构建图标/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CSS使用border构建图标</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -356,7 +358,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#text-indent-9999px-作用"><span class="toc-number">1.</span> <span class="toc-text">text-indent: -9999px;作用</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#arguments类数组对象详解"><span class="toc-number">1.</span> <span class="toc-text">arguments类数组对象详解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#arguments对象保存着函数被调用时的参数列表，它是一个类数组对象，有一个length属性但没有任何数组的方法。"><span class="toc-number">1.0.1.</span> <span class="toc-text">arguments对象保存着函数被调用时的参数列表，它是一个类数组对象，有一个length属性但没有任何数组的方法。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#所以我们经常非常频繁的找Array-prototype对象借用方法。"><span class="toc-number">1.0.2.</span> <span class="toc-text">所以我们经常非常频繁的找Array.prototype对象借用方法。</span></a></li></ol></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -427,13 +429,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2018/04/14/变量提升/" title="上一篇: 变量提升">
+            <a  href="/2018/05/15/JS中this的指向/" title="上一篇: JS中this的指向">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2018/04/11/offsetLeft和style-left/" title="下一篇: offsetLeft和style.left">
+            <a  href="/2018/05/14/CSS使用border构建图标/" title="下一篇: CSS使用border构建图标">
                 <i class="fa fa-angle-right"></i>
             </a>
         
