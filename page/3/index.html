@@ -270,6 +270,132 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-变量提升" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/04/14/变量提升/" class="article-date">
+      <time datetime="2018-04-14T03:43:59.000Z" itemprop="datePublished">2018-04-14</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/04/14/变量提升/">变量提升</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h2><p>　　最近发现了一个小问题：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var x=<span class="string">"global value"</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">getValue</span></span>()&#123;</span><br><span class="line">	alert(x);//undefined</span><br><span class="line">	var x=<span class="string">"local value"</span>;</span><br><span class="line">	alert(x);//<span class="built_in">local</span> value</span><br><span class="line">&#125;</span><br><span class="line">getValue();</span><br></pre></td></tr></table></figure></p>
+<p>　　我们可以发现第一个alert(x)结果为undefined，这就跟JS的<strong>变量提升</strong>有关系了。<br>　　var关键字声明变量，无论声明在何处，都会被视为声明在函数的<em>最顶部</em>(不在函数内即在全局作用域的最顶部)，这就是函数的<strong>变量提升</strong>。所以上面的代码实际上是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var x=<span class="string">"global value"</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">getValue</span></span>()&#123;</span><br><span class="line">	var x; //普通的变量初始化就是undefined，所以就好理解了</span><br><span class="line">	alert(x);</span><br><span class="line">	var x=<span class="string">"local value"</span>;</span><br><span class="line">	alert(x);</span><br><span class="line">&#125;</span><br><span class="line">getValue();</span><br></pre></td></tr></table></figure>
+<p>　　<br>　　下面我们就来整理一下变量提升：</p>
+<h4 id="1-我是变量声明，我会被提升在作用域顶端！"><a href="#1-我是变量声明，我会被提升在作用域顶端！" class="headerlink" title="1.我是变量声明，我会被提升在作用域顶端！"></a>1.我是变量声明，我会被提升在作用域顶端！</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a;</span><br></pre></td></tr></table></figure>
+<h4 id="2-我是变量定义，我的声明部分会被提升，赋值部分不会被提升！"><a href="#2-我是变量定义，我的声明部分会被提升，赋值部分不会被提升！" class="headerlink" title="2.我是变量定义，我的声明部分会被提升，赋值部分不会被提升！"></a>2.我是变量定义，我的声明部分会被提升，赋值部分不会被提升！</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var b=<span class="string">"test"</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="3-我是函数定义，或者叫我函数表达式。其实我就是变量定义，只不过恰好被赋值的类型是函数，所以也只提升变量名-即提升声明部分-，不提升函数值！"><a href="#3-我是函数定义，或者叫我函数表达式。其实我就是变量定义，只不过恰好被赋值的类型是函数，所以也只提升变量名-即提升声明部分-，不提升函数值！" class="headerlink" title="3.我是函数定义，或者叫我函数表达式。其实我就是变量定义，只不过恰好被赋值的类型是函数，所以也只提升变量名(即提升声明部分)，不提升函数值！"></a>3.我是函数定义，或者叫我函数表达式。其实我就是变量定义，只不过恰好被赋值的类型是函数，所以也只提升变量名(即提升声明部分)，不提升函数值！</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var c=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	console.log(<span class="string">"test"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-我是函数声明，所以我全部被提升了，包括函数名和函数体。另外，我的优先级比变量声明要高，名字和我相同的变量声明会被忽略！"><a href="#4-我是函数声明，所以我全部被提升了，包括函数名和函数体。另外，我的优先级比变量声明要高，名字和我相同的变量声明会被忽略！" class="headerlink" title="4.我是函数声明，所以我全部被提升了，包括函数名和函数体。另外，我的优先级比变量声明要高，名字和我相同的变量声明会被忽略！"></a>4.我是函数声明，所以我全部被提升了，包括函数名和函数体。另外，我的优先级比变量声明要高，名字和我相同的变量声明会被忽略！</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">d</span></span>()&#123;</span><br><span class="line">	console.log(<span class="string">"test"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>　　最后再补充一点，因为JS虽然有函数作用域，但没有块作用域，即函数中的参数和变量在函数外部是不可见的，而在一个函数内部任何位置定义的变量，在该函数内部任何地方都可见。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-text-indent-9999px-作用" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/04/11/text-indent-9999px-作用/" class="article-date">
+      <time datetime="2018-04-11T11:37:57.000Z" itemprop="datePublished">2018-04-11</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/04/11/text-indent-9999px-作用/">text-indent: -9999px;作用</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="text-indent-9999px-作用"><a href="#text-indent-9999px-作用" class="headerlink" title="text-indent: -9999px;作用"></a>text-indent: -9999px;作用</h2><p>　　最近在做星级评分系统作业时遇到了这个写法。<br>HTML:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;span&gt;点击星星就能打分&lt;/span&gt;</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">	&lt;li class=<span class="string">""</span>&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;1&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li class=<span class="string">""</span>&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;2&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li class=<span class="string">""</span>&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;3&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li class=<span class="string">""</span>&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;4&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li class=<span class="string">""</span>&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;5&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure></p>
+<p>CSS:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#star li&#123;</span></span><br><span class="line">	width: 24px;</span><br><span class="line">	<span class="built_in">float</span>: left;</span><br><span class="line">	cursor: pointer;</span><br><span class="line">	text-indent: -9999px;/*&lt;a&gt;之间有文字，有时为了搜索引擎需要,但我们实际的星星上不想要文字，则添加了这个属性隐藏它*/</span><br><span class="line">	background: url(img/star.png) no-repeat;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>　　text-indent:-9999px 一般用于隐藏文字。比如LOGO 部分，因为SEO(Search Engine Optimization)搜索引擎优化 的需要，所以要有文字在，但事实上显示的时候用了图片代替，所以就要使用text-indent:-9999px; 把它从界面上隐藏掉。<br>　　text-indent 是缩进，使用9999 是为了让他的缩进足够大，大分辨率下也能缩到不见。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-offsetLeft和style-left" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -779,138 +905,6 @@
 <p>　　这里oImg[0].onload的作用就是<strong>把图片加载(load)到浏览器中</strong>，然后<strong>当图片加载完成后再执行花括号的内容</strong>，即将oLoading图片所在层隐藏（这样就会出现第一次鼠标移入图片时的闪现loading图片的效果），若是图片出现错误，则会一直显示oLoading层的图片。</p>
 <p>　　然后等我们鼠标第2、3…..n次移入该aLi[i]层的时候，因为图片已经加载过一次，如果再有对该图片的请求(即img.src)时，由于浏览器已经缓存住这张图片了，不会再发起一次新的请求，而是直接从缓存中加载过来,此时img.complete就会一直返回true，所以oLoading层的图片就会一直被隐藏。</p>
 <p>　　<a href="https://blog.csdn.net/dcb_ripple/article/details/52175842" title="js中的Image对象" target="_blank" rel="noopener">详细用法请见</a><br>　　<a href="http://www.jb51.net/article/43507.htm" title="js中Image对象以及对其预加载处理示例" target="_blank" rel="noopener">预加载的简便理解</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-一些零星的HTML,CSS,JS知识" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2018/03/27/一些零星的HTML,CSS,JS知识/" class="article-date">
-      <time datetime="2018-03-27T11:43:45.000Z" itemprop="datePublished">2018-03-27</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/03/27/一些零星的HTML,CSS,JS知识/">一些零星的HTML,CSS,JS知识</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="li标签中的a标签改变字体颜色color需要注意的地方"><a href="#li标签中的a标签改变字体颜色color需要注意的地方" class="headerlink" title="li标签中的a标签改变字体颜色color需要注意的地方"></a>li标签中的a标签改变字体颜色color需要注意的地方</h2><p>　　最近遇到了想鼠标移到li上，但里面的a字体变色不成功的问题。查了一下因为<a>默认就有样式，所以不会继承父级的color等样式，这时候就需要显式让a继承li的color才行，即：</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">li&#123;</span><br><span class="line">	color: <span class="comment">#fff;</span></span><br><span class="line">&#125;</span><br><span class="line">li&gt;a&#123;</span><br><span class="line">	color: inherit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="CSS想实现一个元素发生变动，改变另外元素的样式"><a href="#CSS想实现一个元素发生变动，改变另外元素的样式" class="headerlink" title="CSS想实现一个元素发生变动，改变另外元素的样式"></a>CSS想实现一个元素发生变动，改变另外元素的样式</h2><p>　　原先我一直以为CSS只能改变自身元素的样式，如果想自身变动又想要别的元素变动，必须借助JS才行，但发现并不是这样。</p>
-<p>HTML:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"box"</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;p&gt;就会发现你可以hover第一个层的时候，改变第二个层的样式。&lt;/p&gt;</span><br><span class="line">&lt;div&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<p>CSS:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">	width: 100px;</span><br><span class="line">	height: 100px;</span><br><span class="line">	background: red;</span><br><span class="line">	border: 3px double <span class="comment">#000;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#box:hover ~ div&#123;</span></span><br><span class="line">	background: blue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="结构伪类选择器-nth-child-n-需要注意的地方"><a href="#结构伪类选择器-nth-child-n-需要注意的地方" class="headerlink" title="结构伪类选择器:nth-child(n)需要注意的地方"></a>结构伪类选择器:nth-child(n)需要注意的地方</h2><p>　　:nth-child选择的是<strong>某父元素</strong>的子元素，这个子元素并没有指定确切的类型，必须同时满足两个条件时方能有效果：</p>
-<p>　　1.是子元素<br>　　2.该子元素刚好处在n那个位置</p>
-<p>　　但有时候经常会出现问题，比如在body下加<em><script></em>标签的时候：</p>
-<p>HTML:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">		&lt;title&gt;&lt;/title&gt;</span><br><span class="line">		&lt;style <span class="built_in">type</span>=<span class="string">"text/css"</span>&gt;</span><br><span class="line">			.a&#123;</span><br><span class="line">				display: inline-block;</span><br><span class="line">				width: 150px;</span><br><span class="line">				height: 150px;</span><br><span class="line">				border: 1px solid <span class="comment">#cad5eb;</span></span><br><span class="line">				background-color: <span class="comment">#f0f3f9;</span></span><br><span class="line">			&#125;</span><br><span class="line">			span:nth-last-child(2)&#123;/*这里要2才行，不知道为什么*/</span><br><span class="line">				line-height: 0;</span><br><span class="line">				background: red;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		&lt;/style&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;span class=<span class="string">"a"</span>&gt;&lt;/span&gt;</span><br><span class="line">		&lt;span class=<span class="string">"a"</span>&gt;x-baseline&lt;/span&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">	&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">		var a=<span class="string">"这里放script标签则会导致nth-child选择器出错？？？"</span>;</span><br><span class="line">		var b=<span class="string">"但是去掉script标签则会没事"</span>;</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="JS取0-9的一个随机数可以用-Math-random-””-slice-1"><a href="#JS取0-9的一个随机数可以用-Math-random-””-slice-1" class="headerlink" title="JS取0~9的一个随机数可以用: (Math.random()+””).slice(-1)"></a>JS取0~9的一个随机数可以用: (Math.random()+””).slice(-1)</h4><h2 id="js中-大括号-中括号使用详解"><a href="#js中-大括号-中括号使用详解" class="headerlink" title="js中{}大括号,[]中括号使用详解"></a>js中{}大括号,[]中括号使用详解</h2><h4 id="大括号，表示定义一个对象，大部分情况下要有成对的属性和值，或是函数。"><a href="#大括号，表示定义一个对象，大部分情况下要有成对的属性和值，或是函数。" class="headerlink" title="{ }大括号，表示定义一个对象，大部分情况下要有成对的属性和值，或是函数。"></a>{ }大括号，表示定义一个对象，大部分情况下要有成对的属性和值，或是函数。</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var mayun=&#123;</span><br><span class="line">	name: <span class="string">"cocl"</span>,</span><br><span class="line">	age: <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		alert(<span class="string">"21"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">mayun.age();</span><br></pre></td></tr></table></figure>
-<h4 id="中括号，表示一个数组，也可以理解为一个数组对象。"><a href="#中括号，表示一个数组，也可以理解为一个数组对象。" class="headerlink" title="[ ]中括号，表示一个数组，也可以理解为一个数组对象。"></a>[ ]中括号，表示一个数组，也可以理解为一个数组对象。</h4></script></em></p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-JS-for-in语句的使用" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2018/03/26/JS-for-in语句的使用/" class="article-date">
-      <time datetime="2018-03-26T11:08:31.000Z" itemprop="datePublished">2018-03-26</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/03/26/JS-for-in语句的使用/">JS for-in语句的使用</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="JS-for-in语句的使用"><a href="#JS-for-in语句的使用" class="headerlink" title="JS for-in语句的使用"></a>JS for-in语句的使用</h2><h4 id="js中for循环一般用于遍历数组"><a href="#js中for循环一般用于遍历数组" class="headerlink" title="js中for循环一般用于遍历数组"></a>js中for循环一般用于遍历数组</h4><h4 id="for-in一般用于循环遍历对象的属性"><a href="#for-in一般用于循环遍历对象的属性" class="headerlink" title="for-in一般用于循环遍历对象的属性"></a>for-in一般用于循环遍历对象的属性</h4><p>　　<br>　　因为JavaScript的数组其实就是对象，它把数组的下标转变成字符串，用其作为属性。所以下面两个对象类似：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//数组字面量</span><br><span class="line">var numbers=[<span class="string">"zero"</span>,<span class="string">"one"</span>,<span class="string">"two"</span>,<span class="string">"three"</span>,<span class="string">"four"</span>,<span class="string">"five"</span>];</span><br><span class="line">//它很类似对象字面量</span><br><span class="line">var numbers_object=&#123;</span><br><span class="line">	<span class="string">"0"</span>:<span class="string">"zero"</span>,<span class="string">"1"</span>:<span class="string">"one"</span>,<span class="string">"2"</span>:<span class="string">"two"</span>,3:<span class="string">"three"</span>,4:<span class="string">"four"</span>,<span class="string">"5"</span>:<span class="string">"five"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>　　因为JavaScript的数组其实就是对象,所以for in语句可以用来遍历一个对象的所有属性，即：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var numbers=[<span class="string">"zero"</span>,<span class="string">"one"</span>,<span class="string">"two"</span>,<span class="string">"three"</span>,<span class="string">"four"</span>,<span class="string">"five"</span>];</span><br><span class="line">//num只是该数组对象的属性</span><br><span class="line"><span class="keyword">for</span>(var num <span class="keyword">in</span> numbers)&#123;</span><br><span class="line">	console.log(num);//0,1,2,3,4,5 </span><br><span class="line">&#125;</span><br><span class="line">//这样才能得到数组中的每一项</span><br><span class="line"><span class="keyword">for</span>(var num <span class="keyword">in</span> numbers)&#123;</span><br><span class="line">	console.log(numbers[num]);//<span class="string">"zero"</span>,<span class="string">"one"</span>,<span class="string">"two"</span>,<span class="string">"three"</span>,<span class="string">"four"</span>,<span class="string">"five"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>　　但要注意for-in无法保证属性的顺序。</p>
 
       
     </div>

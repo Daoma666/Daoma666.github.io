@@ -270,6 +270,132 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-实现slideUp-Down效果" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/05/20/实现slideUp-Down效果/" class="article-date">
+      <time datetime="2018-05-20T02:20:53.000Z" itemprop="datePublished">2018-05-20</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/05/20/实现slideUp-Down效果/">实现slideUp/Down效果</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="实现slideUp-Down效果"><a href="#实现slideUp-Down效果" class="headerlink" title="实现slideUp/Down效果"></a>实现slideUp/Down效果</h2><p>　　最近做网页时，想做一个点击标题滑动出内容的模块，然后看了下参考的源码，结果发现有好几种做法。</p>
+<h4 id="第一种最简单，就是使用JQuery的slideUp-Down方法，一步搞定"><a href="#第一种最简单，就是使用JQuery的slideUp-Down方法，一步搞定" class="headerlink" title="第一种最简单，就是使用JQuery的slideUp/Down方法，一步搞定"></a>第一种最简单，就是使用JQuery的slideUp/Down方法，一步搞定</h4><h4 id="第二种使用JS配合CSS3的transition属性，但是在该例子中transition需要处理与display的关系，两者貌似搭配起来不会产生效果"><a href="#第二种使用JS配合CSS3的transition属性，但是在该例子中transition需要处理与display的关系，两者貌似搭配起来不会产生效果" class="headerlink" title="第二种使用JS配合CSS3的transition属性，但是在该例子中transition需要处理与display的关系，两者貌似搭配起来不会产生效果"></a>第二种使用JS配合CSS3的transition属性，但是在该例子中transition需要处理与display的关系，两者貌似搭配起来不会产生效果</h4><p>　　解决方法是使用setTimeout延时display: none;的操作，因为我最终没有采用这种方法，留待以后检测。</p>
+<h4 id="第三种使用纯JS实现，即设置setTimeout来控制层的高度实现滑入滑出效果"><a href="#第三种使用纯JS实现，即设置setTimeout来控制层的高度实现滑入滑出效果" class="headerlink" title="第三种使用纯JS实现，即设置setTimeout来控制层的高度实现滑入滑出效果"></a>第三种使用纯JS实现，即设置setTimeout来控制层的高度实现滑入滑出效果</h4>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Git多人协作" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/05/19/Git多人协作/" class="article-date">
+      <time datetime="2018-05-19T00:06:16.000Z" itemprop="datePublished">2018-05-19</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/05/19/Git多人协作/">Git多人协作</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="Git多人协作"><a href="#Git多人协作" class="headerlink" title="Git多人协作"></a>Git多人协作</h2><p>　　首先肯定需要对Git的基本操作有一定的认识，这里肯定要放上浅显易懂的：<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" title="廖雪峰老师的Git教程" target="_blank" rel="noopener">廖雪峰老师的Git教程</a></p>
+<p>　　看完后我们就应该对Git有个大体的认识了，然后一般用Git的人中我们分两类：一类就是自己在用着玩，那看完上面的教程差不多就可以自己去摸索了；第二类就是想要多人协作，进行一个项目开发或协同作业，所以我在这里就记一下这几天搞多人协作这块儿踩过的坑。</p>
+<p>　　首先干一件事肯定是有个目标，我最近正在和同班同学搞一个网站的小项目，我们前端部分用的VSCode码代码，然后发现里面内置了Git，于是我们就兴冲冲的准备使用，经过一段时间摸索，自己add、commit、push到自己的GitHub时一点问题都没有，于是我们就准备多人协作了，在疯狂网上查找后，我们试出了三种方法。</p>
+<h4 id="第一种：fork别人的库成为自己的，然后clone到自己电脑上操作，操作完push到自己的GitHub上，再去自己的GitHub上发起pull-request发给项目原作者，经原作者审核后merge"><a href="#第一种：fork别人的库成为自己的，然后clone到自己电脑上操作，操作完push到自己的GitHub上，再去自己的GitHub上发起pull-request发给项目原作者，经原作者审核后merge" class="headerlink" title="第一种：fork别人的库成为自己的，然后clone到自己电脑上操作，操作完push到自己的GitHub上，再去自己的GitHub上发起pull request发给项目原作者，经原作者审核后merge"></a>第一种：fork别人的库成为自己的，然后clone到自己电脑上操作，操作完push到自己的GitHub上，再去自己的GitHub上发起pull request发给项目原作者，经原作者审核后merge</h4><p>　　具体操作可见：<a href="https://blog.csdn.net/qq_33429968/article/details/62219783" title="GitHub上如何进行PR(Pull Request)操作" target="_blank" rel="noopener">GitHub上如何进行PR(Pull Request)操作</a></p>
+<p>　　这样可行，但各位仁兄不觉得太过麻烦了吗……而且还需要审核，对于那种开源项目来说肯定是有必要的，但如果就是想四五个人协同作业的话，可以选用下面两种方法。</p>
+<h4 id="第二种：进入需要多人协作的项目中配置其它成员的公钥SSH-key，然后其他成员即可拥有同等的权限，无需审核"><a href="#第二种：进入需要多人协作的项目中配置其它成员的公钥SSH-key，然后其他成员即可拥有同等的权限，无需审核" class="headerlink" title="第二种：进入需要多人协作的项目中配置其它成员的公钥SSH key，然后其他成员即可拥有同等的权限，无需审核"></a>第二种：进入需要多人协作的项目中配置其它成员的公钥SSH key，然后其他成员即可拥有同等的权限，无需审核</h4><p>　　如下图：<img src="https://github.com/Daoma666/JS-CSS_train1/blob/master/%E5%8D%9A%E5%AE%A2%E5%9B%BE%E5%BA%93/Git1.png?raw=true" alt="多人协作方法2" title="配置其它成员的公钥"></p>
+<p>　　这个方法有一个缺点，那就是需要其他成员把自己的SSH与自己的Github远程库解绑，才能被项目拥有者绑定到这个项目上，所以这就不方便其他成员操作自己的GitHub了。</p>
+<h4 id="第三种：添加其他成员为项目协作者collaborators，其他成员也可拥有同等的权限，无需审核"><a href="#第三种：添加其他成员为项目协作者collaborators，其他成员也可拥有同等的权限，无需审核" class="headerlink" title="第三种：添加其他成员为项目协作者collaborators，其他成员也可拥有同等的权限，无需审核"></a>第三种：添加其他成员为项目协作者collaborators，其他成员也可拥有同等的权限，无需审核</h4><p>　　如下图：<img src="https://github.com/Daoma666/JS-CSS_train1/blob/master/%E5%8D%9A%E5%AE%A2%E5%9B%BE%E5%BA%93/Git2.png?raw=true" alt="多人协作方法3" title="添加其他成员为项目协作者"></p>
+<p>　　综上看如果你是个小项目想多人协作的话，这是最简便的方法，不过这里需要注意一点：项目拥有者发送邀请后，被邀请协作的成员需要去自己的<strong>GitHub注册邮箱</strong>里面找一封确认信！！！可能被标记为<strong>垃圾邮件</strong>了！一定要确认，否则无法完成！</p>
+<p>　　最后多人协作肯定会有冲突发生，以后再更新一下解决冲突的方法。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-JS中this的指向" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -299,16 +425,26 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="JS中this的指向"><a href="#JS中this的指向" class="headerlink" title="JS中this的指向"></a>JS中this的指向</h2><h4 id="方法调用模式"><a href="#方法调用模式" class="headerlink" title="方法调用模式"></a>方法调用模式</h4><p>　　当函数作为对象的方法被调用时，this指向该对象。</p>
+        <h2 id="JS中this的指向"><a href="#JS中this的指向" class="headerlink" title="JS中this的指向"></a>JS中this的指向</h2><pre><code>JavaScript中的this总是指向一个对象，而具体指向哪个对象是在**运行时**基于函数的执行环境动态绑定的。
+
+有位人说A.apply(x,array);等价于(A.bind(x))(array),现在看着挺对的，留待以后验证。
+</code></pre><h4 id="方法调用模式"><a href="#方法调用模式" class="headerlink" title="方法调用模式"></a>方法调用模式</h4><p>　　当函数作为对象的方法被调用时，this指向该对象。</p>
 <h4 id="普通函数调用模式"><a href="#普通函数调用模式" class="headerlink" title="普通函数调用模式"></a>普通函数调用模式</h4><p>　　this总是指向全局对象，在浏览器中，这个全局对象就是window对象。</p>
-<h4 id="构造器调用模式"><a href="#构造器调用模式" class="headerlink" title="构造器调用模式"></a>构造器调用模式</h4><p>　　因为new运算符会返回一个指向构造器函数原型的对象，所以<em>通常</em>情况下this就指向返回的这个对象。</p>
+<pre><code>但在使用**严格模式**&quot;use strict&quot;;时，this在函数调用模式不会指向全局对象window,而是undefined。
+</code></pre><h4 id="构造器调用模式"><a href="#构造器调用模式" class="headerlink" title="构造器调用模式"></a>构造器调用模式</h4><p>　　因为new运算符会返回一个指向构造器函数原型的对象，所以<em>通常</em>情况下this就指向返回的这个对象。</p>
 <p>　　但还有特殊的情况，比如构造器<strong>显式的返回了一个object类型的对象</strong>时，new调用构造器则会最终返回这个对象，而不是我们期待的this。</p>
 <h4 id="Function-prototype-apply调用模式"><a href="#Function-prototype-apply调用模式" class="headerlink" title="Function.prototype.apply调用模式"></a>Function.prototype.apply调用模式</h4><p>　　详情见我博客中的“JS中的apply()使用详解”一文，它的第一个参数可以改变函数体内this对象的指向。</p>
-<p>　　但如果第一个参数是null，则会像普通函数调用模式那样，函数体内的this指向默认宿主对象，在浏览器中则是window。</p>
+<p>　　如果我们传入的第一个参数是<strong>null或undefined</strong>，函数体内的this会指向全局对象，在浏览器中则是window。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var func=<span class="keyword">function</span>(a,b,c)&#123;</span><br><span class="line">    alert(this===window);//<span class="literal">true</span></span><br><span class="line">&#125;;</span><br><span class="line">func.apply(null,[1,2,3]);</span><br><span class="line">func.apply(undefined,[1,2,3]);</span><br></pre></td></tr></table></figure>
+<p>　　但如果是在<strong>严格模式</strong>下，则会严格执行第一个参数指定了函数体内this对象的指向，即传进来null，this就指向null;传进来undefined,this就指向undefined</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var func=<span class="keyword">function</span>(a,b,c)&#123;</span><br><span class="line">    <span class="string">"use strict"</span>;</span><br><span class="line">    alert(this===null);//<span class="literal">true</span></span><br><span class="line">&#125;;</span><br><span class="line">func.apply(null,[1,2,3]);</span><br></pre></td></tr></table></figure>
+<h4 id="闭包中的this指向"><a href="#闭包中的this指向" class="headerlink" title="闭包中的this指向"></a>闭包中的this指向</h4><p>　　每个函数在被调用时都会自动取得两个特殊变量：this和arguments。内部函数在搜索这两个变量时，只会搜索到其活动对象为止，因此闭包中永远不可能直接访问外部函数中的这两个变量，this一定是在这个闭包被调用时动态绑定的。如果想使用外层函数的this，最常用的方法就是找一个变量把它保存下来(eg:that)。</p>
+<p>　　还有最近在看《JavaScript设计模式与开发实践》，经常能看到</p>
 <h3 id="利用apply实现的bind函数"><a href="#利用apply实现的bind函数" class="headerlink" title="利用apply实现的bind函数"></a>利用apply实现的bind函数</h3><p>　　Function.prototype.bind，用来<strong>指定函数内部的this指向</strong>，其<em>简化版</em>实现可以这样模拟：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">   Function.prototype.bind=<span class="keyword">function</span>(context)&#123;</span><br><span class="line">	var that=this;//保存方法调用模式下被调用的原函数</span><br><span class="line">	<span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123;//闭包返回一个新函数（可访问外层函数的变量和参数）</span><br><span class="line">		<span class="built_in">return</span> that.apply(context,arguments);//改变that原函数的内部this指向为我们指定的context</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">   var obj1=&#123;</span><br><span class="line">	name: <span class="string">"Daoma"</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">   var func=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	alert(this.name);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">func();//未定义</span><br><span class="line"></span><br><span class="line">   var func=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	alert(this.name);</span><br><span class="line">&#125;.<span class="built_in">bind</span>(obj1);</span><br><span class="line">	</span><br><span class="line">func();//Daoma</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.bind=<span class="keyword">function</span>(context)&#123;</span><br><span class="line">	var that=this;//保存方法调用模式下被调用的原函数</span><br><span class="line">	<span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123;//闭包返回一个新函数（可访问外层函数的变量和参数）</span><br><span class="line">		<span class="built_in">return</span> that.apply(context,arguments);//改变that原函数的内部this指向为我们指定的context</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var obj1=&#123;</span><br><span class="line">	name: <span class="string">"Daoma"</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var func=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	alert(this.name);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">func();//未定义</span><br><span class="line"></span><br><span class="line">var func=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	alert(this.name);</span><br><span class="line">&#125;.<span class="built_in">bind</span>(obj1);</span><br><span class="line">	</span><br><span class="line">func();//Daoma</span><br></pre></td></tr></table></figure>
 <p>　　通常我们还会实现的稍微复杂一点，可以往func函数中预先填入一些参数：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">  Function.prototype.bind=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">var that=this,</span><br><span class="line">		context=[].shift.call(arguments),//将第一个元素删掉并返回</span><br><span class="line">		args=[].slice.call(arguments);//用slice的另一个功能将剩余的参数类数组转换成数组</span><br><span class="line">	<span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		//这里运用了函数柯里化的思想，组合两次分别传入的参数，作为新函数的参数</span><br><span class="line">		<span class="built_in">return</span> that.apply(context,[].concat.call(args,[].slice.call(arguments)));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var obj1=&#123;</span><br><span class="line">	name: <span class="string">"daoma"</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var func=<span class="keyword">function</span>(a,b,c,d)&#123;</span><br><span class="line">	alert(this.name);</span><br><span class="line">	alert([a,b,c,d]);</span><br><span class="line">&#125;.<span class="built_in">bind</span>(obj1,1,2);</span><br><span class="line"></span><br><span class="line">func(3,4);//即可以传参两次拼到一起</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.bind=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	var that=this,</span><br><span class="line">		context=[].shift.call(arguments),//将第一个元素删掉并返回</span><br><span class="line">		args=[].slice.call(arguments);//用slice的另一个功能将剩余的参数类数组转换成数组</span><br><span class="line">	<span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		//这里运用了函数柯里化的思想，组合两次分别传入的参数，作为新函数的参数</span><br><span class="line">		<span class="built_in">return</span> that.apply(context,[].concat.call(args,[].slice.call(arguments)));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">	</span><br><span class="line">var obj1=&#123;</span><br><span class="line">	name: <span class="string">"daoma"</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var func=<span class="keyword">function</span>(a,b,c,d)&#123;</span><br><span class="line">	alert(this.name);</span><br><span class="line">	alert([a,b,c,d]);</span><br><span class="line">&#125;.<span class="built_in">bind</span>(obj1,1,2);</span><br><span class="line"></span><br><span class="line">func(3,4);//即可以传参两次拼到一起</span><br></pre></td></tr></table></figure>
+<p>最后我还有一个需要填的问题坑，留待以后实力提高后解决：<a href="https://segmentfault.com/q/1010000014969567?_ea=3765087" title="JavaScript中Apply调用模式的this指向问题JavaScript中Apply调用模式的this指向问题" target="_blank" rel="noopener">JavaScript中Apply调用模式的this指向问题</a></p>
 
       
     </div>
@@ -369,7 +505,7 @@
         <h2 id="arguments类数组对象详解"><a href="#arguments类数组对象详解" class="headerlink" title="arguments类数组对象详解"></a>arguments类数组对象详解</h2><h4 id="arguments对象保存着函数被调用时的参数列表，它是一个类数组对象，有一个length属性但没有任何数组的方法。"><a href="#arguments对象保存着函数被调用时的参数列表，它是一个类数组对象，有一个length属性但没有任何数组的方法。" class="headerlink" title="arguments对象保存着函数被调用时的参数列表，它是一个类数组对象，有一个length属性但没有任何数组的方法。"></a>arguments对象保存着函数被调用时的参数列表，它是一个类数组对象，有一个length属性但没有任何数组的方法。</h4><p>　　它不能像数组一样，进行排序操作或者往集合里添加一个新的元素。</p>
 <h4 id="所以我们经常非常频繁的找Array-prototype对象借用方法。"><a href="#所以我们经常非常频繁的找Array-prototype对象借用方法。" class="headerlink" title="所以我们经常非常频繁的找Array.prototype对象借用方法。"></a>所以我们经常非常频繁的找Array.prototype对象借用方法。</h4><p>　　像Array.prototype.slice可以把arguments转成真正的数组；想截去arguments列表中头一个元素时，又可以借用Array.prototype.shift方法。</p>
 <p>　　要了解这种机制的实现原理，需要查看一下V8引擎的源码，比如Array.prototype.push：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">function</span> <span class="function"><span class="title">ArrayPush</span></span>()&#123;</span><br><span class="line">var n=TO_UINT32(this.length); //被push的对象的length</span><br><span class="line">var m=%_ArgumentsLength(); //push的参数个数</span><br><span class="line"><span class="keyword">for</span>(var i=0;i&lt;m;i++)&#123;</span><br><span class="line">	this[i+n]=%_Arguments(i);  //复制元素</span><br><span class="line">&#125;</span><br><span class="line">this.length=n+m; //修正length属性的值</span><br><span class="line"><span class="built_in">return</span> this.length;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">ArrayPush</span></span>()&#123;</span><br><span class="line">	var n=TO_UINT32(this.length); //被push的对象的length</span><br><span class="line">	var m=%_ArgumentsLength(); //push的参数个数</span><br><span class="line">	<span class="keyword">for</span>(var i=0;i&lt;m;i++)&#123;</span><br><span class="line">		this[i+n]=%_Arguments(i);  //复制元素</span><br><span class="line">	&#125;</span><br><span class="line">	this.length=n+m; //修正length属性的值</span><br><span class="line">	<span class="built_in">return</span> this.length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>　可见Array.prototype.push实际上是一个<strong>属性复制</strong>的过程，把参数按照下标依次添加到被push的<strong>对象</strong>上面，顺便修改了这个对象的属性。所以只要是个对象，不管是数组对象还是类数组对象，都可以操作。</p>
 
       
@@ -432,12 +568,12 @@
 <h3 id="画朝上朝下的√小图标"><a href="#画朝上朝下的√小图标" class="headerlink" title="画朝上朝下的√小图标"></a>画朝上朝下的√小图标</h3><p>　　使用border可以画很多与三角形有关的东东，比如我们经常见到的向上向下的“对号图标”就是使用两层border叠加生成的。<br>  <img src="https://github.com/Daoma666/JS-CSS_train1/blob/master/%E5%8D%9A%E5%AE%A2%E5%9B%BE%E5%BA%93/border%E5%AF%B9%E5%8F%B7%E5%B0%8F%E5%9B%BE%E6%A0%87.png?raw=true" alt="border对号小图标"></p>
 <p>　　首先我们需要一个div和两个i，两个i就是用来叠加生成对号图标用的。</p>
 <p>HTML:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   &lt;div class=<span class="string">"bottom"</span>&gt;&lt;!-- 这里换成top就是向上的对号--&gt;</span><br><span class="line">	&lt;i class=<span class="string">"arrow1"</span>&gt;&lt;/i&gt;</span><br><span class="line">	&lt;i class=<span class="string">"arrow2"</span>&gt;&lt;/i&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=<span class="string">"bottom"</span>&gt;&lt;!-- 这里换成top就是向上的对号--&gt;</span><br><span class="line">	&lt;i class=<span class="string">"arrow1"</span>&gt;&lt;/i&gt;</span><br><span class="line">	&lt;i class=<span class="string">"arrow2"</span>&gt;&lt;/i&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 <p>CSS:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">   .bottom&#123;</span><br><span class="line">	width: 20px;</span><br><span class="line">	height: 20px;</span><br><span class="line">	position: relative;</span><br><span class="line">&#125;</span><br><span class="line">   .bottom .arrow1,.bottom .arrow2&#123;</span><br><span class="line">	display: block;</span><br><span class="line">	position: absolute;</span><br><span class="line">	width: 0px;/*宽高设为0才能上下左右的border显示为三角形*/</span><br><span class="line">	height: 0px;</span><br><span class="line">	border-left: 8px dashed transparent;/*transparent主要为了应用在网页中不盖住底色*/</span><br><span class="line">	border-right: 8px dashed transparent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">.bottom&#123;</span><br><span class="line">	width: 20px;</span><br><span class="line">	height: 20px;</span><br><span class="line">	position: relative;</span><br><span class="line">&#125;</span><br><span class="line">.bottom .arrow1,.bottom .arrow2&#123;</span><br><span class="line">	display: block;</span><br><span class="line">	position: absolute;</span><br><span class="line">	width: 0px;/*宽高设为0才能上下左右的border显示为三角形*/</span><br><span class="line">	height: 0px;</span><br><span class="line">	border-left: 8px dashed transparent;/*transparent主要为了应用在网页中不盖住底色*/</span><br><span class="line">	border-right: 8px dashed transparent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>　　然后下面关键的就来了，我们给第一个<em><i></i></em>只设置上边框的话在这种情况下是个三角形：<img src="https://github.com/Daoma666/JS-CSS_train1/blob/master/%E5%8D%9A%E5%AE%A2%E5%9B%BE%E5%BA%93/border1.png?raw=true" alt="border1.png"></p>
 <p>　　然后我们可以给第二个<em><i></i></em>再设置一个白色的三角形然后用绝对定位的偏移使它下移盖住灰色三角形的一部分：<img src="https://github.com/Daoma666/JS-CSS_train1/blob/master/%E5%8D%9A%E5%AE%A2%E5%9B%BE%E5%BA%93/border2.png?raw=true" alt="border2.png"></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">   .bottom .arrow1&#123;</span><br><span class="line">	border-top: 8px solid <span class="comment">#999;</span></span><br><span class="line">	border-bottom: 8px dashed transparent;</span><br><span class="line">&#125;</span><br><span class="line">.bottom .arrow2&#123;</span><br><span class="line">    top: -2px;</span><br><span class="line">    border-top: 8px solid <span class="comment">#fff;</span></span><br><span class="line">    border-bottom: 8px dashed transparent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.bottom .arrow1&#123;</span><br><span class="line">	border-top: 8px solid <span class="comment">#999;</span></span><br><span class="line">	border-bottom: 8px dashed transparent;</span><br><span class="line">&#125;</span><br><span class="line">.bottom .arrow2&#123;</span><br><span class="line">    top: -2px;</span><br><span class="line">    border-top: 8px solid <span class="comment">#fff;</span></span><br><span class="line">    border-bottom: 8px dashed transparent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>　　然后我们一开始的那个向下的对号图标就出现啦，向上同理啦，下面就是向上向下放在一起的完整版CSS。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">.bottom,.top&#123;</span><br><span class="line">	width: 20px;</span><br><span class="line">	height: 20px;</span><br><span class="line">	position: relative;</span><br><span class="line">&#125;</span><br><span class="line">.bottom .arrow1,.bottom .arrow2,.top .arrow1,.top .arrow2&#123;</span><br><span class="line">	display: block;</span><br><span class="line">	position: absolute;</span><br><span class="line">	width: 0px;</span><br><span class="line">	height: 0px;</span><br><span class="line">	border-left: 8px dashed transparent;</span><br><span class="line">	border-right: 8px dashed transparent;</span><br><span class="line">&#125;</span><br><span class="line">.bottom .arrow1&#123;</span><br><span class="line">	border-top: 8px solid <span class="comment">#999;</span></span><br><span class="line">	border-bottom: 8px dashed transparent;</span><br><span class="line">&#125;</span><br><span class="line">.bottom .arrow2&#123;</span><br><span class="line">	top: -2px;</span><br><span class="line">	border-top: 8px solid <span class="comment">#fff;</span></span><br><span class="line">	border-bottom: 8px dashed transparent;</span><br><span class="line">&#125; </span><br><span class="line">.top .arrow1&#123;</span><br><span class="line">	border-top: 8px dashed transparent;</span><br><span class="line">	border-bottom: 8px solid <span class="comment">#999;			</span></span><br><span class="line">&#125;</span><br><span class="line">.top .arrow2&#123;</span><br><span class="line">	top: 2px;</span><br><span class="line">	border-top: 8px dashed transparent;</span><br><span class="line">	border-bottom: 8px solid <span class="comment">#fff;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
@@ -585,13 +721,13 @@
 <h4 id="2-要得到一个对象，不是通过实例化类，而是找到一个对象作为原型并克隆它"><a href="#2-要得到一个对象，不是通过实例化类，而是找到一个对象作为原型并克隆它" class="headerlink" title="2. 要得到一个对象，不是通过实例化类，而是找到一个对象作为原型并克隆它"></a>2. 要得到一个对象，不是通过实例化类，而是找到一个对象作为原型并克隆它</h4><p>　　例如下面的Person()，JavaScript的函数既可以作为普通函数被调用，也可以被new运算符作为构造器被调用。</p>
 <p>　　其中<strong>new运算符</strong>创建对象的过程，实际上就是先克隆Object.prototype对象，得到一个空对象，做了一些操作，并把它指向被调用的构造器函数的原型对象。</p>
 <p>　　在Chrome和Firefox等向外暴露了对象<strong>proto</strong>属性的浏览器下，我们可以通过下面这段代码理解new运算的过程：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">   <span class="keyword">function</span> Person(name)&#123;</span><br><span class="line">	this.name=name;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Person.prototype.getName=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	<span class="built_in">return</span> this.name;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">   var objectFactory=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	var obj=new Object(),</span><br><span class="line">	Constructor=[].shift.call(arguments);//把第一个参数赋给Constructor变量，因为<span class="built_in">shift</span>()删除数组第一个元素并返回其值，这相当于Array.shift.call(arguments)也相当于Constructor=arguments.shift()。</span><br><span class="line">	obj.__proto__=Constructor.prototype;//指向正确的原型，不过不推荐使用__proto__,可以改为Object.setPrototypeOf(obj,Constructor.prototype);</span><br><span class="line">	var ret=Constructor.apply(obj,arguments);//这里已经去掉了数组第一项，这里是Apply调用模式，所以obj.Person(name)执行了this.name=name中的this就绑定到了obj上，所以就相当于借用外部传入的构造器给obj设置属性</span><br><span class="line">	<span class="built_in">return</span> typeof ret === <span class="string">"object"</span> ? ret : obj;</span><br><span class="line">&#125;;  </span><br><span class="line"></span><br><span class="line">   var a=objectFactory(Person,<span class="string">"sven"</span>);</span><br><span class="line"></span><br><span class="line">   console.log(a.name);//sven</span><br><span class="line">   console.log(a.getName());//sven</span><br><span class="line">console.log(Object.getPrototypeOf(a) === Person.prototype);//<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Person(name)&#123;</span><br><span class="line">	this.name=name;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Person.prototype.getName=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	<span class="built_in">return</span> this.name;</span><br><span class="line">&#125;;</span><br><span class="line">var objectFactory=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	var obj=new Object(),</span><br><span class="line">	Constructor=[].shift.call(arguments);//把第一个参数赋给Constructor变量，因为<span class="built_in">shift</span>()删除数组第一个元素并返回其值，这相当于Array.shift.call(arguments)也相当于Constructor=arguments.shift()。</span><br><span class="line">	obj.__proto__=Constructor.prototype;//指向正确的原型，不过不推荐使用__proto__,可以改为Object.setPrototypeOf(obj,Constructor.prototype);</span><br><span class="line">	var ret=Constructor.apply(obj,arguments);//这里已经去掉了数组第一项，这里是Apply调用模式，所以obj.Person(name)执行了this.name=name中的this就绑定到了obj上，所以就相当于借用外部传入的构造器给obj设置属性</span><br><span class="line">	<span class="built_in">return</span> typeof ret === <span class="string">"object"</span> ? ret : obj;</span><br><span class="line">&#125;;  </span><br><span class="line"></span><br><span class="line">var a=objectFactory(Person,<span class="string">"sven"</span>);</span><br><span class="line"></span><br><span class="line">console.log(a.name);//sven</span><br><span class="line">console.log(a.getName());//sven</span><br><span class="line">console.log(Object.getPrototypeOf(a) === Person.prototype);//<span class="literal">true</span></span><br></pre></td></tr></table></figure>
 <p>　　关于<strong>proto</strong>(注意是两条下划线)的内容详见：<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/proto" title="Object.prototype.__proto__" target="_blank" rel="noopener">MDN文档</a></p>
 <h4 id="3-对象会记住它的原型"><a href="#3-对象会记住它的原型" class="headerlink" title="3. 对象会记住它的原型"></a>3. 对象会记住它的原型</h4><p>　　JavaScript给对象提供了一个名为<strong>proto</strong>的隐藏属性（这是浏览器的实现，规范里应该是不可访问的[[prototype]]），该属性默认指向它的构造器的原型对象。</p>
-<p>　　所以<strong>proto</strong>就是对象跟“对象构造器的原型”联系起来的纽带。</p>
+<p>　　所以<em><strong>proto</strong></em>就是对象跟“对象构造器的原型”联系起来的纽带。</p>
 <h4 id="4-如果对象无法响应某个请求，它会把这个请求委托给它的构造器的原型"><a href="#4-如果对象无法响应某个请求，它会把这个请求委托给它的构造器的原型" class="headerlink" title="4. 如果对象无法响应某个请求，它会把这个请求委托给它的构造器的原型"></a>4. 如果对象无法响应某个请求，它会把这个请求委托给它的构造器的原型</h4><p>　　JavaScript的对象最初都是由Object.prototype对象克隆而来的，乍一看我们只能得到单一的继承自Object.prototype的对象，但<strong>对象构造器的原型</strong>并不仅限于Object.prototype上，而是可以动态指向其他对象。</p>
 <p>　　所以我们一般通过设置构造器的prototype来实现原型继承：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">   var A=<span class="function"><span class="title">function</span></span>()&#123;&#125;;</span><br><span class="line">A.prototype=&#123;name:<span class="string">"Daoma666"</span>&#125;;</span><br><span class="line">var B=<span class="function"><span class="title">function</span></span>()&#123;&#125;;</span><br><span class="line">B.prototype=new A();</span><br><span class="line">var b=new B();</span><br><span class="line">console.log(b.name);//Daoma666</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var A=<span class="function"><span class="title">function</span></span>()&#123;&#125;;</span><br><span class="line">A.prototype=&#123;name:<span class="string">"Daoma666"</span>&#125;;</span><br><span class="line">var B=<span class="function"><span class="title">function</span></span>()&#123;&#125;;</span><br><span class="line">B.prototype=new A();</span><br><span class="line">var b=new B();</span><br><span class="line">console.log(b.name);//Daoma666</span><br></pre></td></tr></table></figure>
 <p>　　在执行时，引擎做了什么事：</p>
 <ol>
 <li>首先尝试遍历对象b中所有属性，但没有找到name这个属性</li>
@@ -604,7 +740,7 @@
 <p>　　现在我们就能理解ECMAScript5提供的克隆对象的Object.create方法了，它天然的实现了原型继承。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Object.create=<span class="keyword">function</span>(obj)&#123;</span><br><span class="line">    var F=<span class="function"><span class="title">function</span></span>()&#123;&#125;;</span><br><span class="line">    F.prototype=obj;</span><br><span class="line">    <span class="built_in">return</span> new F();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>　　即上面的代码可以这样实现：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   var A=<span class="function"><span class="title">function</span></span>()&#123;&#125;;</span><br><span class="line">A.prototype=&#123;name:<span class="string">"Daoma666"</span>&#125;;</span><br><span class="line">var b=Object.create(new A());</span><br><span class="line">console.log(b.name);//Daoma666</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var A=<span class="function"><span class="title">function</span></span>()&#123;&#125;;</span><br><span class="line">A.prototype=&#123;name:<span class="string">"Daoma666"</span>&#125;;</span><br><span class="line">var b=Object.create(new A());</span><br><span class="line">console.log(b.name);//Daoma666</span><br></pre></td></tr></table></figure>
 <p>　　此外还有需要注意的几点：</p>
 <ol>
 <li>Object.create()来创建对象比通过构造器创建对象要慢</li>
@@ -825,150 +961,6 @@
 <p>HTML:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">   &lt;h3&gt;标题呵呵哈哈哈&lt;/h3&gt;</span><br><span class="line">&lt;p&gt;内容啊啊啊啊啊&lt;/p&gt;</span><br></pre></td></tr></table></figure>
 <p>　　所以一般推荐使用<em>数值</em>来操作line-height属性，比如1.5或15px，其中1.5默认就是1.5em，即相对于当前font-size的1.5倍。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-前端配合设计师之background-position定位图片" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2018/04/29/前端配合设计师之background-position定位图片/" class="article-date">
-      <time datetime="2018-04-29T02:54:58.000Z" itemprop="datePublished">2018-04-29</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/04/29/前端配合设计师之background-position定位图片/">前端配合设计师之background-position定位图片</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="前端配合设计师之background-position定位图片"><a href="#前端配合设计师之background-position定位图片" class="headerlink" title="前端配合设计师之background-position定位图片"></a>前端配合设计师之background-position定位图片</h2><p>　　我们经常遇到UI设计师把同一类部件的小图片都放在一张图片里的情况，小图片就是整图分割后的各个部分，把各个部分放在一张图片上，而不是是分别存储成单独的图片，其目的就是要<strong>减少http请求次数，节省时间和带宽</strong>。对于我们前端来说，就是要把对应的小图片应用到适当的位置，这里就需要background-position属性。</p>
-<p>　　这里需要搞清楚关于定位的一些东西：</p>
-<p>1.两个值前面一个是横向的定位，我们称为x轴方向定位。后面一个值是纵向的定位，我们称为y轴方向定位。<strong>如果只有一个值，那默认的就是x轴方向，这时y轴方向就默认的是上下居中对齐，也就是center</strong>。</p>
-<h4 id="2-背景图片定位的坐标原点就是对应容器元素的“左上角”，即元素padding的外边缘。（这个值可以通过background-origin进行定义）"><a href="#2-背景图片定位的坐标原点就是对应容器元素的“左上角”，即元素padding的外边缘。（这个值可以通过background-origin进行定义）" class="headerlink" title="2.背景图片定位的坐标原点就是对应容器元素的“左上角”，即元素padding的外边缘。（这个值可以通过background-origin进行定义）"></a>2.背景图片定位的坐标原点就是对应容器元素的“左上角”，即元素padding的外边缘。（这个值可以通过background-origin进行定义）</h4><h4 id="3-x-y值分别表示背景图片的左上角顶点相对于坐标原点（也就是容器的左顶点）的值。"><a href="#3-x-y值分别表示背景图片的左上角顶点相对于坐标原点（也就是容器的左顶点）的值。" class="headerlink" title="3.x y值分别表示背景图片的左上角顶点相对于坐标原点（也就是容器的左顶点）的值。"></a>3.x y值分别表示背景图片的左上角顶点相对于坐标原点（也就是容器的左顶点）的值。</h4><p>4.x y的值可以用px或百分比来表示。</p>
-<h4 id="5-当x-y用百分比单位时，其表现与CSS中其他的百分比单位表现都不一样。"><a href="#5-当x-y用百分比单位时，其表现与CSS中其他的百分比单位表现都不一样。" class="headerlink" title="5.当x y用百分比单位时，其表现与CSS中其他的百分比单位表现都不一样。"></a>5.当x y用百分比单位时，其表现与CSS中其他的百分比单位表现都不一样。</h4><p>　　比如一个图片：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">img &#123; position: absolute; left: 100%; &#125;</span><br></pre></td></tr></table></figure></p>
-<p>　　一定是在容器外部，但像background-position:100% 100%就是定位在容器内的右下角。</p>
-<p>　　那background-position百分比表示的背景图片的左上角顶点对应的容器坐标位置该如何计算呢？</p>
-<p>　　具体公式为：</p>
-<h5 id="positionX-容器的宽度-图片的宽度-percentX"><a href="#positionX-容器的宽度-图片的宽度-percentX" class="headerlink" title="positionX = (容器的宽度-图片的宽度) * percentX;"></a>positionX = (容器的宽度-图片的宽度) * percentX;</h5><h5 id="positionY-容器的高度-图片的高度-percentY"><a href="#positionY-容器的高度-图片的高度-percentY" class="headerlink" title="positionY = (容器的高度-图片的高度) * percentY;"></a>positionY = (容器的高度-图片的高度) * percentY;</h5><p>　　然后这样算出来的positionX和positionY就是相对于上面第三条结论的x和y，这就不难懂为什么background-position:100% 100%就是定位在容器内的右下角了吧。</p>
-<p>6、x y也可以用“left、right、top、bottom、center”这五个关键字来表示，但注意：用“left、right、top、bottom、center”来表示的时候，“应用的是对齐规则，而不是坐标规则”。x为left是表示图片的左边和容器的左边对齐，为right的时候表示图片的右边和容器的右边对齐，y为top的时候表示图片的顶部和容器的顶部对齐，为bottom时表示图片的底部和容器的底部对齐，x y等于center的时候表示居中对齐。</p>
-<p>7、x y用百分比或者px表示的时候，其值可以为负数。我们应用坐标规则就很容易理解负数表示的意义，x为负数时候表示图片左顶点在容器左顶点的左侧，y为负数时表示图片的左顶点在容器的左定点的上方。也就是向左和向上超出容器的范围。</p>
-<h5 id="但是这里要注意，有的情况下用百分比的负数时并不会像你想的那样向左和向上超出容器的范围，因为第5条中介绍的百分比定位规则，就算你"><a href="#但是这里要注意，有的情况下用百分比的负数时并不会像你想的那样向左和向上超出容器的范围，因为第5条中介绍的百分比定位规则，就算你" class="headerlink" title="但是这里要注意，有的情况下用百分比的负数时并不会像你想的那样向左和向上超出容器的范围，因为第5条中介绍的百分比定位规则，就算你"></a>但是这里要注意，有的情况下用百分比的负数时并不会像你想的那样向左和向上超出容器的范围，因为第5条中介绍的百分比定位规则，就算你</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background-position: -50% -50%;</span><br></pre></td></tr></table></figure>
-<p>　　图片会像background-position: 40px 10px;一样定位在容器内部，此时就可能是你<strong>图片的长度大于容器的长度</strong>导致的，因为此时：</p>
-<h5 id="positionX-容器的宽度-图片的宽度-50-的结果是个正值"><a href="#positionX-容器的宽度-图片的宽度-50-的结果是个正值" class="headerlink" title="positionX = (容器的宽度-图片的宽度) * -50% 的结果是个正值"></a>positionX = (容器的宽度-图片的宽度) * -50% 的结果是个正值</h5><h5 id="positionY-容器的高度-图片的高度-50-的结果也是个正值"><a href="#positionY-容器的高度-图片的高度-50-的结果也是个正值" class="headerlink" title="positionY = (容器的高度-图片的高度) * -50% 的结果也是个正值"></a>positionY = (容器的高度-图片的高度) * -50% 的结果也是个正值</h5><p>　　所以就不难理解为什么会出现像background-position: 40px 10px;这样的效果了。</p>
-<p>　　详细请参考：<a href="http://www.zhangxinxu.com/wordpress/2015/03/background-object-position-value-percent/" title="CSS &lt;position&gt;值简介理解background百分比定位" target="_blank" rel="noopener">background百分比定位<position>值简介</position></a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-JS中sort方法详解" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2018/04/25/JS中sort方法详解/" class="article-date">
-      <time datetime="2018-04-25T02:42:04.000Z" itemprop="datePublished">2018-04-25</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/04/25/JS中sort方法详解/">JS中sort方法详解</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="JS中sort方法详解"><a href="#JS中sort方法详解" class="headerlink" title="JS中sort方法详解"></a>JS中sort方法详解</h2><p>　　sort() 方法用于对数组的元素进行排序,并返回排序后的数组。默认排序顺序是根据字符串Unicode码点(<strong>注意这里不是按ASCII编码排序</strong>，这里按Unicode编码排序要和平常两个字符串的&lt;,&gt;,&lt;=,&gt;=,一位位字符按ASCII编码排序区分开。)</p>
-<h4 id="语法：arrayObject-sort-func-；参数func可选，规定排序顺序，必须是函数。"><a href="#语法：arrayObject-sort-func-；参数func可选，规定排序顺序，必须是函数。" class="headerlink" title="语法：arrayObject.sort(func)；参数func可选，规定排序顺序，必须是函数。"></a>语法：arrayObject.sort(func)；参数func可选，规定排序顺序，必须是函数。</h4><p>　　注：如果调用该方法时没有使用参数，将按字母顺序对数组中的元素进行排序，说得更精确点，是按照Unicode字符编码的顺序进行排序。要实现这一点，首先应把数组的元素都转换成字符串（如有必要），以便进行比较。<br>eg:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var scores = [1, 10, 21, 2]; </span><br><span class="line">scores.sort(); </span><br><span class="line">// [1, 10, 2, 21]</span><br><span class="line">// 注意10在2之前,</span><br><span class="line">// 因为在 Unicode码点 指针顺序中<span class="string">"10"</span>在<span class="string">"2"</span>之前</span><br></pre></td></tr></table></figure>
-<p>　　如果想按照其他标准进行排序，就需要提供<strong>比较函数</strong>，该函数要比较两个值，然后返回一个用于说明这两个值的相对顺序的数字。比较函数应该具有<strong>两个参数 a 和 b</strong>，其返回值如下：</p>
-<h4 id="如果返回一个负数，则第一个参数应该排列在前面，即在排序后的数组中-a-应该出现在-b-之前。"><a href="#如果返回一个负数，则第一个参数应该排列在前面，即在排序后的数组中-a-应该出现在-b-之前。" class="headerlink" title="如果返回一个负数，则第一个参数应该排列在前面，即在排序后的数组中 a 应该出现在 b 之前。"></a>如果返回一个负数，则第一个参数应该排列在前面，即在排序后的数组中 a 应该出现在 b 之前。</h4><h4 id="如果-返回-0，表示a-等于-b，则a-和-b-的相对位置不变。（注意这里和排序算法的稳定性有关）"><a href="#如果-返回-0，表示a-等于-b，则a-和-b-的相对位置不变。（注意这里和排序算法的稳定性有关）" class="headerlink" title="如果 返回 0，表示a 等于 b，则a 和 b 的相对位置不变。（注意这里和排序算法的稳定性有关）"></a>如果 返回 0，表示a 等于 b，则a 和 b 的相对位置不变。（注意这里和排序算法的稳定性有关）</h4><h4 id="如果返回一个正数，则第二个参数应该排列在前面。"><a href="#如果返回一个正数，则第二个参数应该排列在前面。" class="headerlink" title="如果返回一个正数，则第二个参数应该排列在前面。"></a>如果返回一个正数，则第二个参数应该排列在前面。</h4><p>　　所以，比较函数格式如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> compare(a, b) &#123;</span><br><span class="line">	<span class="keyword">if</span> (a &lt; b ) &#123;        // 按某种排序标准进行比较, a 小于 b</span><br><span class="line">		<span class="built_in">return</span> -1;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (a &gt; b ) &#123;</span><br><span class="line">    	<span class="built_in">return</span> 1;</span><br><span class="line">	&#125;</span><br><span class="line">	// a must be equal to b</span><br><span class="line">	<span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>　　要比较数字而非字符串，比较函数可以简单的以 a 减 b，如下的函数将会将数组升序排列:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> compareNumbers(a, b) &#123;</span><br><span class="line">	<span class="built_in">return</span> a - b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>　　你可能还有疑问，就是为什么比较函数要放两个参数？我们可以拿V8引擎(Chrome浏览器的JS引擎)来理解。</p>
-<p>　　V8引擎使用C++开发，如果学过一点点数据结构课的话，肯定接触过排序这一块儿，什么快速排序、插入排序、冒泡排序的，然后<strong>大部分排序算法，步骤分解之后，最细节的操作都是两个数的相互比较</strong>，Chrome浏览器用的V8引擎就使用了快速排序。下面就贴一段当年学数据结构的时候快排的代码，V8的源码肯定不是这么简单，肯定是一种复杂的经过了各种优化（比如改善了稳定性，内存等）但基本的快排就是这样：左边右边一块儿往中间排，排出一个个有序的子段，然后再一个个子段中递归的排。</p>
-<h4 id="排序稳定性是指排序后数组中的相等值的相对位置没有改变，而不稳定性排序则会改变相等值的相对位置。"><a href="#排序稳定性是指排序后数组中的相等值的相对位置没有改变，而不稳定性排序则会改变相等值的相对位置。" class="headerlink" title="排序稳定性是指排序后数组中的相等值的相对位置没有改变，而不稳定性排序则会改变相等值的相对位置。"></a>排序稳定性是指排序后数组中的相等值的相对位置没有改变，而不稳定性排序则会改变相等值的相对位置。</h4><p>C++快速排序算法(这里是从小到大的正序算法):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">void quick_sort(int left,int right)&#123;</span><br><span class="line">       <span class="keyword">if</span>(left&gt;right)&#123;</span><br><span class="line">           <span class="built_in">return</span>; </span><br><span class="line">       &#125; </span><br><span class="line">       int pivot=data[left],low=left,high=right;</span><br><span class="line">       <span class="keyword">while</span>(low&lt;high)&#123;</span><br><span class="line">           <span class="keyword">while</span>(low&lt;high &amp;&amp; data[high]&gt;=pivot)&#123;</span><br><span class="line">               high--;</span><br><span class="line">           &#125;</span><br><span class="line">           data[low]=data[high];</span><br><span class="line">           <span class="keyword">while</span>(low&lt;high &amp;&amp; data[low]&lt;=pivot)&#123;</span><br><span class="line">               low++;</span><br><span class="line">           &#125;</span><br><span class="line">           data[high]=data[low];</span><br><span class="line">       &#125;</span><br><span class="line">       data[low]=pivot;</span><br><span class="line">       quick_sort(left,low-1);</span><br><span class="line">       quick_sort(low+1,right);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
-<p>　　所以这样就清楚了，我们只要设置好了比较函数func(a,b)规定了每两个数排序的正逆序，就可以对整个数组进行快速排序，但要注意的是，<strong>因为快速排序是不稳定排序，所以sort方法也是不稳定的</strong>。</p>
-<p>　　我们还可以令<strong>对象数组</strong>排序，这里是加强版排序，首先按last排序，然后按照first排序。</p>
-<p>JS:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">var s=[</span><br><span class="line">	&#123;first:<span class="string">"Tom"</span>,last:<span class="string">"cruse"</span>&#125;,</span><br><span class="line">	&#123;first:<span class="string">"Jack"</span>,last:<span class="string">"awddwa"</span>&#125;,</span><br><span class="line">	&#123;first:<span class="string">"Aommy"</span>,last:<span class="string">"rththr"</span>&#125;,</span><br><span class="line">	&#123;first:<span class="string">"Fuck"</span>,last:<span class="string">"ererg"</span>&#125;,</span><br><span class="line">	&#123;first:<span class="string">"Shit"</span>,last:<span class="string">"nbnb"</span>&#125;,</span><br><span class="line">	&#123;first:<span class="string">"Jessy"</span>,last:<span class="string">"awddwa"</span>&#125;</span><br><span class="line">];</span><br><span class="line">var by=<span class="keyword">function</span>(name,minor)&#123;</span><br><span class="line">	<span class="built_in">return</span> <span class="keyword">function</span>(o,p)&#123;</span><br><span class="line">		var a,b;</span><br><span class="line">		<span class="keyword">if</span>(typeof o===<span class="string">'object'</span> &amp;&amp; typeof p===<span class="string">'object'</span> &amp;&amp; o &amp;&amp; p)&#123;</span><br><span class="line">			a=o[name];</span><br><span class="line">			b=p[name];</span><br><span class="line">			<span class="keyword">if</span>(a===b)&#123;</span><br><span class="line">				//这里的minor(o,p)实际上是by(<span class="string">'first'</span>)(o,p)</span><br><span class="line">				<span class="built_in">return</span> typeof minor ===  <span class="string">'function'</span> ? minor(o,p) : 0;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(typeof a=== typeof b)&#123;</span><br><span class="line">				<span class="built_in">return</span> a&lt;b?-1:1;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">return</span> typeof a &lt; typeof b ? -1 : 1;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			throw&#123;</span><br><span class="line">				name: <span class="string">'Error'</span>,</span><br><span class="line">				message: <span class="string">'Expected an object when sorting by '</span>+name</span><br><span class="line">			&#125;;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;;</span><br><span class="line">//因为by函数使用了闭包，这里的带两个参数的比较函数实际上是by(name)函数,即func(o,p)=by(name)(o,p)</span><br><span class="line">//一个函数当参数的时候只写函数名即可,所以写成sort(by(<span class="string">'last'</span>))就行</span><br><span class="line">s.sort(by(<span class="string">"last"</span>,by(<span class="string">"first"</span>)));</span><br><span class="line"><span class="keyword">for</span>(var i <span class="keyword">in</span> s)&#123;</span><br><span class="line">	console.log(s[i].first+<span class="string">" "</span>+s[i].last);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>　　更多关于sort()的内容，请见<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/sort" title="Array.prototype.sort()" target="_blank" rel="noopener">MDN文档</a></p>
 
       
     </div>
