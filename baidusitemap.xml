@@ -4,8 +4,23 @@
 
     
   <url>
+    <loc>http://yoursite.com/2018/04/07/CSS%E5%AE%9A%E4%BD%8D%E4%B8%8E%E6%B5%AE%E5%8A%A8/</loc>
+    <lastmod>2018-05-26T03:17:39.753Z</lastmod>
+    <data>
+        <display>
+        <title>CSS定位与浮动</title>
+        <pubTime>2018-04-07T09:30:27.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2018/05/15/JS%E4%B8%ADthis%E7%9A%84%E6%8C%87%E5%90%91/</loc>
-    <lastmod>2018-05-22T14:50:26.248Z</lastmod>
+    <lastmod>2018-05-26T03:15:53.126Z</lastmod>
     <data>
         <display>
         <title>JS中this的指向</title>
@@ -280,21 +295,6 @@
         <display>
         <title>前端配合设计师之background-position定位图片</title>
         <pubTime>2018-04-29T02:54:58.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2018/04/07/%E5%AE%9A%E4%BD%8D%E4%B8%8E%E6%B5%AE%E5%8A%A8/</loc>
-    <lastmod>2018-04-29T02:23:13.791Z</lastmod>
-    <data>
-        <display>
-        <title>定位与浮动</title>
-        <pubTime>2018-04-07T09:30:27.000Z</pubTime>
         
          
            
