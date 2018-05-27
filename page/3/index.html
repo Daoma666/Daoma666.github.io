@@ -270,6 +270,69 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-阻止事件的一些操作" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/04/14/阻止事件的一些操作/" class="article-date">
+      <time datetime="2018-04-14T03:45:12.000Z" itemprop="datePublished">2018-04-14</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/04/14/阻止事件的一些操作/">阻止事件的一些操作</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="阻止事件冒泡或捕获"><a href="#阻止事件冒泡或捕获" class="headerlink" title="阻止事件冒泡或捕获"></a>阻止事件冒泡或捕获</h2><p>　　有时会遇到如下情况，本元素和父层元素都有事件，但我们只想要本元素事件激活，即要阻止事件冒泡<br>HTML:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">		&lt;title&gt;&lt;/title&gt;</span><br><span class="line">		</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;button onclick=<span class="string">"clickBtn(event)"</span>&gt;Push Me&lt;/button&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">	&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">		document.onclick=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">			alert(<span class="string">"body"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">function</span> clickBtn(event)&#123;</span><br><span class="line">			event= event ? event : window.event;</span><br><span class="line">			alert(<span class="string">"button"</span>);</span><br><span class="line">			event.stopPropagation();</span><br><span class="line">			//event.cancelBubble=<span class="literal">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="cancelBubble"><a href="#cancelBubble" class="headerlink" title="cancelBubble"></a>cancelBubble</h3><p>　　cancelBubble原本是IE独有，经测试发现它也可以在Chrome和Firefox中阻止冒泡，那是因为人家Chrome，Firefox 考虑周到，提供了这么一种可选的方式。 但是，cancelBubble已经不在标准中了，相信迟早它们会移除这一特性的。</p>
+<h3 id="DOM的stopPropagation-方法"><a href="#DOM的stopPropagation-方法" class="headerlink" title="DOM的stopPropagation()方法"></a>DOM的stopPropagation()方法</h3><p>　　这是DOM层次的方法，用于立即停止事件在DOM层次中的传播，即取消进一步的事件捕获或冒泡。两者的区别为：<br>　　IE不支持事件捕获，因而只能取消事件冒泡，但stopPropagation()可以同时取消事件捕获和冒泡。</p>
+<h2 id="阻止事件默认行为"><a href="#阻止事件默认行为" class="headerlink" title="阻止事件默认行为"></a>阻止事件默认行为</h2><p>　　下面是一个阻止右键菜单栏事件的小程序<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">	document.oncontextmenu=<span class="keyword">function</span>(event)&#123;</span><br><span class="line">		event= event ? event : window.event;</span><br><span class="line">		/*下面这三种方法都可以*/</span><br><span class="line">		//event.preventDefault();</span><br><span class="line">		//event.returnValue=<span class="literal">false</span>;</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="returnValue-false"><a href="#returnValue-false" class="headerlink" title="returnValue=false"></a>returnValue=false</h3><p>　　也是原本IE的方法，它也可以在它也可以在Chrome和Firefox中阻止事件默认行为。</p>
+<h3 id="DOM的preventDefault-方法"><a href="#DOM的preventDefault-方法" class="headerlink" title="DOM的preventDefault()方法"></a>DOM的preventDefault()方法</h3><p>　　简单直观，直接阻止默认的行为，可以用在多个情况。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-变量提升" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -835,76 +898,6 @@
 <p>　　&lt;a[^&gt;]+&gt;　　匹配用尖括号括起来的以a开头的字符串。</p>
 <h3 id="⑦零宽断言"><a href="#⑦零宽断言" class="headerlink" title="⑦零宽断言"></a>⑦零宽断言</h3><h2 id="JS中有两种方式创建正则表达式对象-eg-下面创建一个匹配字符串的正则表达式对象"><a href="#JS中有两种方式创建正则表达式对象-eg-下面创建一个匹配字符串的正则表达式对象" class="headerlink" title="JS中有两种方式创建正则表达式对象,eg:下面创建一个匹配字符串的正则表达式对象"></a>JS中有两种方式创建正则表达式对象,eg:下面创建一个匹配字符串的正则表达式对象</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//一、正则表达式字面量方法</span><br><span class="line">var my_regexp1=/<span class="string">"(?:\\.|[^\\\"])*"</span>/g;</span><br><span class="line">//二、RegExp构造器方法(此时有两个阶段，先经过字符串的转义，然后再经过正则表达式的转义，所以经常需要双反斜杠进行转义)</span><br><span class="line">var my_regexp2=new RegExp(<span class="string">"\"(?:\\\\.|[^\\\\\\\"])*"</span>,<span class="string">"g"</span>);</span><br><span class="line">document.writeln(my_regexp1.exec(<span class="string">'"Daoma is 666"'</span>)[0]);</span><br><span class="line">document.writeln(my_regexp2.exec(<span class="string">'"Daoma "is 666"'</span>)[0]);</span><br></pre></td></tr></table></figure>
 <p>　　其它具体请参考：<a href="http://www.jb51.net/tools/zhengze.html" title="快速入门正则表达式" target="_blank" rel="noopener">快速入门正则表达式</a><br>　　有人推荐看看《精通正则表达式》一书，我等着看看再说</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-预加载图片的小技巧" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2018/03/31/预加载图片的小技巧/" class="article-date">
-      <time datetime="2018-03-31T12:07:52.000Z" itemprop="datePublished">2018-03-31</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/03/31/预加载图片的小技巧/">预加载图片的小技巧</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="预加载图片的小技巧"><a href="#预加载图片的小技巧" class="headerlink" title="预加载图片的小技巧"></a>预加载图片的小技巧</h2><p>　　　　在做ex5-5(跟随鼠标移动显示大图)作业的时候，想要实现一个功能：即图片不能显示的话，就给把该图片设置为一个替代的loading图片。</p>
-<h4 id="1-使用Image对象做图片预加载-preload"><a href="#1-使用Image对象做图片预加载-preload" class="headerlink" title="1.使用Image对象做图片预加载(preload)"></a>1.使用Image对象做图片预加载(preload)</h4><p>　　我们还是先来看一下代码：</p>
-<p>JS:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">aLi[i].onmouseover = <span class="keyword">function</span> ()</span><br><span class="line">&#123;</span><br><span class="line">	var oImg = document.createElement(<span class="string">"img"</span>);</span><br><span class="line">	//图片预加载</span><br><span class="line">	var img = new Image();			</span><br><span class="line">	img.src = oImg.src = aLi[this.index].getElementsByTagName(<span class="string">"img"</span>)[0].src.replace(<span class="string">".jpg"</span>,<span class="string">"_big.jpg"</span>);</span><br><span class="line">	//插入大图片</span><br><span class="line">	oBig.appendChild(oImg);</span><br><span class="line">	//显示big层</span><br><span class="line">	oBig.style.display = oLoading.style.display = <span class="string">"block"</span>;</span><br><span class="line">	//判断大图是否加载成功</span><br><span class="line">	img.complete ? oLoading.style.display = <span class="string">"none"</span> : (oImg.onload = <span class="function"><span class="title">function</span></span>() &#123;oLoading.style.display = <span class="string">"none"</span>;&#125;)		</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>　　<em>其实像下面这样写就可以，功能还很清晰，不知道ex5-5的原作者多var出来一个oImg有什么用???等以后我明白了再回来补充。</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">aLi[i].onmouseover = <span class="keyword">function</span> ()</span><br><span class="line">&#123;</span><br><span class="line">	//图片预加载</span><br><span class="line">	var img = new Image();			</span><br><span class="line">	img.src = aLi[this.index].getElementsByTagName(<span class="string">"img"</span>)[0].src.replace(<span class="string">".jpg"</span>,<span class="string">"_big.jpg"</span>);</span><br><span class="line">	//插入大图片</span><br><span class="line">	oBig.appendChild(img);</span><br><span class="line">	//显示big层</span><br><span class="line">	oBig.style.display = oLoading.style.display = <span class="string">"block"</span>;</span><br><span class="line">	//判断大图是否加载成功</span><br><span class="line">	img.complete ? oLoading.style.display = <span class="string">"none"</span> : (img.onload = <span class="function"><span class="title">function</span></span>() &#123;oLoading.style.display = <span class="string">"none"</span>;&#125;)		</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>　　下面是分析：<br>　　首先要明白一点：”<img>“标签每出现一次，一个 Image 对象就会被创建。所以上面的oImg也是个Image对象。但是现在还不明白为何要多出来个它？？？</p>
-<p>　　<strong>当定义Image对象的src属性时</strong>，整个文档的读取、JavaScript 的运行都暂停，让浏览器专心的读取图片,所以定义img.src和oImg.src就相当于<strong>给浏览器缓存(preload)了一张图片</strong>。然后到真正要把图片加载到浏览器中<strong>(即img.onload)</strong>的时候，就可以立刻使用缓存的图片了。</p>
-<h4 id="2-使用Image对象的complete属性来判断浏览器是否已完成对图像的加载"><a href="#2-使用Image对象的complete属性来判断浏览器是否已完成对图像的加载" class="headerlink" title="2.使用Image对象的complete属性来判断浏览器是否已完成对图像的加载"></a>2.使用Image对象的complete属性来判断浏览器是否已完成对图像的加载</h4><p>　　在该例子中，当我们第一次打开页面时，鼠标移入任意aLi[i]都是第一次，这时浏览器会缓存这张预加载的大图，但是<strong>还没有将它加载到浏览器中</strong>。所以第一次执行这段代码img.complete一定是返回false,则执行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">img.onload=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	loading.style.display=<span class="string">"none"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>　　这里oImg[0].onload的作用就是<strong>把图片加载(load)到浏览器中</strong>，然后<strong>当图片加载完成后再执行花括号的内容</strong>，即将oLoading图片所在层隐藏（这样就会出现第一次鼠标移入图片时的闪现loading图片的效果），若是图片出现错误，则会一直显示oLoading层的图片。</p>
-<p>　　然后等我们鼠标第2、3…..n次移入该aLi[i]层的时候，因为图片已经加载过一次，如果再有对该图片的请求(即img.src)时，由于浏览器已经缓存住这张图片了，不会再发起一次新的请求，而是直接从缓存中加载过来,此时img.complete就会一直返回true，所以oLoading层的图片就会一直被隐藏。</p>
-<p>　　<a href="https://blog.csdn.net/dcb_ripple/article/details/52175842" title="js中的Image对象" target="_blank" rel="noopener">详细用法请见</a><br>　　<a href="http://www.jb51.net/article/43507.htm" title="js中Image对象以及对其预加载处理示例" target="_blank" rel="noopener">预加载的简便理解</a></p>
 
       
     </div>

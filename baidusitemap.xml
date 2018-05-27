@@ -4,12 +4,27 @@
 
     
   <url>
-    <loc>http://yoursite.com/2018/04/07/CSS%E5%AE%9A%E4%BD%8D%E4%B8%8E%E6%B5%AE%E5%8A%A8/</loc>
-    <lastmod>2018-05-26T03:17:39.753Z</lastmod>
+    <loc>http://yoursite.com/2018/05/13/JS%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</loc>
+    <lastmod>2018-05-27T11:47:58.186Z</lastmod>
     <data>
         <display>
-        <title>CSS定位与浮动</title>
-        <pubTime>2018-04-07T09:30:27.000Z</pubTime>
+        <title>JS的面向对象</title>
+        <pubTime>2018-05-13T01:41:52.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/05/27/JS%E4%B8%ADnew%E8%BF%90%E7%AE%97%E7%AC%A6%E8%AF%A6%E8%A7%A3/</loc>
+    <lastmod>2018-05-27T11:43:45.082Z</lastmod>
+    <data>
+        <display>
+        <title>JS中new运算符详解</title>
+        <pubTime>2018-05-27T10:16:52.000Z</pubTime>
         
          
            
@@ -20,11 +35,26 @@
     
   <url>
     <loc>http://yoursite.com/2018/05/15/JS%E4%B8%ADthis%E7%9A%84%E6%8C%87%E5%90%91/</loc>
-    <lastmod>2018-05-26T03:15:53.126Z</lastmod>
+    <lastmod>2018-05-27T11:38:08.096Z</lastmod>
     <data>
         <display>
         <title>JS中this的指向</title>
         <pubTime>2018-05-15T14:37:32.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/04/07/CSS%E5%AE%9A%E4%BD%8D%E4%B8%8E%E6%B5%AE%E5%8A%A8/</loc>
+    <lastmod>2018-05-26T03:17:39.753Z</lastmod>
+    <data>
+        <display>
+        <title>CSS定位与浮动</title>
+        <pubTime>2018-04-07T09:30:27.000Z</pubTime>
         
          
            
@@ -100,21 +130,6 @@
         <display>
         <title>闭包与模仿块作用域</title>
         <pubTime>2018-04-17T23:20:18.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2018/05/13/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84JavaScript/</loc>
-    <lastmod>2018-05-16T03:04:38.720Z</lastmod>
-    <data>
-        <display>
-        <title>面向对象的JavaScript</title>
-        <pubTime>2018-05-13T01:41:52.000Z</pubTime>
         
          
            

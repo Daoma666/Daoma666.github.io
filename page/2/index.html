@@ -270,6 +270,74 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-CSS属性值的百分比" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/04/30/CSS属性值的百分比/" class="article-date">
+      <time datetime="2018-04-30T01:32:10.000Z" itemprop="datePublished">2018-04-30</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/04/30/CSS属性值的百分比/">CSS属性值的百分比</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="CSS属性值的百分比"><a href="#CSS属性值的百分比" class="headerlink" title="CSS属性值的百分比"></a>CSS属性值的百分比</h2><p>　　经常能见到CSS属性值出现百分比，之前一直也没有整理过，现在为了以后不迷糊，遂整理一下。</p>
+<h3 id="百分比单位"><a href="#百分比单位" class="headerlink" title="百分比单位"></a>百分比单位</h3><h4 id="1-乘以包含块的宽度：margin-padding-left-right-text-indent-width-max-width-min-width"><a href="#1-乘以包含块的宽度：margin-padding-left-right-text-indent-width-max-width-min-width" class="headerlink" title="1.乘以包含块的宽度：margin, padding, left, right, text-indent, width, max-width, min-width"></a>1.乘以包含块的宽度：margin, padding, left, right, text-indent, width, max-width, min-width</h4><p>　　其中padding和margin的百分比值无论是水平方向还是<strong>垂直方向</strong>均是相对于<strong>包含块宽度</strong>计算的！</p>
+<h4 id="2-乘以包含块的高度：top-bottom-height-max-height-min-height"><a href="#2-乘以包含块的高度：top-bottom-height-max-height-min-height" class="headerlink" title="2.乘以包含块的高度：top, bottom, height, max-height, min-height"></a>2.乘以包含块的高度：top, bottom, height, max-height, min-height</h4><p>　　关于<strong>包含块（containing block）</strong>的概念，不能简单地理解成是父元素。如果是静态定位和相对定位，包含块一般就是其父元素。但是对于绝对定位的元素，包含块应该是离它最近的 position 为 absolute、relative、或者 fixed 的祖先元素。对固定定位的元素，它的包含块是视口（viewport）。</p>
+<h4 id="3-乘以元素-border-box-的宽度：border-radius"><a href="#3-乘以元素-border-box-的宽度：border-radius" class="headerlink" title="3.乘以元素(border-box)的宽度：border-radius"></a>3.乘以元素(border-box)的宽度：border-radius</h4><h4 id="4-乘以元素的字体大小：line-height"><a href="#4-乘以元素的字体大小：line-height" class="headerlink" title="4.乘以元素的字体大小：line-height"></a>4.乘以元素的字体大小：line-height</h4><h4 id="5-乘以元素的行高-：vertical-align"><a href="#5-乘以元素的行高-：vertical-align" class="headerlink" title="5.乘以元素的行高 ：vertical-align"></a>5.乘以元素的行高 ：vertical-align</h4><p>　　vertical-align只能应用于内联元素和display值为table-cell的元素！ </p>
+<h4 id="6-background-position中的百分比单位与CSS中其它百分比单位都不一样！具体见“前端配合设计师之background-position定位图片”这篇Blog"><a href="#6-background-position中的百分比单位与CSS中其它百分比单位都不一样！具体见“前端配合设计师之background-position定位图片”这篇Blog" class="headerlink" title="6.background-position中的百分比单位与CSS中其它百分比单位都不一样！具体见“前端配合设计师之background-position定位图片”这篇Blog"></a>6.background-position中的百分比单位与CSS中其它百分比单位都不一样！具体见“前端配合设计师之background-position定位图片”这篇Blog</h4><h4 id="7-字体大小中的百分比-font-size-中的百分比值应该乘以元素所继承到的字体大小，也就是父元素的字体大小"><a href="#7-字体大小中的百分比-font-size-中的百分比值应该乘以元素所继承到的字体大小，也就是父元素的字体大小" class="headerlink" title="7.字体大小中的百分比 font-size 中的百分比值应该乘以元素所继承到的字体大小，也就是父元素的字体大小"></a>7.字体大小中的百分比 font-size 中的百分比值应该乘以元素所继承到的字体大小，也就是父元素的字体大小</h4><p>　　这里再提一下常用的字体单位em和ex。<br>　　em——是一个相对于font-size的相对单位,因此line-height: 1.5em;就是和当前font-size相乘后的值。 ex——相当于字体中的“x”的高度。</p>
+<h3 id="百分比的继承"><a href="#百分比的继承" class="headerlink" title="百分比的继承"></a>百分比的继承</h3><p>　　如果使用<em>数值</em>作为line-height的属性值，那么所有子元素继承的都是这个值；如果使用<em>百分比相对值</em>作为属性值，那么所有的子元素继承的是最终的计算值。</p>
+<p>CSS:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">   body&#123;</span><br><span class="line">	font-size: 14px;</span><br><span class="line">	line-height: 1.5;/*子元素继承的line-height都是1.5*/</span><br><span class="line">	line-height: 150%;/*子元素继承的line-height是14px*150%=21px*/</span><br><span class="line">	line-height: 1.5em;/*子元素继承的line-height14px*1.5em=21px*/</span><br><span class="line">&#125;</span><br><span class="line">h3,p&#123;</span><br><span class="line">   	margin: 0;</span><br><span class="line">&#125;</span><br><span class="line">h3&#123;</span><br><span class="line">	font-size: 32px;</span><br><span class="line">&#125;</span><br><span class="line">p&#123;</span><br><span class="line">	font-size: 20px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>HTML:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">   &lt;h3&gt;标题呵呵哈哈哈&lt;/h3&gt;</span><br><span class="line">&lt;p&gt;内容啊啊啊啊啊&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<p>　　所以一般推荐使用<em>数值</em>来操作line-height属性，比如1.5或15px，其中1.5默认就是1.5em，即相对于当前font-size的1.5倍。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-前端配合设计师之background-position定位图片" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -894,69 +962,6 @@
 <h3 id="如何像其它语言那样向零取整"><a href="#如何像其它语言那样向零取整" class="headerlink" title="如何像其它语言那样向零取整"></a>如何像其它语言那样向零取整</h3><p>　　先给Function.prototype添加method()方法使得该方法对所有函数可用：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.method=<span class="keyword">function</span>(name,func)&#123;</span><br><span class="line">	this.prototype[name]=func;//方法调用模式，this绑定到该对象，即Function，再更新Function对象新增新的name属性</span><br><span class="line">	<span class="built_in">return</span> this;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>　　然后给Number.prototype添加向零取整方法interger()，具体如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Number.method(<span class="string">"integer"</span>,<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	<span class="built_in">return</span> Math[this&lt;0 ? <span class="string">"ceil"</span> : <span class="string">"floor"</span>](this);</span><br><span class="line">&#125;);</span><br><span class="line">alert((-5.9).<span class="built_in">integer</span>());</span><br></pre></td></tr></table></figure></p>
 <h3 id="Math-round-——-gt-把一个数字四舍五入为最接近的整数"><a href="#Math-round-——-gt-把一个数字四舍五入为最接近的整数" class="headerlink" title="Math.round()——&gt;把一个数字四舍五入为最接近的整数"></a>Math.round()——&gt;把一个数字四舍五入为最接近的整数</h3><p>　　正数很正常:5.4——&gt;5 , 5.5——&gt;6<br>　　负数有点小注意:-5.4——&gt;-5, -5.5——&gt;-5 , -5.51——&gt;-6</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-阻止事件的一些操作" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2018/04/14/阻止事件的一些操作/" class="article-date">
-      <time datetime="2018-04-14T03:45:12.000Z" itemprop="datePublished">2018-04-14</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/04/14/阻止事件的一些操作/">阻止事件的一些操作</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="阻止事件冒泡或捕获"><a href="#阻止事件冒泡或捕获" class="headerlink" title="阻止事件冒泡或捕获"></a>阻止事件冒泡或捕获</h2><p>　　有时会遇到如下情况，本元素和父层元素都有事件，但我们只想要本元素事件激活，即要阻止事件冒泡<br>HTML:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">		&lt;title&gt;&lt;/title&gt;</span><br><span class="line">		</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;button onclick=<span class="string">"clickBtn(event)"</span>&gt;Push Me&lt;/button&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">	&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">		document.onclick=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">			alert(<span class="string">"body"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">function</span> clickBtn(event)&#123;</span><br><span class="line">			event= event ? event : window.event;</span><br><span class="line">			alert(<span class="string">"button"</span>);</span><br><span class="line">			event.stopPropagation();</span><br><span class="line">			//event.cancelBubble=<span class="literal">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
-<h3 id="cancelBubble"><a href="#cancelBubble" class="headerlink" title="cancelBubble"></a>cancelBubble</h3><p>　　cancelBubble原本是IE独有，经测试发现它也可以在Chrome和Firefox中阻止冒泡，那是因为人家Chrome，Firefox 考虑周到，提供了这么一种可选的方式。 但是，cancelBubble已经不在标准中了，相信迟早它们会移除这一特性的。</p>
-<h3 id="DOM的stopPropagation-方法"><a href="#DOM的stopPropagation-方法" class="headerlink" title="DOM的stopPropagation()方法"></a>DOM的stopPropagation()方法</h3><p>　　这是DOM层次的方法，用于立即停止事件在DOM层次中的传播，即取消进一步的事件捕获或冒泡。两者的区别为：<br>　　IE不支持事件捕获，因而只能取消事件冒泡，但stopPropagation()可以同时取消事件捕获和冒泡。</p>
-<h2 id="阻止事件默认行为"><a href="#阻止事件默认行为" class="headerlink" title="阻止事件默认行为"></a>阻止事件默认行为</h2><p>　　下面是一个阻止右键菜单栏事件的小程序<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">	document.oncontextmenu=<span class="keyword">function</span>(event)&#123;</span><br><span class="line">		event= event ? event : window.event;</span><br><span class="line">		/*下面这三种方法都可以*/</span><br><span class="line">		//event.preventDefault();</span><br><span class="line">		//event.returnValue=<span class="literal">false</span>;</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
-<h3 id="returnValue-false"><a href="#returnValue-false" class="headerlink" title="returnValue=false"></a>returnValue=false</h3><p>　　也是原本IE的方法，它也可以在它也可以在Chrome和Firefox中阻止事件默认行为。</p>
-<h3 id="DOM的preventDefault-方法"><a href="#DOM的preventDefault-方法" class="headerlink" title="DOM的preventDefault()方法"></a>DOM的preventDefault()方法</h3><p>　　简单直观，直接阻止默认的行为，可以用在多个情况。</p>
 
       
     </div>

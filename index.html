@@ -270,6 +270,82 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-JS中new运算符详解" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/05/27/JS中new运算符详解/" class="article-date">
+      <time datetime="2018-05-27T10:16:52.000Z" itemprop="datePublished">2018-05-27</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/05/27/JS中new运算符详解/">JS中new运算符详解</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="JS中new运算符和原型链继承"><a href="#JS中new运算符和原型链继承" class="headerlink" title="JS中new运算符和原型链继承"></a>JS中new运算符和原型链继承</h2><p>　　看下面的这些东西之前，先好好看看高程的第六章面向对象部分！里面提到了很多基本概念，比如：</p>
+<ol>
+<li><p>只要创建了一个新函数，就会根据一组特定的规则为该函数创建一个prototype属性，这个属性指向函数的原型对象。</p>
+</li>
+<li><p>对原型所做的修改,能够立即在所有实例中得到反映。</p>
+</li>
+</ol>
+<p>　　因为new运算符会返回一个指向构造器函数原型的对象，所以<em>通常</em>情况下this就指向返回的这个对象。</p>
+<p>　　其中<strong>new运算符</strong>创建对象的过程，实际上就是：</p>
+<ol>
+<li>先克隆Object.prototype对象，得到一个空对象，并把它的prototype属性指向构造器函数的原型对象</li>
+<li>将构造函数的作用域赋给新对象（因此this就指向了这个新对象）</li>
+<li>执行构造函数中的代码</li>
+<li>返回新对象</li>
+</ol>
+<p>　　在Chrome和Firefox等向外暴露了对象<strong>proto</strong>属性的浏览器下，我们可以通过下面这段代码理解new运算的过程：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Person(name)&#123;</span><br><span class="line">	this.name=name;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Person.prototype.getName=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	<span class="built_in">return</span> this.name;</span><br><span class="line">&#125;;</span><br><span class="line">var objectFactory=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	var obj=new Object(),					//1. 先克隆Object.prototype对象，得到一个空对象</span><br><span class="line">	Constructor=[].shift.call(arguments);		//把第一个参数赋给Constructor变量</span><br><span class="line">	obj.__proto__=Constructor.prototype;		//1.指向正确的原型</span><br><span class="line">	var ret=Constructor.apply(obj,arguments);	//2. 将构造函数的作用域赋给新对象+3. 执行构造函数中的代码</span><br><span class="line">	<span class="built_in">return</span> typeof ret === <span class="string">"object"</span> ? ret : obj;	//4. 返回新对象</span><br><span class="line">&#125;;  </span><br><span class="line"></span><br><span class="line">var a=objectFactory(Person,<span class="string">"sven"</span>);</span><br><span class="line"></span><br><span class="line">console.log(a.name);//sven</span><br><span class="line">console.log(a.getName());//sven</span><br><span class="line">console.log(Object.getPrototypeOf(a) === Person.prototype);//<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>　　然后我们就能理解构造器模式是如何创建对象的了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Point(x=10,y=6)&#123;</span><br><span class="line">	this.x=x;</span><br><span class="line">	this.y=y;</span><br><span class="line">&#125;</span><br><span class="line">Point.prototype.z=20;</span><br><span class="line">Point.prototype.getX=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	alert(this.x);//不要忘了这里的this也是动态绑定的</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var p=new Point();//此时Point函数里的this动态绑定到p对象上，都是给p加的x,y属性</span><br><span class="line"></span><br><span class="line">p.getX();               //10 this绑定到p上，相当于alert(p.x)</span><br><span class="line">alert(p.__proto__.x);   //undefined</span><br><span class="line">p.__proto__.getX()      //undefiend this绑定到p的原型对象上也就是构造器原型对象上，当然没有x啦</span><br><span class="line">alert(p.z);             //20 虽然p对象本身没有z属性，但如果对象无法响应某个请求，它会把这个请求委托给它的构造器的原型</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-实现slideUp-Down效果" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -432,6 +508,7 @@
 <h4 id="普通函数调用模式"><a href="#普通函数调用模式" class="headerlink" title="普通函数调用模式"></a>普通函数调用模式</h4><p>　　this总是指向全局对象，在浏览器中，这个全局对象就是window对象。</p>
 <pre><code>但在使用**严格模式**&quot;use strict&quot;;时，this在函数调用模式不会指向全局对象window,而是undefined。
 </code></pre><h4 id="构造器调用模式"><a href="#构造器调用模式" class="headerlink" title="构造器调用模式"></a>构造器调用模式</h4><p>　　因为new运算符会返回一个指向构造器函数原型的对象，所以<em>通常</em>情况下this就指向返回的这个对象。</p>
+<p>　　<strong>关于new运算符的内部具体操作请见我博客中的“JS中new运算符详解”！</strong></p>
 <p>　　但还有特殊的情况，比如构造器<strong>显式的返回了一个object类型的对象</strong>时，new调用构造器则会最终返回这个对象，而不是我们期待的this。</p>
 <h4 id="Function-prototype-apply调用模式"><a href="#Function-prototype-apply调用模式" class="headerlink" title="Function.prototype.apply调用模式"></a>Function.prototype.apply调用模式</h4><p>　　详情见我博客中的“JS中的apply()使用详解”一文，它的第一个参数可以改变函数体内this对象的指向。</p>
 <p>　　如果我们传入的第一个参数是<strong>null或undefined</strong>，函数体内的this会指向全局对象，在浏览器中则是window。</p>
@@ -674,10 +751,10 @@
 
 
   
-    <article id="post-面向对象的JavaScript" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-JS的面向对象" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2018/05/13/面向对象的JavaScript/" class="article-date">
+      <a  href="/2018/05/13/JS的面向对象/" class="article-date">
       <time datetime="2018-05-13T01:41:52.000Z" itemprop="datePublished">2018-05-13</time>
 </a>
 
@@ -692,7 +769,7 @@
         
   
     <h1 itemprop="name">
-      <a  class="article-title" href="/2018/05/13/面向对象的JavaScript/">面向对象的JavaScript</a>
+      <a  class="article-title" href="/2018/05/13/JS的面向对象/">JS的面向对象</a>
     </h1>
   
 
@@ -709,7 +786,8 @@
 <p>　　多态最根本的作用就是通过<strong>把过程化的条件分支语句转化为对象的多态性</strong>，从而消除这些条件分支语句。</p>
 <h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><p>　　因为JavaScript没有一些语言中的public,private,protected等关键字，所以只能依赖<strong>变量的作用域</strong>来实现封装特性，而且只能模拟出public和private这两种封装性。</p>
 <p>　　一般通过函数来创建作用域（如闭包就是实现了公开方法访问私有变量），但最新的ES6提供了let关键字，和Symbol创建私有属性，现在我还没看，等着一定会去了解。</p>
-<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>　　JavaScript是一门基于原型的面向对象语言，它的对象系统就是使用<strong>原型模式</strong>来搭建的，所以它<strong>绝大部分的</strong>遵守原型编程范型的基本规则，即：</p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>　　关于原型链继承请参考博客“JS中new运算符详解”和高程6.3节（一定要先搞懂跟new有关的构造器模式，再去看原型链）</p>
+<p>　　JavaScript是一门基于原型的面向对象语言，它的对象系统就是使用<strong>原型模式</strong>来搭建的，所以它<strong>绝大部分的</strong>遵守原型编程范型的基本规则，即：</p>
 <ol>
 <li>绝大部分的数据都是对象</li>
 <li>要得到一个对象，不是通过实例化类，而是找到一个对象作为原型并<em>克隆</em>它</li>
@@ -717,11 +795,8 @@
 <li>如果对象无法响应某个请求，它会把这个请求委托给它的<em>构造器的原型</em></li>
 </ol>
 <h4 id="1-绝大部分的数据都是对象"><a href="#1-绝大部分的数据都是对象" class="headerlink" title="1. 绝大部分的数据都是对象"></a>1. 绝大部分的数据都是对象</h4><p>　　JavaScript中的根对象是Object.prototype对象，它是一个空对象，所有的对象都是从Object.prototype对象克隆而来的，Object.prototype对象就是它们的原型。</p>
-<h4 id="2-要得到一个对象，不是通过实例化类，而是找到一个对象作为原型并克隆它"><a href="#2-要得到一个对象，不是通过实例化类，而是找到一个对象作为原型并克隆它" class="headerlink" title="2. 要得到一个对象，不是通过实例化类，而是找到一个对象作为原型并克隆它"></a>2. 要得到一个对象，不是通过实例化类，而是找到一个对象作为原型并克隆它</h4><p>　　例如下面的Person()，JavaScript的函数既可以作为普通函数被调用，也可以被new运算符作为构造器被调用。</p>
-<p>　　其中<strong>new运算符</strong>创建对象的过程，实际上就是先克隆Object.prototype对象，得到一个空对象，做了一些操作，并把它指向被调用的构造器函数的原型对象。</p>
-<p>　　在Chrome和Firefox等向外暴露了对象<strong>proto</strong>属性的浏览器下，我们可以通过下面这段代码理解new运算的过程：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Person(name)&#123;</span><br><span class="line">	this.name=name;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Person.prototype.getName=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	<span class="built_in">return</span> this.name;</span><br><span class="line">&#125;;</span><br><span class="line">var objectFactory=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	var obj=new Object(),</span><br><span class="line">	Constructor=[].shift.call(arguments);//把第一个参数赋给Constructor变量，因为<span class="built_in">shift</span>()删除数组第一个元素并返回其值，这相当于Array.shift.call(arguments)也相当于Constructor=arguments.shift()。</span><br><span class="line">	obj.__proto__=Constructor.prototype;//指向正确的原型，不过不推荐使用__proto__,可以改为Object.setPrototypeOf(obj,Constructor.prototype);</span><br><span class="line">	var ret=Constructor.apply(obj,arguments);//这里已经去掉了数组第一项，这里是Apply调用模式，所以obj.Person(name)执行了this.name=name中的this就绑定到了obj上，所以就相当于借用外部传入的构造器给obj设置属性</span><br><span class="line">	<span class="built_in">return</span> typeof ret === <span class="string">"object"</span> ? ret : obj;</span><br><span class="line">&#125;;  </span><br><span class="line"></span><br><span class="line">var a=objectFactory(Person,<span class="string">"sven"</span>);</span><br><span class="line"></span><br><span class="line">console.log(a.name);//sven</span><br><span class="line">console.log(a.getName());//sven</span><br><span class="line">console.log(Object.getPrototypeOf(a) === Person.prototype);//<span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<p>　　关于<strong>proto</strong>(注意是两条下划线)的内容详见：<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/proto" title="Object.prototype.__proto__" target="_blank" rel="noopener">MDN文档</a></p>
+<h4 id="2-要得到一个对象，不是通过实例化类，而是找到一个对象作为原型并克隆它"><a href="#2-要得到一个对象，不是通过实例化类，而是找到一个对象作为原型并克隆它" class="headerlink" title="2. 要得到一个对象，不是通过实例化类，而是找到一个对象作为原型并克隆它"></a>2. 要得到一个对象，不是通过实例化类，而是找到一个对象作为原型并克隆它</h4><p>　　JavaScript的函数既可以作为普通函数被调用，也可以被new运算符作为构造器被调用，其中的new运算符实际上就是克隆了一个原型的过程。</p>
+<p>　　<strong>关于new运算符的内部具体操作请见我博客中的“JS中new运算符详解”！</strong></p>
 <h4 id="3-对象会记住它的原型"><a href="#3-对象会记住它的原型" class="headerlink" title="3. 对象会记住它的原型"></a>3. 对象会记住它的原型</h4><p>　　JavaScript给对象提供了一个名为<strong>proto</strong>的隐藏属性（这是浏览器的实现，规范里应该是不可访问的[[prototype]]），该属性默认指向它的构造器的原型对象。</p>
 <p>　　所以<em><strong>proto</strong></em>就是对象跟“对象构造器的原型”联系起来的纽带。</p>
 <h4 id="4-如果对象无法响应某个请求，它会把这个请求委托给它的构造器的原型"><a href="#4-如果对象无法响应某个请求，它会把这个请求委托给它的构造器的原型" class="headerlink" title="4. 如果对象无法响应某个请求，它会把这个请求委托给它的构造器的原型"></a>4. 如果对象无法响应某个请求，它会把这个请求委托给它的构造器的原型</h4><p>　　JavaScript的对象最初都是由Object.prototype对象克隆而来的，乍一看我们只能得到单一的继承自Object.prototype的对象，但<strong>对象构造器的原型</strong>并不仅限于Object.prototype上，而是可以动态指向其他对象。</p>
@@ -734,7 +809,7 @@
 <li>然而在该对象中依然没有找到name属性，于是请求继续委托给这个对象构造器的原型A.prototype。</li>
 <li>然后在这里找到了name属性，并返回它的值</li>
 </ol>
-<p>　　最后我们还要注意一点，如果在A.prototype也没找到name属性时，请求会被传递给A.prototype的构造器原型Object.prototype，因为根对象是个空对象，且原型是null，所以这次请求就到此为止，b.name返回undifined。</p>
+<p>　　最后我们还要注意一点，如果在A.prototype也没找到name属性时，请求会被传递给A.prototype的构造器原型Object.prototype，因为根对象是个空对象，且原型是null，所以这次请求就到此为止，b.name返回undefined。</p>
 <hr>
 <p>　　现在我们就能理解ECMAScript5提供的克隆对象的Object.create方法了，它天然的实现了原型继承。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Object.create=<span class="keyword">function</span>(obj)&#123;</span><br><span class="line">    var F=<span class="function"><span class="title">function</span></span>()&#123;&#125;;</span><br><span class="line">    F.prototype=obj;</span><br><span class="line">    <span class="built_in">return</span> new F();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -743,14 +818,9 @@
 <p>　　此外还有需要注意的几点：</p>
 <ol>
 <li>Object.create()来创建对象比通过构造器创建对象要慢</li>
-<li>设置构造器的prototype实现原型继承时，除了根对象，任何对象都会有一个原型；但通过Object.create(null)可以创建出没有原型的对象。
-　　</li>
+<li>设置构造器的prototype实现原型继承时，除了根对象，任何对象都会有一个原型；但通过Object.create(null)可以创建出没有原型的对象。</li>
 </ol>
-<p>结构伪类选择器加上：</p>
-<p>　　但有时候经常会出现问题，比如在body下加<em><script></em>标签的时候：</p>
-<p>HTML:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">		&lt;title&gt;&lt;/title&gt;</span><br><span class="line">		&lt;style <span class="built_in">type</span>=<span class="string">"text/css"</span>&gt;</span><br><span class="line">			.a&#123;</span><br><span class="line">				display: inline-block;</span><br><span class="line">				width: 150px;</span><br><span class="line">				height: 150px;</span><br><span class="line">				border: 1px solid <span class="comment">#cad5eb;</span></span><br><span class="line">				background-color: <span class="comment">#f0f3f9;</span></span><br><span class="line">			&#125;</span><br><span class="line">			span:nth-last-child(2)&#123;/*这里要2才行，不知道为什么*/</span><br><span class="line">				line-height: 0;</span><br><span class="line">				background: red;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		&lt;/style&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;span class=<span class="string">"a"</span>&gt;&lt;/span&gt;</span><br><span class="line">		&lt;span class=<span class="string">"a"</span>&gt;x-baseline&lt;/span&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">	&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">		var a=<span class="string">"这里放script标签则会导致nth-child选择器出错？？？"</span>;</span><br><span class="line">		var b=<span class="string">"但是去掉script标签则会没事"</span>;</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-</script></em></p>
+
       
     </div>
     
@@ -892,74 +962,6 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">.father &#123;</span><br><span class="line">    width: 300px; height: 150px;</span><br><span class="line">    background-color: <span class="comment">#f0f3f9;</span></span><br><span class="line">    position:relative;</span><br><span class="line">&#125;</span><br><span class="line">.son &#123; </span><br><span class="line">/*重要部分*/</span><br><span class="line">    position: absolute; </span><br><span class="line">    top: 0; right: 0; bottom: 0; left: 0;</span><br><span class="line">    margin: auto;</span><br><span class="line">/*重要部分*/</span><br><span class="line">    width: 200px; height: 100px;</span><br><span class="line">    background-color: <span class="comment">#cd0000;</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="5-使用line-height实现内联元素垂直居中"><a href="#5-使用line-height实现内联元素垂直居中" class="headerlink" title="5.使用line-height实现内联元素垂直居中"></a>5.使用line-height实现内联元素垂直居中</h4><p>　　如果该内联元素只有单行文本，那么连height都不用设置，直接设置一个line-height属性就可以。</p>
 <p>　　原理为<strong>line-height=行距+font-size</strong>，即行距的上下等分机制。具体见《CSS世界》一书中5.2.2节，其中还有多行文本或替换元素的垂直居中如何用line-height和vertical-align实现。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-CSS属性值的百分比" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2018/04/30/CSS属性值的百分比/" class="article-date">
-      <time datetime="2018-04-30T01:32:10.000Z" itemprop="datePublished">2018-04-30</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/04/30/CSS属性值的百分比/">CSS属性值的百分比</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="CSS属性值的百分比"><a href="#CSS属性值的百分比" class="headerlink" title="CSS属性值的百分比"></a>CSS属性值的百分比</h2><p>　　经常能见到CSS属性值出现百分比，之前一直也没有整理过，现在为了以后不迷糊，遂整理一下。</p>
-<h3 id="百分比单位"><a href="#百分比单位" class="headerlink" title="百分比单位"></a>百分比单位</h3><h4 id="1-乘以包含块的宽度：margin-padding-left-right-text-indent-width-max-width-min-width"><a href="#1-乘以包含块的宽度：margin-padding-left-right-text-indent-width-max-width-min-width" class="headerlink" title="1.乘以包含块的宽度：margin, padding, left, right, text-indent, width, max-width, min-width"></a>1.乘以包含块的宽度：margin, padding, left, right, text-indent, width, max-width, min-width</h4><p>　　其中padding和margin的百分比值无论是水平方向还是<strong>垂直方向</strong>均是相对于<strong>包含块宽度</strong>计算的！</p>
-<h4 id="2-乘以包含块的高度：top-bottom-height-max-height-min-height"><a href="#2-乘以包含块的高度：top-bottom-height-max-height-min-height" class="headerlink" title="2.乘以包含块的高度：top, bottom, height, max-height, min-height"></a>2.乘以包含块的高度：top, bottom, height, max-height, min-height</h4><p>　　关于<strong>包含块（containing block）</strong>的概念，不能简单地理解成是父元素。如果是静态定位和相对定位，包含块一般就是其父元素。但是对于绝对定位的元素，包含块应该是离它最近的 position 为 absolute、relative、或者 fixed 的祖先元素。对固定定位的元素，它的包含块是视口（viewport）。</p>
-<h4 id="3-乘以元素-border-box-的宽度：border-radius"><a href="#3-乘以元素-border-box-的宽度：border-radius" class="headerlink" title="3.乘以元素(border-box)的宽度：border-radius"></a>3.乘以元素(border-box)的宽度：border-radius</h4><h4 id="4-乘以元素的字体大小：line-height"><a href="#4-乘以元素的字体大小：line-height" class="headerlink" title="4.乘以元素的字体大小：line-height"></a>4.乘以元素的字体大小：line-height</h4><h4 id="5-乘以元素的行高-：vertical-align"><a href="#5-乘以元素的行高-：vertical-align" class="headerlink" title="5.乘以元素的行高 ：vertical-align"></a>5.乘以元素的行高 ：vertical-align</h4><p>　　vertical-align只能应用于内联元素和display值为table-cell的元素！ </p>
-<h4 id="6-background-position中的百分比单位与CSS中其它百分比单位都不一样！具体见“前端配合设计师之background-position定位图片”这篇Blog"><a href="#6-background-position中的百分比单位与CSS中其它百分比单位都不一样！具体见“前端配合设计师之background-position定位图片”这篇Blog" class="headerlink" title="6.background-position中的百分比单位与CSS中其它百分比单位都不一样！具体见“前端配合设计师之background-position定位图片”这篇Blog"></a>6.background-position中的百分比单位与CSS中其它百分比单位都不一样！具体见“前端配合设计师之background-position定位图片”这篇Blog</h4><h4 id="7-字体大小中的百分比-font-size-中的百分比值应该乘以元素所继承到的字体大小，也就是父元素的字体大小"><a href="#7-字体大小中的百分比-font-size-中的百分比值应该乘以元素所继承到的字体大小，也就是父元素的字体大小" class="headerlink" title="7.字体大小中的百分比 font-size 中的百分比值应该乘以元素所继承到的字体大小，也就是父元素的字体大小"></a>7.字体大小中的百分比 font-size 中的百分比值应该乘以元素所继承到的字体大小，也就是父元素的字体大小</h4><p>　　这里再提一下常用的字体单位em和ex。<br>　　em——是一个相对于font-size的相对单位,因此line-height: 1.5em;就是和当前font-size相乘后的值。 ex——相当于字体中的“x”的高度。</p>
-<h3 id="百分比的继承"><a href="#百分比的继承" class="headerlink" title="百分比的继承"></a>百分比的继承</h3><p>　　如果使用<em>数值</em>作为line-height的属性值，那么所有子元素继承的都是这个值；如果使用<em>百分比相对值</em>作为属性值，那么所有的子元素继承的是最终的计算值。</p>
-<p>CSS:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">   body&#123;</span><br><span class="line">	font-size: 14px;</span><br><span class="line">	line-height: 1.5;/*子元素继承的line-height都是1.5*/</span><br><span class="line">	line-height: 150%;/*子元素继承的line-height是14px*150%=21px*/</span><br><span class="line">	line-height: 1.5em;/*子元素继承的line-height14px*1.5em=21px*/</span><br><span class="line">&#125;</span><br><span class="line">h3,p&#123;</span><br><span class="line">   	margin: 0;</span><br><span class="line">&#125;</span><br><span class="line">h3&#123;</span><br><span class="line">	font-size: 32px;</span><br><span class="line">&#125;</span><br><span class="line">p&#123;</span><br><span class="line">	font-size: 20px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>HTML:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">   &lt;h3&gt;标题呵呵哈哈哈&lt;/h3&gt;</span><br><span class="line">&lt;p&gt;内容啊啊啊啊啊&lt;/p&gt;</span><br></pre></td></tr></table></figure>
-<p>　　所以一般推荐使用<em>数值</em>来操作line-height属性，比如1.5或15px，其中1.5默认就是1.5em，即相对于当前font-size的1.5倍。</p>
 
       
     </div>
