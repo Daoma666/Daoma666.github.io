@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/05/15/JS中this的指向/index.html">
 <meta property="og:site_name" content="岛马的主页">
 <meta property="og:description" content="JS中this的指向JavaScript中的this总是指向一个对象，而具体指向哪个对象是在**运行时**基于函数的执行环境动态绑定的。  有位人说A.apply(x,array);等价于(A.bind(x))(array),现在看着挺对的，留待以后验证。 方法调用模式　　当函数作为对象的方法被调用时，this指向该对象。 普通函数调用模式　　this总是指向全局对象，在浏览器中，这个全局对象就是">
-<meta property="og:updated_time" content="2018-05-27T11:38:08.096Z">
+<meta property="og:updated_time" content="2018-05-29T13:44:08.639Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS中this的指向">
 <meta name="twitter:description" content="JS中this的指向JavaScript中的this总是指向一个对象，而具体指向哪个对象是在**运行时**基于函数的执行环境动态绑定的。  有位人说A.apply(x,array);等价于(A.bind(x))(array),现在看着挺对的，留待以后验证。 方法调用模式　　当函数作为对象的方法被调用时，this指向该对象。 普通函数调用模式　　this总是指向全局对象，在浏览器中，这个全局对象就是">
@@ -324,6 +324,15 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.bind=<span class="keyword">function</span>(context)&#123;</span><br><span class="line">	var that=this;//保存方法调用模式下被调用的原函数</span><br><span class="line">	<span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123;//闭包返回一个新函数（可访问外层函数的变量和参数）</span><br><span class="line">		<span class="built_in">return</span> that.apply(context,arguments);//改变that原函数的内部this指向为我们指定的context</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var obj1=&#123;</span><br><span class="line">	name: <span class="string">"Daoma"</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var func=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	alert(this.name);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">func();//未定义</span><br><span class="line"></span><br><span class="line">var func=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	alert(this.name);</span><br><span class="line">&#125;.<span class="built_in">bind</span>(obj1);</span><br><span class="line">	</span><br><span class="line">func();//Daoma</span><br></pre></td></tr></table></figure>
 <p>　　通常我们还会实现的稍微复杂一点，可以往func函数中预先填入一些参数：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.bind=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	var that=this,</span><br><span class="line">		context=[].shift.call(arguments),//将第一个元素删掉并返回</span><br><span class="line">		args=[].slice.call(arguments);//用slice的另一个功能将剩余的参数类数组转换成数组</span><br><span class="line">	<span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		//这里运用了函数柯里化的思想，组合两次分别传入的参数，作为新函数的参数</span><br><span class="line">		<span class="built_in">return</span> that.apply(context,[].concat.call(args,[].slice.call(arguments)));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">	</span><br><span class="line">var obj1=&#123;</span><br><span class="line">	name: <span class="string">"daoma"</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var func=<span class="keyword">function</span>(a,b,c,d)&#123;</span><br><span class="line">	alert(this.name);</span><br><span class="line">	alert([a,b,c,d]);</span><br><span class="line">&#125;.<span class="built_in">bind</span>(obj1,1,2);</span><br><span class="line"></span><br><span class="line">func(3,4);//即可以传参两次拼到一起</span><br></pre></td></tr></table></figure>
+<p>补充bind和call的返回值</p>
+<ol>
+<li>fun.bind(thisArg[, arg1[, arg2[, …]]])</li>
+</ol>
+<p>　　返回由指定的this值和初始化参数改造的<strong>原函数拷贝</strong></p>
+<ol>
+<li>fun.call(thisArg, arg1, arg2, …)</li>
+</ol>
+<p>　　返回值是你调用的方法的返回值，若该方法没有返回值，则返回undefined。</p>
 <p>最后我还有一个需要填的问题坑，留待以后实力提高后解决：<a href="https://segmentfault.com/q/1010000014969567?_ea=3765087" title="JavaScript中Apply调用模式的this指向问题JavaScript中Apply调用模式的this指向问题" target="_blank" rel="noopener">JavaScript中Apply调用模式的this指向问题</a></p>
 
       
@@ -336,7 +345,7 @@
         <p><span>本文标题:</span><a  href="/2018/05/15/JS中this的指向/">JS中this的指向</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 岛马 的个人博客">岛马</a></p>
         <p><span>发布时间:</span>2018年05月15日 - 22时37分</p>
-        <p><span>最后更新:</span>2018年05月27日 - 19时38分</p>
+        <p><span>最后更新:</span>2018年05月29日 - 21时44分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/05/15/JS中this的指向/" title="JS中this的指向">http://yoursite.com/2018/05/15/JS中this的指向/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/05/15/JS中this的指向/　　作者: 岛马" title=""></span>

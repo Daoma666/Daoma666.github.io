@@ -4,12 +4,12 @@
 
     
   <url>
-    <loc>http://yoursite.com/2018/05/13/JS%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</loc>
-    <lastmod>2018-05-27T11:47:58.186Z</lastmod>
+    <loc>http://yoursite.com/2018/05/15/JS%E4%B8%ADthis%E7%9A%84%E6%8C%87%E5%90%91/</loc>
+    <lastmod>2018-05-29T13:44:08.639Z</lastmod>
     <data>
         <display>
-        <title>JS的面向对象</title>
-        <pubTime>2018-05-13T01:41:52.000Z</pubTime>
+        <title>JS中this的指向</title>
+        <pubTime>2018-05-15T14:37:32.000Z</pubTime>
         
          
            
@@ -20,7 +20,7 @@
     
   <url>
     <loc>http://yoursite.com/2018/05/27/JS%E4%B8%ADnew%E8%BF%90%E7%AE%97%E7%AC%A6%E8%AF%A6%E8%A7%A3/</loc>
-    <lastmod>2018-05-27T11:43:45.082Z</lastmod>
+    <lastmod>2018-05-29T13:43:01.174Z</lastmod>
     <data>
         <display>
         <title>JS中new运算符详解</title>
@@ -34,12 +34,12 @@
 
     
   <url>
-    <loc>http://yoursite.com/2018/05/15/JS%E4%B8%ADthis%E7%9A%84%E6%8C%87%E5%90%91/</loc>
-    <lastmod>2018-05-27T11:38:08.096Z</lastmod>
+    <loc>http://yoursite.com/2018/05/13/JS%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</loc>
+    <lastmod>2018-05-27T11:47:58.186Z</lastmod>
     <data>
         <display>
-        <title>JS中this的指向</title>
-        <pubTime>2018-05-15T14:37:32.000Z</pubTime>
+        <title>JS的面向对象</title>
+        <pubTime>2018-05-13T01:41:52.000Z</pubTime>
         
          
            
