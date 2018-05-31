@@ -270,6 +270,72 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-CSS实现居中的方法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/05/09/CSS实现居中的方法/" class="article-date">
+      <time datetime="2018-05-09T02:56:22.000Z" itemprop="datePublished">2018-05-09</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/05/09/CSS实现居中的方法/">CSS实现居中的方法</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="CSS实现居中的方法"><a href="#CSS实现居中的方法" class="headerlink" title="CSS实现居中的方法"></a>CSS实现居中的方法</h2><h4 id="1-使用width和margin实现水平居中"><a href="#1-使用width和margin实现水平居中" class="headerlink" title="1.使用width和margin实现水平居中"></a>1.使用width和margin实现水平居中</h4><p>　　width指定完宽度，就可以直接margin:0 auto;实现水平居中了</p>
+<h4 id="2-使用text-align实现水平居中"><a href="#2-使用text-align实现水平居中" class="headerlink" title="2.使用text-align实现水平居中"></a>2.使用text-align实现水平居中</h4><p>　　使内联元素居中，所以要在想居中的内联元素的父元素中使用</p>
+<h4 id="3-使用top-left和margin实现水平垂直的居中（但不如下面第4种方法简单）"><a href="#3-使用top-left和margin实现水平垂直的居中（但不如下面第4种方法简单）" class="headerlink" title="3.使用top,left和margin实现水平垂直的居中（但不如下面第4种方法简单）"></a>3.使用top,left和margin实现水平垂直的居中（但不如下面第4种方法简单）</h4><p>　　方法就是top: 50%;left: 50%;然后margin: -所在盒子宽度/2 0 0 -所在盒子高度/2;(可用于弹窗弹出到页面正中间)</p>
+<h4 id="4-使用-margin-auto-实现块级元素水平垂直的居中"><a href="#4-使用-margin-auto-实现块级元素水平垂直的居中" class="headerlink" title="4.使用 margin:auto 实现块级元素水平垂直的居中"></a>4.使用 margin:auto 实现块级元素水平垂直的居中</h4><p>HTML:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=<span class="string">"father"</span>&gt;</span><br><span class="line">    &lt;div class=<span class="string">"son"</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>CSS:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">.father &#123;</span><br><span class="line">    width: 300px; height: 150px;</span><br><span class="line">    background-color: <span class="comment">#f0f3f9;</span></span><br><span class="line">    position:relative;</span><br><span class="line">&#125;</span><br><span class="line">.son &#123; </span><br><span class="line">/*重要部分*/</span><br><span class="line">    position: absolute; </span><br><span class="line">    top: 0; right: 0; bottom: 0; left: 0;</span><br><span class="line">    margin: auto;</span><br><span class="line">/*重要部分*/</span><br><span class="line">    width: 200px; height: 100px;</span><br><span class="line">    background-color: <span class="comment">#cd0000;</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="5-使用line-height实现内联元素垂直居中"><a href="#5-使用line-height实现内联元素垂直居中" class="headerlink" title="5.使用line-height实现内联元素垂直居中"></a>5.使用line-height实现内联元素垂直居中</h4><p>　　如果该内联元素只有单行文本，那么连height都不用设置，直接设置一个line-height属性就可以。</p>
+<p>　　原理为<strong>line-height=行距+font-size</strong>，即行距的上下等分机制。具体见《CSS世界》一书中5.2.2节，其中还有多行文本或替换元素的垂直居中如何用line-height和vertical-align实现。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-CSS属性值的百分比" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -900,68 +966,6 @@
 <p><a href="https://www.zhihu.com/question/24385418,&quot;如何理解汉诺塔的递归？&quot;" target="_blank" rel="noopener">更多的关于汉诺塔递归问题可以参考</a></p>
 <p>　　</p>
 <p>　　</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-JS中的取整" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2018/04/15/JS中的取整/" class="article-date">
-      <time datetime="2018-04-15T01:11:03.000Z" itemprop="datePublished">2018-04-15</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/04/15/JS中的取整/">JS中的取整</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="JS中的取整"><a href="#JS中的取整" class="headerlink" title="JS中的取整"></a>JS中的取整</h2><h3 id="Math-ceil-——-gt-天花板，向上取整"><a href="#Math-ceil-——-gt-天花板，向上取整" class="headerlink" title="Math.ceil()——&gt;天花板，向上取整"></a>Math.ceil()——&gt;天花板，向上取整</h3><p>　　-9 ——&gt; 0 ——&gt; 9，沿着这个方向无论正负都向上取整。</p>
-<h3 id="Math-floor-——-gt-地板，向下取整"><a href="#Math-floor-——-gt-地板，向下取整" class="headerlink" title="Math.floor()——&gt;地板，向下取整"></a>Math.floor()——&gt;地板，向下取整</h3><p>　　-9 &lt;—— 0 &lt;—— 9，沿着这个方向无论正负都向下取整。</p>
-<h3 id="如何像其它语言那样向零取整"><a href="#如何像其它语言那样向零取整" class="headerlink" title="如何像其它语言那样向零取整"></a>如何像其它语言那样向零取整</h3><p>　　先给Function.prototype添加method()方法使得该方法对所有函数可用：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.method=<span class="keyword">function</span>(name,func)&#123;</span><br><span class="line">	this.prototype[name]=func;//方法调用模式，this绑定到该对象，即Function，再更新Function对象新增新的name属性</span><br><span class="line">	<span class="built_in">return</span> this;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>　　然后给Number.prototype添加向零取整方法interger()，具体如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Number.method(<span class="string">"integer"</span>,<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	<span class="built_in">return</span> Math[this&lt;0 ? <span class="string">"ceil"</span> : <span class="string">"floor"</span>](this);</span><br><span class="line">&#125;);</span><br><span class="line">alert((-5.9).<span class="built_in">integer</span>());</span><br></pre></td></tr></table></figure></p>
-<h3 id="Math-round-——-gt-把一个数字四舍五入为最接近的整数"><a href="#Math-round-——-gt-把一个数字四舍五入为最接近的整数" class="headerlink" title="Math.round()——&gt;把一个数字四舍五入为最接近的整数"></a>Math.round()——&gt;把一个数字四舍五入为最接近的整数</h3><p>　　正数很正常:5.4——&gt;5 , 5.5——&gt;6<br>　　负数有点小注意:-5.4——&gt;-5, -5.5——&gt;-5 , -5.51——&gt;-6</p>
 
       
     </div>

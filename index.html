@@ -270,6 +270,81 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-JS中的数值运算" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/05/31/JS中的数值运算/" class="article-date">
+      <time datetime="2018-05-30T23:39:02.000Z" itemprop="datePublished">2018-05-31</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/05/31/JS中的数值运算/">JS中的数值运算</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="虽然有不少坑但是比较可靠的parseInt"><a href="#虽然有不少坑但是比较可靠的parseInt" class="headerlink" title="虽然有不少坑但是比较可靠的parseInt"></a>虽然有不少坑但是比较可靠的parseInt</h2><h4 id="Number-parseInt-string-radix-默认接收两个参数"><a href="#Number-parseInt-string-radix-默认接收两个参数" class="headerlink" title="Number.parseInt(string,radix) 默认接收两个参数"></a>Number.parseInt(string,radix) 默认接收两个参数</h4><p>　　第一个参数是默认是<strong> string </strong>类型值，如果不是，会通过抽象的 ToString 强制转化成 string 类型的值。这其中就会有强制类型转换过程中的各种坑</p>
+<p>　　第二个参数是 number 类型的进制，如果不是，会通过抽象的 ToNumber 强制转化成 number 类型的值，范围是 2-36，通过强制类型转换后如果是其他值会返回 NaN。在 ES5 之前如果没有传入这个参数，会根据第一个参数的开头来判断进制，0 开头的字符串会判断成八进制，也就是很多人提到的老黄历坑。ES5 之后已经解决，不传这个参数默认十进制。但是这个参数容易被忽略，尤其是在和 map 之类的也容易忽略后续可选参数的函数搭配使用的时候，比如</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">'10'</span>, <span class="string">'10'</span>, <span class="string">'10'</span>, <span class="string">'10'</span>].map(parseInt) // 结果是 [10, NaN, 2, 3]</span><br><span class="line">[<span class="string">'10'</span>, <span class="string">'10'</span>, <span class="string">'10'</span>, <span class="string">'10'</span>].map(x=&gt;parseInt(x,10)) //正确的做法</span><br></pre></td></tr></table></figure>
+<p>　　所以如果只是用 parseInt 来 “取整”，一个良好的习惯是<strong>永远记得设置第二个参数为 10</strong></p>
+<h2 id="巧妙使用位操作符"><a href="#巧妙使用位操作符" class="headerlink" title="巧妙使用位操作符"></a>巧妙使用位操作符</h2><p>　　JavaScript 中的 number 类型的值都是使用 IEEE 754 标准的 <strong>64 位</strong>双精度浮点型存储，即<em> 1 位符号位 + 11 位指数部分 + 52 位尾数部分 </em>。用来表示整数时，安全的范围是 <strong>53 位</strong>，超出这个返回可能会造成精度丢失</p>
+<ol>
+<li>使用<strong>按位或</strong>向下取整(数值不够大才能用)</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var num=-9999999.1234;</span><br><span class="line">var int=num|0;</span><br><span class="line">console.log(int);   //-9999999</span><br><span class="line"></span><br><span class="line">var num=-9999999999.1234;</span><br><span class="line">var int=num|0;</span><br><span class="line">console.log(int);   //-1410065407</span><br></pre></td></tr></table></figure>
+<ol>
+<li>按位非（按位取反）任意数值x相当于-(x+1)</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">console.log(~1);    //-2</span><br><span class="line">console.log(~0);    //-1</span><br><span class="line">console.log(~-1);   //0</span><br><span class="line"></span><br><span class="line">console.log(~NaN);  //-1</span><br><span class="line">console.log(~[]);   //-1</span><br></pre></td></tr></table></figure>
+<p>　　我们可以发现：<strong>-1 是唯一一个经过 ~ 运算返回假值0的值</strong>（包括其他那些特殊的值比如 NaN、{}、[] 等都不会返回假值）</p>
+<p>　　所以字符串和数组的 indexOf 函数查找失败会返回 -1，这时候就可以用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(~str.indexOf(<span class="string">'str'</span>)) // 来表示查找失败</span><br></pre></td></tr></table></figure>
+<p>比判断 &gt;= 0 或者 != -1 更优雅，跟用 !! 来判断非假值有异曲同工之妙</p>
+<h2 id="其它的骚操作"><a href="#其它的骚操作" class="headerlink" title="其它的骚操作"></a>其它的骚操作</h2><p>　　JS取0~9的一个随机数可以用:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(Math.random()+<span class="string">""</span>).slice(-1);   //eg从0.984652315464中复制最后一个数字4</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-JS中new运算符详解" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -906,72 +981,6 @@
 <li><p>afterEnd:插入到标签结束标记后</p>
 </li>
 </ol>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-CSS实现居中的方法" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2018/05/09/CSS实现居中的方法/" class="article-date">
-      <time datetime="2018-05-09T02:56:22.000Z" itemprop="datePublished">2018-05-09</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/05/09/CSS实现居中的方法/">CSS实现居中的方法</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="CSS实现居中的方法"><a href="#CSS实现居中的方法" class="headerlink" title="CSS实现居中的方法"></a>CSS实现居中的方法</h2><h4 id="1-使用width和margin实现水平居中"><a href="#1-使用width和margin实现水平居中" class="headerlink" title="1.使用width和margin实现水平居中"></a>1.使用width和margin实现水平居中</h4><p>　　width指定完宽度，就可以直接margin:0 auto;实现水平居中了</p>
-<h4 id="2-使用text-align实现水平居中"><a href="#2-使用text-align实现水平居中" class="headerlink" title="2.使用text-align实现水平居中"></a>2.使用text-align实现水平居中</h4><p>　　使内联元素居中，所以要在想居中的内联元素的父元素中使用</p>
-<h4 id="3-使用top-left和margin实现水平垂直的居中（但不如下面第4种方法简单）"><a href="#3-使用top-left和margin实现水平垂直的居中（但不如下面第4种方法简单）" class="headerlink" title="3.使用top,left和margin实现水平垂直的居中（但不如下面第4种方法简单）"></a>3.使用top,left和margin实现水平垂直的居中（但不如下面第4种方法简单）</h4><p>　　方法就是top: 50%;left: 50%;然后margin: -所在盒子宽度/2 0 0 -所在盒子高度/2;(可用于弹窗弹出到页面正中间)</p>
-<h4 id="4-使用-margin-auto-实现块级元素水平垂直的居中"><a href="#4-使用-margin-auto-实现块级元素水平垂直的居中" class="headerlink" title="4.使用 margin:auto 实现块级元素水平垂直的居中"></a>4.使用 margin:auto 实现块级元素水平垂直的居中</h4><p>HTML:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=<span class="string">"father"</span>&gt;</span><br><span class="line">    &lt;div class=<span class="string">"son"</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<p>CSS:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">.father &#123;</span><br><span class="line">    width: 300px; height: 150px;</span><br><span class="line">    background-color: <span class="comment">#f0f3f9;</span></span><br><span class="line">    position:relative;</span><br><span class="line">&#125;</span><br><span class="line">.son &#123; </span><br><span class="line">/*重要部分*/</span><br><span class="line">    position: absolute; </span><br><span class="line">    top: 0; right: 0; bottom: 0; left: 0;</span><br><span class="line">    margin: auto;</span><br><span class="line">/*重要部分*/</span><br><span class="line">    width: 200px; height: 100px;</span><br><span class="line">    background-color: <span class="comment">#cd0000;</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="5-使用line-height实现内联元素垂直居中"><a href="#5-使用line-height实现内联元素垂直居中" class="headerlink" title="5.使用line-height实现内联元素垂直居中"></a>5.使用line-height实现内联元素垂直居中</h4><p>　　如果该内联元素只有单行文本，那么连height都不用设置，直接设置一个line-height属性就可以。</p>
-<p>　　原理为<strong>line-height=行距+font-size</strong>，即行距的上下等分机制。具体见《CSS世界》一书中5.2.2节，其中还有多行文本或替换元素的垂直居中如何用line-height和vertical-align实现。</p>
 
       
     </div>

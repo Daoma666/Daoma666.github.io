@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-29T13:43:01.174Z</updated>
+  <updated>2018-05-31T12:57:03.584Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JS中的数值运算</title>
+    <link href="http://yoursite.com/2018/05/31/JS%E4%B8%AD%E7%9A%84%E6%95%B0%E5%80%BC%E8%BF%90%E7%AE%97/"/>
+    <id>http://yoursite.com/2018/05/31/JS中的数值运算/</id>
+    <published>2018-05-30T23:39:02.000Z</published>
+    <updated>2018-05-31T12:57:03.584Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="虽然有不少坑但是比较可靠的parseInt"><a href="#虽然有不少坑但是比较可靠的parseInt" class="headerlink" title="虽然有不少坑但是比较可靠的parseInt"></a>虽然有不少坑但是比较可靠的parseInt</h2><h4 id="Number-parseInt-string-radix-默认接收两个参数"><a href="#Number-parseInt-string-radix-默认接收两个参数" class="headerlink" title="Number.parseInt(string,radix) 默认接收两个参数"></a>Number.parseInt(string,radix) 默认接收两个参数</h4><p>　　第一个参数是默认是<strong> string </strong>类型值，如果不是，会通过抽象的 ToString 强制转化成 string 类型的值。这其中就会有强制类型转换过程中的各种坑</p><p>　　第二个参数是 number 类型的进制，如果不是，会通过抽象的 ToNumber 强制转化成 number 类型的值，范围是 2-36，通过强制类型转换后如果是其他值会返回 NaN。在 ES5 之前如果没有传入这个参数，会根据第一个参数的开头来判断进制，0 开头的字符串会判断成八进制，也就是很多人提到的老黄历坑。ES5 之后已经解决，不传这个参数默认十进制。但是这个参数容易被忽略，尤其是在和 map 之类的也容易忽略后续可选参数的函数搭配使用的时候，比如</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">'10'</span>, <span class="string">'10'</span>, <span class="string">'10'</span>, <span class="string">'10'</span>].map(parseInt) // 结果是 [10, NaN, 2, 3]</span><br><span class="line">[<span class="string">'10'</span>, <span class="string">'10'</span>, <span class="string">'10'</span>, <span class="string">'10'</span>].map(x=&gt;parseInt(x,10)) //正确的做法</span><br></pre></td></tr></table></figure><p>　　所以如果只是用 parseInt 来 “取整”，一个良好的习惯是<strong>永远记得设置第二个参数为 10</strong></p><h2 id="巧妙使用位操作符"><a href="#巧妙使用位操作符" class="headerlink" title="巧妙使用位操作符"></a>巧妙使用位操作符</h2><p>　　JavaScript 中的 number 类型的值都是使用 IEEE 754 标准的 <strong>64 位</strong>双精度浮点型存储，即<em> 1 位符号位 + 11 位指数部分 + 52 位尾数部分 </em>。用来表示整数时，安全的范围是 <strong>53 位</strong>，超出这个返回可能会造成精度丢失</p><ol><li>使用<strong>按位或</strong>向下取整(数值不够大才能用)</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var num=-9999999.1234;</span><br><span class="line">var int=num|0;</span><br><span class="line">console.log(int);   //-9999999</span><br><span class="line"></span><br><span class="line">var num=-9999999999.1234;</span><br><span class="line">var int=num|0;</span><br><span class="line">console.log(int);   //-1410065407</span><br></pre></td></tr></table></figure><ol><li>按位非（按位取反）任意数值x相当于-(x+1)</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">console.log(~1);    //-2</span><br><span class="line">console.log(~0);    //-1</span><br><span class="line">console.log(~-1);   //0</span><br><span class="line"></span><br><span class="line">console.log(~NaN);  //-1</span><br><span class="line">console.log(~[]);   //-1</span><br></pre></td></tr></table></figure><p>　　我们可以发现：<strong>-1 是唯一一个经过 ~ 运算返回假值0的值</strong>（包括其他那些特殊的值比如 NaN、{}、[] 等都不会返回假值）</p><p>　　所以字符串和数组的 indexOf 函数查找失败会返回 -1，这时候就可以用：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(~str.indexOf(<span class="string">'str'</span>)) // 来表示查找失败</span><br></pre></td></tr></table></figure><p>比判断 &gt;= 0 或者 != -1 更优雅，跟用 !! 来判断非假值有异曲同工之妙</p><h2 id="其它的骚操作"><a href="#其它的骚操作" class="headerlink" title="其它的骚操作"></a>其它的骚操作</h2><p>　　JS取0~9的一个随机数可以用:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(Math.random()+<span class="string">""</span>).slice(-1);   //eg从0.984652315464中复制最后一个数字4</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;虽然有不少坑但是比较可靠的parseInt&quot;&gt;&lt;a href=&quot;#虽然有不少坑但是比较可靠的parseInt&quot; class=&quot;headerlink&quot; title=&quot;虽然有不少坑但是比较可靠的parseInt&quot;&gt;&lt;/a&gt;虽然有不少坑但是比较可靠的parseInt&lt;/
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>JS中new运算符详解</title>
@@ -409,27 +430,6 @@
       
       
         &lt;h2 id=&quot;秒懂汉诺塔原理函数递归&quot;&gt;&lt;a href=&quot;#秒懂汉诺塔原理函数递归&quot; class=&quot;headerlink&quot; title=&quot;秒懂汉诺塔原理函数递归&quot;&gt;&lt;/a&gt;秒懂汉诺塔原理函数递归&lt;/h2&gt;&lt;p&gt;　　想当年大一刚学C语言递归那一块儿的时候，遇到了“汉诺塔”问题，我
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>JS中的取整</title>
-    <link href="http://yoursite.com/2018/04/15/JS%E4%B8%AD%E7%9A%84%E5%8F%96%E6%95%B4/"/>
-    <id>http://yoursite.com/2018/04/15/JS中的取整/</id>
-    <published>2018-04-15T01:11:03.000Z</published>
-    <updated>2018-04-15T09:11:21.778Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="JS中的取整"><a href="#JS中的取整" class="headerlink" title="JS中的取整"></a>JS中的取整</h2><h3 id="Math-ceil-——-gt-天花板，向上取整"><a href="#Math-ceil-——-gt-天花板，向上取整" class="headerlink" title="Math.ceil()——&gt;天花板，向上取整"></a>Math.ceil()——&gt;天花板，向上取整</h3><p>　　-9 ——&gt; 0 ——&gt; 9，沿着这个方向无论正负都向上取整。</p><h3 id="Math-floor-——-gt-地板，向下取整"><a href="#Math-floor-——-gt-地板，向下取整" class="headerlink" title="Math.floor()——&gt;地板，向下取整"></a>Math.floor()——&gt;地板，向下取整</h3><p>　　-9 &lt;—— 0 &lt;—— 9，沿着这个方向无论正负都向下取整。</p><h3 id="如何像其它语言那样向零取整"><a href="#如何像其它语言那样向零取整" class="headerlink" title="如何像其它语言那样向零取整"></a>如何像其它语言那样向零取整</h3><p>　　先给Function.prototype添加method()方法使得该方法对所有函数可用：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.method=<span class="keyword">function</span>(name,func)&#123;</span><br><span class="line">this.prototype[name]=func;//方法调用模式，this绑定到该对象，即Function，再更新Function对象新增新的name属性</span><br><span class="line"><span class="built_in">return</span> this;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>　　然后给Number.prototype添加向零取整方法interger()，具体如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Number.method(<span class="string">"integer"</span>,<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line"><span class="built_in">return</span> Math[this&lt;0 ? <span class="string">"ceil"</span> : <span class="string">"floor"</span>](this);</span><br><span class="line">&#125;);</span><br><span class="line">alert((-5.9).<span class="built_in">integer</span>());</span><br></pre></td></tr></table></figure></p><h3 id="Math-round-——-gt-把一个数字四舍五入为最接近的整数"><a href="#Math-round-——-gt-把一个数字四舍五入为最接近的整数" class="headerlink" title="Math.round()——&gt;把一个数字四舍五入为最接近的整数"></a>Math.round()——&gt;把一个数字四舍五入为最接近的整数</h3><p>　　正数很正常:5.4——&gt;5 , 5.5——&gt;6<br>　　负数有点小注意:-5.4——&gt;-5, -5.5——&gt;-5 , -5.51——&gt;-6</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;JS中的取整&quot;&gt;&lt;a href=&quot;#JS中的取整&quot; class=&quot;headerlink&quot; title=&quot;JS中的取整&quot;&gt;&lt;/a&gt;JS中的取整&lt;/h2&gt;&lt;h3 id=&quot;Math-ceil-——-gt-天花板，向上取整&quot;&gt;&lt;a href=&quot;#Math-ceil-——-
       
     
     </summary>

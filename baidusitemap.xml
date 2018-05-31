@@ -4,6 +4,51 @@
 
     
   <url>
+    <loc>http://yoursite.com/2018/04/02/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%91%B8%E9%97%A8%E6%8A%8A%E7%BA%A7%E6%95%B4%E7%90%86/</loc>
+    <lastmod>2018-05-31T13:00:51.562Z</lastmod>
+    <data>
+        <display>
+        <title>正则表达式摸门把级整理</title>
+        <pubTime>2018-04-02T12:45:27.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/05/31/JS%E4%B8%AD%E7%9A%84%E6%95%B0%E5%80%BC%E8%BF%90%E7%AE%97/</loc>
+    <lastmod>2018-05-31T12:57:03.584Z</lastmod>
+    <data>
+        <display>
+        <title>JS中的数值运算</title>
+        <pubTime>2018-05-30T23:39:02.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/03/27/%E4%B8%80%E4%BA%9B%E9%9B%B6%E6%98%9F%E7%9A%84HTML,CSS,JS%E7%9F%A5%E8%AF%86/</loc>
+    <lastmod>2018-05-31T00:03:11.946Z</lastmod>
+    <data>
+        <display>
+        <title>一些零星的HTML,CSS,JS知识</title>
+        <pubTime>2018-03-27T11:43:45.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2018/05/15/JS%E4%B8%ADthis%E7%9A%84%E6%8C%87%E5%90%91/</loc>
     <lastmod>2018-05-29T13:44:08.639Z</lastmod>
     <data>
@@ -70,21 +115,6 @@
         <display>
         <title>实现slideUp/Down效果</title>
         <pubTime>2018-05-20T02:20:53.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2018/03/27/%E4%B8%80%E4%BA%9B%E9%9B%B6%E6%98%9F%E7%9A%84HTML,CSS,JS%E7%9F%A5%E8%AF%86/</loc>
-    <lastmod>2018-05-19T14:13:22.162Z</lastmod>
-    <data>
-        <display>
-        <title>一些零星的HTML,CSS,JS知识</title>
-        <pubTime>2018-03-27T11:43:45.000Z</pubTime>
         
          
            
@@ -175,21 +205,6 @@
         <display>
         <title>我的前端学习路线</title>
         <pubTime>2018-05-13T01:57:21.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2018/04/02/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%91%B8%E9%97%A8%E6%8A%8A%E7%BA%A7%E6%95%B4%E7%90%86/</loc>
-    <lastmod>2018-05-12T09:17:01.038Z</lastmod>
-    <data>
-        <display>
-        <title>正则表达式摸门把级整理</title>
-        <pubTime>2018-04-02T12:45:27.000Z</pubTime>
         
          
            

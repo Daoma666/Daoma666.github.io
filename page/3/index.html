@@ -270,6 +270,68 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-JS中的取整" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/04/15/JS中的取整/" class="article-date">
+      <time datetime="2018-04-15T01:11:03.000Z" itemprop="datePublished">2018-04-15</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/04/15/JS中的取整/">JS中的取整</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="JS中的取整"><a href="#JS中的取整" class="headerlink" title="JS中的取整"></a>JS中的取整</h2><h3 id="Math-ceil-——-gt-天花板，向上取整"><a href="#Math-ceil-——-gt-天花板，向上取整" class="headerlink" title="Math.ceil()——&gt;天花板，向上取整"></a>Math.ceil()——&gt;天花板，向上取整</h3><p>　　-9 ——&gt; 0 ——&gt; 9，沿着这个方向无论正负都向上取整。</p>
+<h3 id="Math-floor-——-gt-地板，向下取整"><a href="#Math-floor-——-gt-地板，向下取整" class="headerlink" title="Math.floor()——&gt;地板，向下取整"></a>Math.floor()——&gt;地板，向下取整</h3><p>　　-9 &lt;—— 0 &lt;—— 9，沿着这个方向无论正负都向下取整。</p>
+<h3 id="如何像其它语言那样向零取整"><a href="#如何像其它语言那样向零取整" class="headerlink" title="如何像其它语言那样向零取整"></a>如何像其它语言那样向零取整</h3><p>　　先给Function.prototype添加method()方法使得该方法对所有函数可用：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.method=<span class="keyword">function</span>(name,func)&#123;</span><br><span class="line">	this.prototype[name]=func;//方法调用模式，this绑定到该对象，即Function，再更新Function对象新增新的name属性</span><br><span class="line">	<span class="built_in">return</span> this;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>　　然后给Number.prototype添加向零取整方法interger()，具体如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Number.method(<span class="string">"integer"</span>,<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	<span class="built_in">return</span> Math[this&lt;0 ? <span class="string">"ceil"</span> : <span class="string">"floor"</span>](this);</span><br><span class="line">&#125;);</span><br><span class="line">alert((-5.9).<span class="built_in">integer</span>());</span><br></pre></td></tr></table></figure></p>
+<h3 id="Math-round-——-gt-把一个数字四舍五入为最接近的整数"><a href="#Math-round-——-gt-把一个数字四舍五入为最接近的整数" class="headerlink" title="Math.round()——&gt;把一个数字四舍五入为最接近的整数"></a>Math.round()——&gt;把一个数字四舍五入为最接近的整数</h3><p>　　正数很正常:5.4——&gt;5 , 5.5——&gt;6<br>　　负数有点小注意:-5.4——&gt;-5, -5.5——&gt;-5 , -5.51——&gt;-6</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-阻止事件的一些操作" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -823,81 +885,6 @@
         <h2 id="使用li-a构建网页导航栏"><a href="#使用li-a构建网页导航栏" class="headerlink" title="使用li+a构建网页导航栏"></a>使用li+a构建网页导航栏</h2><p>　　首先说一下建导航栏时使用li+a而不是直接使用li的原因：一般导航都是具有超链接功能，a标签具有这个功能，而lis标签只是罗列信息列表，不具备链接功能。<br>　　方法：一般我们在li中指定width，float;然后在a中使用display:block;再指定width和height，让它自动填充li即可。<br>　　具体小例子见代码：<br>HTML：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"nav"</span>&gt;</span><br><span class="line">	&lt;ul&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;站长之家&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;行业资讯&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;站长在线&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;网站运营&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;设计在线&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;网络编程&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;联盟资讯&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;服务器&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;/ul&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
 <p>CSS：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#nav&#123;</span></span><br><span class="line">	width: 730px;</span><br><span class="line">	margin: 20px auto;</span><br><span class="line">	border:1px solid blue;</span><br><span class="line">	background: blue;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#nav ul&#123;</span></span><br><span class="line">	list-style-type: none;</span><br><span class="line">	overflow: hidden;</span><br><span class="line">	margin-left: 10px;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#nav ul li&#123;</span></span><br><span class="line">	width: 80px;</span><br><span class="line">	<span class="built_in">float</span>: left;</span><br><span class="line">	margin-right: 10px;			</span><br><span class="line">	background: cornflowerblue;</span><br><span class="line">	cursor: pointer;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#nav ul li a&#123;</span></span><br><span class="line">	display: block;</span><br><span class="line">	width: 80px;</span><br><span class="line">	height: 30px;</span><br><span class="line">	line-height: 30px;</span><br><span class="line">	padding: 5px 0;</span><br><span class="line">	text-align: center;</span><br><span class="line">	text-decoration: none;</span><br><span class="line">	color: <span class="comment">#fff;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#nav ul li a:hover&#123;</span></span><br><span class="line">	font-weight: 700;</span><br><span class="line">	background: <span class="comment">#aaa;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>　　麻雀虽小五脏俱全啊，涵盖了很多最近学到的知识点，算是在此纪念一下吧。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-正则表达式摸门把级整理" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2018/04/02/正则表达式摸门把级整理/" class="article-date">
-      <time datetime="2018-04-02T12:45:27.000Z" itemprop="datePublished">2018-04-02</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/04/02/正则表达式摸门把级整理/">正则表达式摸门把级整理</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="①常用的元字符-一些有特异功能的用来方便匹配的字符"><a href="#①常用的元字符-一些有特异功能的用来方便匹配的字符" class="headerlink" title="①常用的元字符 (一些有特异功能的用来方便匹配的字符)"></a>①常用的元字符 (一些有特异功能的用来方便匹配的字符)</h3><p>　　代码　　说明<br>　　.    　　匹配除换行符以外的任意字符<br>　　\w　　匹配字母或数字或下划线（等价于<em>[A-Za-Z0-9_]</em>）<br>　　\s　　匹配任意的空白符<br>　　\d　　匹配数字<br>　　\b　　匹配单词的开始或结束<br>　　^    　　匹配字符串的开始<br>　　$    　　匹配字符串的结束</p>
-<p>　　^\d{5,12}$　　因为使用了^和$，所以检测的整个字符串都要用来和\d{5,12}来匹配，也就是说整个字符串必须是5到12个数字。</p>
-<h3 id="②常用的限定符-表示它前面的字符重复的次数"><a href="#②常用的限定符-表示它前面的字符重复的次数" class="headerlink" title="②常用的限定符 (表示它前面的字符重复的次数)"></a>②常用的限定符 (表示它前面的字符重复的次数)</h3><p>　　代码　　说明<br>　　*    　　重复零次或更多次<br>　　+    　　重复一次或更多次<br>　　?    　　重复零次或一次<br>　　{n}　　重复n次<br>　　{n,}　　重复n次或更多次<br>　　{n,m}    　重复n到m次</p>
-<p>　　(?0\d{2}[) -]?\d{8}　　首先是一个转义字符(,它能出现0次或1次(?),然后是一个0，后面跟着2个数字(\d{2})，然后是)或-或空格中的一个，它出现0次或1次(?)，最后是8个数字(\d{8})。</p>
-<h3 id="③字符范围"><a href="#③字符范围" class="headerlink" title="③字符范围"></a>③字符范围</h3><p>　　代码　　说明<br>　　[]　　　　匹配方括号中任意字符<br>　　[0-9]　　代表的含意与\d就是完全一致的：匹配任意一位数字</p>
-<p>　　注意在字符范围中有很多元字符不需要转义，可以代表自身，如.?+等。常见在[]内需要转义的有<strong>\和]和-</strong></p>
-<p>　　注：如果想匹配任意汉字的话，可以使用：<em>[\u4e00-\u9fa5]</em>。</p>
-<p>　　有时也会见到[^\x00-\xff]，即匹配不是ASCII代码中十六进制代码00到ff的字符，即不是ASCII代码十进制0到255的字符，所以汉字包括在里面。</p>
-<h3 id="④分枝条件"><a href="#④分枝条件" class="headerlink" title="④分枝条件"></a>④分枝条件</h3><p>　　代码　　说明<br>　　|　　　　匹配分枝条件时，将会从左到右地测试每个条件，如果满足了某个分枝的话，就不会去再管其它的条件了。<br>　　<br>　　\d{5}-\d{4}|\d{5}　　这个表达式用于匹配美国的邮政编码。美国邮编的规则是5位数字，或者用连字号间隔的9位数字。之所以要给出这个例子是因为它能说明一个问题：<strong>使用分枝条件时，要注意各个条件的顺序</strong>。如果你把它改成\d{5}|\d{5}-\d{4}的话，那么就只会匹配5位的邮编(以及9位邮编的前5位)。</p>
-<h3 id="⑤分组"><a href="#⑤分组" class="headerlink" title="⑤分组"></a>⑤分组</h3><p>　　代码　　说明<br>　　()　　重复单个字符,直接在字符后面加上限定符就行了；但如果想要重复多个字符又该怎么办？你可以用小括号来指定子表达式(也叫做分组)，然后你就可以指定这个子表达式的重复次数了</p>
-<p>　　(\d{1,3}.){3}\d{1,3}　　是一个简单的IP地址匹配表达式。  \d{1,3}匹配1到3位的数字，(\d{1,3}.){3}匹配三位数字加上一个英文句号(这个整体也就是这个分组)重复3次，最后再加上一个一到三位的数字(\d{1,3})。</p>
-<p>　　但使用小括号的时候，还有很多特定用途的语法。下面列出了最常用的一些：
-　　</p>
-<h4 id="常用分组语法"><a href="#常用分组语法" class="headerlink" title="常用分组语法"></a>常用分组语法</h4><p>　　分类    　　代码/语法    　　说明<br>　　捕获    　　(exp)    　　　　匹配exp,并捕获文本到自动命名的组里<br>　　　　　　(?<name>exp)    　　　　匹配exp,并捕获文本到名称为name的组里，也可以写成(?’name’exp)<br>　　　　　　(?:exp)    　　　匹配exp,<strong>不捕获</strong>匹配的文本，也不给此分组分配组号<br>　　零宽断言　(?=exp)    　　匹配exp前面的位置<strong>(断言：是真的才执行。所以在这里是exp才会匹配它前面的字符)</strong><br>　　　　　　　(?&lt;=exp)    　匹配exp后面的位置<br>　　　　　　　(?!exp)    　　匹配后面跟的不是exp的位置<br>　　　　　　　(?&lt;!exp)    　　匹配前面不是exp的位置<br>　　注释    　　(?#comment)　　这种类型的分组不对正则表达式的处理产生任何影响，用于提供注释让人阅读</name></p>
-<h3 id="⑥反义"><a href="#⑥反义" class="headerlink" title="⑥反义"></a>⑥反义</h3><p>　　代码/语法    说明<br>　　\W　　　　匹配任意不是字母，数字，下划线，汉字的字符<br>　　\S　　　　匹配任意不是空白符的字符<br>　　\D　　　　匹配任意非数字的字符<br>　　\B　　　　匹配不是单词开头或结束的位置<br>　　[^x]　　　　匹配除了x以外的任意字符<br>　　[^aeiou]　　　　匹配除了aeiou这几个字母以外的任意字符</p>
-<p>　　&lt;a[^&gt;]+&gt;　　匹配用尖括号括起来的以a开头的字符串。</p>
-<h3 id="⑦零宽断言"><a href="#⑦零宽断言" class="headerlink" title="⑦零宽断言"></a>⑦零宽断言</h3><h2 id="JS中有两种方式创建正则表达式对象-eg-下面创建一个匹配字符串的正则表达式对象"><a href="#JS中有两种方式创建正则表达式对象-eg-下面创建一个匹配字符串的正则表达式对象" class="headerlink" title="JS中有两种方式创建正则表达式对象,eg:下面创建一个匹配字符串的正则表达式对象"></a>JS中有两种方式创建正则表达式对象,eg:下面创建一个匹配字符串的正则表达式对象</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//一、正则表达式字面量方法</span><br><span class="line">var my_regexp1=/<span class="string">"(?:\\.|[^\\\"])*"</span>/g;</span><br><span class="line">//二、RegExp构造器方法(此时有两个阶段，先经过字符串的转义，然后再经过正则表达式的转义，所以经常需要双反斜杠进行转义)</span><br><span class="line">var my_regexp2=new RegExp(<span class="string">"\"(?:\\\\.|[^\\\\\\\"])*"</span>,<span class="string">"g"</span>);</span><br><span class="line">document.writeln(my_regexp1.exec(<span class="string">'"Daoma is 666"'</span>)[0]);</span><br><span class="line">document.writeln(my_regexp2.exec(<span class="string">'"Daoma "is 666"'</span>)[0]);</span><br></pre></td></tr></table></figure>
-<p>　　其它具体请参考：<a href="http://www.jb51.net/tools/zhengze.html" title="快速入门正则表达式" target="_blank" rel="noopener">快速入门正则表达式</a><br>　　有人推荐看看《精通正则表达式》一书，我等着看看再说</p>
 
       
     </div>
