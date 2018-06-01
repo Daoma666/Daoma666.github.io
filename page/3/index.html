@@ -270,6 +270,96 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-秒懂汉诺塔原理函数递归" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/04/15/秒懂汉诺塔原理函数递归/" class="article-date">
+      <time datetime="2018-04-15T02:40:43.000Z" itemprop="datePublished">2018-04-15</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/04/15/秒懂汉诺塔原理函数递归/">秒懂汉诺塔原理函数递归</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="秒懂汉诺塔原理函数递归"><a href="#秒懂汉诺塔原理函数递归" class="headerlink" title="秒懂汉诺塔原理函数递归"></a>秒懂汉诺塔原理函数递归</h2><p>　　想当年大一刚学C语言递归那一块儿的时候，遇到了“汉诺塔”问题，我的老天，那段时期想哭好吗，深刻的打击了我的编程热情，本身我就自觉智商不高，于是一直就没搞懂过这个问题，指导最近看了《JavaScript语言精粹》，才发现递归并没有那么难。。。我之前对于递归的了解只限于一个函数调用它自身，所以一直懵懵懂懂，现在需要重新认识一下它：</p>
+<h3 id="递归函数是干啥用的"><a href="#递归函数是干啥用的" class="headerlink" title="递归函数是干啥用的"></a>递归函数是干啥用的</h3><p>　　递归函数就是会直接或间接调用自身的一种函数。它把一个问题分解为一组相似的子问题，每一个都用一个<em>寻常解</em>去解决。也就是说，递归用一般的方式去解决<strong>每个</strong>子问题。</p>
+<h3 id="汉诺塔是什么"><a href="#汉诺塔是什么" class="headerlink" title="汉诺塔是什么"></a>汉诺塔是什么</h3><p>　　因为这是篇笔记，相信每个想了解汉诺塔原理的人都懂它是什么，怎么玩，但是就算你会玩，你不会写代码(大佬除外)。。。我就是从这个时候觉得自己智商比别人低的，不过这是我刚接触编程的时候。到现在接触了两三年的编程，我深感周围大佬没多少(可能因为我双非一本非计算机专业的缘故)，当初那些一看就会的人大部分接触的早O__O，人家初中高中奥数什么的早就接触啦，对于我们这种普通学生来说(我相信你要是985,211不会来看我的博客的)，大部分像我这样的人(为了不让大佬们黑我)都是学以致用的，参考别人的摸出门路了才会用，所以接下来我写的，应该都能懂。</p>
+<h3 id="汉诺塔递归代码"><a href="#汉诺塔递归代码" class="headerlink" title="汉诺塔递归代码"></a>汉诺塔递归代码</h3><p>　　有时搜一篇资料，先看到源码，哇看不懂，再看原理，哇更不懂；也可能先看到原理，没代码我怎么会看懂，再看源码，哇原理我都看不懂看代码怎么会懂。。。所以这就陷入了死循环，至于能不能看懂，就看个人的喜好和悟性了，我的习惯是先看源码。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;pre&gt;</span><br><span class="line">	&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">		var hanoi=<span class="keyword">function</span>(n,src,aux,dst)&#123;</span><br><span class="line">			<span class="keyword">if</span>(disc&gt;0)&#123;</span><br><span class="line">				//第一步</span><br><span class="line">				hanoi(n-1,src,dst,aux);</span><br><span class="line">				//第二步</span><br><span class="line">				document.writeln(<span class="string">"Move disc "</span>+n+<span class="string">" from "</span>+src+<span class="string">" to "</span>+dst);</span><br><span class="line">				//第三步</span><br><span class="line">				hanoi(n-1,aux,src,dst);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;;</span><br><span class="line">		hanoi(3,<span class="string">"Src"</span>,<span class="string">"Aux"</span>,<span class="string">"Dst"</span>);</span><br><span class="line">		hanoi(4,<span class="string">"Src"</span>,<span class="string">"Aux"</span>,<span class="string">"Dst"</span>);</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">&lt;/pre&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="汉诺塔递归原理"><a href="#汉诺塔递归原理" class="headerlink" title="汉诺塔递归原理"></a>汉诺塔递归原理</h3><p>　　你可以发现它看上去非常的简单，一共就三步，毕竟hanoi函数就是把一堆圆盘从一根柱子移到另一根柱子，必要时使用辅助的柱子。函数的参数解释如下：<br>1.n是一开始由小到大排在src柱子上的圆盘数量<br>2.src代表起始柱子<br>3.aux(auxiliary)代表辅助柱子<br>4.dst(destination)代表目标柱子</p>
+<p>　　hanoi函数把问题分解为了三个子问题，</p>
+<h4 id="第一步：它移动n-1个较小的圆盘到辅助柱子上，从而露出下面最大的圆盘。"><a href="#第一步：它移动n-1个较小的圆盘到辅助柱子上，从而露出下面最大的圆盘。" class="headerlink" title="第一步：它移动n-1个较小的圆盘到辅助柱子上，从而露出下面最大的圆盘。"></a>第一步：它移动n-1个较小的圆盘到辅助柱子上，从而露出下面最大的圆盘。</h4><h4 id="第二步：移动下面最大的圆盘到目标柱子上。"><a href="#第二步：移动下面最大的圆盘到目标柱子上。" class="headerlink" title="第二步：移动下面最大的圆盘到目标柱子上。"></a>第二步：移动下面最大的圆盘到目标柱子上。</h4><h4 id="第三步：将刚才较小的圆盘从辅助柱子上再移动到目标柱子上。"><a href="#第三步：将刚才较小的圆盘从辅助柱子上再移动到目标柱子上。" class="headerlink" title="第三步：将刚才较小的圆盘从辅助柱子上再移动到目标柱子上。"></a>第三步：将刚才较小的圆盘从辅助柱子上再移动到目标柱子上。</h4><p>　　然后通过递归地调用自身(只是参数不同)去处理一对圆盘的移动，从而解决那些子问题。</p>
+<h3 id="对递归原理的理解"><a href="#对递归原理的理解" class="headerlink" title="对递归原理的理解"></a>对递归原理的理解</h3><p>　　hanoi(3,”Src”,”Aux”,”Dst”);代表把3个圆盘<strong>从</strong>Src柱子<strong>借助</strong>Aux柱子移动<strong>到</strong>Dst柱子。每一个大问题里包含三个子问题:如果起始柱子上有盘子，先把disc-1个较小的圆盘都放到辅助柱子上，然后把较大的放到目标柱子上，最后在把那disc-1个较小的圆盘放到目标柱子上。</p>
+<p>　　相信读到这里的人都搞懂了<strong>怎么把这个大问题分解为3个子问题</strong>，并且发现如果按着原理思路来写，即可写出代码。但是过了不一会儿你就会产生疑问，因为你大问题上懂了，但不明白为啥每个子问题都可以这么用呢？每个子问题内为什么也起作用呢？</p>
+<p>　　所以说之前的我和现在的我差在了哪里，不是智商，而是思考的方式不对！！你是不是正在苦苦思考这段代码的每一步，然后把一步步的执行过程都写出来了，想搞懂递归呢？结果就是蛋疼！你不但啥也没搞懂，还白白浪费了这段推代码的时间！正确的打开方式是这样的——<strong>递归当然只能以递归的思路理解，把它展开纯属自讨苦吃</strong>。</p>
+<p>　　递归思路，说白了是如下三步：</p>
+<h4 id="1-对于问题N，如果N-1已经解决了，那么N是否很容易解决。"><a href="#1-对于问题N，如果N-1已经解决了，那么N是否很容易解决。" class="headerlink" title="1.对于问题N，如果N-1已经解决了，那么N是否很容易解决。"></a>1.对于问题N，如果N-1已经解决了，那么N是否很容易解决。</h4><p>　　举例来说，如果要把一个N层汉诺塔从src搬到dst，那么：</p>
+<p>　　如果前N-1层可以找别人搞定，咱只管搬第N层，会不会变得非常容易？</p>
+<p>　　你看，这一下就简单了：这时当它只有两层就好了，先把前N-1层看作一个整体，把它搬到aux；然后把最下面的第N层搬到dst；然后再把前N-1层从aux搬到dst。</p>
+<p>　　类似的，假如接到“搬前N-1层”这个任务的是我们，怎么搬呢？</p>
+<p>　　简单，像前东家一样，把前N-2层外包出去，我们只搬第N-1层——其实和前面讨论过的“外包N-1层，只搬第N层”完全一样嘛。</p>
+<p>　　依此类推，一层层“外包”下去——我不管你们有多伤脑筋，反正只要你们把我外包给你的活干了，我就能干了我的活！</p>
+<p>　　这一步就是*<em>递推</em>。</p>
+<h6 id="注意这里的搬法：搬第N层，就需要把前N-1层搬两次-起始到辅助，辅助再到目标-，另外再把第N层搬一次-起始到目标-；"><a href="#注意这里的搬法：搬第N层，就需要把前N-1层搬两次-起始到辅助，辅助再到目标-，另外再把第N层搬一次-起始到目标-；" class="headerlink" title="注意这里的搬法：搬第N层，就需要把前N-1层搬两次(起始到辅助，辅助再到目标)，另外再把第N层搬一次(起始到目标)；"></a>注意这里的搬法：搬第N层，就需要把前N-1层搬两次(起始到辅助，辅助再到目标)，另外再把第N层搬一次(起始到目标)；</h6><h6 id="搬第N-1层，又需要把前N-2层搬两次，然后再把N-1层搬一次，依此类推。"><a href="#搬第N-1层，又需要把前N-2层搬两次，然后再把N-1层搬一次，依此类推。" class="headerlink" title="搬第N-1层，又需要把前N-2层搬两次，然后再把N-1层搬一次，依此类推。"></a>搬第N-1层，又需要把前N-2层搬两次，然后再把N-1层搬一次，依此类推。</h6><h6 id="an-2-a-n-1-1"><a href="#an-2-a-n-1-1" class="headerlink" title="an=2*a(n-1)+1"></a>an=2*a(n-1)+1</h6><h6 id="a-n-1-2-a-n-2-1"><a href="#a-n-1-2-a-n-2-1" class="headerlink" title="a(n-1)=2*a(n-2)+1"></a>a(n-1)=2*a(n-2)+1</h6><h6 id="……"><a href="#……" class="headerlink" title="……"></a>……</h6><h6 id="a2-2-a1-1"><a href="#a2-2-a1-1" class="headerlink" title="a2=2*a1+1"></a>a2=2*a1+1</h6><h6 id="a1-1"><a href="#a1-1" class="headerlink" title="a1=1"></a>a1=1</h6><h6 id="很容易知道，an需要搬2-n-1次。"><a href="#很容易知道，an需要搬2-n-1次。" class="headerlink" title="很容易知道，an需要搬2^n-1次。"></a>很容易知道，an需要搬2^n-1次。</h6><h4 id="2、一步步递推下去，终究会有个“包工头”，接到“搬第一层”的任务。"><a href="#2、一步步递推下去，终究会有个“包工头”，接到“搬第一层”的任务。" class="headerlink" title="2、一步步递推下去，终究会有个“包工头”，接到“搬第一层”的任务。"></a>2、一步步递推下去，终究会有个“包工头”，接到“搬第一层”的任务。</h4><p>　　第一层怎么搬？</p>
+<p>　　太简单了，让搬哪搬哪。</p>
+<p>　　换句话说，到此，<strong>递推</strong>就到了极限，简单粗暴直接做就可以了。</p>
+<h4 id="3-既然第一层搬了，那么第二层当然就可以搬了；第二层搬了，第三层又可以搬了……依次类推，直到第N层。于是问题搞定。"><a href="#3-既然第一层搬了，那么第二层当然就可以搬了；第二层搬了，第三层又可以搬了……依次类推，直到第N层。于是问题搞定。" class="headerlink" title="3.既然第一层搬了，那么第二层当然就可以搬了；第二层搬了，第三层又可以搬了……依次类推，直到第N层。于是问题搞定。"></a>3.既然第一层搬了，那么第二层当然就可以搬了；第二层搬了，第三层又可以搬了……依次类推，直到第N层。于是问题搞定。</h4><p>　　这一步就是<strong>回归</strong>。</p>
+<p>　　如上三步加起来，就是<strong>递归</strong>。</p>
+<p>　　推而广之，任何问题，不管规模为N时有多复杂，只要把N-1那块“外包”给别人做之后，我们在这个基础上可以轻易完成N，那么它很可能就适合用“递归”解决。</p>
+<p>　　那么，怎么最终确定它能不能用“递归”做呢？</p>
+<h5 id="看当N取1或2之类最简情况时，问题是否可以解决——然后写程序解决它。"><a href="#看当N取1或2之类最简情况时，问题是否可以解决——然后写程序解决它。" class="headerlink" title="看当N取1或2之类最简情况时，问题是否可以解决——然后写程序解决它。"></a>看当N取1或2之类最简情况时，问题是否可以解决——然后写程序解决它。</h5><p>　　容易看出，<strong>“递归”其实和“数学归纳法”的思路非常像</strong>：证明N=1时成立；证明若N=n-1成立，则N=n时也成立；如上两步得证，则命题在n&gt;1时一定成立（n为自然数）。你看，我们没必要从1开始逐一验证每个自然数，只要证明了“基础条件”、再证明了“递推条件”，大自然的规律会帮我们搞定一切。</p>
+<p>　　换句话说，只要我们：</p>
+<h5 id="1、写程序告诉电脑“如何分解一个问题”-即把汉诺塔问题分解为如上三步"><a href="#1、写程序告诉电脑“如何分解一个问题”-即把汉诺塔问题分解为如上三步" class="headerlink" title="1、写程序告诉电脑“如何分解一个问题”(即把汉诺塔问题分解为如上三步)"></a>1、写程序告诉电脑“如何分解一个问题”(即把汉诺塔问题分解为如上三步)</h5><h5 id="2、写程序告诉电脑“当该问题分解到最简时如何处理”-即第二步中的直接把它从src移到dst"><a href="#2、写程序告诉电脑“当该问题分解到最简时如何处理”-即第二步中的直接把它从src移到dst" class="headerlink" title="2、写程序告诉电脑“当该问题分解到最简时如何处理”(即第二步中的直接把它从src移到dst)"></a>2、写程序告诉电脑“当该问题分解到最简时如何处理”(即第二步中的直接把它从src移到dst)</h5><p>　　那么，“具体如何递推、如何回归”这个简单问题就不要再操心了，电脑自己能搞定。</p>
+<p>　　——写出问题分解方法、写出分解到最简后如何解决，这是我们的任务；把问题搞定，是电脑的任务。这就是递归的魅力。</p>
+<p>　　正是由于这种“我提供思路你搞定细节”的特点，“一切皆递归”的函数系语言才被称为“声明式编程”（而不是必须一步一步指导电脑如何做的“命令式编程”）。</p>
+<p><a href="https://www.zhihu.com/question/24385418,&quot;如何理解汉诺塔的递归？&quot;" target="_blank" rel="noopener">更多的关于汉诺塔递归问题可以参考</a></p>
+<p>　　</p>
+<p>　　</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-JS中的取整" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -826,66 +916,6 @@
 <p>　　最后附上一段封装的获取CSS的代码</p>
 <p>JS:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//设置或读取CSS样式</span><br><span class="line"><span class="keyword">function</span> css(obj,attr,value)&#123;</span><br><span class="line">	switch(arguments.length)&#123;</span><br><span class="line">		<span class="keyword">case</span> 2://如果有两个参数可能是设置或读取样式</span><br><span class="line">			<span class="keyword">if</span>(typeof arguments[1] == <span class="string">"object"</span>)&#123;//即attr是个数组对象就设置样式</span><br><span class="line">				<span class="keyword">for</span>(var i <span class="keyword">in</span> attr)&#123;</span><br><span class="line">					i == <span class="string">"opacity"</span> ? (obj.style[<span class="string">"filter"</span>]=<span class="string">"alpha(opacity="</span>+attr[i]+<span class="string">")"</span>, </span><br><span class="line">						obj.style[i]=attr[i]/100) : obj.style[i]=attr[i];							   </span><br><span class="line">				&#125;</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;//attr是个字符串就读取CSS样式</span><br><span class="line">				<span class="built_in">return</span> obj.currentStyle ? obj.currentStyle[attr] : getComputeStyle(obj,null)[attr]</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">break</span>;</span><br><span class="line">		<span class="keyword">case</span> 3://三个参数就是设置样式</span><br><span class="line">			attr == <span class="string">"opacity"</span> ? (obj.style[<span class="string">"filter"</span>]=<span class="string">"alpha(opacity="</span>+value+<span class="string">")"</span>, </span><br><span class="line">				obj.style[attr]=value/100) : obj.style[attr]=value;</span><br><span class="line">			<span class="built_in">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-网页导航栏小技巧" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2018/04/03/网页导航栏小技巧/" class="article-date">
-      <time datetime="2018-04-03T14:24:25.000Z" itemprop="datePublished">2018-04-03</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/04/03/网页导航栏小技巧/">网页导航栏小技巧</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="使用li-a构建网页导航栏"><a href="#使用li-a构建网页导航栏" class="headerlink" title="使用li+a构建网页导航栏"></a>使用li+a构建网页导航栏</h2><p>　　首先说一下建导航栏时使用li+a而不是直接使用li的原因：一般导航都是具有超链接功能，a标签具有这个功能，而lis标签只是罗列信息列表，不具备链接功能。<br>　　方法：一般我们在li中指定width，float;然后在a中使用display:block;再指定width和height，让它自动填充li即可。<br>　　具体小例子见代码：<br>HTML：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"nav"</span>&gt;</span><br><span class="line">	&lt;ul&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;站长之家&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;行业资讯&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;站长在线&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;网站运营&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;设计在线&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;网络编程&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;联盟资讯&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;服务器&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;/ul&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
-<p>CSS：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#nav&#123;</span></span><br><span class="line">	width: 730px;</span><br><span class="line">	margin: 20px auto;</span><br><span class="line">	border:1px solid blue;</span><br><span class="line">	background: blue;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#nav ul&#123;</span></span><br><span class="line">	list-style-type: none;</span><br><span class="line">	overflow: hidden;</span><br><span class="line">	margin-left: 10px;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#nav ul li&#123;</span></span><br><span class="line">	width: 80px;</span><br><span class="line">	<span class="built_in">float</span>: left;</span><br><span class="line">	margin-right: 10px;			</span><br><span class="line">	background: cornflowerblue;</span><br><span class="line">	cursor: pointer;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#nav ul li a&#123;</span></span><br><span class="line">	display: block;</span><br><span class="line">	width: 80px;</span><br><span class="line">	height: 30px;</span><br><span class="line">	line-height: 30px;</span><br><span class="line">	padding: 5px 0;</span><br><span class="line">	text-align: center;</span><br><span class="line">	text-decoration: none;</span><br><span class="line">	color: <span class="comment">#fff;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#nav ul li a:hover&#123;</span></span><br><span class="line">	font-weight: 700;</span><br><span class="line">	background: <span class="comment">#aaa;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>　　麻雀虽小五脏俱全啊，涵盖了很多最近学到的知识点，算是在此纪念一下吧。</p>
-
       
     </div>
     

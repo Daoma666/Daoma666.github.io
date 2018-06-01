@@ -270,6 +270,76 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-JS辨别数据类型" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/06/01/JS辨别数据类型/" class="article-date">
+      <time datetime="2018-06-01T09:23:29.000Z" itemprop="datePublished">2018-06-01</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/06/01/JS辨别数据类型/">JS辨别数据类型</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="首先要了解JS判断语句中的假值"><a href="#首先要了解JS判断语句中的假值" class="headerlink" title="首先要了解JS判断语句中的假值"></a>首先要了解JS判断语句中的假值</h2><p>　　值          类型<br>　　0           Number<br>　　NaN         Number<br>　　‘’(空字符串) String<br>　　false       Boolean<br>　　null        Object<br>　　undefined   Undefined</p>
+<h2 id="怎么辨别数组-null和对象"><a href="#怎么辨别数组-null和对象" class="headerlink" title="怎么辨别数组,null和对象"></a>怎么辨别数组,null和对象</h2><h3 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h3><p>　　typeof不能判断出数组和null，而且对于通过new操作符生成的对象，只会返回’object’</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alert(typeof null); //<span class="string">'object'</span></span><br><span class="line">alert(typeof []);   //<span class="string">'object'</span></span><br><span class="line">alert(typeof &#123;&#125;);	//<span class="string">'object'</span></span><br></pre></td></tr></table></figure>
+<p>　　但Object.prototype.toString对任何变量会永远返回这样一个字符串”[object class]”，而这个class就是JavaScript内嵌对象的构造函数的名字。至于用户自定义的变量，则class等于object。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alert(Object.prototype.toString.call(null));    //<span class="string">'[object Null]'</span></span><br><span class="line">alert(Object.prototype.toString.call([]));      //<span class="string">'[object Array]'</span></span><br><span class="line">alert(Object.prototype.toString.call(&#123;&#125;));      //<span class="string">'[object Object]'</span></span><br></pre></td></tr></table></figure>
+<h4 id="①因此通过Object-prototype-toString-call-obj-可以准确的获取变量数据类型。"><a href="#①因此通过Object-prototype-toString-call-obj-可以准确的获取变量数据类型。" class="headerlink" title="①因此通过Object.prototype.toString.call(obj)可以准确的获取变量数据类型。"></a>①因此通过<strong>Object.prototype.toString.call(obj)</strong>可以准确的获取变量数据类型。</h4><p>　　通过Object.prototype.toString可以获得的数据类型包括：Date, Object, String, Number, Boolean, Regexp, Function, undefined, null等。</p>
+<h4 id="②因为null是假值，所以辨别null与object或数组的关系可以用如下"><a href="#②因为null是假值，所以辨别null与object或数组的关系可以用如下" class="headerlink" title="②因为null是假值，所以辨别null与object或数组的关系可以用如下"></a>②因为null是假值，所以辨别null与object或数组的关系可以用如下</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//var value=null;</span><br><span class="line"><span class="keyword">if</span>(value &amp;&amp; typeof value===<span class="string">'object'</span>)&#123;</span><br><span class="line">	alert(<span class="string">'这是个对象或数组'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="判断NaN值"><a href="#判断NaN值" class="headerlink" title="判断NaN值"></a>判断NaN值</h2><p>　　NaN值一般在<em>试图把非数字形式的字符串转换为数字时</em>产生。</p>
+<p>　　上面的typeof和Object.prototype.toString.call(obj);都不能判断NaN值,而且NaN也不等同于它自己。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alert(typeof NaN);	//<span class="string">'number'</span></span><br><span class="line">alert(Object.prototype.toString.call(NaN));  //<span class="string">'[object Number]'</span></span><br><span class="line">alert(NaN===NaN);   //<span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h4 id="好在JS提供了isNaN函数，可以辨别数字与NaN"><a href="#好在JS提供了isNaN函数，可以辨别数字与NaN" class="headerlink" title="好在JS提供了isNaN函数，可以辨别数字与NaN"></a>好在JS提供了isNaN函数，可以辨别数字与NaN</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alert(isNaN(<span class="string">'0'</span>));	//<span class="literal">false</span></span><br><span class="line">alert(isNaN(<span class="string">'oops'</span>)); //<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h2 id="其它问题记录"><a href="#其它问题记录" class="headerlink" title="其它问题记录"></a>其它问题记录</h2><p>　　undefined和null与任何有意义的值比较返回的都是false，但是null与undefined之间互相比较返回的是true。</p>
+<p>　　一般typeof正则表达式都会返回’object’，但在Safari3.x版本中，返回的是’function’</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alert(undefined==null);    //<span class="literal">true</span></span><br><span class="line">alert(typeof /a/);         //<span class="string">'object'</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-JS中的数值运算" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -308,6 +378,7 @@
 <li>使用<strong>按位或</strong>向下取整(数值不够大才能用)</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var num=-9999999.1234;</span><br><span class="line">var int=num|0;</span><br><span class="line">console.log(int);   //-9999999</span><br><span class="line"></span><br><span class="line">var num=-9999999999.1234;</span><br><span class="line">var int=num|0;</span><br><span class="line">console.log(int);   //-1410065407</span><br></pre></td></tr></table></figure>
+<p>关于其它的取整方法可以见博客中：“JS中的取整”</p>
 <ol>
 <li>按位非（按位取反）任意数值x相当于-(x+1)</li>
 </ol>
@@ -904,82 +975,6 @@
 <ol>
 <li>Object.create()来创建对象比通过构造器创建对象要慢</li>
 <li>设置构造器的prototype实现原型继承时，除了根对象，任何对象都会有一个原型；但通过Object.create(null)可以创建出没有原型的对象。</li>
-</ol>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-JS中insertAdjacentHTML-方法" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2018/05/12/JS中insertAdjacentHTML-方法/" class="article-date">
-      <time datetime="2018-05-12T07:51:26.000Z" itemprop="datePublished">2018-05-12</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/05/12/JS中insertAdjacentHTML-方法/">JS中insertAdjacentHTML()方法</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="JS中insertAdjacentHTML-方法"><a href="#JS中insertAdjacentHTML-方法" class="headerlink" title="JS中insertAdjacentHTML()方法"></a>JS中insertAdjacentHTML()方法</h2><p>　　一般我们在写JS时，想在一个DOM节点中插入HTML代码，这时有三种方法：</p>
-<h4 id="1-使用innerHTML"><a href="#1-使用innerHTML" class="headerlink" title="1.使用innerHTML"></a>1.使用innerHTML</h4><p>　　缺点是会把原先该节点的代码全部覆盖掉。</p>
-<h4 id="2-使用insertBefore-appendChild-方法"><a href="#2-使用insertBefore-appendChild-方法" class="headerlink" title="2.使用insertBefore(),appendChild()方法"></a>2.使用insertBefore(),appendChild()方法</h4><p>　　缺点一是麻烦，需要先createElement()创建一个节点，再插入内容，最后再append到DOM树中。二是性能低下，具体见：<a href="http://www.zhangxinxu.com/wordpress/?p=3210http://www.zhangxinxu.com/wordpress/?p=3210" title="小tip: DOM appendHTML实现及insertAdjacentHTML" target="_blank" rel="noopener">DOM appendHTML实现及insertAdjacentHTML</a></p>
-<h4 id="3-使用insertAdjacentHTML-方法，更加灵活"><a href="#3-使用insertAdjacentHTML-方法，更加灵活" class="headerlink" title="3.使用insertAdjacentHTML()方法，更加灵活"></a>3.使用insertAdjacentHTML()方法，更加灵活</h4><p>　　insertAdjacentHTML 方法：在指定的地方插入html标签语句</p>
-<p>　　原型：insertAdajcentHTML(swhere,stext)</p>
-<p>　　参数：</p>
-<p>　　swhere: 指定插入html标签语句的地方，</p>
-<p>　　stext:要插入的内容</p>
-<p>　　有四种值可用：</p>
-<ol>
-<li><p>beforeBegin: 插入到标签开始标记前</p>
-</li>
-<li><p>afterBegin:插入到标签开始标记之后</p>
-</li>
-<li><p>beforeEnd:插入到标签结束标记前</p>
-</li>
-<li><p>afterEnd:插入到标签结束标记后</p>
-</li>
 </ol>
 
       
