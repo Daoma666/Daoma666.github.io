@@ -270,66 +270,6 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-网页导航栏小技巧" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2018/04/03/网页导航栏小技巧/" class="article-date">
-      <time datetime="2018-04-03T14:24:25.000Z" itemprop="datePublished">2018-04-03</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/04/03/网页导航栏小技巧/">网页导航栏小技巧</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="使用li-a构建网页导航栏"><a href="#使用li-a构建网页导航栏" class="headerlink" title="使用li+a构建网页导航栏"></a>使用li+a构建网页导航栏</h2><p>　　首先说一下建导航栏时使用li+a而不是直接使用li的原因：一般导航都是具有超链接功能，a标签具有这个功能，而lis标签只是罗列信息列表，不具备链接功能。<br>　　方法：一般我们在li中指定width，float;然后在a中使用display:block;再指定width和height，让它自动填充li即可。<br>　　具体小例子见代码：<br>HTML：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"nav"</span>&gt;</span><br><span class="line">	&lt;ul&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;站长之家&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;行业资讯&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;站长在线&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;网站运营&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;设计在线&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;网络编程&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;联盟资讯&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;服务器&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;/ul&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
-<p>CSS：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#nav&#123;</span></span><br><span class="line">	width: 730px;</span><br><span class="line">	margin: 20px auto;</span><br><span class="line">	border:1px solid blue;</span><br><span class="line">	background: blue;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#nav ul&#123;</span></span><br><span class="line">	list-style-type: none;</span><br><span class="line">	overflow: hidden;</span><br><span class="line">	margin-left: 10px;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#nav ul li&#123;</span></span><br><span class="line">	width: 80px;</span><br><span class="line">	<span class="built_in">float</span>: left;</span><br><span class="line">	margin-right: 10px;			</span><br><span class="line">	background: cornflowerblue;</span><br><span class="line">	cursor: pointer;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#nav ul li a&#123;</span></span><br><span class="line">	display: block;</span><br><span class="line">	width: 80px;</span><br><span class="line">	height: 30px;</span><br><span class="line">	line-height: 30px;</span><br><span class="line">	padding: 5px 0;</span><br><span class="line">	text-align: center;</span><br><span class="line">	text-decoration: none;</span><br><span class="line">	color: <span class="comment">#fff;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#nav ul li a:hover&#123;</span></span><br><span class="line">	font-weight: 700;</span><br><span class="line">	background: <span class="comment">#aaa;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>　　麻雀虽小五脏俱全啊，涵盖了很多最近学到的知识点，算是在此纪念一下吧。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
     <article id="post-正则表达式摸门把级整理" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -512,7 +452,16 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="li标签中的a标签改变字体颜色color需要注意的地方"><a href="#li标签中的a标签改变字体颜色color需要注意的地方" class="headerlink" title="li标签中的a标签改变字体颜色color需要注意的地方"></a>li标签中的a标签改变字体颜色color需要注意的地方</h2><p>　　最近遇到了想鼠标移到li上，但里面的a字体变色不成功的问题。查了一下因为<a>默认就有样式，所以不会继承父级的color等样式，这时候就需要显式让a继承li的color才行，即：</a></p>
+        <h2 id="IE中的CSS-hack"><a href="#IE中的CSS-hack" class="headerlink" title="IE中的CSS hack"></a>IE中的CSS hack</h2><p>　　比如一道题：用CSS分别定义IE6、7、8的width属性，使其在IE6下的值为10px，IE7为20px，IE8为30px？</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//注意顺序不可颠倒，因为css从上往下解析，后面属性优先级略高于前面（同级的时候）</span><br><span class="line">width:30px\9;	//IE8</span><br><span class="line">*width:20px;	//IE7</span><br><span class="line">_width:10px;	//IE6</span><br></pre></td></tr></table></figure>
+<h2 id="CSS解析方式"><a href="#CSS解析方式" class="headerlink" title="CSS解析方式"></a>CSS解析方式</h2><p>　　<strong>从上往下，同选择器从右往左解析</strong></p>
+<p>　　至于为什么从右往左解析可以参考：<a href="https://blog.csdn.net/jinboker/article/details/52126021" title="为什么CSS选择器是从右往左解析" target="_blank" rel="noopener">为什么CSS选择器是从右往左解析</a></p>
+<h2 id="CSS的优先级"><a href="#CSS的优先级" class="headerlink" title="CSS的优先级"></a>CSS的优先级</h2><p>　　一般来讲优先级id&gt;class&gt;标签</p>
+<p>　　最近遇到一个问题，就是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#head p&#123;</span></span><br><span class="line">	background-color:white;</span><br><span class="line">&#125;</span><br><span class="line">.change&#123;</span><br><span class="line">	background-color:red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;div id=<span class="string">"head"</span>&gt;</span><br><span class="line">	&lt;p class=<span class="string">"change"</span>&gt;id优先级比.change高啊，所以我的背景是白色&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>　　但是这样把类前面也加上#head p就可以提高优先级了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#head p&#123;</span></span><br><span class="line">	background-color:white;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#head p.change&#123;</span></span><br><span class="line">	background-color:red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;div id=<span class="string">"head"</span>&gt;</span><br><span class="line">	&lt;p class=<span class="string">"change"</span>&gt;现在的.change的优先级最高了，背景就是红色了&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="li标签中的a标签改变字体颜色color需要注意的地方"><a href="#li标签中的a标签改变字体颜色color需要注意的地方" class="headerlink" title="li标签中的a标签改变字体颜色color需要注意的地方"></a>li标签中的a标签改变字体颜色color需要注意的地方</h2><p>　　最近遇到了想鼠标移到li上，但里面的a字体变色不成功的问题。查了一下因为<a>默认就有样式，所以不会继承父级的color等样式，这时候就需要显式让a继承li的color才行，即：</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">li&#123;</span><br><span class="line">	color: <span class="comment">#fff;</span></span><br><span class="line">&#125;</span><br><span class="line">li&gt;a&#123;</span><br><span class="line">	color: inherit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="CSS想实现一个元素发生变动，改变另外元素的样式"><a href="#CSS想实现一个元素发生变动，改变另外元素的样式" class="headerlink" title="CSS想实现一个元素发生变动，改变另外元素的样式"></a>CSS想实现一个元素发生变动，改变另外元素的样式</h2><p>　　原先我一直以为CSS只能改变自身元素的样式，如果想自身变动又想要别的元素变动，必须借助JS才行，但发现并不是这样。</p>
 <p>HTML:</p>
@@ -523,7 +472,7 @@
 <p>　　1.是子元素<br>　　2.该子元素刚好处在n那个位置</p>
 <p>　　但有时候经常会出现问题，比如在body下加<em><script></em>标签的时候：</p>
 <p>HTML:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">		&lt;title&gt;&lt;/title&gt;</span><br><span class="line">		&lt;style <span class="built_in">type</span>=<span class="string">"text/css"</span>&gt;</span><br><span class="line">			.a&#123;</span><br><span class="line">				display: inline-block;</span><br><span class="line">				width: 150px;</span><br><span class="line">				height: 150px;</span><br><span class="line">				border: 1px solid <span class="comment">#cad5eb;</span></span><br><span class="line">				background-color: <span class="comment">#f0f3f9;</span></span><br><span class="line">			&#125;</span><br><span class="line">			span:nth-last-child(2)&#123;/*这里要2才行，不知道为什么*/</span><br><span class="line">				line-height: 0;</span><br><span class="line">				background: red;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		&lt;/style&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;span class=<span class="string">"a"</span>&gt;&lt;/span&gt;</span><br><span class="line">		&lt;span class=<span class="string">"a"</span>&gt;x-baseline&lt;/span&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">	&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">		var a=<span class="string">"这里放script标签则会导致nth-child选择器出错？？？"</span>;</span><br><span class="line">		var b=<span class="string">"但是去掉script标签则会没事"</span>;</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">	&lt;title&gt;&lt;/title&gt;</span><br><span class="line">	&lt;style <span class="built_in">type</span>=<span class="string">"text/css"</span>&gt;</span><br><span class="line">		.a&#123;</span><br><span class="line">			display: inline-block;</span><br><span class="line">			width: 150px;</span><br><span class="line">			height: 150px;</span><br><span class="line">			border: 1px solid <span class="comment">#cad5eb;</span></span><br><span class="line">			background-color: <span class="comment">#f0f3f9;</span></span><br><span class="line">		&#125;</span><br><span class="line">		span:nth-last-child(2)&#123;/*这里要2才行，不知道为什么*/</span><br><span class="line">			line-height: 0;</span><br><span class="line">			background: red;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;span class=<span class="string">"a"</span>&gt;&lt;/span&gt;</span><br><span class="line">	&lt;span class=<span class="string">"a"</span>&gt;x-baseline&lt;/span&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">	var a=<span class="string">"这里放script标签则会导致nth-child选择器出错？？？"</span>;</span><br><span class="line">	var b=<span class="string">"但是去掉script标签则会没事"</span>;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 <h4 id="用于裁剪img图片的clip-rect-top-right-bottom-left"><a href="#用于裁剪img图片的clip-rect-top-right-bottom-left" class="headerlink" title="用于裁剪img图片的clip: rect(top,right,bottom,left);"></a>用于裁剪img图片的clip: rect(top,right,bottom,left);</h4><p>　　首先注意clip属性只能用于绝对定位元素，position:absolute或fixed。</p>
 <p>　　齐次top right bottom left分别指最终剪裁可见区域的上边，右边，下边与左边。而所有的数值都表示位置，且是相对于原始元素的左上角而言的。于是</p>
 <p>　　eg:rect(30px 200px 200px 20px)</p>
