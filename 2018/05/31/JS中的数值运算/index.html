@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/05/31/JS中的数值运算/index.html">
 <meta property="og:site_name" content="岛马的主页">
 <meta property="og:description" content="虽然有不少坑但是比较可靠的parseIntNumber.parseInt(string,radix) 默认接收两个参数　　第一个参数是默认是 string 类型值，如果不是，会通过抽象的 ToString 强制转化成 string 类型的值。这其中就会有强制类型转换过程中的各种坑 　　第二个参数是 number 类型的进制，如果不是，会通过抽象的 ToNumber 强制转化成 number 类型的">
-<meta property="og:updated_time" content="2018-06-09T05:31:13.690Z">
+<meta property="og:updated_time" content="2018-06-16T02:26:36.716Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS中的数值运算">
 <meta name="twitter:description" content="虽然有不少坑但是比较可靠的parseIntNumber.parseInt(string,radix) 默认接收两个参数　　第一个参数是默认是 string 类型值，如果不是，会通过抽象的 ToString 强制转化成 string 类型的值。这其中就会有强制类型转换过程中的各种坑 　　第二个参数是 number 类型的进制，如果不是，会通过抽象的 ToNumber 强制转化成 number 类型的">
@@ -317,18 +317,22 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alert(isFinite===Number.isFinite);  //<span class="literal">false</span></span><br><span class="line">alert(isNaN===Number.isNaN);        //<span class="literal">false</span></span><br><span class="line">alert(parseInt===Number.parseInt);  //<span class="literal">true</span></span><br></pre></td></tr></table></figure>
 <h2 id="巧妙使用位操作符"><a href="#巧妙使用位操作符" class="headerlink" title="巧妙使用位操作符"></a>巧妙使用位操作符</h2><p>　　JavaScript 中的 number 类型的值都是使用 IEEE 754 标准的 <strong>64 位</strong>双精度浮点型存储，即<em> 1 位符号位 + 11 位指数部分 + 52 位尾数部分 </em>。用来表示整数时，安全的范围是 <strong>53 位</strong>，超出这个返回可能会造成精度丢失</p>
 <ol>
-<li>使用<strong>按位或</strong>向下取整(数值不够大才能用)</li>
+<li>按位或| 向下取整(数值不够大才能用)</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var num=-9999999.1234;</span><br><span class="line">var int=num|0;</span><br><span class="line">console.log(int);   //-9999999</span><br><span class="line"></span><br><span class="line">var num=-9999999999.1234;</span><br><span class="line">var int=num|0;</span><br><span class="line">console.log(int);   //-1410065407</span><br></pre></td></tr></table></figure>
 <p>关于其它的取整方法可以见博客中：“JS中的取整”</p>
 <ol>
-<li>按位非（按位取反）任意数值x相当于-(x+1)</li>
+<li>按位非~（按位取反）任意数值x相当于-(x+1)</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">console.log(~1);    //-2</span><br><span class="line">console.log(~0);    //-1</span><br><span class="line">console.log(~-1);   //0</span><br><span class="line"></span><br><span class="line">console.log(~NaN);  //-1</span><br><span class="line">console.log(~[]);   //-1</span><br></pre></td></tr></table></figure>
 <p>　　我们可以发现：<strong>-1 是唯一一个经过 ~ 运算返回假值0的值</strong>（包括其他那些特殊的值比如 NaN、{}、[] 等都不会返回假值）</p>
 <p>　　所以字符串和数组的 indexOf 函数查找失败会返回 -1，这时候就可以用：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(~str.indexOf(<span class="string">'str'</span>)) // 来表示查找失败</span><br></pre></td></tr></table></figure>
 <p>比判断 &gt;= 0 或者 != -1 更优雅，跟用 !! 来判断非假值有异曲同工之妙</p>
+<ol>
+<li>按位与&amp;取最后一位数字</li>
+</ol>
+<p>　　eg:取任意数字的任意二进制位上的值(不是1就是0)<br>    eg:128的第一到第7位是0，第八位是1(128=10000000)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">    主要方法是和1按位与，</span><br><span class="line">如10000</span><br><span class="line">&amp;</span><br><span class="line">  00001，这样就能取到10000的最后一位数字</span><br><span class="line">*/</span><br><span class="line"><span class="keyword">function</span> valueAtBit(num,bit)&#123;</span><br><span class="line">    <span class="built_in">return</span> (num&gt;&gt;(bit-1)) &amp; 1;</span><br><span class="line">&#125;</span><br><span class="line">console.log(valueAtBit(128,8));     //1</span><br></pre></td></tr></table></figure></p>
 <h2 id="其它的骚操作"><a href="#其它的骚操作" class="headerlink" title="其它的骚操作"></a>其它的骚操作</h2><p>　　JS取0~9的一个随机数可以用:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(Math.random()+<span class="string">""</span>).slice(-1);   //eg从0.984652315464中复制最后一个数字4</span><br></pre></td></tr></table></figure></p>
 
       
@@ -341,7 +345,7 @@
         <p><span>本文标题:</span><a  href="/2018/05/31/JS中的数值运算/">JS中的数值运算</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 岛马 的个人博客">岛马</a></p>
         <p><span>发布时间:</span>2018年05月31日 - 07时39分</p>
-        <p><span>最后更新:</span>2018年06月09日 - 13时31分</p>
+        <p><span>最后更新:</span>2018年06月16日 - 10时26分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/05/31/JS中的数值运算/" title="JS中的数值运算">http://yoursite.com/2018/05/31/JS中的数值运算/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/05/31/JS中的数值运算/　　作者: 岛马" title=""></span>

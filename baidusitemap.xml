@@ -4,12 +4,12 @@
 
     
   <url>
-    <loc>http://yoursite.com/2018/03/27/%E4%B8%80%E4%BA%9B%E9%9B%B6%E6%98%9F%E7%9A%84HTML,CSS,JS%E7%9F%A5%E8%AF%86/</loc>
-    <lastmod>2018-06-09T06:01:06.180Z</lastmod>
+    <loc>http://yoursite.com/2018/05/31/JS%E4%B8%AD%E7%9A%84%E6%95%B0%E5%80%BC%E8%BF%90%E7%AE%97/</loc>
+    <lastmod>2018-06-16T02:26:36.716Z</lastmod>
     <data>
         <display>
-        <title>一些零星的HTML,CSS,JS知识</title>
-        <pubTime>2018-03-27T11:43:45.000Z</pubTime>
+        <title>JS中的数值运算</title>
+        <pubTime>2018-05-30T23:39:02.000Z</pubTime>
         
          
            
@@ -19,12 +19,27 @@
 
     
   <url>
-    <loc>http://yoursite.com/2018/05/31/JS%E4%B8%AD%E7%9A%84%E6%95%B0%E5%80%BC%E8%BF%90%E7%AE%97/</loc>
-    <lastmod>2018-06-09T05:31:13.690Z</lastmod>
+    <loc>http://yoursite.com/2018/04/18/JS%E4%B8%AD%E7%9A%84apply-%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/</loc>
+    <lastmod>2018-06-16T01:45:53.456Z</lastmod>
     <data>
         <display>
-        <title>JS中的数值运算</title>
-        <pubTime>2018-05-30T23:39:02.000Z</pubTime>
+        <title>JS中的apply()使用详解</title>
+        <pubTime>2018-04-17T23:20:35.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/03/27/%E4%B8%80%E4%BA%9B%E9%9B%B6%E6%98%9F%E7%9A%84HTML,CSS,JS%E7%9F%A5%E8%AF%86/</loc>
+    <lastmod>2018-06-09T06:01:06.180Z</lastmod>
+    <data>
+        <display>
+        <title>一些零星的HTML,CSS,JS知识</title>
+        <pubTime>2018-03-27T11:43:45.000Z</pubTime>
         
          
            
@@ -355,21 +370,6 @@
         <display>
         <title>函数柯里化</title>
         <pubTime>2018-04-17T23:19:07.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2018/04/18/JS%E4%B8%AD%E7%9A%84apply-%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/</loc>
-    <lastmod>2018-04-22T02:54:10.387Z</lastmod>
-    <data>
-        <display>
-        <title>JS中的apply()使用详解</title>
-        <pubTime>2018-04-17T23:20:35.000Z</pubTime>
         
          
            
