@@ -270,6 +270,103 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-JS的面向对象" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/05/13/JS的面向对象/" class="article-date">
+      <time datetime="2018-05-13T01:41:52.000Z" itemprop="datePublished">2018-05-13</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/05/13/JS的面向对象/">JS的面向对象</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>　　最近刚开始看《JavaScrit设计模式与开发实践一书》，感觉着实不错，让我对JS的面向对象有了更多的认识，下面就来总结一下：</p>
+<p>　　首先要了解的一点是：JavaScript是<strong>动态类型语言</strong>，与Java，C++这些<em>静态类型语言</em>不同，它无需类型检测。</p>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>　　多态就是将“做什么”和“谁去做以及怎样去做”分离开，也就是将“不变的事物”与“可能改变的事物”分离开来，然后把不变的部分隔离出来，把可变的部分<em>封装</em>起来，这样即可实现：同一操作作用于不同的对象，可以产生不同的解释和不同的执行结果。</p>
+<p>　　多态最根本的作用就是通过<strong>把过程化的条件分支语句转化为对象的多态性</strong>，从而消除这些条件分支语句。</p>
+<h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><p>　　因为JavaScript没有一些语言中的public,private,protected等关键字，所以只能依赖<strong>变量的作用域</strong>来实现封装特性，而且只能模拟出public和private这两种封装性。</p>
+<p>　　一般通过函数来创建作用域（如闭包就是实现了公开方法访问私有变量），但最新的ES6提供了let关键字，和Symbol创建私有属性，现在我还没看，等着一定会去了解。</p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>　　关于原型链继承请参考博客“JS中new运算符详解”和高程6.3节（一定要先搞懂跟new有关的构造器模式，再去看原型链）</p>
+<p>　　JavaScript是一门基于原型的面向对象语言，它的对象系统就是使用<strong>原型模式</strong>来搭建的，所以它<strong>绝大部分的</strong>遵守原型编程范型的基本规则，即：</p>
+<ol>
+<li>绝大部分的数据都是对象</li>
+<li>要得到一个对象，不是通过实例化类，而是找到一个对象作为原型并<em>克隆</em>它</li>
+<li>对象会记住它的原型</li>
+<li>如果对象无法响应某个请求，它会把这个请求委托给它的<em>构造器的原型</em></li>
+</ol>
+<h4 id="1-绝大部分的数据都是对象"><a href="#1-绝大部分的数据都是对象" class="headerlink" title="1. 绝大部分的数据都是对象"></a>1. 绝大部分的数据都是对象</h4><p>　　JavaScript中的根对象是Object.prototype对象，它是一个空对象，所有的对象都是从Object.prototype对象克隆而来的，Object.prototype对象就是它们的原型。</p>
+<h4 id="2-要得到一个对象，不是通过实例化类，而是找到一个对象作为原型并克隆它"><a href="#2-要得到一个对象，不是通过实例化类，而是找到一个对象作为原型并克隆它" class="headerlink" title="2. 要得到一个对象，不是通过实例化类，而是找到一个对象作为原型并克隆它"></a>2. 要得到一个对象，不是通过实例化类，而是找到一个对象作为原型并克隆它</h4><p>　　JavaScript的函数既可以作为普通函数被调用，也可以被new运算符作为构造器被调用，其中的new运算符实际上就是克隆了一个原型的过程。</p>
+<p>　　<strong>关于new运算符的内部具体操作请见我博客中的“JS中new运算符详解”！</strong></p>
+<h4 id="3-对象会记住它的原型"><a href="#3-对象会记住它的原型" class="headerlink" title="3. 对象会记住它的原型"></a>3. 对象会记住它的原型</h4><p>　　JavaScript给对象提供了一个名为<strong>proto</strong>的隐藏属性（这是浏览器的实现，规范里应该是不可访问的[[prototype]]），该属性默认指向它的构造器的原型对象。</p>
+<p>　　所以<em><strong>proto</strong></em>就是对象跟“对象构造器的原型”联系起来的纽带。</p>
+<h4 id="4-如果对象无法响应某个请求，它会把这个请求委托给它的构造器的原型"><a href="#4-如果对象无法响应某个请求，它会把这个请求委托给它的构造器的原型" class="headerlink" title="4. 如果对象无法响应某个请求，它会把这个请求委托给它的构造器的原型"></a>4. 如果对象无法响应某个请求，它会把这个请求委托给它的构造器的原型</h4><p>　　JavaScript的对象最初都是由Object.prototype对象克隆而来的，乍一看我们只能得到单一的继承自Object.prototype的对象，但<strong>对象构造器的原型</strong>并不仅限于Object.prototype上，而是可以动态指向其他对象。</p>
+<p>　　所以我们一般通过设置构造器的prototype来实现原型继承：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var A=<span class="function"><span class="title">function</span></span>()&#123;&#125;;</span><br><span class="line">A.prototype=&#123;name:<span class="string">"Daoma666"</span>&#125;;</span><br><span class="line">var B=<span class="function"><span class="title">function</span></span>()&#123;&#125;;</span><br><span class="line">B.prototype=new A();</span><br><span class="line">var b=new B();</span><br><span class="line">console.log(b.name);//Daoma666</span><br></pre></td></tr></table></figure>
+<p>　　在执行时，引擎做了什么事：</p>
+<ol>
+<li>首先尝试遍历对象b中所有属性，但没有找到name这个属性</li>
+<li>查找name属性的请求被委托给对象b的构造器原型，它被b.<strong>proto</strong>记录着并且指向B.prototype，即new A()创建出来的对象，即一个指向构造器A的prototype的对象。</li>
+<li>然而在该对象中依然没有找到name属性，于是请求继续委托给这个对象构造器的原型A.prototype。</li>
+<li>然后在这里找到了name属性，并返回它的值</li>
+</ol>
+<p>　　最后我们还要注意一点，如果在A.prototype也没找到name属性时，请求会被传递给A.prototype的构造器原型Object.prototype，因为根对象是个空对象，且原型是null，所以这次请求就到此为止，b.name返回undefined。</p>
+<hr>
+<p>　　现在我们就能理解ECMAScript5提供的克隆对象的Object.create方法了，它天然的实现了原型继承。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Object.create=<span class="keyword">function</span>(obj)&#123;</span><br><span class="line">    var F=<span class="function"><span class="title">function</span></span>()&#123;&#125;;</span><br><span class="line">    F.prototype=obj;</span><br><span class="line">    <span class="built_in">return</span> new F();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>　　即上面的代码可以这样实现：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var A=<span class="function"><span class="title">function</span></span>()&#123;&#125;;</span><br><span class="line">A.prototype=&#123;name:<span class="string">"Daoma666"</span>&#125;;</span><br><span class="line">var b=Object.create(new A());</span><br><span class="line">console.log(b.name);//Daoma666</span><br></pre></td></tr></table></figure>
+<p>　　此外还有需要注意的几点：</p>
+<ol>
+<li>Object.create()来创建对象比通过构造器创建对象要慢</li>
+<li>设置构造器的prototype实现原型继承时，除了根对象，任何对象都会有一个原型；但通过Object.create(null)可以创建出没有原型的对象。</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-JS中insertAdjacentHTML-方法" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -443,15 +540,15 @@
           
         <h2 id="CSS属性值的百分比"><a href="#CSS属性值的百分比" class="headerlink" title="CSS属性值的百分比"></a>CSS属性值的百分比</h2><p>　　经常能见到CSS属性值出现百分比，之前一直也没有整理过，现在为了以后不迷糊，遂整理一下。</p>
 <h3 id="百分比单位"><a href="#百分比单位" class="headerlink" title="百分比单位"></a>百分比单位</h3><h4 id="1-乘以包含块的宽度：margin-padding-left-right-text-indent-width-max-width-min-width"><a href="#1-乘以包含块的宽度：margin-padding-left-right-text-indent-width-max-width-min-width" class="headerlink" title="1.乘以包含块的宽度：margin, padding, left, right, text-indent, width, max-width, min-width"></a>1.乘以包含块的宽度：margin, padding, left, right, text-indent, width, max-width, min-width</h4><p>　　其中padding和margin的百分比值无论是水平方向还是<strong>垂直方向</strong>均是相对于<strong>包含块宽度</strong>计算的！</p>
+<p>　　这里注意text-indent的百分比值也是相对于包含块宽度计算的</p>
 <h4 id="2-乘以包含块的高度：top-bottom-height-max-height-min-height"><a href="#2-乘以包含块的高度：top-bottom-height-max-height-min-height" class="headerlink" title="2.乘以包含块的高度：top, bottom, height, max-height, min-height"></a>2.乘以包含块的高度：top, bottom, height, max-height, min-height</h4><p>　　关于<strong>包含块（containing block）</strong>的概念，不能简单地理解成是父元素。</p>
 <ol>
 <li>根元素(html元素)，被称为“初始包含块”，其等同于浏览器可视窗口大小。</li>
 <li>如果是static定位和relative定位，包含块由其最近的块容器祖先盒的content box边界组成。</li>
-<li>但是对于absolute定位的元素，相对的包含块是第一个position不为static的祖先元素。</li>
-</ol>
-<p>　　但如果祖先全都是position:static;定位的话，那此时也称为<strong>无依赖的绝对定位元素</strong>，它相对于<strong>本身的位置定位</strong>（？？有个大体印象，但是整理不出来具体规则，需日后再整理）</p>
-<ol>
-<li>对fixed定位的元素，它的包含块是”初始包含块”，一般为视口（viewport）。</li>
+<li><p>但是对于absolute定位的元素，相对的包含块是第一个position不为static的祖先元素。</p>
+</li>
+<li><p>对fixed定位的元素，它的包含块是”初始包含块”，一般为视口（viewport）。</p>
+</li>
 </ol>
 <p>　　绝对定位元素的height: 100%;是第一个具有定位属性值的祖先元素的高度，而height:inherit;则是单纯的父元素的高度继承。</p>
 <h4 id="3-乘以元素-border-box-的宽度：border-radius"><a href="#3-乘以元素-border-box-的宽度：border-radius" class="headerlink" title="3.乘以元素(border-box)的宽度：border-radius"></a>3.乘以元素(border-box)的宽度：border-radius</h4><h4 id="4-乘以元素的字体大小：line-height"><a href="#4-乘以元素的字体大小：line-height" class="headerlink" title="4.乘以元素的字体大小：line-height"></a>4.乘以元素的字体大小：line-height</h4><h4 id="5-乘以元素的行高-：vertical-align"><a href="#5-乘以元素的行高-：vertical-align" class="headerlink" title="5.乘以元素的行高 ：vertical-align"></a>5.乘以元素的行高 ：vertical-align</h4><p>　　vertical-align只能应用于内联元素和display值为table-cell的元素！ </p>
@@ -898,79 +995,6 @@
 <p>　　下面是该函数的参数：</p>
 <p>　　变量名    　　代表的值<br>　　match    　　匹配的子串。（对应于上述的$&amp;。）<br>　　p1,p2, …　假如replace()方法的第一个参数是一个RegExp 对象，则代表第n个括号匹配的字符串。（对应于上述的$1，$2等。）<br>　　offset　　匹配到的子字符串在原字符串中的偏移量。（比如，如果原字符串是“abcd”，匹配到的子字符串是“bc”，那么这个参数将是1）<br>　　string　　被匹配的原字符串。</p>
 <p>　　代码中的正则表达式/&amp;([^&amp;;]+);$/g代表：从整个字符串中，从全局匹配出所有的以&amp;开头，中间有1个或多个非&amp;;的任意字符，然后以;结尾的字符串。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-函数柯里化" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2018/04/18/函数柯里化/" class="article-date">
-      <time datetime="2018-04-17T23:19:07.000Z" itemprop="datePublished">2018-04-18</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/04/18/函数柯里化/">函数柯里化</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="函数柯里化"><a href="#函数柯里化" class="headerlink" title="函数柯里化"></a>函数柯里化</h2><p>　　函数柯里化Currying指的是<strong>把函数与传递给它的参数相结合，产生出一个新的函数</strong>。</p>
-<p>　　原理：Currying通过创建一个保存着原始函数(对象)和要被套用的参数的闭包来工作。它返回另一个函数，当函数被调用时，会返回调用原始函数(对象)的结果，并传递调用curry时的参数“加上”当前调用的参数。”加上”是通过Array.concat()方法连接两个参数数组。</p>
-<p>　　上面的原理balabala一大顿，我都没看懂，所以为了更容易懂，还是得看代码：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.method=<span class="keyword">function</span>(name,func)&#123;</span><br><span class="line">	this.prototype[name]=func;</span><br><span class="line">	<span class="built_in">return</span> this;</span><br><span class="line">&#125;</span><br><span class="line">Function.method(<span class="string">"curry"</span>,<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	var slice=Array.prototype.slice,</span><br><span class="line">		args=slice.apply(arguments),</span><br><span class="line">		that=this;</span><br><span class="line">	<span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		<span class="built_in">return</span> that.apply(null,args.concat(slice.apply(arguments)));</span><br><span class="line">	&#125;;	</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>　　然后接下来我们就可以看到它运用的结果</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> add(num1,num2)&#123;</span><br><span class="line">	<span class="built_in">return</span> num1+num2;</span><br><span class="line">&#125;</span><br><span class="line">var add1=add.curry(1);</span><br><span class="line">alert(add1(6)); //7</span><br></pre></td></tr></table></figure>
-<p>　　这里的method方法中，要注意四点：</p>
-<h4 id="1-arguments对象保存着函数被调用时的参数列表，它是一个类数组对象，有一个length属性但没有任何数组的方法。"><a href="#1-arguments对象保存着函数被调用时的参数列表，它是一个类数组对象，有一个length属性但没有任何数组的方法。" class="headerlink" title="1.arguments对象保存着函数被调用时的参数列表，它是一个类数组对象，有一个length属性但没有任何数组的方法。"></a>1.arguments对象保存着函数被调用时的参数列表，它是一个类数组对象，有一个length属性但没有任何数组的方法。</h4><p>　　第一个arguments是curry()函数的参数,return里的arguments是return function()的参数，这样可能听不懂，其实在例子中就是add1()函数里的参数。</p>
-<h4 id="2-正因为第一点，所以要想在最后使用args-concat，必须将arguments对象转换为一个真的数组，这里用Array-prototype-slice-方法，它可以将一个类数组（Array-like）对象-集合转换成一个新数组。"><a href="#2-正因为第一点，所以要想在最后使用args-concat，必须将arguments对象转换为一个真的数组，这里用Array-prototype-slice-方法，它可以将一个类数组（Array-like）对象-集合转换成一个新数组。" class="headerlink" title="2.正因为第一点，所以要想在最后使用args.concat，必须将arguments对象转换为一个真的数组，这里用Array.prototype.slice()方法，它可以将一个类数组（Array-like）对象/集合转换成一个新数组。"></a>2.正因为第一点，所以要想在最后使用args.concat，必须将arguments对象转换为一个真的数组，这里用Array.prototype.slice()方法，它可以将一个类数组（Array-like）对象/集合转换成一个新数组。</h4><p>　　具体见：<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/slice" title="Array.prototype.slice()" target="_blank" rel="noopener">MDN文档</a></p>
-<h4 id="3-第一个that-this-中的this在这里属于方法调用模式，绑定到调用该方法的对象上，即一个Function对象。"><a href="#3-第一个that-this-中的this在这里属于方法调用模式，绑定到调用该方法的对象上，即一个Function对象。" class="headerlink" title="3.第一个that=this;中的this在这里属于方法调用模式，绑定到调用该方法的对象上，即一个Function对象。"></a>3.第一个that=this;中的this在这里属于方法调用模式，绑定到调用该方法的对象上，即一个Function对象。</h4><p>　　所以add.curry(1)，this被绑定到add函数对象上</p>
-<h4 id="4-调用函数的方法apply-要绑定给this的值-参数数组"><a href="#4-调用函数的方法apply-要绑定给this的值-参数数组" class="headerlink" title="4.调用函数的方法apply(要绑定给this的值,参数数组)"></a>4.调用函数的方法apply(要绑定给this的值,参数数组)</h4><p>　　具体可见博客中“JS中的apply()使用详解一节”。</p>
-<p>　　最后我们再结合代码来看curry方法的具体作用：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Function.method(<span class="string">"curry"</span>,<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	//curry方法通过创建一个保存着原始函数和要被套用的参数的闭包来工作。</span><br><span class="line">	var slice=Array.prototype.slice,</span><br><span class="line">		args=slice.apply(arguments),  //要被套用的参数</span><br><span class="line">		that=this;  //that=this保存着原始函数对象</span><br><span class="line">	<span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123; //闭包  &amp;&amp; 它返回另一个函数</span><br><span class="line">		<span class="built_in">return</span> that.apply(null,args.concat(slice.apply(arguments)));</span><br><span class="line">		//当函数被调用时，会返回调用原始函数的结果，并传递调用curry时的参数“加上”当前调用的参数</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>　　所以当执行add1(6)时，相当于执行了add.apply(null,args.concat(slice.apply(arguments))),即执行了add(curry中的参数1,自己的参数6),所以放回1+6=7.</p>
-<p>#####　　这样就好理解柯里化的概念了：把函数与传递给它的参数相结合，产生出一个新的函数。</p>
-<p>　　add函数使用curry(参数)方法=&gt;add.curry(参数);把函数与传递给它的参数 相结合，<br>　　产生一个新的函数add1=&gt;var add1=add.curry(1);<br>　　用处就是可以用add1函数给原函数add传参，现阶段光是理论懂了，但是不懂具体用在哪，后期一定会再补充。</p>
 
       
     </div>
