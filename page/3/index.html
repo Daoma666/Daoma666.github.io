@@ -270,6 +270,96 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-闭包与模仿块作用域" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/04/18/闭包与模仿块作用域/" class="article-date">
+      <time datetime="2018-04-17T23:20:18.000Z" itemprop="datePublished">2018-04-18</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/04/18/闭包与模仿块作用域/">闭包与模仿块作用域</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="闭包与模仿块作用域"><a href="#闭包与模仿块作用域" class="headerlink" title="闭包与模仿块作用域"></a>闭包与模仿块作用域</h2><p>　　最近看《JavaScript语言精粹》真是一页的含量顶其它书的十页啊，受益匪浅，在这里整理一下闭包的一些东东吧。</p>
+<p>　　首先我也忘了之前有没有整理过关于原型的一些用法，先给出一段代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.method=<span class="keyword">function</span>(name,func)&#123;</span><br><span class="line">	this.prototype[name]=func;</span><br><span class="line">	<span class="built_in">return</span> this;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>　　具体要是忘了的话，去看原型那节，作用是给Function对象的原型添加了一个method方法，用于往该原型里新增方法，这样继承自Function对象的子对象们都会动态更新它们的方法。</p>
+<p>　　然后就是我们主要整理的东西了：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">String.method(<span class="string">"deentityify"</span>,<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	var entity=&#123;</span><br><span class="line">		quot: <span class="string">'"'</span>,</span><br><span class="line">		lt: <span class="string">'&lt;'</span>,</span><br><span class="line">		gt: <span class="string">'&gt;'</span></span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		<span class="built_in">return</span> this.replace(/&amp;([^&amp;;]+);$/g,<span class="keyword">function</span>(a,b)&#123;</span><br><span class="line">			var r=entity[b];</span><br><span class="line">			<span class="built_in">return</span> typeof r === <span class="string">"string"</span> ? r : a;</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;());</span><br><span class="line">document.writeln(<span class="string">"&amp;lt;body&amp;gt;&amp;quot;HAHAHA&amp;quot;&amp;lt;body&amp;gt;"</span>.deentityify())//&lt;body&gt;<span class="string">"HAHAHA"</span>&lt;body&gt;</span><br></pre></td></tr></table></figure></p>
+<p>　　这段代码的主要功能是：给String对象添加一个deentityify方法。它的任务是寻找字符串中的HTML字符实体并把它们替换为对应的字符。<br>　　这里有四个需要注意的点：</p>
+<h4 id="1-模仿块作用域"><a href="#1-模仿块作用域" class="headerlink" title="1.模仿块作用域"></a>1.模仿块作用域</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	var s=<span class="string">"test"</span>;</span><br><span class="line">&#125;())</span><br></pre></td></tr></table></figure>
+<p>　　JS中函数可以用来构造函数作用域，在函数里面可以看到外面的变量，但在函数外面则无法看到函数里面的变量，这是因为函数中搜索变量的过程是由内到外沿着作用域链逐层搜索，一直搜索到全局对象为止。</p>
+<p>　　因为JS将function关键字当作一个函数声明的开始，而函数声明后面不能跟圆括号。然而，函数表达式的后面可以跟圆括号。所以最外层的把整个函数包起来的圆括号表示：将函数声明转换成函数表达式。</p>
+<p>　　这段代码实际上定义并立即<strong>调用</strong>了一个匿名函数，其中最后的<em>()</em>圆括号是<strong>调用运算符</strong>。</p>
+<p>　　要注意()调用运算符立刻调用了我们刚刚构造出来的函数，这个调用创建并返回的函数才是deentityify()方法，<br>　　即:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">deentityify=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	<span class="built_in">return</span> this.replace(...);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>　　在匿名函数中定义的任何变量，都会在执行结束时被销毁，这样就可以减少闭包占用的内存问题。</p>
+<h4 id="2-闭包"><a href="#2-闭包" class="headerlink" title="2.闭包"></a>2.闭包</h4><p>　　一个<strong>函数</strong>可以访问它被创建时所处的上下文环境，这称为<strong>闭包</strong>。例子中第一个return的函数就是一个闭包：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	<span class="built_in">return</span> this.replace(/&amp;([^&amp;;]+);$/g,<span class="keyword">function</span>(a,b)&#123;</span><br><span class="line">		var r=entity[b];</span><br><span class="line">		<span class="built_in">return</span> typeof r === <span class="string">"string"</span> ? r : a;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>　　上面的函数可以访问到deentityify方法上下文环境定义的entity对象，所以这个函数就可以被称作<strong>闭包</strong>。</p>
+<p>　　在这里再讨论一下变量的生存周期：</p>
+<p>　　全局变量的生存周期是永久，除非我们主动销毁(=null)这个全局变量。</p>
+<p>　　在函数内用var关键字声明的局部变量，当退出函数时，会随着函数调用的结束而被销毁。</p>
+<p>　　但是如果局部变量被封闭在闭包形成的环境中，那么这个局部变量就能一直生存下去。像上面的闭包，它可以访问到deentityify()被调用时产生的环境，所以局部变量entity因为能被外界访问，所以就不会被销毁，除非我们手动销毁。</p>
+<p>　　所以说闭包的作用有：</p>
+<ol>
+<li><p>可以延长局部变量的生存周期。</p>
+</li>
+<li><p>可以封装变量</p>
+</li>
+</ol>
+<h4 id="3-模块模式"><a href="#3-模块模式" class="headerlink" title="3.模块模式"></a>3.模块模式</h4><p>　　模块是一个提供接口却隐藏状态与实现的函数或对象。它利用函数作用域与闭包来创建被绑定对象与私有成员的关联，模块模式的一般形式是：一个定义了私有变量和函数的函数；利用闭包创建可以访问私有变量和函数的特权函数；最后返回这个特权函数，或者把它们保存到一个可访问到的地方。</p>
+<h4 id="4-String-prototype-replace-进阶用法"><a href="#4-String-prototype-replace-进阶用法" class="headerlink" title="4.String.prototype.replace()进阶用法"></a>4.String.prototype.replace()进阶用法</h4><p>　　我这也是第一次知道它的第二个参数可以是一个函数，且非常有用，具体见：<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace" title="replace详细用法" target="_blank" rel="noopener">MDN文档</a></p>
+<h5 id="指定一个函数作为参数"><a href="#指定一个函数作为参数" class="headerlink" title="指定一个函数作为参数"></a>指定一个函数作为参数</h5><p>　　你可以指定一个函数作为第二个参数。在这种情况下，当匹配执行后， 该函数就会执行。 函数的<strong>返回值</strong>作为替换字符串。 (注意:上面提到的特殊替换参数在这里不能被使用。) 另外要注意的是， 如果第一个参数是正则表达式， 并且其为全局匹配模式， 那么这个方法将被<strong>多次调用</strong>， 每次匹配都会被调用。</p>
+<p>　　下面是该函数的参数：</p>
+<p>　　变量名    　　代表的值<br>　　match    　　匹配的子串。（对应于上述的$&amp;。）<br>　　p1,p2, …　假如replace()方法的第一个参数是一个RegExp 对象，则代表第n个括号匹配的字符串。（对应于上述的$1，$2等。）<br>　　offset　　匹配到的子字符串在原字符串中的偏移量。（比如，如果原字符串是“abcd”，匹配到的子字符串是“bc”，那么这个参数将是1）<br>　　string　　被匹配的原字符串。</p>
+<p>　　代码中的正则表达式/&amp;([^&amp;;]+);$/g代表：从整个字符串中，从全局匹配出所有的以&amp;开头，中间有1个或多个非&amp;;的任意字符，然后以;结尾的字符串。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-函数柯里化" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -864,66 +954,6 @@
 <p>　　最后附上一段封装的获取CSS的代码</p>
 <p>JS:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//设置或读取CSS样式</span><br><span class="line"><span class="keyword">function</span> css(obj,attr,value)&#123;</span><br><span class="line">	switch(arguments.length)&#123;</span><br><span class="line">		<span class="keyword">case</span> 2://如果有两个参数可能是设置或读取样式</span><br><span class="line">			<span class="keyword">if</span>(typeof arguments[1] == <span class="string">"object"</span>)&#123;//即attr是个数组对象就设置样式</span><br><span class="line">				<span class="keyword">for</span>(var i <span class="keyword">in</span> attr)&#123;</span><br><span class="line">					i == <span class="string">"opacity"</span> ? (obj.style[<span class="string">"filter"</span>]=<span class="string">"alpha(opacity="</span>+attr[i]+<span class="string">")"</span>, </span><br><span class="line">						obj.style[i]=attr[i]/100) : obj.style[i]=attr[i];							   </span><br><span class="line">				&#125;</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;//attr是个字符串就读取CSS样式</span><br><span class="line">				<span class="built_in">return</span> obj.currentStyle ? obj.currentStyle[attr] : getComputeStyle(obj,null)[attr]</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">break</span>;</span><br><span class="line">		<span class="keyword">case</span> 3://三个参数就是设置样式</span><br><span class="line">			attr == <span class="string">"opacity"</span> ? (obj.style[<span class="string">"filter"</span>]=<span class="string">"alpha(opacity="</span>+value+<span class="string">")"</span>, </span><br><span class="line">				obj.style[attr]=value/100) : obj.style[attr]=value;</span><br><span class="line">			<span class="built_in">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-网页导航栏小技巧" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2018/04/03/网页导航栏小技巧/" class="article-date">
-      <time datetime="2018-04-03T14:24:25.000Z" itemprop="datePublished">2018-04-03</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/04/03/网页导航栏小技巧/">网页导航栏小技巧</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="使用li-a构建网页导航栏"><a href="#使用li-a构建网页导航栏" class="headerlink" title="使用li+a构建网页导航栏"></a>使用li+a构建网页导航栏</h2><p>　　首先说一下建导航栏时使用li+a而不是直接使用li的原因：一般导航都是具有超链接功能，a标签具有这个功能，而lis标签只是罗列信息列表，不具备链接功能。<br>　　方法：一般我们在li中指定width，float;然后在a中使用display:block;再指定width和height，让它自动填充li即可。<br>　　具体小例子见代码：<br>HTML：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"nav"</span>&gt;</span><br><span class="line">	&lt;ul&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;站长之家&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;行业资讯&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;站长在线&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;网站运营&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;设计在线&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;网络编程&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;联盟资讯&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;&lt;a href=<span class="string">"javascript:;"</span>&gt;服务器&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;/ul&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
-<p>CSS：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#nav&#123;</span></span><br><span class="line">	width: 730px;</span><br><span class="line">	margin: 20px auto;</span><br><span class="line">	border:1px solid blue;</span><br><span class="line">	background: blue;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#nav ul&#123;</span></span><br><span class="line">	list-style-type: none;</span><br><span class="line">	overflow: hidden;</span><br><span class="line">	margin-left: 10px;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#nav ul li&#123;</span></span><br><span class="line">	width: 80px;</span><br><span class="line">	<span class="built_in">float</span>: left;</span><br><span class="line">	margin-right: 10px;			</span><br><span class="line">	background: cornflowerblue;</span><br><span class="line">	cursor: pointer;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#nav ul li a&#123;</span></span><br><span class="line">	display: block;</span><br><span class="line">	width: 80px;</span><br><span class="line">	height: 30px;</span><br><span class="line">	line-height: 30px;</span><br><span class="line">	padding: 5px 0;</span><br><span class="line">	text-align: center;</span><br><span class="line">	text-decoration: none;</span><br><span class="line">	color: <span class="comment">#fff;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#nav ul li a:hover&#123;</span></span><br><span class="line">	font-weight: 700;</span><br><span class="line">	background: <span class="comment">#aaa;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>　　麻雀虽小五脏俱全啊，涵盖了很多最近学到的知识点，算是在此纪念一下吧。</p>
-
       
     </div>
     
